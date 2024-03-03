@@ -1,0 +1,95 @@
+::root {
+    /* Example of variables: Use like 'color: var(--white);' */
+    --black: #000;
+    --white: #fff;
+}
+
+body {
+    /* Decide different fonts to use (provide sans-serif as a "fallback") */
+    font-family: sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+img {
+    height: 2rem;
+    width: 2rem;
+}
+
+.offset-img {
+    padding-top: 3px;
+}
+
+.base-container {
+    /* Arrange header, kiosk content, and footer vertically, with gap between each */
+    display: flex;
+    flex-direction: column;
+    /* gap: 10px; */
+    /* Position in center of screen */
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+
+    border: 2px solid black;
+    width: 550px;
+    /* padding-left: 1rem;
+    padding-right: 1rem; */
+}
+
+.header {
+    height: 10vh;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    padding-top: 0.3rem;
+    border-bottom: 0.3rem;
+}
+
+.footer {
+    height: 10vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    border-top: 2px solid black;
+}
+
+.main-content {
+    height: 70vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+button {
+    font-size: 32px;
+    max-width: 18rem; /* Have a width scaling with 12 times the base font size */
+    font-weight: 600;
+
+    background-color: #fff;
+    border: 2px solid black;
+    padding-left: 1rem;
+    padding-right: 1rem;
+
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.back {
+    color: red;
+}
+
+.confirm {
+    color: green;
+}
+
+/*
+border radius and drop shadow
+ */
