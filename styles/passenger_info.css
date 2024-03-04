@@ -1,0 +1,28 @@
+.main-body {
+    /* Decide different fonts to use (provide sans-serif as a "fallback") */
+    font-family: sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
+    margin: 0px;
+}
+
+.outer-box {
+    width: 100%;
+    height: 100%;
+    border-radius: 0px;
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.outer-div {
+    margin-top: 50px;
+    height: 700px;
+    width: 600px;
+    border-radius: 0px;
+    /* border: 1px solid black; */
+}
