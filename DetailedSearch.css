@@ -1,4 +1,9 @@
 .ds-body {
+    /* Decide different fonts to use (provide sans-serif as a "fallback") */
+    font-family: sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     padding: 0px;
     margin: 0px;
 }
@@ -17,31 +22,12 @@
 }
 
 .ds-outer-div {
-    height: 800px;
+    margin-top: 50px;
+    height: 700px;
     width: 600px;
     border-radius: 0px;
-    border: 2px solid black;
+    border: 1px solid black;
 }
-/*
-.header nav,footer {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    background-color: blue;
-    height: 50px;
-    width: 100%;
-}*/
-/*
-button {
-    color: black;
-    border: 1px;
-    /* border-color: white; */
-    /* color: white; */
-    /* text-decoration: none; */
-    cursor: pointer;
-    padding-left: 15px;
-    padding-right: 15px;
-}*/
 
 .trip-list {
     display: flex;
