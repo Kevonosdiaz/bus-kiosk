@@ -3,9 +3,8 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="stylesheet" href="styles.css" />
-        <!-- Could add second "link" tag to another css file -->
-        <title>BlueArrow</title>
+        <link rel="stylesheet" href="summary.css" />
+        <title>BlueArrow - Trip Summary</title>
     </head>
     <body>
         <div class="base-container">
@@ -15,10 +14,45 @@
                     Restart
                 </button>
             </div>
-            <div class="main-content summaryrInfo">
-                <title>
-                    Summary
-                </title>
+            <div class="main-content summaryInfo">
+                <p class="title_sum">Summary</p>
+                <ul class="main_list">
+                    <li>Origin: Calgary</li>
+                    <li>Destination: Edmonton</li>
+                    <li>Trip Type: One Way</li>
+                    <li>Date of Trip: March 6th, 2024</li>
+                </ul>
+                <ul class="main_list">
+                    <li>Passenger 1 Details: 
+                        <ul class="main_list">
+                            <li>Name: Gus Ryder</li>
+                            <li>Phone: 123-123-1234</li>
+                            <li>Email: gusryder@mail.com</li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <ul class="main_list">
+                    <li>Passenger 2 Details: 
+                        <ul class="main_list">
+                            <li>Name: Mo Torbus</li>
+                            <li>Phone: 456-456-4567</li>
+                            <li>Email: mt27@umail.com</li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <ul class="main_list">
+                    <li>Cost Breakdown: 
+                        <ul class="main_list">
+                            <li>Ticket Cost: $24.99</li>
+                            <li>Luggage Cost: $4.99</li></lu>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="cost">
+                <p class="total">Total: $29.98</p>
             </div>
             <div class="footer">
                 <button class="back">
