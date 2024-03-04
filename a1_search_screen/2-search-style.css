@@ -1,0 +1,75 @@
+.main-body {
+    /* Decide different fonts to use (provide sans-serif as a "fallback") */
+    font-family: sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
+    margin: 0px;
+}
+
+.top-half, .bottom-half {
+    width: 100%;
+    height: 50%;
+    overflow:scroll;
+    border-radius: 0px;
+    border: 1px solid black;
+}
+
+.outer-div {
+    margin-top: 50px;
+    height: 700px;
+    width: 600px;
+    border-radius: 0px;
+    /* border: 1px solid black; */
+}
+
+.main-content {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    justify-content: left;
+    gap: 5px;
+    padding-top: 10px;
+    padding-left: 25px;
+}
+
+button {
+    font-size: 32px;
+    max-width: 18rem; /* Have a width scaling with 12 times the base font size */
+    font-weight: 600;
+
+    background-color: #fff;
+    border: 2px solid black;
+    padding-left: 1rem;
+    padding-right: 1rem;
+
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+img {
+    height: 40px;
+    width: 60px;
+    align-self: left;
+}
+
+.origin_arrow_img {
+    height: 40px;
+    width: 60px;
+}
+
+.dest_arrow_img{
+    height: 40px;
+    width: 60px;
+}
+
+.calendar_img{
+    height:40px;
+    width:40px;
+}
+
+.passenger_img {
+    filter: invert(1);
+}

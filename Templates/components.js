@@ -3,7 +3,7 @@ class Header extends HTMLElement {
         this.innerHTML = `
             <div class="header">
                 <button id="reset" class="back">
-                    <img class="offset-img" src="Images/Icons/Screens/reset red.png" alt="Reset icon" />
+                    <img class="offset-img" src="../Images/Icons/Screens/reset red.png" alt="Reset icon" />
                     Restart
                 </button>
             </div>
@@ -16,12 +16,12 @@ class Footer extends HTMLElement {
         this.innerHTML = `    
          <div class="footer">
                 <button class="back">
-                    <img class="offset-img" src="Images/Icons/Screens/back red.png" alt="Back arrow" />
+                    <img class="offset-img" src="../Images/Icons/Screens/back red.png" alt="Back arrow" />
                     Back
                 </button>
                 <button class="confirm">
                     Confirm
-                    <img class="offset-img" src="Images/Icons/Screens/confirm green.png" alt="Green checkmark" />
+                    <img class="offset-img" src="../Images/Icons/Screens/confirm green.png" alt="Green checkmark" />
                 </button>
             </div>
       `;
