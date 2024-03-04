@@ -21,6 +21,16 @@ img {
     padding-top: 3px;
 }
 
+.selector-img {
+    padding-top: 3px;
+}
+
+.inverted-img {
+    padding-top: 3px;
+    filter: invert(1);
+}
+
+
 .base-container {
     /* Arrange header, kiosk content, and footer vertically, with gap between each */
     display: flex;
@@ -30,7 +40,7 @@ img {
     position: absolute;
     top: 50%;
     transform: translate(0, -50%);
-
+    
     border: 2px solid black;
     width: 550px;
     /* padding-left: 1rem;
@@ -63,8 +73,19 @@ img {
     height: 70vh;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    align-items: left;
+    justify-content: left;
+
+    padding-left: 1.5rem;
+}
+
+.map {
+    border: 5px solid black;
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    padding: 60px;
+
 }
 
 button {
