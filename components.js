@@ -37,9 +37,6 @@ class TripItem extends HTMLElement {
                 <label id='item-label' for="label"></label>
                 <input id='item-input' type="radio" name="label" >
             </div>
-            <div>
-
-            </div>
         </div>
         `;
         let label = this.querySelector('#item-label')
