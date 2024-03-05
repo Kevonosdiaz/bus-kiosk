@@ -20,7 +20,6 @@
     font-size: 25px;
 }
 
-
 body {
     /* Decide different fonts to use (provide sans-serif as a "fallback") */
     font-family: sans-serif;
@@ -29,20 +28,12 @@ body {
     align-items: center;
 }
 
-.base-container {
-    /* Arrange header, kiosk content, and footer vertically, with gap between each */
-    display: flex;
-    flex-direction: column;
-    /* gap: 10px; */
-    /* Position in center of screen */
-    position: absolute;
-    top: 50%;
-    transform: translate(0, -50%);
-
-    border: 2px solid black;
-    width: 550px;
-    /* padding-left: 1rem;
-    padding-right: 1rem; */
+.outer-box{
+    overflow:auto;
+    display:flex;
+    flex-direction:column;
+    align-items: center;
+    justify-content: center;
 }
 
 .main-content {
@@ -54,45 +45,11 @@ body {
     overflow:auto;
 }
 
-.footer {
-    height: 10vh;
-    display: flex;
-    align-items: center;
-    justify-content: right;
-    gap: 1rem;
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
-    border-top: 2px solid black;
-}
-
-button {
-    font-size: 32px;
-    max-width: 18rem; /* Have a width scaling with 12 times the base font size */
-    font-weight: 600;
-
-    background-color: #fff;
-    border: 2px solid black;
-    padding-left: 1rem;
-    padding-right: 1rem;
-
-    display: flex;
-    gap: 1rem;
-    justify-content: center;
-}
-
 .back {
-    color: red;
+    display:none;
 }
 
 .confirm {
-    color: green;
-}
-
-img {
-    height: 2rem;
-    width: 2rem;
-}
-
-.offset-img {
-    padding-top: 3px;
+    margin-left:auto;
+    margin-right:20px;
 }
