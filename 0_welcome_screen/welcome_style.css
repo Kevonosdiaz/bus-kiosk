@@ -73,7 +73,7 @@ img {
     width: 400px;
     background-color: rgb(238, 238, 238);
 
-    font-size: 35px;
+    font-size: 30px;
     max-width: 18rem; /* Have a width scaling with 12 times the base font size */
     font-weight: 600;
 }
