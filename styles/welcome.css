@@ -11,6 +11,14 @@
     font-size: 40px;
 }
 
+.buttons button {
+    font-size: 20px;
+    width: 180px;
+    height: 40px;
+    border: 2px solid black;
+    margin: 2px;
+}
+
 .body_fin {
     margin-bottom: 15px;
     text-align: center;
