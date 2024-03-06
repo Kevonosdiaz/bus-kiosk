@@ -1,146 +1,96 @@
-::root {
+:root {
     /* Example of variables: Use like 'color: var(--white);' */
     --black: #000;
     --white: #fff;
+    --beige1:#e1e2c4;
+    --blue1:#b3c4cc;
+    --blue2:#a2b6cb;
+    --blue3:#657aa7;
+    --orange:#e49931;
+    --grey:#424242;
+    --grey2:#e7e7e7;
+}
+
+.main-body {
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    background-color: var(--grey2);
+}
+
+.header {
+    border:none;
+    border-radius:8px 8px 0px 0px;
+}
+
+.footer {
+    border:none;
+    border-radius:0px 0px 8px 8px;
+}
+
+.reset, .back, .confirm {
+    border:none;
 }
 
 .title_sum {
     margin-bottom: 15px;
     text-align: center;
-    font-weight: bold;
+    font-weight: 600;
     text-decoration: underline;
     font-size: 25px;
 }
 
-.details {
-    text-align: start;
+.info_box {
+    height:94%;
+    overflow:auto;
 }
 
-.listcolumn {
-    width: 50%;
-    float:left;
+.outer-box {
+    padding:0;
+    border:none;
+    overflow:hidden;
+    background-color: white;
 }
 
 .main_list {
     list-style-type: none;
     font-size: 20px;
     line-height: 30px;
-    padding: 0px;
-    margin-left: 50px;
+    padding-left: 50px;
+
+    filter: drop-shadow(2px 2px 1px var(--grey));
+    background-color: var(--beige1);
+    border-radius: 15px;
+    padding-bottom:4px;
+    padding-top:4px;
 }
 
-.list2 {
+.sub_list {
     list-style-type: none;
     font-size: 20px;
     line-height: 30px;
-    padding: 0px;
-    margin-left: 50px;
+    padding-left: 50px;
 }
 
 body {
-    /* Decide different fonts to use (provide sans-serif as a "fallback") */
-    font-family: sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-img {
-    height: 2rem;
-    width: 2rem;
-}
-
-.offset-img {
-    padding-top: 3px;
-}
-
-.base-container {
-    /* Arrange header, kiosk content, and footer vertically, with gap between each */
+.cost_box {
+    background-color: var(--blue1);
     display: flex;
-    flex-direction: column;
-    /* gap: 10px; */
-    /* Position in center of screen */
-    position: absolute;
-    top: 50%;
-    transform: translate(0, -50%);
-
-    border: 2px solid black;
-    width: 550px;
-    /* padding-left: 1rem;
-    padding-right: 1rem; */
-}
-
-.header {
-    height: 10vh;
-    display: flex;
+    height:6%;
     align-items: center;
-    gap: 1rem;
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
-    padding-top: 0.3rem;
-    border-bottom: 0.3rem;
+    justify-content: right;
+    line-height:200%;
 }
 
-.footer {
-    height: 10vh;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1rem;
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
-    border-top: 2px solid black;
-}
-
-.cost {
-    height: 5vh;
-    border-top: 2px solid black;
-    display: flex;
-    flex-direction: column;
-    justify-content: start;
-}
-
-.total {
-    text-align:right;
-    margin-top:0.5vh;
-    margin-right: 24px;
-    font-size: 25px;
-    font-weight: bold;
-    
-}
-
-.main-content {
-    height: 65vh;
-    display: flex;
-    flex-direction: column;
-    align-self: left;
-    justify-content: start;
-    overflow:auto;
-}
-
-button {
-    font-size: 32px;
-    max-width: 18rem; /* Have a width scaling with 12 times the base font size */
+.total_text {
+    font-size: 24px;
+    margin:0px;
+    padding-right:25px;
     font-weight: 600;
-
-    background-color: #fff;
-    border: 2px solid black;
-    padding-left: 1rem;
-    padding-right: 1rem;
-
-    display: flex;
-    gap: 1rem;
-    justify-content: center;
 }
-
-.back {
-    color: red;
-}
-
-.confirm {
-    color: green;
-}
-
-/*
-border radius and drop shadow
- */

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>HTML 5 Boilerplate</title>
+        <link rel="stylesheet" href="passenger_info.css" />
+        <link rel="stylesheet" href="../Templates/styles.css" />
+        <script src="../Templates/components.js" type="text/javascript" defer></script>
+        <link rel="preconnect" href="https://fonts.googleapis.com%22%3E/
+        <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+            rel="stylesheet" />
+    </head>
+
+    <body class="main-body">
+        <div class="outer-div">
+            <main-header></main-header>
+            <div class="outer-box">
+                <div class="info">
+                    <div class="passenger-header">Passenger 1 Info</div>
+                    <div class="field">
+                        <label for="name-input" class="label">
+                            <img src="../Images/Icons/Screens/personal info black.png" alt="ID card icon" />
+                            Name
+                        </label>
+                        <input required placeholder="firstname lastname" id="name-input" />
+                    </div>
+                    <div class="field">
+                        <label for="email-input" class="label">
+                            <img src="../Images/Icons/Screens/email black.png" alt="Email icon" />
+                            Email
+                        </label>
+                        <input required placeholder="ex. myEmail@mail.com" id="email-input" />
+                    </div>
+                    <div class="field">
+                        <label for="phone-input" class="label">
+                            <img src="../Images/Icons/Screens/phone black.png" alt="Phone icon" />
+                            Phone
+                        </label>
+                        <input type="text" required placeholder="ex. 1112223333" id="phone-input" />
+                    </div>
+                </div>
+                <div class="services">
+                    <div class="services-header">Additional Services</div>
+                    <div class="service-box">
+                        <div class="left-services">
+                            <button id="checked-bags">Checked Bags</button>
+                            <button id="animal-transport">Animal Transport</button>
+                        </div>
+                        <div class="right-services">
+                            <button id="bicycle-storage">Bicycle Storage</button>
+                            <button id="ski-snowboard">Ski/Snowboard</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="status">
+                    <div id="stat1" class="stat-indicator">1</div>
+                    <div class="line"></div>
+                    <div id="stat2" class="stat-indicator">2</div>
+                    <div class="line"></div>
+                    <div id="stat3" class="stat-indicator">3</div>
+                    <div class="line"></div>
+                    <div id="stat4" class="stat-indicator">4</div>
+                </div>
+            </div>
+            <main-footer></main-footer>
+        </div>
+    </body>
+</html>

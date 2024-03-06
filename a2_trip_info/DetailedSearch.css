@@ -1,31 +1,74 @@
+:root {
+    /* Example of variables: Use like 'color: var(--white);' */
+    --black: #000;
+    --white: #fff;
+    --beige1: #e1e2c4;
+    --blue1: #b3c4cc;
+    --blue2: #a2b6cb;
+    --blue3: #657aa7;
+    --orange: #e49931;
+    --orange2: #ffd192;
+    --grey: #424242;
+    --grey2: #e7e7e7;
+    --green: green;
+    --green2: lightgreen;
+    --red: red;
+    --red2: lightcoral;
+}
+
 .ds-body {
     /* Decide different fonts to use (provide sans-serif as a "fallback") */
-    font-family: sans-serif;
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 0px;
     margin: 0px;
+    
 }
 
 .ds-top-half, .ds-bottom-half {
     width: 100%;
     height: 50%;
-    overflow:scroll;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    
 }
 
 .ds-bottom-half {
-    margin: 1px;
-    overflow:scroll;
-    border-radius: 0px;
-    border: 1px solid black;
+    border-top: 1px solid darkslategray;
+    background-image: linear-gradient(180deg, var(--grey2), var(--beige1));
+    /* background-color: #b3c4cc; */
+}
+
+
+.ds-top-half {
+    background-color: white;
 }
 
 .ds-outer-div {
     margin-top: 50px;
     height: 700px;
     width: 600px;
-    border-radius: 0px;
+}
+
+.ds-top-container, .ds-bottom-container {
+    overflow:scroll;
+}
+
+.ds-top-container {
+    width: 100%;
+    height: 100%;
+}
+
+.ds-bottom-container {
+    width: 95%;
+    height: 95%;
+    border-radius: 10px;
+    filter: drop-shadow(2px 2px 2px var(--grey));
     border: 1px solid black;
 }
 
@@ -34,19 +77,30 @@
     flex-direction: column;
     justify-content: space-between;
     overflow: scroll;
-    margin: 1px;
 }
 
 .single-item {
+    p {
+        margin: 10px;
+    }
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     border-radius: 5px;
+    padding: 2px;
+    margin: 5px;
+    margin-left: 25px;
+    margin-right: 25px;
+    background-color: rgb(238, 238, 238);
+    filter: drop-shadow(1px 1px 1px var(--grey));
+    background-image: linear-gradient(90deg, whitesmoke, var(--grey2));
     border: 1px solid black;
-    padding: 5px;
 }
 
-.map-container {
-    width: 40%;
-}
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr; 
+  }
+
 
