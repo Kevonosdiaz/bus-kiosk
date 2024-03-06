@@ -72,21 +72,25 @@ body {
     align-items: center;
     border-radius: 8px 0px 0px 8px;
     height: 48px;
-    width: 160px;
+    width: 120px;
 
     background-color: rgb(238, 238, 238);
 }
 
 input {
-    filter: drop-shadow(1px 1px 1px var(--grey));
+    /* filter: drop-shadow(1px 1px 1px var(--grey)); */
     font-family: "Poppins", sans-serif;
-    height: 40px;
+    height: 46px;
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
+    border-left: 0px;
+    padding-left: 10px;
     transform: translate(-1px, 0%);
     /* border-left: 0px; */
 }
 
 .services {
-    margin-bottom: 120px;
+    margin-bottom: 70px;
 }
 
 .services-header {
@@ -98,9 +102,10 @@ input {
 
 .service-box button {
     width: 160px;
-    height: 40px;
+    height: 50px;
     border: 2px solid black;
-    margin: 2px;
+    margin: 4px;
+    margin-bottom: 6px;
     cursor: pointer;
     border-radius: 50px;
 }
