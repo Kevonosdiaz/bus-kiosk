@@ -114,11 +114,19 @@ label img.passenger_img {
     padding-right: 15px;    
 }
 
-.passenger-count-input {
-    justify-content: center;
-    align-self: center;
+.plus_button, .minus_button {
+    width: 40px;
+    height: 40px;
 }
 
 input {
     height: 40px;
 }
+
+/* trying to resize and center the placeholder for input but not working*/
+input.passenger_count_placeholder {
+    justify-content: center;
+    align-self: center;
+    width:70px;
+}
+
