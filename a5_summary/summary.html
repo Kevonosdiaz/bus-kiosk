@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>BlueArrow - Trip Summary</title>
-  <link rel="stylesheet" href="../Templates/1-box-template.html">
+  <link rel="stylesheet" href="../Templates/1-box-template.css">
   <link rel="stylesheet" href="../Templates/styles.css">
   <link rel="stylesheet" href="summary.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -22,50 +22,58 @@
     <div class="outer-box">
       <div class="info_box">
         <p class="title_sum">Trip Summary</p>
-        <ul class="main_list">
-            <li>Origin: Calgary</li>
-            <li>Destination: Edmonton</li>
-            <li>Trip Type: One Way</li>
-            <li>Date of Trip: March 6th, 2024</li>
+        <ul class="main_list2">
+            <p class="grid_item1">Origin</p>
+            <p class="grid_item">Calgary</p>
+            <p class="grid_item1">Destination</p>
+            <p class="grid_item">Edmonton</p>
+            <p class="grid_item1">Trip Type</p>
+            <p class="grid_item">One Way</p>
+            <p class="grid_item1">Date of Trip</p>
+            <p class="grid_item">March 6th, 2024</p>
         </ul>
-        <ul class="main_list">
-            <li>Passenger 1 Details: 
-                <ul class="sub_list">
-                    <li>Name: Gus Ryder</li>
-                    <li>Phone: 123-123-1234</li>
-                    <li>Email: gusryder@mail.com</li>
-                </ul>
-            </li>
+        <p class="title_sum">Passenger 1 Details</p>
+        <ul class="main_list2">
+          <p class="grid_item1">Name</p>
+          <p class="grid_item">Gus Ryder</p>
+          <p class="grid_item1">Phone</p>
+          <p class="grid_item">123-123-1234</p>
+          <p class="grid_item1">Email</p>
+          <p class="grid_item">gusryder@mail.com</p>
         </ul>
-        <ul class="main_list">
-            <li>Passenger 2 Details: 
-                <ul class="sub_list">
-                    <li>Name: Mo Torbus</li>
-                    <li>Phone: 456-456-4567</li>
-                    <li>Email: mt27@umail.com</li>
-                </ul>
-            </li>
+        <p class="title_sum">Passenger 3 Details</p>
+        <ul class="main_list2">
+          <p class="grid_item1">Name</p>
+          <p class="grid_item">Mo Torbus</p>
+          <p class="grid_item1">Phone</p>
+          <p class="grid_item">444-555-6666</p>
+          <p class="grid_item1">Email</p>
+          <p class="grid_item">i like the bus@mail.com</p>
         </ul>
-        <ul class="main_list">
-          <li>Passenger 3 Details: 
-              <ul class="sub_list">
-                  <li>Name: Carrie Awning</li>
-                  <li>Phone: 111-222-3333</li>
-                  <li>Email: carrieawn@igotnoideas.com</li>
-              </ul>
-          </li>
-      </ul>
-        <ul class="main_list">
-            <li>Cost Breakdown: 
-                <ul class="sub_list">
-                    <li>Ticket Cost: $24.99</li>
-                    <li>Luggage Cost: $4.99</li></lu>
-                </ul>
-            </li>
+        <p class="title_sum">Passenger 2 Details</p>
+        <ul class="main_list2">
+          <p class="grid_item1">Name</p>
+          <p class="grid_item">Carrie Awning</p>
+          <p class="grid_item1">Phone</p>
+          <p class="grid_item">403-273-7373</p>
+          <p class="grid_item1">Email</p>
+          <p class="grid_item">carrie.awn@bmail.com</p>
+        </ul>
+
+        <p class="title_sum">Cost Breakdown</p>
+        <ul class="main_list2">
+          <p class="grid_item1">Ticket x3</p>
+          <p class="grid_item">+$29.99</p>
+          <p class="grid_item1">Carry-On Bag x1</p>
+          <p class="grid_item">+$5.00</p>
+          <p class="grid_item1">Total</p>
+          <p class="grid_item">$34.99</p>
+        </ul>
+        
         </ul>
       </div>
       <div class="cost_box">
-        <p class="total_text">Total: $29.98</p>
+        <p class="total_text">Total: $34.99</p>
       </div>
     </div>
     <pay-footer ></pay-footer>

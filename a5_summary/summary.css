@@ -9,17 +9,11 @@
     --orange:#e49931;
     --grey:#424242;
     --grey2:#e7e7e7;
+    
 }
 
 .main-body {
-    /* Decide different fonts to use (provide sans-serif as a "fallback") */
     font-family: "Poppins", sans-serif;
-    font-weight: 400;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 0px;
-    margin: 0px;
 }
 
 body {
@@ -34,10 +28,6 @@ body {
 .footer {
     border:none;
     border-radius:0px 0px 8px 8px;
-}
-
-.reset, .back, .confirm {
-    border:none;
 }
 
 .title_sum {
@@ -67,10 +57,40 @@ body {
     padding-left: 50px;
 
     filter: drop-shadow(2px 2px 1px var(--grey));
-    background-color: var(--beige1);
-    border-radius: 15px;
+    background-image: linear-gradient(90deg, whitesmoke, var(--grey2));
+    border-radius: 8px;
     padding-bottom:4px;
     padding-top:4px;
+}
+
+.main_list2{ 
+    list-style-type: none;
+    font-size: 20px;
+    line-height: 30px;
+    padding-left: 50px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+
+    justify-content:space-between;
+
+    filter: drop-shadow(2px 2px 1px var(--grey));
+    background-image: linear-gradient(90deg, whitesmoke, var(--grey2));
+    border-radius: 8px;
+    padding-bottom:4px;
+    padding-top:4px;
+}
+
+.grid_item1 {
+    font-weight: 500;
+    margin-bottom:5px;
+    border-bottom: solid black 1px;
+}
+
+.grid_item {    
+    margin-bottom:5px;
+    margin-right:auto;
+    border-bottom: solid black 1px;
 }
 
 .sub_list {
@@ -87,7 +107,7 @@ body {
 }
 
 .cost_box {
-    background-color: var(--blue1);
+    background-color: var(--beige1);
     display: flex;
     height:6%;
     align-items: center;
