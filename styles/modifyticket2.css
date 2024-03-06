@@ -92,6 +92,10 @@ input {
 
 }
 
+.top-half {
+    overflow:unset
+}
+
 .outer-div {
     margin-top: 50px;
     height: 700px;
