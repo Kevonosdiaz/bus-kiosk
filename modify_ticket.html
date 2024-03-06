@@ -2,13 +2,15 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>HTML 5 Boilerplate</title>
-  <link rel="stylesheet" href="./styles/1-box-template.css">
-  <link rel="stylesheet" href="./styles/styles.css" />
-  <script src="components.js" type="text/javascript" defer></script>
+    <title>Modify Ticket</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>HTML 5 Boilerplate</title>
+    <link rel="stylesheet" href="./styles/1-box-template.css">
+    <link rel="stylesheet" href="./styles/passenger_info.css" />
+    <link rel="stylesheet" href="./styles/styles.css" />
+    <script src="components.js" type="text/javascript" defer></script>
 </head>
 
 
@@ -16,6 +18,33 @@
   <div class="outer-div">
     <main-header ></main-header>
     <div class="outer-box">
+        <div class="info">
+            <div class="passenger-header">Passenger Info</div>
+            <div class="field">
+                <label for="name-input" class="label">
+                    <img src="Images/Icons/Screens/personal info black.png" alt="ID card icon" />Passenger Name
+                </label>
+                <input required placeholder="First name Last name" id="name-input"/>
+            </div>
+            <div class="field">
+                <label for="email-input" class="label">
+                    <img src="Images/Icons/Screens/email black.png" alt="Email icon" />Email
+                </label>
+                <input required placeholder="ex. myEmail@mail.com" id="name-input"/>
+            </div>
+            <div class="field">
+                <label for="phone-input" class="label">
+                    <img src="Images/Icons/Screens/phone black.png" alt="Phone icon" />Phone
+                </label>
+                <input required placeholder="ex. (111) 222 3333" id="name-input"/>
+            </div>
+            <div class="field">
+                <label for="ticketno-input" class="label">
+                    <img src="Images/Icons/Screens/ticket black.png" alt="Ticket icon" />Ticket Number
+                </label>
+                <input required placeholder="ex. A12345" id="name-input"/>
+            </div>
+        </div>
     </div>
     <main-footer ></main-footer>
   </div>
