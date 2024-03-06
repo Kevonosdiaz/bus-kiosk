@@ -11,7 +11,6 @@
     background-repeat: no-repeat;
     background-position: center;
     background-position-y: top;
-    background
 }
 
 .top-half{
@@ -76,6 +75,8 @@ img {
     font-size: 30px;
     max-width: 18rem; /* Have a width scaling with 12 times the base font size */
     font-weight: 600;
+
+    border-radius: 10px;
 }
 
 .logo_img {

@@ -25,6 +25,7 @@
     padding-right: 1.5rem;
     padding-top: 0.3rem;
     border: 1px solid black;
+    background-color: #3e5ba0;
 }
 
 .footer {
@@ -36,6 +37,7 @@
     padding-left: 1.5rem;
     padding-right: 1.5rem;
     border: 1px solid black;
+    background-color: #3e5ba0;
 }
 
 
@@ -54,6 +56,9 @@
     gap: 1rem;
     justify-content: center;
     cursor: pointer;
+
+    border-radius: 10px;
+    background-color: #eeeeee;
 }
 
 .back {
