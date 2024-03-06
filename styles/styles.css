@@ -7,9 +7,13 @@
     --blue2: #a2b6cb;
     --blue3: #657aa7;
     --orange: #e49931;
-    --orange2: #ffd192
+    --orange2: #ffd192;
     --grey: #424242;
     --grey2: #e7e7e7;
+    --green: green;
+    --green2: lightgreen;
+    --red: red;
+    --red2: lightcoral;
 }
 
 .footer img,
