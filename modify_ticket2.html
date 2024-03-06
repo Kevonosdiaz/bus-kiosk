@@ -8,7 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="./styles/1-box-template.css">
     <link rel="stylesheet" href="./styles/styles.css" />
-    <link rel="stylesheet" href="styles/DetailedSearch.css">
+    <link rel="stylesheet" href="./styles/modifyticket2.css" />
     <script src="components.js" type="text/javascript" defer></script>
 
 </head>
@@ -17,10 +17,31 @@
     <div class = "outer-div">
         <main-header></main-header>
         <div class="outer-box">
-            <div class = "ds-top-half">
-                
+            <div class="top-half">
+                <div class="main-content">
+                    <div class="passenger-header">Modifying Ticket #A12345</div>
+                    <div class="field">
+                        <label for="origin" class="label">
+                            <img src="Images/Icons/Screens/origin arrow black.png" alt="Arrow icon" />Origin
+                        </label>
+                        <input required placeholder="Enter Origin City" id="origin-input"/>
+                    </div>
+                    <div class="field">
+                        <label for="destination" class="label">
+                            <img src="Images/Icons/Screens/destinaton arrow black.png" alt="Arrow icon" />Destination
+                        </label>
+                        <input required placeholder="Enter Destination City" id="destination-input"/>
+                    </div>
+                    <div class="field">
+                        <label for="calendar_input" class="label">
+                            <img class="calendar_img" src="Images/Icons/Screens/calendar black.png" alt="Schedule Calendar" />
+                            Schedule
+                        </label>
+                        <input required placeholder="Enter Time/Date" id="calendar-input" />
+                    </div>
+                </div>
             </div>
-            <div class = "ds-bottom-half">
+            <div class = "bottom-half">
                 <div class = "ds-bottom-container">
                     <img src = "map-directions.png">
                 </div>

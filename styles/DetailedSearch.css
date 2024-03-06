@@ -6,16 +6,27 @@
     align-items: center;
     padding: 0px;
     margin: 0px;
+    background-color: black;
 }
 
 .ds-top-half, .ds-bottom-half {
     width: 100%;
     height: 50%;
-    border: 1px solid black;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
+    
+}
+
+.ds-bottom-half {
+    border-top: 1px solid darkslategray;
+    background-color: whitesmoke;
+}
+
+
+.ds-top-half {
+    background-color: white;
 }
 
 .ds-outer-div {
@@ -25,14 +36,19 @@
 }
 
 .ds-top-container, .ds-bottom-container {
-    width: 95%;
-    height: 95%;
     overflow:scroll;
 }
 
+.ds-top-container {
+    width: 100%;
+    height: 100%;
+}
+
 .ds-bottom-container {
-    border: 3px solid black;
+    width: 95%;
+    height: 95%;
     border-radius: 10px;
+    filter: drop-shadow(3px 3px 3px);
 }
 
 .trip-list {
@@ -50,10 +66,12 @@
     flex-direction: row;
     justify-content: space-between;
     border-radius: 5px;
-    border: 2px solid black;
     padding: 2px;
-    margin: 2px;
-    background-color: rgb(250, 250, 250);
+    margin: 5px;
+    margin-left: 25px;
+    margin-right: 25px;
+    background-color: whitesmoke;
+    filter: drop-shadow(1px 1px 1px);
 }
 
 .grid-container {
