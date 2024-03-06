@@ -82,6 +82,7 @@ class TripItem extends HTMLElement {
         let info_b = this.querySelector('#item-info-b')
         let info_c = this.querySelector('#item-info-c')
         let info_d = this.querySelector('#item-info-d')
+        let details = this.querySelector('#details')
 
         let depart = this.getAttribute('departTime')
         let arrive = this.getAttribute('arriveTime')

@@ -77,10 +77,19 @@ input {
 
 .top-half, .bottom-half {
     width: 98%;
-    height: 50%;
+    height: 45%;
     overflow: auto;
     border: none;
     align-items: center;
+}
+
+.bottom2 {
+    width: 98%;
+    height: 10%;
+    overflow: auto;
+    border: none;
+    align-items: center;
+
 }
 
 .outer-div {
@@ -112,6 +121,7 @@ input {
 .tickets{
     margin-bottom: 70 px;
     align-items: center;
+    
 }
 
 .ticket-box button {
@@ -126,9 +136,69 @@ input {
 }
 
 .ticket-box {
+    margin-top: 10px;
+    margin-bottom:10px;
     align-items: center;
     display: flex;
     flex-direction: column;
+}
+
+.cancel-modify {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.cancel-modify button{
+    width: 180px;
+    height: 50px;
+    font-size:25px;
+    border: 2px solid black;
+    margin: 4px;
+    margin-bottom: 6px;
+    cursor: pointer;
+    border-radius: 50px;
+}
+
+.verification-box {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    text-align: center;
+    margin-left:5%;
+    margin-right:5%;
+    font-size: 25px;
+    filter: drop-shadow(2px 2px 1px var(--grey));
+    background-color: var(--beige1);
+    border-radius: 2px;
+    align-items: center;
+    flex-direction: column;
+    display: flex;
+}
+
+.verificationcode{
+    font-family: "Poppins", sans-serif;
+    height: 46px;
+    width:450px;
+    border: 2px solid black;
+    transform: translate(-1px, 0%);
+    border-radius: 8px 8px 8px 8px;
+    margin-bottom:4px;
+    
+}
+
+.verification-box button{
+    width: 250px;
+    height: 30px;
+    font-size:20px;
+    border: 2px solid black;
+    margin-bottom:7px;
+    cursor: pointer;
+    border-radius: 50px;
+}
+
+.verification-box p{
+    margin-top: 1px;
+    margin-bottom:1px;
 }
 
 
