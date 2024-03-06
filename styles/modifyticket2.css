@@ -22,6 +22,7 @@
     flex-direction: column;
     /* justify-content: space-between; */
     align-items: center;
+    background-color: white;
     /* padding-top: 100px; */
     /* padding-bottom: 60px; */
 }
@@ -36,6 +37,7 @@
 
 .field {
     font-family:"Poppins", sans-serif;
+    
     display: flex;
     justify-content: center;
     align-items: center;
@@ -43,8 +45,13 @@
 }
 
 input {
-    font-family:"Poppins", sans-serif;
-    height: 44px;
+    font-family: "Poppins", sans-serif;
+    height: 46px;
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
+    border-left: 0px;
+    padding-left: 10px;
+    transform: translate(-1px, 0%);
     
 }
 
@@ -100,7 +107,9 @@ input {
 .label {
     margin-top: 2px;
     margin-bottom: 2px;
-    border: 2px solid black;
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
+    border-left: 2px solid black;
     display: flex;
     padding-left: 4px;
     gap: 10px;
@@ -111,9 +120,10 @@ input {
     font-family:"Poppins", sans-serif;
     font-size: 20px;
     max-width: 18rem; /* Have a width scaling with 12 times the base font size */
-    font-weight: 600;
+    
+    
 
-    border-radius: 5px;
+    border-radius: 8px 0px 0px 8px;
 }
 
 label img.origin_arrow_img {
