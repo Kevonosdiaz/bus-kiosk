@@ -21,31 +21,44 @@
   <div class="outer-div">
     <main-header ></main-header>
     <div class="outer-box">
-        <div class="info">
-            <div class="passenger-header">Passenger Information</div>
-            <div class="field">
-                <label for="name-input" class="label">
-                    <img src="Images/Icons/Screens/personal info black.png" alt="ID card icon" />Passenger Name
-                </label>
-                <input required placeholder="First name Last name" id="name-input"/>
+        <div class="top-half">
+            <div class="main-content">
+                <div class="info">
+                    <div class="passenger-header">Passenger Information</div>
+                    <div class="field">
+                        <label for="name-input" class="label">
+                            <img src="Images/Icons/Screens/personal info black.png" alt="ID card icon" />Passenger Name
+                        </label>
+                        <input required placeholder="First name Last name" id="name-input"/>
+                    </div>
+                    <div class="field">
+                        <label for="email-input" class="label">
+                            <img src="Images/Icons/Screens/email black.png" alt="Email icon" />Email
+                        </label>
+                        <input required placeholder="ex. myEmail@mail.com" id="email-input"/>
+                    </div>
+                    <div class="field">
+                        <label for="phone-input" class="label">
+                            <img src="Images/Icons/Screens/phone black.png" alt="Phone icon" />Phone
+                        </label>
+                        <input required placeholder="ex. (111) 222 3333" id="phone-input"/>
+                    </div>
+                    <div class="field">
+                        <label for="ticketno-input" class="label">
+                            <img src="Images/Icons/Screens/ticket black.png" alt="Ticket icon" />Ticket Number
+                        </label>
+                        <input required placeholder="ex. A12345" id="ticketno-input"/>
+                    </div>
+                </div>
             </div>
-            <div class="field">
-                <label for="email-input" class="label">
-                    <img src="Images/Icons/Screens/email black.png" alt="Email icon" />Email
-                </label>
-                <input required placeholder="ex. myEmail@mail.com" id="email-input"/>
-            </div>
-            <div class="field">
-                <label for="phone-input" class="label">
-                    <img src="Images/Icons/Screens/phone black.png" alt="Phone icon" />Phone
-                </label>
-                <input required placeholder="ex. (111) 222 3333" id="phone-input"/>
-            </div>
-            <div class="field">
-                <label for="ticketno-input" class="label">
-                    <img src="Images/Icons/Screens/ticket black.png" alt="Ticket icon" />Ticket Number
-                </label>
-                <input required placeholder="ex. A12345" id="ticketno-input"/>
+            
+        </div>
+        <div class="bottom-half">
+            <div class="tickets">
+                <div class="ticket-box">
+                    <button id="ticket1">Ticket 1</button>
+                    <button id="ticket2">Ticket 2</button>
+                </div>
             </div>
         </div>
     </div>
