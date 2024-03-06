@@ -2,24 +2,26 @@
     /* Example of variables: Use like 'color: var(--white);' */
     --black: #000;
     --white: #fff;
-    --beige1:#e1e2c4;
-    --blue1:#b3c4cc;
-    --blue2:#a2b6cb;
-    --blue3:#657aa7;
-    --orange:#e49931;
-    --grey:#424242;
-    --grey2:#e7e7e7;
+    --beige1: #e1e2c4;
+    --blue1: #b3c4cc;
+    --blue2: #a2b6cb;
+    --blue3: #657aa7;
+    --orange: #e49931;
+    --orange2: #ffd192
+    --grey: #424242;
+    --grey2: #e7e7e7;
 }
 
 .footer img,
 .header img {
     height: 30px;
     width: 30px;
+    /* padding-bottom: 3px; */
 }
 
-.offset-img {
+/* .offset-img {
     padding-top: 3px;
-}
+} */
 
 .header {
     height: 50px;
@@ -49,7 +51,7 @@
 .reset,
 .back,
 .confirm {
-    font-family:"Poppins", sans-serif;
+    font-family: "Poppins", sans-serif;
     font-size: 32px;
     max-width: 18rem; /* Have a width scaling with 12 times the base font size */
     font-weight: 500;
@@ -61,7 +63,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    gap:5px;
+    gap: 5px;
     cursor: pointer;
 
     border-radius: 20px;
