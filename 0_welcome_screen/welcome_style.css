@@ -6,7 +6,7 @@
     align-items: center;
     padding: 0px;
     margin: 0px;
-    background-image: url(R0010471.JPG);
+    background-image: url(../a1_search_screen/R0010471.JPG);
     background-attachment: scroll;
     background-repeat: no-repeat;
     background-position: center;
@@ -14,9 +14,9 @@
     background
 }
 
-.top-half, .bottom-half {
+.top-half{
     width: 100%;
-    height: 50%;
+    height: 100%;
     overflow:scroll;
     border-radius: 0px;
     border: 1px solid black;
@@ -30,72 +30,34 @@
     /* border: 1px solid black; */
 }
 
+
 .main-content {
     display: flex;
     flex-direction: column;
-    align-items: left;
-    justify-content: left;
+    align-items: center;
+    justify-content: center;
     gap: 5px;
     padding-top: 10px;
     padding-left: 25px;
 }
 
-/*
-button {
-    font-size: 32px;
-    max-width: 18rem; /* Have a width scaling with 12 times the base font size */
-    font-weight: 600;
-
-    background-color: #fff;
-    border: 2px solid black;
-    padding-left: 1rem;
-    padding-right: 1rem;
-
-    display: flex;
-    gap: 1rem;
-    justify-content: center;
-}
-*/
-
-
 img {
     height: 40px;
     width: 60px;
-    align-self: left;
+    align-self: center;
 }
 
-.origin_arrow_img {
-    height: 40px;
-    width: 60px;
-}
-
-.dest_arrow_img{
-    height: 40px;
-    width: 60px;
-}
-
-.calendar_img{
-    height:40px;
-    width:40px;
-}
-
-.passenger_img {
-    filter: invert(1);
-}
-
-
-/* new */
 
 .field {
     display: flex;
-    justify-content: left;
+    justify-content: center;
     align-items: center;
     gap: 0px;
 }
 
 .label img {
     width: 60px;
-    height: 40px;
+    height: 60px;
 }
 
 
@@ -107,20 +69,16 @@ img {
     padding-left: 4px;
     gap: 10px;
     align-items: center;
-    height: 48px;
-    width: 260px;
+    height: 120px;
+    width: 400px;
     background-color: rgb(238, 238, 238);
 
-    font-size: 20px;
+    font-size: 35px;
     max-width: 18rem; /* Have a width scaling with 12 times the base font size */
     font-weight: 600;
 }
 
-.passenger-count-input {
-    justify-content: center;
-    align-self: center;
-}
-
-input {
-    height: 40px;
+.logo_img {
+    height: 150px;
+    width: 300px;
 }
