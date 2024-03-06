@@ -65,6 +65,9 @@
     font-weight: 500;
     height: 40px;
 
+    
+    filter: drop-shadow(1px 1px 1px var(--grey));
+
     background-color: #fff;
     padding: 8px;
 
@@ -75,6 +78,7 @@
     cursor: pointer;
 
     border-radius: 20px;
+
     border:none;
 }
 
