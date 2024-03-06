@@ -6,6 +6,11 @@
     align-items: center;
     padding: 0px;
     margin: 0px;
+    background-image: url(R0010471.JPG);
+    background-attachment: scroll;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-position-y: top;
 }
 
 body {
@@ -37,7 +42,7 @@ body {
     font-weight:600;
     display: flex;
     justify-content: center;
-    margin-top: 30px;
+    margin-top: 20px;
 }
 
 .name {
@@ -71,12 +76,11 @@ input {
 }
 
 .top-half, .bottom-half {
-    width: 99%;
+    width: 98%;
     height: 50%;
     overflow: auto;
     border: none;
     align-items: center;
-    
 }
 
 .outer-div {
@@ -89,7 +93,7 @@ input {
 
 .info {
     margin-bottom: 40px;
-    margin-top: 80px;
+    margin-top: 10px;
 }
 
 .main-content {
@@ -103,6 +107,69 @@ input {
 
 .passenger_img {
     filter: invert(1);
+}
+
+.tickets{
+    margin-bottom: 70 px;
+    align-items: center;
+}
+
+.ticket-box button {
+    width: 180px;
+    height: 50px;
+    font-size:25px;
+    border: 2px solid black;
+    margin: 4px;
+    margin-bottom: 6px;
+    cursor: pointer;
+    border-radius: 50px;
+}
+
+.ticket-box {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.verification-box {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    text-align: center;
+    margin-left:5%;
+    margin-right:5%;
+    font-size: 25px;
+    filter: drop-shadow(2px 2px 1px var(--grey));
+    background-color: var(--beige1);
+    border-radius: 2px;
+    align-items: center;
+    flex-direction: column;
+    display: flex;
+}
+
+.verificationcode{
+    font-family: "Poppins", sans-serif;
+    height: 46px;
+    width:450px;
+    border: 2px solid black;
+    transform: translate(-1px, 0%);
+    border-radius: 8px 8px 8px 8px;
+    margin-bottom:4px;
+    
+}
+
+.verification-box button{
+    width: 250px;
+    height: 30px;
+    font-size:20px;
+    border: 2px solid black;
+    margin-bottom:7px;
+    cursor: pointer;
+    border-radius: 50px;
+}
+
+.verification-box p{
+    margin-top: 1px;
+    margin-bottom:1px;
 }
 
 
@@ -143,20 +210,20 @@ input {
 }
 
 label img.origin_arrow_img {
-    width: 80px;
+    width: 75px;
     height:40px;
 }
 
 label img.dest_arrow_img {
-    width:80px;
+    width:75px;
     height:40px;
 }
 
 label img.calendar_img {
     width: 40px;
     height: 40px;
-    padding-left: 20px;
-    padding-right: 20px;
+    padding-left: 22px;
+    padding-right: 14px;
 }
 
 .ds-top-container, .ds-bottom-container {
