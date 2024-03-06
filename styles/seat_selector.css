@@ -33,14 +33,22 @@
 }
 
 .seat_column1 {
-    width:30%;
-    padding-left:5%;
+    border: 2px solid black;
+    border-style: solid none solid solid;
+    border-radius: 15px 0px 0px 15px;
+    width:25%;
     float:left;
+    padding:3%;
+    padding-left:5%;
 }
 
 .seat_column2 {
-    width:30%;
+    border: 2px solid black;
+    border-style: solid solid solid none;
+    border-radius: 0px 15px 15px 0px;
+    width:25%;
     float:left;
+    padding:3%;
 }
 
 .legend_column {
@@ -78,7 +86,6 @@ input[type="checkbox"]:empty  + label {
 }
 
 input[type="checkbox"]:checked + label {
-    
     display:inline-block;
     height:60px;
     width:60px;
