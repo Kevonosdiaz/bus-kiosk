@@ -28,32 +28,53 @@ class Footer extends HTMLElement {
     }
 }
 
+class Footer2 extends HTMLElement {
+    connectedCallback(){
+        this.innerHTML = `
+            <div class="footer">
+                <button class="back">
+                    <img class="offset-img" src="Images/Icons/Screens/back red.png" alt="Back arrow" />
+                    Back
+                </button>
+                <button class="confirm">
+                    Search
+                    <img class="offset-img" src="Images/Icons/Screens/search green.png" alt="Green search icon" />
+                </button>
+            </div>
+        `
+    }
+}
+
 class TripItem extends HTMLElement {
     
     connectedCallback() {
         this.innerHTML = `
         <div>
             <div class='single-item'>
-                <label id='item-label' for="label"></label>
+                <div class='grid-container'>
+                    <p id='item-info-a'></p>
+                    <p id='item-info-b'></p>
+                    <p id='item-info-c'></p>
+                    <p id='item-info-d'></p>
+                </div>
                 <input id='item-input' type="radio" name="label" >
             </div>
         </div>
         `;
-        let label = this.querySelector('#item-label')
-        let input = this.querySelector('#item-input')
-
-        let itemNum = this.getAttribute('optionNum')
-
-        label.id = `item-label${itemNum}`
-        label.for = `i-${itemNum}`
-        input.id = `item-input${itemNum}`
-        input.name = `i-${itemNum}`
+        let info_a = this.querySelector('#item-info-a')
+        let info_b = this.querySelector('#item-info-b')
+        let info_c = this.querySelector('#item-info-c')
+        let info_d = this.querySelector('#item-info-d')
 
         let depart = this.getAttribute('departTime')
         let arrive = this.getAttribute('arriveTime')
         let duration = this.getAttribute('duration')
         let cost = this.getAttribute('cost')
-        label.textContent = `${depart} ${arrive} ${duration} ${cost}`
+
+        info_a.textContent = `Depart: ${depart}`
+        info_b.textContent = `Duration: ${duration}`
+        info_c.textContent = `Arrive: ${arrive}`
+        info_d.textContent = `Cost: ${cost}`
     }
 
 }
@@ -61,3 +82,4 @@ class TripItem extends HTMLElement {
 customElements.define('main-header', Header);
 customElements.define('main-footer', Footer);
 customElements.define('trip-item', TripItem);
+customElements.define('alt-footer',Footer2);
