@@ -12,7 +12,14 @@
 }
 
 .main-body {
+    /* Decide different fonts to use (provide sans-serif as a "fallback") */
     font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
+    margin: 0px;
 }
 
 body {

@@ -16,6 +16,14 @@
     --red2: lightcoral;
 }
 
+.main-body, .ds-body {
+    background-image: url(../Images/background.JPG);
+    background-attachment: scroll;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-position-y: top;
+}
+
 .footer img,
 .header img {
     height: 30px;
