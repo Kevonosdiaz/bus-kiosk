@@ -1,13 +1,45 @@
-::root {
+:root {
     /* Example of variables: Use like 'color: var(--white);' */
-    --black: #000;
+    --black: #000000;
     --white: #fff;
     --green: #0bb305;
     --blue: #0262bb;
+    --beige1:#e1e2c4;
+    --blue1:#b3c4cc;
+    --blue2:#a2b6cb;
+    --blue3:#657aa7;
+    --orange:#e49931;
+    --grey:#424242;
+    --grey2:#e7e7e7;
+}
+
+body {
+    font-family:"Titillium Web", sans-serif;
+    background-color: var(--grey2);
+}
+
+.main-body {
+    font-family:"Titillium Web", sans-serif;
 }
 
 .outer-box {
     overflow:auto;
+    border:none;
+    background-color:white;
+}
+
+
+.header {
+    border:none;
+    background-image: linear-gradient(190deg, var(--blue3), var(--blue1));
+    border-radius:8px 8px 0px 0px;
+}
+
+.footer {
+    border:none;
+    background-image: linear-gradient(190deg, var(--blue3), var(--blue1));
+    background-color: var(--blue3);
+    border-radius:0px 0px 8px 8px;
 }
 
 .legend_box {
@@ -20,8 +52,9 @@
 
 .legend {
     text-align:center;
-    font-size:20px;
+    font-size:24px;
     line-height:35px;
+    font-weight:bold;
 }
 
 .seat_container {
@@ -32,9 +65,13 @@
     justify-content: center;
 }
 
+.reset, .back, .confirm {
+    border:none;
+}
+
 .seat_column1 {
-    border: 2px solid black;
-    border-style: solid none solid solid;
+    filter: drop-shadow(2px 2px 1px var(--grey));
+    background-color: var(--blue1);
     border-radius: 15px 0px 0px 15px;
     width:25%;
     float:left;
@@ -43,8 +80,8 @@
 }
 
 .seat_column2 {
-    border: 2px solid black;
-    border-style: solid solid solid none;
+    filter: drop-shadow(2px 2px 1px var(--grey));
+    background-color: var(--blue1);
     border-radius: 0px 15px 15px 0px;
     width:25%;
     float:left;
@@ -52,7 +89,10 @@
 }
 
 .legend_column {
-    width:30%;
+    filter: drop-shadow(2px 2px 1px var(--grey));
+    border-radius: 0px 15px 15px 0px;
+    width:20%;
+    background:var(--beige1);
     float:left;
     display:flex;
     flex-direction: column;
@@ -68,7 +108,7 @@ input[type="checkbox"]:checked {
 }
 
 input[type="checkbox"]:empty  + label {
-    
+    filter: drop-shadow(1px 1px 1px var(--grey));
     display:inline-block;
     height:60px;
     width:60px;
@@ -86,6 +126,7 @@ input[type="checkbox"]:empty  + label {
 }
 
 input[type="checkbox"]:checked + label {
+    filter: drop-shadow(1px 1px 1px var(--grey));
     display:inline-block;
     height:60px;
     width:60px;
@@ -119,4 +160,8 @@ input[type="checkbox"]:disabled + label {
 
 label {
     text-align:center;
+}
+
+.legend_text {
+    font-weight:bold;
 }
