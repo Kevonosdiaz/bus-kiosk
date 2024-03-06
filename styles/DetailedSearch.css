@@ -49,7 +49,8 @@
     width: 95%;
     height: 95%;
     border-radius: 10px;
-    filter: drop-shadow(3px 3px 3px);
+    filter: drop-shadow(2px 2px 2px var(--grey));
+    border: 1px solid black;
 }
 
 .trip-list {
@@ -71,8 +72,9 @@
     margin: 5px;
     margin-left: 25px;
     margin-right: 25px;
-    background-color: whitesmoke;
-    filter: drop-shadow(1px 1px 1px);
+    background-color: rgb(238, 238, 238);
+    filter: drop-shadow(1px 1px 1px var(--grey));
+    border: 1px solid black;
 }
 
 .grid-container {
