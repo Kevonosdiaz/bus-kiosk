@@ -53,28 +53,56 @@
 }
 
 
-input:empty {
-    height:60px;
-    width:60px;
-    appearance: none;
-    background:url(../Images/Icons/Screens/seat_blue.png) no-repeat;
-    background-size: 60px 60px;
+input[type="checkbox"]:not(:checked), 
+input[type="checkbox"]:checked {
+  position: absolute;
+  left: -9999%;
 }
 
-input:checked {
+input[type="checkbox"]:empty  + label {
+    
+    display:inline-block;
     height:60px;
     width:60px;
+    font-size:20px;
+    margin:2%;
+    appearance: none;
+    line-height: 50px;
+    text-align:center;
+    color:white;
+    text-align: middle;
+    background:url(../Images/Icons/Screens/seat_blue.png) no-repeat;
+    background-size: 60px 60px;
+    user-select: none;
+    cursor:pointer;
+}
+
+input[type="checkbox"]:checked + label {
+    
+    display:inline-block;
+    height:60px;
+    width:60px;
+    line-height: 50px;
+    text-align:center;
+    margin:2%;
+    color:white;
+    font-size:20px;
     appearance: none;
     background:url(../Images/Icons/Screens/seat_green.png) no-repeat;
     background-size: 60px 60px;
-    
+    user-select: none;
+    cursor:pointer;
 }
 
-input:disabled {
+input[type="checkbox"]:disabled + label {
     height:60px;
     width:60px;
+    color:white;
+    appearance:none;
     background:url(../Images/Icons/Screens/seat_black.png) no-repeat;
     background-size: 60px 60px;
+    user-select: none;
+    cursor:no-drop;
 }
 
 .legend_title {
