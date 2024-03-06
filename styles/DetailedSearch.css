@@ -46,7 +46,7 @@
 
 
 .ds-top-half {
-    background-color: white;
+    background-color: whitesmoke;
 }
 
 .ds-outer-div {
@@ -103,4 +103,18 @@
     grid-template-rows: 1fr 1fr; 
   }
 
-
+.add-details {
+    border-left: 1px solid gray;
+    border-right: 1px solid gray;
+    border-bottom: 1px solid gray;
+    filter: drop-shadow(1px 1px 1px var(--grey));
+    margin-left: 30px;
+    margin-right: 30px;
+    padding-left: 55px;
+    padding-right: 5px;
+    transform: translateY(-4px);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr; 
+    background-color: white;
+}
