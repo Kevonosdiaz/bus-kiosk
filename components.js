@@ -28,6 +28,23 @@ class Footer extends HTMLElement {
     }
 }
 
+class Footer2 extends HTMLElement {
+    connectedCallback(){
+        this.innerHTML = `
+            <div class="footer">
+                <button class="back">
+                    <img class="offset-img" src="Images/Icons/Screens/back red.png" alt="Back arrow" />
+                    Back
+                </button>
+                <button class="confirm">
+                    Search
+                    <img class="offset-img" src="Images/Icons/Screens/search green.png" alt="Green search icon" />
+                </button>
+            </div>
+        `
+    }
+}
+
 class TripItem extends HTMLElement {
     
     connectedCallback() {
@@ -61,3 +78,4 @@ class TripItem extends HTMLElement {
 customElements.define('main-header', Header);
 customElements.define('main-footer', Footer);
 customElements.define('trip-item', TripItem);
+customElements.define('alt-footer',Footer2);
