@@ -1,6 +1,6 @@
 .main-body {
     /* Decide different fonts to use (provide sans-serif as a "fallback") */
-    font-family: sans-serif;
+    font-family: "Poppins", sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -17,6 +17,7 @@
     flex-direction: column;
     /* justify-content: space-between; */
     align-items: center;
+
     /* padding-top: 100px; */
     /* padding-bottom: 60px; */
 }
@@ -61,13 +62,16 @@
     padding-left: 4px;
     gap: 10px;
     align-items: center;
+    border-radius: 8px 0px 0px 8px;
     height: 48px;
     width: 160px;
+
     background-color: rgb(238, 238, 238);
 }
 
 input {
     height: 40px;
+    transform: translate(-1px, 0%);
 }
 
 .services {
@@ -87,6 +91,7 @@ input {
     border: 2px solid black;
     margin: 2px;
     cursor: pointer;
+    border-radius: 50px;
 }
 
 .status {
@@ -97,6 +102,7 @@ input {
     justify-content: center;
     align-items: center;
     gap: 0px;
+    border-radius: 50px;
 }
 
 .line {
