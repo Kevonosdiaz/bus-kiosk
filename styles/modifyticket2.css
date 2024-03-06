@@ -1,6 +1,6 @@
 .main-body {
     /* Decide different fonts to use (provide sans-serif as a "fallback") */
-    font-family: sans-serif;
+    font-family:"Poppins", sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -27,6 +27,7 @@
 }
 
 .passenger-header {
+    font-family:"Poppins", sans-serif;
     font-size: 28px;
     display: flex;
     justify-content: center;
@@ -34,6 +35,7 @@
 }
 
 .field {
+    font-family:"Poppins", sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -41,11 +43,13 @@
 }
 
 input {
-    height: 40px;
+    font-family:"Poppins", sans-serif;
+    height: 44px;
+    
 }
 
 .top-half, .bottom-half {
-    width: 100%;
+    width: 99%;
     height: 50%;
     overflow: auto;
     border-radius: 0px;
@@ -63,6 +67,7 @@ input {
 }
 
 .main-content {
+    font-family:"Poppins", sans-serif;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -103,7 +108,7 @@ input {
     height: 48px;
     width: 260px;
     background-color: rgb(238, 238, 238);
-
+    font-family:"Poppins", sans-serif;
     font-size: 20px;
     max-width: 18rem; /* Have a width scaling with 12 times the base font size */
     font-weight: 600;
@@ -129,7 +134,7 @@ label img.calendar_img {
 }
 
 .ds-top-container, .ds-bottom-container {
-    width: 99%;
+    width: 100%;
     height: 100%;
     overflow:scroll;
 }
