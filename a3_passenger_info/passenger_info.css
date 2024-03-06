@@ -142,6 +142,16 @@ input {
     background-color: #ffd192;
 }
 
-#stat1 {
-    background-color: lightgreen;
+.completed-stat {
+    background-color: #7b8fb1;
+}
+
+.current-stat {
+    background-color: #ffd192;
+    width: 35px;
+    height: 35px;
+}
+
+.unfinished-stat {
+    background-color: var(--white);
 }
