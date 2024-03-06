@@ -1,3 +1,21 @@
+:root {
+    /* Example of variables: Use like 'color: var(--white);' */
+    --black: #000;
+    --white: #fff;
+    --beige1: #e1e2c4;
+    --blue1: #b3c4cc;
+    --blue2: #a2b6cb;
+    --blue3: #657aa7;
+    --orange: #e49931;
+    --orange2: #ffd192;
+    --grey: #424242;
+    --grey2: #e7e7e7;
+    --green: green;
+    --green2: lightgreen;
+    --red: red;
+    --red2: lightcoral;
+}
+
 .ds-body {
     /* Decide different fonts to use (provide sans-serif as a "fallback") */
     font-family: "Poppins", sans-serif;
@@ -22,7 +40,8 @@
 
 .ds-bottom-half {
     border-top: 1px solid darkslategray;
-    background-color: #b3c4cc;
+    background-image: linear-gradient(180deg, var(--grey2), var(--beige1));
+    /* background-color: #b3c4cc; */
 }
 
 
@@ -74,6 +93,7 @@
     margin-right: 25px;
     background-color: rgb(238, 238, 238);
     filter: drop-shadow(1px 1px 1px var(--grey));
+    background-image: linear-gradient(90deg, whitesmoke, var(--grey2));
     border: 1px solid black;
 }
 
