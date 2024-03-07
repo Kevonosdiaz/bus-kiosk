@@ -84,6 +84,7 @@
 
     border-radius: 20px;
     border:none;
+    filter: drop-shadow(1px 1px 1px var(--grey));
 }
 
 .back {
