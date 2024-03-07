@@ -55,10 +55,6 @@ body {
     border-radius:0px 0px 8px 8px;
 }
 
-.confirm {
-    border:none;
-}
-
 .outer-box{
     overflow:auto;
     display:flex;
@@ -74,13 +70,4 @@ body {
     align-items: center;
     justify-content: center;
     overflow:auto;
-}
-
-.back {
-    display:none;
-}
-
-.confirm {
-    margin-left:auto;
-    margin-right:20px;
 }
