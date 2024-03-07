@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>BlueArrrow - Select your seats</title>
+  <link rel="stylesheet" href="../Templates/1-box-template.css">
+  <link rel="stylesheet" href="../Templates/styles.css" />
+  <link rel="stylesheet" href="seat_selector.css"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <script src="../Templates/components.js" type="text/javascript" defer></script>
+</head>
+
+
+<body class="main-body">
+  <div class="outer-div">
+    <main-header ></main-header>
+    <div class="outer-box">
+      <div class="legend_box">
+        <p class="legend">Please choose your seats<br>Remaining: 2/2</p>
+      </div>
+      <div class="seat_container">
+        <div class="seat_column1">
+          <input type="checkbox" id="A1"><label for="A1">A1</label>
+          <input type="checkbox" id="B1"><label for="B1">B1</label>
+          <input type="checkbox" id="A2"disabled><label for="A2">A2</label>
+          <input type="checkbox" id="B2"><label for="B2">B2</label>
+          <input type="checkbox" id="A3"><label for="A3">A3</label>
+          <input type="checkbox" id="B3"><label for="B3">B3</label>
+          <input type="checkbox" id="A4" disabled><label for="A4">A4</label>
+          <input type="checkbox" id="B4" disabled><label for="B4">B4</label>
+          <input type="checkbox" id="A5"><label for="A5">A5</label>
+          <input type="checkbox" id="B5"><label for="B5">B5</label>
+          <input type="checkbox" id="A6"><label for="A6">A6</label>
+          <input type="checkbox" id="B6"><label for="B6">B6</label>
+          <input type="checkbox" id="A7"><label for="A7">A7</label>
+          <input type="checkbox" id="B7"><label for="B7">B7</label>
+          <input type="checkbox" id="A8" disabled><label for="A8">A8</label>
+          <input type="checkbox" id="B8" disabled><label for="B8">B8</label>
+        </div>
+        <div class="seat_column2">
+          <input type="checkbox" id="C1" disabled><label for="C1">C1</label>
+          <input type="checkbox" id="D1"><label for="D1">D1</label>
+          <input type="checkbox" id="C2"><label for="C2">C2</label>
+          <input type="checkbox" id="D2"><label for="D2">D2</label>
+          <input type="checkbox" id="C3"><label for="C3">C3</label>
+          <input type="checkbox" id="D3" disabled><label for="D3">D3</label>
+          <input type="checkbox" id="C4"><label for="C4">C4</label>
+          <input type="checkbox" id="D4"><label for="D4">D4</label>
+          <input type="checkbox" id="C5" disabled><label for="C5">C5</label>
+          <input type="checkbox" id="D5" disabled><label for="D5">D5</label>
+          <input type="checkbox" id="C6"><label for="C6">C6</label>
+          <input type="checkbox" id="D6"><label for="D6">D6</label>
+          <input type="checkbox" id="C7" disabled><label for="C7">C7</label>
+          <input type="checkbox" id="D7"><label for="D7">D7</label>
+          <input type="checkbox" id="C8" disabled><label for="C8">C8</label>
+          <input type="checkbox" id="D8" disabled><label for="D8">D8</label>
+        </div>
+        <div class="legend_column">
+          <p class="legend_title">Legend</p>
+          <img src="../Images/Icons/Screens/seat_black.png" width="50px" height="50px" id="legend1">
+          <label class="legend_text" for="legend1">Taken</label><br><br>
+          <img src="../Images/Icons/Screens/seat_blue.png" width="50px" height="50px" id="legend2">
+          <label class="legend_text" for="legend2">Open</label><br><br>
+          <img src="../Images/Icons/Screens/seat_green.png" width="50px" height="50px" id="legend3">
+          <label class="legend_text" for="legend3">Selected</label><br><br>
+        </div>
+      </div>
+      
+    </div>
+    <main-footer ></main-footer>
+  </div>
+</body>
+
+</html>

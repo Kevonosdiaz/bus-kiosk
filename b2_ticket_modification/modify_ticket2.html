@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Modify Ticket 2</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../Templates/1-box-template.css">
+    <link rel="stylesheet" href="../Templates/styles.css" />
+    <link rel="stylesheet" href="modifyticket.css" />
+    <script src="../Templates/components.js" type="text/javascript" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">  
+
+</head>
+
+<body class = "main-body">
+    <div class = "outer-div">
+        <main-header></main-header>
+        <div class="outer-box">
+            <div class="top-half">
+                <div class="main-content">
+                    <div class="passenger-header">Modifying Ticket #A12345</div>
+                    <div class="name">Passenger Name</div>
+                    <div class="field">
+                        <label for="origin" class="label">
+                            <img class="origin_arrow_img" src="../Images/Icons/Screens/origin arrow black.png" alt="Arrow icon" />Origin
+                        </label>
+                        <input required placeholder="Enter Origin City" id="origin-input"/>
+                    </div>
+                    <div class="field">
+                        <label for="destination" class="label">
+                            <img class="dest_arrow_img" src="../Images/Icons/Screens/destinaton arrow black.png" alt="Arrow icon" />Destination
+                        </label>
+                        <input required placeholder="Enter Destination City" id="destination-input"/>
+                    </div>
+                    <div class="field">
+                        <label for="calendar_input" class="label">
+                            <img class="calendar_img" src="../Images/Icons/Screens/calendar black.png" alt="Schedule Calendar" />
+                            Schedule
+                        </label>
+                        <input required placeholder="Enter Date/Time" id="calendar-input" />
+                    </div>
+                </div>
+            </div>
+            <div class = "bottom-half">
+                <div class = "ds-bottom-container">
+                    <img src = "../Images/map-directions.png">
+                </div>
+            </div>
+
+
+        </div>
+        <alt-footer></alt-footer>
+    </div>
+</body>
+
+</html>

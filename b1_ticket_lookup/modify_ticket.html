@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Modify Ticket</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../Templates/styles/1-box-template.css">
+    <link rel="stylesheet" href="../a3_passenger_info/passenger_info.css" />
+    <link rel="stylesheet" href="modifyticket2.css" />
+    <link rel="stylesheet" href="../Templates/styles.css" />
+    <script src="../Templates/components.js" type="text/javascript" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">          
+</head>
+
+
+<body class="main-body">
+  <div class="outer-div">
+    <main-header ></main-header>
+    <div class="outer-box">
+        <div class="top-half">
+            <div class="main-content">
+                <div class="info">
+                    <div class="passenger-header">Passenger Information</div>
+                    <div class="field">
+                        <label for="name-input" class="label">
+                            <img src="../Images/Icons/Screens/personal info black.png" alt="ID card icon" />Passenger Name
+                        </label>
+                        <input required placeholder="First name Last name" id="name-input"/>
+                    </div>
+                    <div class="field">
+                        <label for="email-input" class="label">
+                            <img src="../Images/Icons/Screens/email black.png" alt="Email icon" />Email
+                        </label>
+                        <input required placeholder="ex. myEmail@mail.com" id="email-input"/>
+                    </div>
+                    <div class="field">
+                        <label for="phone-input" class="label">
+                            <img src="../Images/Icons/Screens/phone black.png" alt="Phone icon" />Phone
+                        </label>
+                        <input required placeholder="ex. (111) 222 3333" id="phone-input"/>
+                    </div>
+                    <div class="field">
+                        <label for="ticketno-input" class="label">
+                            <img src="../Images/Icons/Screens/ticket black.png" alt="Ticket icon" />Booking Number
+                        </label>
+                        <input required placeholder="ex. A12345" id="ticketno-input"/>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        <div class="bottom-half">
+            <div class="tickets">
+                <div class="ticket-box">
+                    <button id="ticket1" style="background-color: #ffd192;">Ticket 1</button>
+                    <button id="ticket2">Ticket 2</button>
+                </div>
+            </div>
+            <!--<div class="verification-box">
+                <p><small><b>Verify Your Email</b></small><br><small><small>Please enter the verification code sent to myemail@mail.com</small></small></p>
+                <input class="verificationcode" required placeholder="Verification Code" id="code-input"/>
+                <button id="next">Next</button>
+                <button id="resent">Resend code to Email</button>
+                <button id="resent">Send code to Phone</button>
+            </div>-->
+        </div>
+        <div class="bottom2">
+            <div class="cancel-modify">
+                <button id="cancel">Cancel Ticket</button>
+                <button id="modify">Modify Ticket</button>
+            </div>
+        </div>
+    </div>
+    <alt-footer></alt-footer>
+    <script src="../Templates/components.js"></script>
+  </div>
+</body>
+
+</html>

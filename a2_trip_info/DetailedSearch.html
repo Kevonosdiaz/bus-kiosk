@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Bus Kiosk</title>
+  <link rel="stylesheet" href="DetailedSearch.css">
+  <link rel="stylesheet" href="../Templates/styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <script src="../Templates/components.js" type="text/javascript" defer></script>
+</head>
+
+
+<body class="ds-body">
+  <div class="ds-outer-div">
+    <main-header ></main-header>
+    <div class="ds-top-half">
+      <div class="ds-top-container">
+      <div class="trip-list">
+        <trip-item optionNum="1" departTime="9:00AM" arriveTime="2:15PM" duration="5 Hours 15 Minutes" cost="$89.15">
+        </trip-item>
+        <div class='add-details' id='details'>
+          <div class="trip-summary">
+          <div class='add-details-depart'>
+            <p style="font-weight: 600;">Departure</p>
+            <p>Calgary City Center Station</p>
+            <p>9:00AM, April 25, 2024</p>
+          </div>
+          <div class='add-details-arrive'>
+            <p style="font-weight: 600;">Arrival</p>
+            <p>Edmonton International Airport</p>
+            <p>2:15PM, April 25, 2024</p>
+          </div>
+        </div>
+        <div class="trip-extra">
+          <p>Number of Stops: 3</p>
+          <p>15 Seats Available</p>
+          <p>Ebus</p>
+          <p>Wifi</p>
+        </div>
+      </div>
+        <trip-item optionNum="2" departTime="11:00AM" arriveTime="4:15PM" duration="5 Hours 15 Minutes" cost="$89.15">
+        </trip-item>
+        <trip-item optionNum="3" departTime="1:00PM" arriveTime="4:45PM" duration="3 Hours 45 Minutes" cost="$120.45">
+        </trip-item>
+        <trip-item optionNum="4" departTime="6:00PM" arriveTime="9:45PM" duration="3 Hours 45 Minutes" cost="$120.45">
+        </trip-item>
+      </div>
+    </div>
+  </div>
+    <div class="ds-bottom-half">
+      <div class="ds-bottom-container">
+        <img src="../Images/map-directions.png">
+      </div>
+    </div>
+    <main-footer ></main-footer>
+  </div>
+</body>
+
+</html>
