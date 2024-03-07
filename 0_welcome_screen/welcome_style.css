@@ -1,6 +1,6 @@
 .main-body {
     /* Decide different fonts to use (provide sans-serif as a "fallback") */
-    font-family: sans-serif;
+    font-family: "Poppins", sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -34,6 +34,7 @@
     gap: 5px;
     padding-top: 10px;
     padding-left: 25px;
+    filter: drop-shadow(2px 2px 1px var(--grey));
     
 }
 
@@ -63,7 +64,7 @@ img {
     border: 2px solid black;
     display: flex;
     padding-left: 4px;
-    gap: 10px;
+    gap: 5px;
     align-items: center;
     height: 120px;
     width: 400px;
@@ -71,7 +72,7 @@ img {
 
     font-size: 30px;
     max-width: 18rem; /* Have a width scaling with 12 times the base font size */
-    font-weight: 600;
+    font-weight: 400;
 
     border-radius: 10px;
 }
