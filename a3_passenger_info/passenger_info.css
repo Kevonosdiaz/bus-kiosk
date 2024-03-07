@@ -83,6 +83,7 @@ input {
     height: 46px;
     border-top: 2px solid black;
     border-bottom: 2px solid black;
+    border-radius: 0px 8px 8px 0px;
     border-left: 0px;
     padding-left: 10px;
     transform: translate(-1px, 0%);

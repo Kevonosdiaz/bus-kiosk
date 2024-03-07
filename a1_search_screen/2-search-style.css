@@ -83,7 +83,7 @@
     max-width: 18rem; /* Have a width scaling with 12 times the base font size */
     font-weight: 400;
 
-    border-radius: 5px;
+    border-radius: 8px 0px 0px 8px;
 }
 
 label img.origin_arrow_img {
@@ -112,11 +112,17 @@ label img.passenger_img {
 
 .plus_button, .minus_button {
     width: 40px;
-    height: 40px;
+    height: 50px;
+    font-size: 30px;
 }
 
 input {
-    height: 40px;
+    height: 45px;
+    border-radius: 0px 8px 8px 0px;
+}
+
+.passenger_count_placeholder {
+    border-radius: 0px;
 }
 
 /* trying to resize and center the placeholder for input but not working*/
@@ -125,4 +131,3 @@ input.passenger_count_placeholder {
     align-self: center;
     width:70px;
 }
-
