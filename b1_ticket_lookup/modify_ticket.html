@@ -78,6 +78,19 @@
     <empty-footer ></empty-footer>
     <script src="../Templates/components.js"></script>
   </div>
+  <script>
+    const currentPagePath = '../b1_ticket_lookup/modify_ticket.html';
+    const nextButtonURL = '../b2_ticket_modification/modify_ticket2.html';
+
+    const prevPageVarName = 'prevPage';
+    var nextButtonPath = nextButtonURL + '?' + prevPageVarName + "=" + currentPagePath;
+
+
+    document.addEventListener("DOMContentLoaded", function() {
+        setPreviousPage(readURLData('prevPage'));
+        setNextPage(nextButtonPath);
+    });
+  </script>
 </body>
 
 </html>

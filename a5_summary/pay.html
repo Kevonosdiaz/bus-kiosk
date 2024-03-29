@@ -26,6 +26,20 @@
     </div>
     <empty-footer ></empty-footer>
   </div>
+  <script>
+    const currentPagePath = '../a5_summary/pay.html';
+    const nextButtonURL = '../a5_summary/finish.html';
+
+    const prevPageVarName = 'prevPage';
+
+    var nextButtonPath = nextButtonURL + '?' + prevPageVarName + "=" + currentPagePath;
+
+
+    document.addEventListener("DOMContentLoaded", function() {
+        setPreviousPage(readURLData('prevPage'));
+        setNextPage(nextButtonPath);
+    });
+  </script>
 </body>
 
 </html>

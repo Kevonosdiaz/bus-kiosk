@@ -128,11 +128,15 @@ function setPreviousPage(page) {
     previousPage = page;
 }
 
-// Reads the url and looks for any variable data for 'prevPage'
-// this should contain the url of the previous page
-function readURLData() {
+var nextPage;
+function setNextPage(page) {
+    nextPage = page;
+}
+
+// Reads the url and looks for any variable data for the name of the passed variable
+function readURLData(inVar) {
     var urlParams = new URLSearchParams(window.location.search);
-    var data = urlParams.get('prevPage');
+    var data = urlParams.get(inVar);
     console.log(data);
     return data;
 }
@@ -142,12 +146,19 @@ function readURLData() {
 function backButtonClick() {
     const backButton = document.getElementById('back');
     backButton.addEventListener('click', function() {
-        //console.log("back clicked");
         window.location.href = previousPage;
     });
 };
 
+function nextButtonClick() {
+    const nextButton = document.getElementById('confirm');
+    nextButton.addEventListener('click', function() {
+        window.location.href = nextPage;
+    });
+}
+
 // waits for the page to be fully loaded before buttons can be pressed
 document.addEventListener("DOMContentLoaded", function() {
     backButtonClick();
+    nextButtonClick();
 });

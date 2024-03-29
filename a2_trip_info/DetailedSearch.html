@@ -59,6 +59,20 @@
     </div>
     <empty-footer></empty-footer>
   </div>
+  <script>
+    const currentPagePath = '../a2_trip_info/DetailedSearch.html';
+    const nextButtonURL = '../a3_passenger_info/passenger_info.html';
+
+    const prevPageVarName = 'prevPage';
+
+    var nextButtonPath = nextButtonURL + '?' + prevPageVarName + "=" + currentPagePath;
+
+
+    document.addEventListener("DOMContentLoaded", function() {
+        setPreviousPage(readURLData('prevPage'));
+        setNextPage(nextButtonPath);
+    });
+  </script>
 </body>
 
 </html>
