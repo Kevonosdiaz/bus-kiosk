@@ -76,7 +76,7 @@ body {
     overflow:auto;
 }
 
-.back {
+.back,.reset {
     display:none;
 }
 
