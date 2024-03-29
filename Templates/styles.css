@@ -42,6 +42,7 @@
     border-radius: 8px 8px 0px 0px;
     display: flex;
     align-items: center;
+    justify-content: space-between;
     /* border: 1px solid black; */
     background-color: var(--blue3);
 
@@ -87,8 +88,13 @@
     filter: drop-shadow(1px 1px 1px var(--grey));
 }
 
-.back {
+.reset {
     color: red;
+    
+}
+
+.back {
+    color: black;
     margin-left: 20px;
 }
 
