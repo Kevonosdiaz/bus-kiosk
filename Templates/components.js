@@ -2,7 +2,7 @@ class Header extends HTMLElement {
     connectedCallback() {
         this.innerHTML = `
             <div class="header">
-                <button class="back">
+                <button class="back" button id="back">
                     <img class="offset-img" src="../Images/Icons/Screens/back black.png" alt="Back arrow" />
                     Back
                 </button>
@@ -12,7 +12,7 @@ class Header extends HTMLElement {
                     Start Over
                 </button>
 
-                <button class="confirm">
+                <button class="confirm" button id="confirm">
                     Next
                     <img class="offset-img" src="../Images/Icons/Screens/green next.png" alt="Green checkmark" />
                 </button>
@@ -121,3 +121,33 @@ customElements.define('trip-item', TripItem);
 customElements.define('alt-footer',Footer2);
 customElements.define('pay-footer',Footer3);
 customElements.define('empty-footer',Footer4);
+
+// Sets the url of the previous page to the 'previousPage variable'
+var previousPage;
+function setPreviousPage(page) {
+    previousPage = page;
+}
+
+// Reads the url and looks for any variable data for 'prevPage'
+// this should contain the url of the previous page
+function readURLData() {
+    var urlParams = new URLSearchParams(window.location.search);
+    var data = urlParams.get('prevPage');
+    console.log(data);
+    return data;
+}
+
+// Function for when the user clicks on 'back button'
+// this will read the previousPage url and load that html page
+function backButtonClick() {
+    const backButton = document.getElementById('back');
+    backButton.addEventListener('click', function() {
+        //console.log("back clicked");
+        window.location.href = previousPage;
+    });
+};
+
+// waits for the page to be fully loaded before buttons can be pressed
+document.addEventListener("DOMContentLoaded", function() {
+    backButtonClick();
+});

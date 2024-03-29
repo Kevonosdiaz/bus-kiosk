@@ -8,6 +8,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="welcome_style.css">
   <link rel="stylesheet" href="../Templates/styles.css" />
+  <script src="../Templates/components.js" type="text/javascript" defer></script>
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,21 +18,21 @@
 
 <body class="main-body">
   <div class="outer-div">
-    <main-header ></main-header>
+    <!--<main-header ></main-header>-->
     <div class="top-half">
         <div class="main-content">
             <div class="logo">
               <img class="logo_img" src="../Images/Logos/logo_1.png">
             </div>
             <div class="field">
-              <label for="New_Ticket" class="new_ticket_label">
+              <label for="New_Ticket" class="new_ticket_label" id="newTicketLabel">
                 <img class="origin_arrow_img" src="../Images/Icons/Screens/new ticket black.png" alt="New Booking" />
                 New Booking
               </label>
             </div>
 
             <div class="field">
-              <label for="Modify_Ticket" class="modify_ticket_label">
+              <label for="Modify_Ticket" class="modify_ticket_label" id="modifyTicketLabel">
                 <img class="dest_arrow_img" src="../Images/Icons/Screens/modify ticket black.png" alt="Edit Booking" />
                 Edit Booking
               </label>
@@ -39,8 +40,43 @@
         </div>
     </div>
   
-    <main-footer ></main-footer>
+    <!--<main-footer ></main-footer>-->
   </div>
+
+<script>
+  const currentPagePath = '../0_welcome_screen/welcome_screen.html';
+  const newBookingPath = '../a1_search_screen/2-new_ticket_search_screen.html';
+  const modifyBookingPath = '../b1_ticket_lookup/modify_ticket.html';
+  const prevPageVarName = 'prevPage';
+
+  var pathWithVar;
+
+  // setting the new ticket label
+  const newTicketLabel = document.getElementById('newTicketLabel');
+  // creating function for when the user clicks on the 'new booking' button to transport them to the next page
+  function newBooking() {
+    newTicketLabel.addEventListener('click', function() {
+      pathWithVar = newBookingPath + '?' + prevPageVarName + '=' + currentPagePath;
+      window.location.href = pathWithVar;
+    });
+  }
+
+  const modifyTicketLabel = document.getElementById('modifyTicketLabel');
+  function modifyBooking() {
+    modifyTicketLabel.addEventListener('click', function() {
+      pathWithVar = modifyBookingPath + '?' + prevPageVarName + '=' + currentPagePath;
+      window.location.href = pathWithVar;
+    });
+  }
+
+  // creates a delay where the user is unable to click on the buttons until the page has fully loaded
+  // this is to prevent references to functions inside of the js file not working
+  document.addEventListener("DOMContentLoaded", function() {
+    newBooking();
+    modifyBooking();
+  });
+</script>
+
 </body>
 
 </html>
