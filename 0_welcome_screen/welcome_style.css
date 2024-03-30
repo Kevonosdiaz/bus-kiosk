@@ -90,14 +90,19 @@ img {
     align-items: center;
     height: 120px;
     width: 400px;
-    /* background-color: rgb(238, 238, 238); */
-    background-color: #ffd192;
+    background-color: rgb(238, 238, 238);
+    /* background-color: rgb(255, 209, 146); */
 
     font-size: 30px;
     max-width: 18rem; /* Have a width scaling with 12 times the base font size */
     font-weight: 400;
 
     border-radius: 10px;
+}
+
+.new_ticket_label:hover,
+.modify_ticket_label:hover {
+    background-color: rgb(255, 209, 146);
 }
 
 .logo_img {

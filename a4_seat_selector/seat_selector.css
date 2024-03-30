@@ -60,9 +60,6 @@ body {
     justify-content: center;
 }
 
-.reset, .back, .confirm {
-    border:none;
-}
 
 .seat_column1 {
     filter: drop-shadow(2px 2px 1px var(--grey));
