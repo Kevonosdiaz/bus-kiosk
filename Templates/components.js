@@ -1,6 +1,23 @@
 class Header extends HTMLElement {
     connectedCallback() {
         this.innerHTML = `
+            <div id="restartDialogue" class="restartDialogue">
+                <div class="restartDialogueContent">
+                    <p>Are you sure you want to Start Over?</p>
+                    <p2>This will erase all information and return you to the welcome screen</p2>
+                    <div class="startOverDialogueButtons">
+                        <button class="restartDecline" button id="restartDecline">
+                            <img class="declineRestart" src="../Images/Icons/Screens/x circle black.png" />
+                            No - Go Back
+                        </button>
+                        <button class="restartConfirm" button id="restartConfirm">
+                            <img class="confirmRestart" src="../Images/Icons/Screens/confirm red.png" />
+                            Yes - Start Over
+                        </button>
+                    </div>
+                </div>
+            </div>
+
             <div class="header">
                 <button class="back" button id="back">
                     <img class="offset-img" src="../Images/Icons/Screens/back black.png" alt="Back arrow" />
@@ -17,6 +34,7 @@ class Header extends HTMLElement {
                     <img class="offset-img" src="../Images/Icons/Screens/green next.png" alt="Green checkmark" />
                 </button>
             </div>
+
       `;
     }
 } 
@@ -174,6 +192,28 @@ customElements.define('empty-footer',Footer4);
 
 ////// Navigation Function /////////
 
+function restartButtonClick() {
+    const restartButton = document.getElementById('reset');
+    restartButton.addEventListener('click', function() {
+        document.getElementById('restartDialogue').style.display = 'block';
+    });
+}
+
+function restartConfirmButtonFunc(){
+    const yesRestartButton = document.getElementById('restartConfirm');
+    yesRestartButton.addEventListener('click', function() {
+        window.location.href = indexToPath('0');
+    });
+}
+
+function restartDeclineButtonFunc(){
+    const noRestartButton = document.getElementById('restartDecline');
+    noRestartButton.addEventListener('click', function() {
+        document.getElementById('restartDialogue').style.display = 'none';
+    });
+    
+}
+
 // Sets the url of the previous page to the 'previousPage variable'
 var previousPage;
 function setPreviousPage(page) {
@@ -245,4 +285,7 @@ function indexToPath(index) {
 document.addEventListener("DOMContentLoaded", function() {
     backButtonClick();
     nextButtonClick();
+    restartConfirmButtonFunc();
+    restartDeclineButtonFunc();
+    restartButtonClick();
 });

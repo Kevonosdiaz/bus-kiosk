@@ -67,7 +67,9 @@
 
 .reset,
 .back,
-.confirm {
+.confirm,
+.restartConfirm,
+.restartDecline {
     font-family: "Poppins", sans-serif;
     font-size: 24px;
     max-width: 20rem; /* Have a width scaling with 12 times the base font size */
@@ -88,6 +90,19 @@
     filter: drop-shadow(1px 1px 1px var(--grey));
 }
 
+.restartConfirm{
+    color: red;
+}
+.restartDecling{
+    color: black;
+}
+
+.restartConfirm img,
+.restartDecline img{
+    height: 40px;
+    width: 40px;
+}
+
 .reset {
     color: red;
     
@@ -101,6 +116,43 @@
 .confirm {
     color: green;
     margin-right: 20px;
+}
+
+.restartDialogue {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    background-color: rgba(0,0,0,0.4);
+    width: 600px;
+    height: 802px;
+    border-radius: 8px;
+}
+
+.restartDialogueContent{
+    margin: auto;
+    text-align:center;
+
+    display: grid;
+    align-items: center;
+    justify-content: center;
+
+    background-color: whitesmoke;
+    padding-top:10px;
+    padding-bottom:30px;
+    margin-top: 50px;
+    border-radius: 10px;
+
+    gap:20px;
+
+    font-size: 24px;
+    font-weight: 500;
+}
+
+.startOverDialogueButtons{
+    padding-top:20px;
+    display: flex;
+    justify-content: center;
+    gap:10px;
 }
 
 /*
