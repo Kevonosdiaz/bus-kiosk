@@ -118,14 +118,12 @@ function handle_trip_item_click(optionNum) {
         
         if (radio_button.checked) {
             radio_button.checked = false
-            map_toggle.innerText = "SHOW MAP"
             map_toggle.className = 'ds-map-btn-hidden'
         } else {
             radio_button.checked = true
             current_top_half.className = 'ds-top-half-collapsed'
             current_bottom_half.className = 'ds-bottom-half-visible'
             additional_details.className = 'add-details'
-            map_toggle.innerText = "HIDE MAP"
             map_toggle.className = 'ds-map-btn'
         }
         
@@ -133,7 +131,6 @@ function handle_trip_item_click(optionNum) {
     } else if (radio_button.checked) {
         collapse_additional_details()
         radio_button.checked = false
-        map_toggle.innerText = "SHOW MAP"
         map_toggle.className = 'ds-map-btn-hidden'
         additional_details.className = 'add-details-hidden'
         current_top_half.className = 'ds-top-half'
@@ -141,7 +138,6 @@ function handle_trip_item_click(optionNum) {
     } else {
         collapse_additional_details()
         additional_details.className = 'add-details'
-        map_toggle.innerText = "HIDE MAP"
         map_toggle.className = 'ds-map-btn'
         
         radio_button.checked = true
@@ -153,12 +149,15 @@ function handle_trip_item_click(optionNum) {
 function handle_map_toggle() {
     let current_top_half = document.getElementById('ds-top-half')
     let current_bottom_half = document.getElementById('ds-bottom-half')
+    let map_toggle = document.getElementById(`map-toggle`)
 
     if (current_bottom_half.className === 'ds-bottom-half-visible') {
+        map_toggle.innerText = "SHOW MAP"
         current_bottom_half.className = 'ds-bottom-half'
         current_top_half.className = 'ds-top-half-btn'
 
     } else {
+        map_toggle.innerText = "HIDE MAP"
         current_bottom_half.className = 'ds-bottom-half-visible'
         current_top_half.className = 'ds-top-half-collapsed'
     }
