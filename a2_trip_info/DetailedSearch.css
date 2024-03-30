@@ -56,7 +56,7 @@
     height: 50%;
     width: 100%;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     border-top: 1px solid darkslategray;
@@ -138,6 +138,11 @@
     text-align: center;
 }
 
+.add-details-hidden {
+    height: 0px;
+    visibility: hidden;
+}
+
 .trip-summary {
     display: flex;
     flex-direction: row;
@@ -149,4 +154,12 @@
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
+}
+
+.ds-map-btn {
+    height: 30px;
+    width: 600px;
+    background-color: white;
+    text-align: center;
+    border-radius: 1px solid var(--grey);
 }
