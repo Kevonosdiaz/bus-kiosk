@@ -75,21 +75,23 @@
     <empty-footer ></empty-footer>
   </div>
     <script>
-      const currentPagePath = '../a4_seat_selector/seat_selector.html';
-      const nextButtonURL = '../a5_summary/summary.html';
-      const previousPageURL = '../a3_passenger_info/passenger_info.html';
+      // Strings to construct URL variable to pass
+      const currentPageIndex = '4';
+      const nextPageIndex = '5';
       const prevPageVarName = 'prevPage';
+      var nextButtonPath = "";
+      var prevButtonPath = "";
 
-      var nextButtonPath = nextButtonURL + '?' + prevPageVarName + "=" + currentPagePath;
-
-
+      // Waits until the page is fully loaded before executing
       document.addEventListener("DOMContentLoaded", function() {
-          if (readURLData('prevPage') == null) {
-            setPreviousPage(previousPageURL);
-          } else {
-              setPreviousPage(readURLData('prevPage'));
-          }
-
+          // sends the visit order (index string) to the js file
+          visitOrder = readURLData('prevPage');
+          // sets the previous page url based on the index at the end of the visit order string
+          prevButtonPath = indexToPath(visitOrder.slice(-1)) + '?' + prevPageVarName + "=" + visitOrder.slice(0,visitOrder.length-1);
+          console.log(prevButtonPath);
+          setPreviousPage(prevButtonPath);
+          // creates the url path for the next button with a variable that stores the visit order
+          nextButtonPath = indexToPath(nextPageIndex) + '?' + prevPageVarName + "=" + visitOrder.concat(currentPageIndex);
           setNextPage(nextButtonPath);
       });
     </script>

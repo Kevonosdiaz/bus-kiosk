@@ -44,7 +44,8 @@
   </div>
 
 <script>
-  const currentPagePath = '../0_welcome_screen/welcome_screen.html';
+  //const currentPagePath = '../0_welcome_screen/welcome_screen.html';
+  const currentPageIndex = '0';
   const newBookingPath = '../a1_search_screen/2-new_ticket_search_screen.html';
   const modifyBookingPath = '../b1_ticket_lookup/modify_ticket.html';
   const prevPageVarName = 'prevPage';
@@ -56,7 +57,7 @@
   // creating function for when the user clicks on the 'new booking' button to transport them to the next page
   function newBooking() {
     newTicketLabel.addEventListener('click', function() {
-      pathWithVar = newBookingPath + '?' + prevPageVarName + '=' + currentPagePath;
+      pathWithVar = newBookingPath + '?' + prevPageVarName + '=' + currentPageIndex;
       window.location.href = pathWithVar;
     });
   }
@@ -64,7 +65,7 @@
   const modifyTicketLabel = document.getElementById('modifyTicketLabel');
   function modifyBooking() {
     modifyTicketLabel.addEventListener('click', function() {
-      pathWithVar = modifyBookingPath + '?' + prevPageVarName + '=' + currentPagePath;
+      pathWithVar = modifyBookingPath + '?' + prevPageVarName + '=' + currentPageIndex;
       window.location.href = pathWithVar;
     });
   }

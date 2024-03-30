@@ -122,6 +122,8 @@ customElements.define('alt-footer',Footer2);
 customElements.define('pay-footer',Footer3);
 customElements.define('empty-footer',Footer4);
 
+////// Navigation Function /////////
+
 // Sets the url of the previous page to the 'previousPage variable'
 var previousPage;
 function setPreviousPage(page) {
@@ -137,7 +139,7 @@ function setNextPage(page) {
 function readURLData(inVar) {
     var urlParams = new URLSearchParams(window.location.search);
     var data = urlParams.get(inVar);
-    console.log(data);
+    //console.log(data);
     return data;
 }
 
@@ -155,6 +157,38 @@ function nextButtonClick() {
     nextButton.addEventListener('click', function() {
         window.location.href = nextPage;
     });
+}
+
+// Array to store a string of indexes in the order of screens visited
+// This is used by the program to keep track of where the back button goes
+var visitOrder = "";
+
+// Switchboard to translate the index strings to urls for the program to point to the right page
+function indexToPath(index) {
+    var url = "";
+    switch (index) {
+        case '0': url = '../0_welcome_screen/welcome_screen.html';
+        break;
+        case '1': url = '../a1_search_screen/2-new_ticket_search_screen.html';
+        break;
+        case '2': url = '../a2_trip_info/DetailedSearch.html';
+        break;
+        case '3': url = '../a3_passenger_info/passenger_info.html';
+        break;
+        case '4': url = '../a4_seat_selector/seat_selector.html';
+        break;
+        case '5': url = '../a5_summary/summary.html';
+        break;
+        case '6': url = '../a5_summary/pay.html';
+        break;
+        case '7': url = '../a5_summary/finish.html';
+        break;
+        case '8': url = '../b1_ticket_lookup/modify_ticket.html';
+        break;
+        case '9': url = '../b2_ticket_modification/modify_ticket2.html';
+    }
+
+    return url;
 }
 
 // waits for the page to be fully loaded before buttons can be pressed

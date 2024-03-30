@@ -60,22 +60,23 @@
     <empty-footer></empty-footer>
   </div>
   <script>
-    const currentPagePath = '../a2_trip_info/DetailedSearch.html';
-    const nextButtonURL = '../a3_passenger_info/passenger_info.html';
-    const previousPageURL = '../a1_search_screen/2-new_ticket_search_screen.html';
-
+    // Strings to construct URL variable to pass
+    const currentPageIndex = '2';
+    const nextPageIndex = '3';
     const prevPageVarName = 'prevPage';
+    var nextButtonPath = "";
+    var prevButtonPath = "";
 
-    var nextButtonPath = nextButtonURL + '?' + prevPageVarName + "=" + currentPagePath;
-
-
+    // Waits until the page is fully loaded before executing
     document.addEventListener("DOMContentLoaded", function() {
-      if (readURLData('prevPage') == null) {
-            setPreviousPage(previousPageURL);
-        } else {
-            setPreviousPage(readURLData('prevPage'));
-        }
-
+        // sends the visit order (index string) to the js file
+        visitOrder = readURLData('prevPage');
+        // sets the previous page url based on the index at the end of the visit order string
+        prevButtonPath = indexToPath(visitOrder.slice(-1)) + '?' + prevPageVarName + "=" + visitOrder.slice(0,visitOrder.length-1);
+        console.log(prevButtonPath);
+        setPreviousPage(prevButtonPath);
+        // creates the url path for the next button with a variable that stores the visit order
+        nextButtonPath = indexToPath(nextPageIndex) + '?' + prevPageVarName + "=" + visitOrder.concat(currentPageIndex);
         setNextPage(nextButtonPath);
     });
   </script>
