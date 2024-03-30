@@ -85,16 +85,24 @@ function handle_trip_item_click(optionNum) {
     let current_top_half = document.getElementById('ds-top-half')
     let current_bottom_half = document.getElementById('ds-bottom-half')
     let radio_button = document.getElementById(`item-input-${optionNum}`)
+    let additional_details = document.getElementById(`details-${optionNum}`)
 
     if (current_top_half.className === 'ds-top-half') {
         current_top_half.className = 'ds-top-half-collapsed'
         current_bottom_half.className = 'ds-bottom-half-visible'
+        additional_details.className = 'add-details'
         radio_button.checked = true
     } else if (radio_button.checked) {
         radio_button.checked = false
+        additional_details.className = 'add-details-hidden'
         current_top_half.className = 'ds-top-half'
         current_bottom_half.className = 'ds-bottom-half'
     } else {
+        let old_info = document.getElementsByClassName('add-details')
+        if (old_info[0] !== null) {
+            old_info[0].className = 'add-details-hidden'
+        }
+        additional_details.className = 'add-details'
         radio_button.checked = true
     }
 
@@ -140,8 +148,9 @@ class TripItem extends HTMLElement {
 
 class AdditionalTripInfo extends HTMLElement {
     connectedCallback() {
+        let optionNum = this.getAttribute('optionNum')
         this.innerHTML = `
-        <div class='add-details' id='details'>
+        <div class='add-details-hidden' id='details-${optionNum}'>
             <div class="trip-summary">
                 <div class='add-details-depart'>
                     <p style="font-weight: 600;">Departure</p>
@@ -165,9 +174,27 @@ class AdditionalTripInfo extends HTMLElement {
     }
 }
 
+class TripItemWrapper extends HTMLElement {
+    connectedCallback() {
+        let depart = this.getAttribute('departTime')
+        let arrive = this.getAttribute('arriveTime')
+        let duration = this.getAttribute('duration')
+        let cost = this.getAttribute('cost')
+        let optionNum = this.getAttribute('optionNum')
+        this.innerHTML = `
+        <div>
+            <trip-item optionNum=${optionNum} departTime=${depart} arriveTime=${arrive} duration=${duration} cost=${cost}></trip-item>
+            <trip-additional optionNum=${optionNum}></trip-additional>
+        </div>
+        `;
+    }
+}
+
 customElements.define('main-header', Header);
 customElements.define('main-footer', Footer);
 customElements.define('trip-item', TripItem);
+customElements.define('trip-additional', AdditionalTripInfo);
+customElements.define('trip-item-wrapper', TripItemWrapper);
 customElements.define('alt-footer',Footer2);
 customElements.define('pay-footer',Footer3);
 customElements.define('empty-footer',Footer4);

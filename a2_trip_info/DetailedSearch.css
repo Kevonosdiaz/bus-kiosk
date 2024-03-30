@@ -138,6 +138,11 @@
     text-align: center;
 }
 
+.add-details-hidden {
+    height: 0px;
+    visibility: hidden;
+}
+
 .trip-summary {
     display: flex;
     flex-direction: row;
