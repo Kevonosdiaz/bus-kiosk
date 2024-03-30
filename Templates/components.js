@@ -99,28 +99,38 @@ class Footer4 extends HTMLElement {
     }
 }
 
+function collapse_additional_details() {
+    var old_info = document.getElementsByClassName('add-details')
+        for (var old of old_info) {
+            old.className = 'add-details-hidden'
+        }
+}
+
 function handle_trip_item_click(optionNum) {
     let current_top_half = document.getElementById('ds-top-half')
     let current_bottom_half = document.getElementById('ds-bottom-half')
     let radio_button = document.getElementById(`item-input-${optionNum}`)
     let additional_details = document.getElementById(`details-${optionNum}`)
+    let map_toggle = document.getElementById(`map-toggle`)
 
     if (current_top_half.className === 'ds-top-half') {
+        collapse_additional_details()
         current_top_half.className = 'ds-top-half-collapsed'
         current_bottom_half.className = 'ds-bottom-half-visible'
         additional_details.className = 'add-details'
+        map_toggle.className = 'ds-map-btn'
         radio_button.checked = true
     } else if (radio_button.checked) {
+        collapse_additional_details()
         radio_button.checked = false
+        map_toggle.className = 'ds-map-btn-hidden'
         additional_details.className = 'add-details-hidden'
         current_top_half.className = 'ds-top-half'
         current_bottom_half.className = 'ds-bottom-half'
     } else {
-        let old_info = document.getElementsByClassName('add-details')
-        if (old_info[0] !== null) {
-            old_info[0].className = 'add-details-hidden'
-        }
+        collapse_additional_details()
         additional_details.className = 'add-details'
+        map_toggle.className = 'ds-map-btn'
         radio_button.checked = true
     }
 
@@ -144,7 +154,7 @@ function handle_map_toggle() {
 class MapToggleButton extends HTMLElement {
     connectedCallback() {
         this.innerHTML = `
-        <div class="ds-map-btn" id="map-toggle" onclick="handle_map_toggle()">MAP</div>
+        <div class="ds-map-btn-hidden" id="map-toggle" onclick="handle_map_toggle()">MAP</div>
         `;
     }
 }
