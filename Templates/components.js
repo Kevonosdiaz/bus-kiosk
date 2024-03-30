@@ -81,11 +81,32 @@ class Footer4 extends HTMLElement {
     }
 }
 
+function handle_trip_item_click(optionNum) {
+    let current_top_half = document.getElementById('ds-top-half')
+    let current_bottom_half = document.getElementById('ds-bottom-half')
+    let radio_button = document.getElementById(`item-input-${optionNum}`)
+
+    if (current_top_half.className === 'ds-top-half') {
+        current_top_half.className = 'ds-top-half-collapsed'
+        current_bottom_half.className = 'ds-bottom-half-visible'
+        radio_button.checked = true
+    } else if (radio_button.checked) {
+        radio_button.checked = false
+        current_top_half.className = 'ds-top-half'
+        current_bottom_half.className = 'ds-bottom-half'
+    } else {
+        radio_button.checked = true
+    }
+
+
+}
+
 class TripItem extends HTMLElement {
     
     connectedCallback() {
+        let optionNum = this.getAttribute('optionNum')
         this.innerHTML = `
-        <div>
+        <div onclick="handle_trip_item_click(${optionNum})" id='ti-${optionNum}'>
             <div class='single-item'>
                 <div class='grid-container'>
                     <p id='item-info-a'></p>
@@ -93,10 +114,12 @@ class TripItem extends HTMLElement {
                     <p id='item-info-c'></p>
                     <p id='item-info-d'></p>
                 </div>
-                <input id='item-input' type="radio" name="label" >
+                <input id='item-input-${optionNum}' type="radio" name="label" >
             </div>
         </div>
         `;
+        
+        
         let info_a = this.querySelector('#item-info-a')
         let info_b = this.querySelector('#item-info-b')
         let info_c = this.querySelector('#item-info-c')
@@ -113,6 +136,33 @@ class TripItem extends HTMLElement {
         info_d.textContent = `Cost: ${cost}`
     }
 
+}
+
+class AdditionalTripInfo extends HTMLElement {
+    connectedCallback() {
+        this.innerHTML = `
+        <div class='add-details' id='details'>
+            <div class="trip-summary">
+                <div class='add-details-depart'>
+                    <p style="font-weight: 600;">Departure</p>
+                    <p>Calgary City Center Station</p>
+                    <p>9:00AM, April 25, 2024</p>
+                </div>
+                <div class='add-details-arrive'>
+                    <p style="font-weight: 600;">Arrival</p>
+                    <p>Edmonton International Airport</p>
+                    <p>2:15PM, April 25, 2024</p>
+                </div>
+            </div>
+            <div class="trip-extra">
+                <p>Number of Stops: 3</p>
+                <p>15 Seats Available</p>
+                <p>Ebus</p>
+                <p>Wifi</p>
+            </div>
+        </div>
+        `;
+    }
 }
 
 customElements.define('main-header', Header);
