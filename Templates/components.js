@@ -115,11 +115,19 @@ function handle_trip_item_click(optionNum) {
 
     if (current_top_half.className === 'ds-top-half') {
         collapse_additional_details()
-        current_top_half.className = 'ds-top-half-collapsed'
-        current_bottom_half.className = 'ds-bottom-half-visible'
-        additional_details.className = 'add-details'
-        map_toggle.className = 'ds-map-btn'
-        radio_button.checked = true
+        
+        if (radio_button.checked) {
+            radio_button.checked = false
+            map_toggle.className = 'ds-map-btn-hidden'
+        } else {
+            radio_button.checked = true
+            current_top_half.className = 'ds-top-half-collapsed'
+            current_bottom_half.className = 'ds-bottom-half-visible'
+            additional_details.className = 'add-details'
+            map_toggle.className = 'ds-map-btn'
+        }
+        
+        
     } else if (radio_button.checked) {
         collapse_additional_details()
         radio_button.checked = false
