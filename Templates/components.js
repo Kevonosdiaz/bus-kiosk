@@ -109,6 +109,28 @@ function handle_trip_item_click(optionNum) {
 
 }
 
+function handle_map_toggle() {
+    let current_top_half = document.getElementById('ds-top-half')
+    let current_bottom_half = document.getElementById('ds-bottom-half')
+
+    if (current_bottom_half.className === 'ds-bottom-half-visible') {
+        current_bottom_half.className = 'ds-bottom-half'
+        current_top_half.className = 'ds-top-half'
+
+    } else {
+        current_bottom_half.className = 'ds-bottom-half-visible'
+        current_top_half.className = 'ds-top-half-collapsed'
+    }
+}
+
+class MapToggleButton extends HTMLElement {
+    connectedCallback() {
+        this.innerHTML = `
+        <div class="ds-map-btn" id="map-toggle" onclick="handle_map_toggle()">MAP</div>
+        `;
+    }
+}
+
 class TripItem extends HTMLElement {
     
     connectedCallback() {
@@ -198,7 +220,7 @@ customElements.define('trip-item-wrapper', TripItemWrapper);
 customElements.define('alt-footer',Footer2);
 customElements.define('pay-footer',Footer3);
 customElements.define('empty-footer',Footer4);
-
+customElements.define('map-toggle', MapToggleButton)
 ////// Navigation Function /////////
 
 // Sets the url of the previous page to the 'previousPage variable'
