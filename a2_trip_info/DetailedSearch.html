@@ -62,6 +62,7 @@
   <script>
     const currentPagePath = '../a2_trip_info/DetailedSearch.html';
     const nextButtonURL = '../a3_passenger_info/passenger_info.html';
+    const previousPageURL = '../a1_search_screen/2-new_ticket_search_screen.html';
 
     const prevPageVarName = 'prevPage';
 
@@ -69,7 +70,12 @@
 
 
     document.addEventListener("DOMContentLoaded", function() {
-        setPreviousPage(readURLData('prevPage'));
+      if (readURLData('prevPage') == null) {
+            setPreviousPage(previousPageURL);
+        } else {
+            setPreviousPage(readURLData('prevPage'));
+        }
+
         setNextPage(nextButtonPath);
     });
   </script>

@@ -84,6 +84,7 @@
         <script>
             const currentPagePath = '../a3_passenger_info/passenger_info.html';
             const nextButtonURL = '../a4_seat_selector/seat_selector.html';
+            const previousPageURL = '../a2_trip_info/DetailedSearch.html';
 
             const prevPageVarName = 'prevPage';
 
@@ -91,7 +92,12 @@
         
         
             document.addEventListener("DOMContentLoaded", function() {
-                setPreviousPage(readURLData('prevPage'));
+                if (readURLData('prevPage') == null) {
+                    setPreviousPage(previousPageURL);
+                } else {
+                    setPreviousPage(readURLData('prevPage'));
+                }
+
                 setNextPage(nextButtonPath);
             });
         </script>

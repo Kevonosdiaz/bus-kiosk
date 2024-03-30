@@ -68,13 +68,19 @@
   <script>
     const currentPagePath = '../a1_search_screen/2-new_ticket_search_screen.html';
     const nextButtonURL = '../a2_trip_info/DetailedSearch.html';
+    const previousPageURL = '../0_welcome_screen/welcome_screen.html';
     const prevPageVarName = 'prevPage';
 
     var nextButtonPath = nextButtonURL + '?' + prevPageVarName + "=" + currentPagePath;
 
 
     document.addEventListener("DOMContentLoaded", function() {
-        setPreviousPage(readURLData('prevPage'));
+      if (readURLData('prevPage') == null) {
+            setPreviousPage(previousPageURL);
+        } else {
+            setPreviousPage(readURLData('prevPage'));
+        }
+
         setNextPage(nextButtonPath);
     });
   </script>

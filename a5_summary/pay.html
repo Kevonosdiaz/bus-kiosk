@@ -29,6 +29,7 @@
   <script>
     const currentPagePath = '../a5_summary/pay.html';
     const nextButtonURL = '../a5_summary/finish.html';
+    const previousPageURL = '../a5_summary/summary.html';
 
     const prevPageVarName = 'prevPage';
 
@@ -36,8 +37,13 @@
 
 
     document.addEventListener("DOMContentLoaded", function() {
+      if (readURLData('prevPage') == null) {
+        setPreviousPage(previousPageURL);
+      } else {
         setPreviousPage(readURLData('prevPage'));
-        setNextPage(nextButtonPath);
+      }
+
+      setNextPage(nextButtonPath);
     });
   </script>
 </body>

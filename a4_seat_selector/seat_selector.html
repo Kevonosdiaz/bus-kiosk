@@ -77,13 +77,19 @@
     <script>
       const currentPagePath = '../a4_seat_selector/seat_selector.html';
       const nextButtonURL = '../a5_summary/summary.html';
+      const previousPageURL = '../a3_passenger_info/passenger_info.html';
       const prevPageVarName = 'prevPage';
 
       var nextButtonPath = nextButtonURL + '?' + prevPageVarName + "=" + currentPagePath;
 
 
       document.addEventListener("DOMContentLoaded", function() {
-          setPreviousPage(readURLData('prevPage'));
+          if (readURLData('prevPage') == null) {
+            setPreviousPage(previousPageURL);
+          } else {
+              setPreviousPage(readURLData('prevPage'));
+          }
+
           setNextPage(nextButtonPath);
       });
     </script>

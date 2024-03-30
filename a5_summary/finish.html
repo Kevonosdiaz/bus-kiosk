@@ -30,14 +30,20 @@
   <script>
     const currentPagePath = '../a5_summary/finish.html';
     const nextButtonURL = '../0_welcome_screen/welcome_screen.html';
+    const previousPageURL = '../a5_summary/pay.html';
     const prevPageVarName = 'prevPage';
 
     var nextButtonPath = nextButtonURL + '?' + prevPageVarName + "=" + currentPagePath;
 
 
     document.addEventListener("DOMContentLoaded", function() {
+      if (readURLData('prevPage') == null) {
+        setPreviousPage(previousPageURL);
+      } else {
         setPreviousPage(readURLData('prevPage'));
-        setNextPage(nextButtonPath);
+      }
+
+       setNextPage(nextButtonPath);
     });
   </script>
 </body>

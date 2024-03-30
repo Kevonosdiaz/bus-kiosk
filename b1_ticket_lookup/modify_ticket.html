@@ -81,13 +81,20 @@
   <script>
     const currentPagePath = '../b1_ticket_lookup/modify_ticket.html';
     const nextButtonURL = '../b2_ticket_modification/modify_ticket2.html';
+    const previousPageURL = '../0_welcome_screen/welcome_screen.html';
 
     const prevPageVarName = 'prevPage';
     var nextButtonPath = nextButtonURL + '?' + prevPageVarName + "=" + currentPagePath;
 
 
     document.addEventListener("DOMContentLoaded", function() {
-        setPreviousPage(readURLData('prevPage'));
+        // failsafe if the prevPage data is empty, hardcoding the previous page
+        if (readURLData('prevPage') == null) {
+            setPreviousPage(previousPageURL);
+        } else {
+            setPreviousPage(readURLData('prevPage'));
+        }
+
         setNextPage(nextButtonPath);
     });
   </script>
