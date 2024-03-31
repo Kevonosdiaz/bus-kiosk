@@ -93,7 +93,7 @@
 }
 
 .ds-top-container, .ds-bottom-container {
-    overflow:scroll;
+    overflow-y: scroll;
 }
 
 .ds-top-container {
