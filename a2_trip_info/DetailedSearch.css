@@ -102,11 +102,8 @@
 }
 
 .ds-bottom-container {
-    width: 95%;
-    height: 95%;
-    border-radius: 10px;
-    filter: drop-shadow(2px 2px 2px var(--grey));
-    border: 1px solid black;
+    width: 100%;
+    height: 100%;
 }
 
 .trip-list {
