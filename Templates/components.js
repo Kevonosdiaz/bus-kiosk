@@ -112,6 +112,7 @@ function handle_trip_item_click(optionNum) {
     let radio_button = document.getElementById(`item-input-${optionNum}`)
     let additional_details = document.getElementById(`details-${optionNum}`)
     let map_toggle = document.getElementById(`map-toggle`)
+    let header_text = document.getElementById('ds-header-text')
 
     if (current_top_half.className === 'ds-top-half') {
         collapse_additional_details()
@@ -121,6 +122,7 @@ function handle_trip_item_click(optionNum) {
             map_toggle.className = 'ds-map-btn-hidden'
         } else {
             radio_button.checked = true
+            header_text.className = 'ds-header-hidden'
             current_top_half.className = 'ds-top-half-collapsed'
             current_bottom_half.className = 'ds-bottom-half-visible'
             additional_details.className = 'add-details'
@@ -131,6 +133,7 @@ function handle_trip_item_click(optionNum) {
     } else if (radio_button.checked) {
         collapse_additional_details()
         radio_button.checked = false
+        header_text.className = 'ds-header'
         map_toggle.className = 'ds-map-btn-hidden'
         additional_details.className = 'add-details-hidden'
         current_top_half.className = 'ds-top-half'
@@ -160,6 +163,14 @@ function handle_map_toggle() {
         map_toggle.innerText = "HIDE MAP"
         current_bottom_half.className = 'ds-bottom-half-visible'
         current_top_half.className = 'ds-top-half-collapsed'
+    }
+}
+
+class DetailedSearchHeader extends HTMLElement {
+    connectedCallback() {
+        this.innerHTML = `
+        <div class="ds-header" id="ds-header-text">Select a Trip</div>
+        `;
     }
 }
 
@@ -261,6 +272,7 @@ customElements.define('alt-footer',Footer2);
 customElements.define('pay-footer',Footer3);
 customElements.define('empty-footer',Footer4);
 customElements.define('map-toggle', MapToggleButton)
+customElements.define('ds-header', DetailedSearchHeader)
 ////// Navigation Function /////////
 
 function restartButtonClick() {

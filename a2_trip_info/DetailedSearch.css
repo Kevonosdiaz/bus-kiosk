@@ -28,6 +28,18 @@
     background-color: black;
 }
 
+.ds-header {
+    height: 30px;
+    text-align: center;
+    font-size: large;
+    font-weight: 700;
+}
+
+.ds-header-hidden {
+    height: 0%;
+    visibility: hidden;
+}
+
 .ds-top-half, .ds-bottom-half {
     width: 100%;
     display: flex;
