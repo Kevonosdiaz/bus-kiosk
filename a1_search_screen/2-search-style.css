@@ -11,8 +11,8 @@
 
 .top-half {
     width: 100%;
-    height: 50%;
-    overflow: none;
+    height: 100%;
+    overflow: auto;
     border-radius: 0px;
     /*border: 1px solid black;*/
     background-color: white;
@@ -43,6 +43,7 @@
     justify-content: center;
     gap: 1px;
     filter: drop-shadow(2px 2px 1px var(--grey));
+    padding-top: 110px;
 }
 
 .passenger_img {
