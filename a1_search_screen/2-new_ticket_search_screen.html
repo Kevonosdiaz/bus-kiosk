@@ -112,6 +112,7 @@
   </script>
 
   <script>
+    /*Calling filter scripts passing the different dropdowns*/
     function filterOrigin(){
       var input = document.getElementById("origin-input");
       var div = document.getElementById('originOptions');
@@ -127,8 +128,32 @@
 
       filterFunction(input, div, a);
     }
+  </script>
+
+
+  <script>
+    var originMenuContent = document.querySelectorAll('.originOptions a');
+    originMenuContent.forEach(function(option) {
+      option.addEventListener('click', function() {
+        var input = document.getElementById('origin-input');
+        input.value = this.textContent; // Fills the input field with the clicked option
+        document.getElementById('originOptions').style.display = 'none';
+      });
+    });
+
+
+    var destMenuContent = document.querySelectorAll('.destOptions a');
+    destMenuContent.forEach(function(option) {
+      option.addEventListener('click', function() {
+        var input = document.getElementById('dest-input');
+        input.value = this.textContent; // Fills the input field with the clicked option
+        document.getElementById('destOptions').style.display = 'none';
+      });
+    });
 
   </script>
+
+
 </body>
 
 </html>
