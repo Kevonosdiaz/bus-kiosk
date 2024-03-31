@@ -49,7 +49,12 @@
     const prevPageVarName = 'prevPage';
     var nextButtonPath = "";
     var prevButtonPath = "";
-
+    console.log(sessionStorage.getItem("origin"))
+    console.log(sessionStorage.getItem("destination"))
+    console.log(sessionStorage.getItem("departDate"))
+    console.log(sessionStorage.getItem("arriveDate"))
+    console.log(sessionStorage.getItem("passengers"))
+    
     // Waits until the page is fully loaded before executing
     document.addEventListener("DOMContentLoaded", function() {
         // sends the visit order (index string) to the js file
