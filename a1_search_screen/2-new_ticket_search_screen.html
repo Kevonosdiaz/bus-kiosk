@@ -20,20 +20,44 @@
     <main-header ></main-header>
     <div class="top-half">
         <div class="main-content">
-            <div class="origin_field">
-              <label for="origin_input" class="label">
-                <img class="origin_arrow_img" src="../Images/Icons/Screens/origin arrow black.png" alt="Origin arrow" />
-                Origin
-              </label>
-              <input required placeholder="Enter Origin City" id="origin-input" />
+          <div class="origin_field">
+            <label for="origin_input" class="label">
+              <img class="origin_arrow_img" src="../Images/Icons/Screens/origin arrow black.png" alt="Origin arrow" />
+              Origin
+            </label>
+            <div class="originInputMenu">
+              <input type="text" onkeyup="filterOrigin()" placeholder="Enter Origin City" id="origin-input" />
+              <div id="originOptions" class="originOptions">
+                <a href="#">Calgary, AB</a>
+                <a href="#">Edmonton, AB</a>
+                <a href="#">Toronto, ON</a>
+                <a href="#">Leduc, AB</a>
+                <a href="#">Spruce Grove, AB</a>
+                <a href="#">Vancouver, BC</a>
+                <a href="#">Golden, BC</a>
+                <a href="#">Seven Persons, AB</a>
+              </div>
             </div>
+          </div>
 
             <div class="field">
               <label for="destination_input" class="label">
                 <img class="dest_arrow_img" src="../Images/Icons/Screens/destinaton arrow black.png" alt="Destination arrow" />
                 Destination
               </label>
-              <input required placeholder="Enter Destination City" id="destination-input" />
+              <div class="destInputMenu">
+                <input type="text" onkeyup="filterDest()" placeholder="Enter Destination City" id="dest-input" />
+                <div id="destOptions" class="destOptions">
+                  <a href="#">Calgary, AB</a>
+                  <a href="#">Edmonton, AB</a>
+                  <a href="#">Toronto, ON</a>
+                  <a href="#">Leduc, AB</a>
+                  <a href="#">Spruce Grove, AB</a>
+                  <a href="#">Vancouver, BC</a>
+                  <a href="#">Golden, BC</a>
+                  <a href="#">Seven Persons, AB</a>
+                </div>
+              </div>
             </div>
 
             <div class="field">
@@ -85,6 +109,25 @@
         nextButtonPath = indexToPath(nextPageIndex) + '?' + prevPageVarName + "=" + visitOrder.concat(currentPageIndex);
         setNextPage(nextButtonPath);
     });
+  </script>
+
+  <script>
+    function filterOrigin(){
+      var input = document.getElementById("origin-input");
+      var div = document.getElementById('originOptions');
+      var a = div.getElementsByTagName('a');
+
+      filterFunction(input, div, a);
+    }
+
+    function filterDest() {
+      var input = document.getElementById("dest-input");
+      var div = document.getElementById('destOptions');
+      var a = div.getElementsByTagName('a');
+
+      filterFunction(input, div, a);
+    }
+
   </script>
 </body>
 
