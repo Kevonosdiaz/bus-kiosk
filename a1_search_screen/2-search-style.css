@@ -152,6 +152,12 @@ input.passenger_count_placeholder {
     text-decoration: none;
     display: block;
 }
+
+.originOptions a:hover,
+.destOptions a:hover {
+    background-color: #ffd192;
+}
+
 .show {
     display: none;
 }
