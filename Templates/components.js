@@ -3,12 +3,15 @@ class Header extends HTMLElement {
         this.innerHTML = `
             <div id="restartDialogue" class="restartDialogue">
                 <div class="restartDialogueContent">
-                    <p>Are you sure you want to Start Over?</p>
+                    <div class="warning_symbol">
+                        <img class="warning" src="../Images/Icons/Screens/warning_triangle.png" />
+                    </div>
+                    <p style="margin-top: 0px;">Are you sure you want to Start Over?</p>
                     <p2>This will erase all information and return you to the welcome screen</p2>
                     <div class="startOverDialogueButtons">
                         <button class="restartDecline" button id="restartDecline">
-                            <img class="declineRestart" src="../Images/Icons/Screens/x circle black.png" />
-                            No - Go Back
+                            <img class="declineRestart" src="../Images/Icons/Screens/x circle black.png"/>
+                            Cancel
                         </button>
                         <button class="restartConfirm" button id="restartConfirm">
                             <img class="confirmRestart" src="../Images/Icons/Screens/confirm red.png" />
