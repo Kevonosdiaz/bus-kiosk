@@ -132,7 +132,9 @@
 
 
   <script>
+    /*Script tag to have the user click on a content of the drop down, and it will populate the text field*/
     var originMenuContent = document.querySelectorAll('.originOptions a');
+    /*applies a click listener event to all drop down options*/
     originMenuContent.forEach(function(option) {
       option.addEventListener('click', function() {
         var input = document.getElementById('origin-input');
@@ -150,6 +152,22 @@
         document.getElementById('destOptions').style.display = 'none';
       });
     });
+
+    // Close dropdown when clicking outside of it
+    document.body.addEventListener('click', function(event) {
+      var dropdown = document.getElementById('originOptions');
+      var input = document.getElementById('origin-input');
+      if (!dropdown.contains(event.target) && event.target !== input) {
+        dropdown.style.display = 'none';
+      }
+
+      var dropdown = document.getElementById('destOptions');
+      var input = document.getElementById('dest-input');
+      if (!dropdown.contains(event.target) && event.target !== input) {
+        dropdown.style.display = 'none';
+      }
+    });
+
 
   </script>
 
