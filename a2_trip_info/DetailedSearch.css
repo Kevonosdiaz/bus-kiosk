@@ -19,7 +19,7 @@
 .ds-body {
     /* Decide different fonts to use (provide sans-serif as a "fallback") */
     font-family: "Poppins", sans-serif;
-    font-weight: 400;
+    /* font-weight: 400; */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -31,8 +31,8 @@
 .ds-header {
     height: 30px;
     text-align: center;
-    font-size: large;
-    font-weight: 700;
+    font-size: x-large;
+    font-weight: 600;
 }
 
 .ds-header-hidden {
@@ -120,11 +120,15 @@
         margin: 10px;
         font-weight: 500;
     }
+    hr {
+        color: darkgray;
+    }
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     border-radius: 5px;
     padding: 2px;
+    padding-left: 40px;
     margin: 5px;
     margin-left: 25px;
     margin-right: 25px;
@@ -174,15 +178,64 @@
 }
 
 .ds-map-btn {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
     height: 4%;
     width: 100%;
     background-color: white;
     text-align: center;
     border: 1px solid var(--grey);
     border-radius: 5px;
+    img {
+        height: 20px;
+        padding: 2px;
+        margin: 2px;
+    }
+
+    p {
+        margin-left: 5px;
+        margin-right: 5px;
+        font-weight: 600;
+    }
 }
 
 .ds-map-btn-hidden {
     height: 0%;
     visibility: hidden;
+}
+
+.ds-details-container {
+    p {
+        font-weight: 600;
+    }
+
+    .ds-details-depart {
+        color: darkgreen;
+    }
+
+    .ds-details-arrive {
+        color: darkred;
+    }
+
+    .ds-details-duration {
+        color: #424242;
+    }
+}
+
+.ds-cost-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+
+    p {
+        font-size: x-large;
+        font-weight: 600;
+    }
+}
+
+.ds-cost {
+    font-weight: 800;
+    /* font-size: large; */
 }

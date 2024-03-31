@@ -112,7 +112,10 @@ function handle_trip_item_click(optionNum) {
     let radio_button = document.getElementById(`item-input-${optionNum}`)
     let additional_details = document.getElementById(`details-${optionNum}`)
     let map_toggle = document.getElementById(`map-toggle`)
+    let map_toggle_text = document.getElementById(`map-toggle-text`)
     let header_text = document.getElementById('ds-header-text')
+    let map_toggle_img_l = document.getElementById(`map-toggle-img-l`)
+    let map_toggle_img_r = document.getElementById(`map-toggle-img-r`)
 
     if (current_top_half.className === 'ds-top-half') {
         collapse_additional_details()
@@ -122,7 +125,9 @@ function handle_trip_item_click(optionNum) {
             map_toggle.className = 'ds-map-btn-hidden'
         } else {
             radio_button.checked = true
-            map_toggle.innerText = "HIDE MAP"
+            map_toggle_text.innerText = "HIDE MAP"
+            map_toggle_img_l.src = "../Images/Icons/Screens/down-arrow.png"
+            map_toggle_img_r.src = "../Images/Icons/Screens/down-arrow.png"
             header_text.className = 'ds-header-hidden'
             current_top_half.className = 'ds-top-half-collapsed'
             current_bottom_half.className = 'ds-bottom-half-visible'
@@ -153,15 +158,21 @@ function handle_trip_item_click(optionNum) {
 function handle_map_toggle() {
     let current_top_half = document.getElementById('ds-top-half')
     let current_bottom_half = document.getElementById('ds-bottom-half')
-    let map_toggle = document.getElementById(`map-toggle`)
+    let map_toggle_img_l = document.getElementById(`map-toggle-img-l`)
+    let map_toggle_img_r = document.getElementById(`map-toggle-img-r`)
+    let map_toggle_text = document.getElementById(`map-toggle-text`)
 
     if (current_bottom_half.className === 'ds-bottom-half-visible') {
-        map_toggle.innerText = "SHOW MAP"
+        map_toggle_text.innerText = "SHOW MAP"
+        map_toggle_img_l.src = "../Images/Icons/Screens/up-arrow.png"
+        map_toggle_img_r.src = "../Images/Icons/Screens/up-arrow.png"
         current_bottom_half.className = 'ds-bottom-half'
         current_top_half.className = 'ds-top-half-btn'
 
     } else {
-        map_toggle.innerText = "HIDE MAP"
+        map_toggle_text.innerText = "HIDE MAP"
+        map_toggle_img_l.src = "../Images/Icons/Screens/down-arrow.png"
+        map_toggle_img_r.src = "../Images/Icons/Screens/down-arrow.png"
         current_bottom_half.className = 'ds-bottom-half-visible'
         current_top_half.className = 'ds-top-half-collapsed'
     }
@@ -178,7 +189,11 @@ class DetailedSearchHeader extends HTMLElement {
 class MapToggleButton extends HTMLElement {
     connectedCallback() {
         this.innerHTML = `
-        <div class="ds-map-btn-hidden" id="map-toggle" onclick="handle_map_toggle()">HIDE MAP</div>
+        <div class="ds-map-btn-hidden" id="map-toggle" onclick="handle_map_toggle()">
+            <img id="map-toggle-img-l" src="../Images/Icons/Screens/down-arrow.png"></img>
+            <p id="map-toggle-text">HIDE MAP<p>
+            <img id="map-toggle-img-r" src="../Images/Icons/Screens/down-arrow.png"></img>
+        </div>
         `;
     }
 }
@@ -190,12 +205,15 @@ class TripItem extends HTMLElement {
         this.innerHTML = `
         <div onclick="handle_trip_item_click(${optionNum})" id='ti-${optionNum}'>
             <div class='single-item'>
-                <div class='grid-container'>
-                    <p id='item-info-a'></p>
-                    <p id='item-info-b'></p>
-                    <p id='item-info-c'></p>
-                    <p id='item-info-d'></p>
+                <div class="ds-details-container">
+                    <p class="ds-details-depart" id='item-info-a'></p>
+                    <p class="ds-details-arrive" id='item-info-b'></p>
+                    <hr></hr>
+                    <p class="ds-details-duration" id='item-info-c'></p>
                 </div>
+                <div class="ds-cost-container">
+                <p class="ds-cost" id='item-info-d'></p>
+                </div>     
                 <input id='item-input-${optionNum}' type="radio" name="label" >
             </div>
         </div>
@@ -213,9 +231,9 @@ class TripItem extends HTMLElement {
         let cost = this.getAttribute('cost')
 
         info_a.textContent = `Depart: ${depart}`
-        info_b.textContent = `Duration: ${duration}`
-        info_c.textContent = `Arrive: ${arrive}`
-        info_d.textContent = `Cost: ${cost}`
+        info_b.textContent = `Arrive: ${arrive}`
+        info_c.textContent = `Duration: ${duration}`
+        info_d.textContent = `Total: ${cost}`
     }
 
 }
@@ -257,8 +275,8 @@ class TripItemWrapper extends HTMLElement {
         let optionNum = this.getAttribute('optionNum')
         this.innerHTML = `
         <div>
-            <trip-item optionNum=${optionNum} departTime=${depart} arriveTime=${arrive} duration=${duration} cost=${cost}></trip-item>
-            <trip-additional optionNum=${optionNum}></trip-additional>
+            <trip-item optionNum="${optionNum}" departTime="${depart}" arriveTime="${arrive}" duration="${duration}" cost="${cost}"></trip-item>
+            <trip-additional optionNum="${optionNum}"></trip-additional>
         </div>
         `;
     }
