@@ -26,6 +26,7 @@
     padding: 0px;
     margin: 0px;
     background-color: black;
+    overflow: hidden;
 }
 
 .ds-header {
@@ -92,7 +93,7 @@
 }
 
 .ds-top-container, .ds-bottom-container {
-    overflow:scroll;
+    overflow-y: scroll;
 }
 
 .ds-top-container {
@@ -101,18 +102,14 @@
 }
 
 .ds-bottom-container {
-    width: 95%;
-    height: 95%;
-    border-radius: 10px;
-    filter: drop-shadow(2px 2px 2px var(--grey));
-    border: 1px solid black;
+    width: 100%;
+    height: 100%;
 }
 
 .trip-list {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    overflow: scroll;
 }
 
 .single-item {
