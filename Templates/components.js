@@ -122,6 +122,7 @@ function handle_trip_item_click(optionNum) {
             map_toggle.className = 'ds-map-btn-hidden'
         } else {
             radio_button.checked = true
+            map_toggle.innerText = "HIDE MAP"
             header_text.className = 'ds-header-hidden'
             current_top_half.className = 'ds-top-half-collapsed'
             current_bottom_half.className = 'ds-bottom-half-visible'
