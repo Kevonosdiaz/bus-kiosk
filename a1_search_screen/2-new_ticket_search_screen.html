@@ -170,6 +170,7 @@
         var input = document.getElementById('origin-input');
         input.value = this.textContent; // Fills the input field with the clicked option
         document.getElementById('originOptions').style.display = 'none';
+        sessionStorage.setItem('origin', input.value) // sends that information to the session storage
       });
     });
 
@@ -180,6 +181,7 @@
         var input = document.getElementById('dest-input');
         input.value = this.textContent; // Fills the input field with the clicked option
         document.getElementById('destOptions').style.display = 'none';
+        sessionStorage.setItem('destination', input.value) // sends that information to the session storage
       });
     });
 
