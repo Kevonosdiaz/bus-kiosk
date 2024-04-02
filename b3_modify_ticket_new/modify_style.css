@@ -164,10 +164,15 @@ img {
     background-color: rgb(250, 83, 83);
 }
 
-.new_ticket_label:hover,
-.modify_ticket_label:hover {
+.edit_ticket_label:hover,
+.change_seat_label:hover {
     /* background-color: rgb(255, 209, 146); */
 
     border: 2px solid grey;
+    cursor:pointer;
+}
+
+.cancel_booking_label:hover {
+    border: 2px solid whitesmoke;
     cursor:pointer;
 }
