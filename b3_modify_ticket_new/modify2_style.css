@@ -229,6 +229,16 @@ details > summary > p {
     font-weight: 600;
 }
 
+summary::after {
+    padding-right: 5px;
+    content: '⦾';
+}
+
+details[open] > summary::after {
+    padding-right: 5px;
+    content: '⦿';
+}
+
 details > p {
     margin:auto;
     padding: 5px;
