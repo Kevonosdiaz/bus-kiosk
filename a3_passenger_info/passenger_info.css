@@ -37,7 +37,7 @@ body {
 
 .info {
     margin-bottom: 40px;
-    margin-top: 80px;
+    margin-top: 50px;
 }
 
 .passenger-header {
@@ -91,7 +91,8 @@ input {
 }
 
 .services {
-    margin-bottom: 70px;
+    margin-bottom: 45px;
+    width: 400px;
 }
 
 .services-header {
@@ -101,14 +102,56 @@ input {
     justify-content: center;
 }
 
-.service-box button {
-    width: 160px;
-    height: 50px;
-    border: 2px solid black;
+.service {
+    width: 210px;
+    height: 70px;
+    /* border-top: 2px solid black; */
+    /* border-bottom: 2px solid black; */
     margin: 4px;
     margin-bottom: 6px;
+    border-radius: 12px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.service-text {
+    font-size: 14px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
+    width: 170px;
+}
+
+.service-box {
+    display: flex;
+    gap: 10px;
+    /* align-items: center; */
+    justify-content: center;
+}
+
+.left-services,
+.right-services {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.service-box button {
+    width: 40px;
+    height: 70px;
+    border: 2px solid black;
     cursor: pointer;
-    border-radius: 50px;
+}
+
+.left-button {
+    border-radius: 12px 0px 0px 12px;
+}
+
+.right-button {
+    border-radius: 0px 12px 12px 0px;
 }
 
 .status {
@@ -139,7 +182,7 @@ input {
     background-color: lightcoral;
 }
 
-#bicycle-storage {
+.selected {
     background-color: #ffd192;
 }
 
