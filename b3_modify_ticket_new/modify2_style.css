@@ -56,7 +56,7 @@
     display:flex;
     flex-wrap:wrap;
     overflow: none;
-    gap:4px;
+    gap:2px;
 }
 
 
@@ -132,12 +132,14 @@ img {
 .field, .field2 {
     flex:1;
     gap: 0px;
+    padding-left:8px;
+    padding-right:8px;
     width:50%;
     filter: drop-shadow(2px 2px 1px var(--grey));
 }
 
 .field2 {
-    flex: 0 0 100%;
+    flex: 0 0 96%;
 }
 
 .button_icon {
@@ -153,8 +155,6 @@ img {
     display:flex;
     align-items: center;
     justify-content: center;
-    padding-left: 0px;
-    gap: 5px;
     height: 40px;
     width: 50%;
     background-color: rgb(238, 238, 238);
@@ -174,7 +174,7 @@ img {
 
 .save_label {
     flex: 0 0 100%;
-    width:99%;
+    width:100%;
     background-color: rgb(113, 151, 255);
 }
 
