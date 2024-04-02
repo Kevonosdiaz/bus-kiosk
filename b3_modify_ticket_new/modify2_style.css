@@ -157,6 +157,7 @@ img {
     justify-content: center;
     height: 40px;
     width: 50%;
+    gap:7px;
     background-color: rgb(238, 238, 238);
     /* background-color: #ffd192; */
 
