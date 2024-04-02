@@ -20,6 +20,7 @@
             <main-header></main-header>
             <div class="outer-box">
                 <div class="info">
+                    <!-- TODO Make placeholder text consistent with other screens -->
                     <div class="passenger-header">Passenger 1 Info</div>
                     <div class="field">
                         <label for="name-input" class="label">
@@ -46,6 +47,7 @@
                 <div class="services">
                     <div class="services-header">Additional Services</div>
                     <div class="service-box">
+                        <!-- TODO Make arrow buttons to adjust -->
                         <div class="left-services">
                             <button id="checked-bags">
                                 <div>Extra Bag</div>
@@ -69,6 +71,7 @@
                         </div>
                     </div>
                 </div>
+                <!-- TODO Make status dynamically resizing based on nPassengers -->
                 <div class="status">
                     <div id="stat1" class="stat-indicator completed-stat">1</div>
                     <div class="line"></div>
@@ -82,24 +85,79 @@
             <empty-footer></empty-footer>
         </div>
         <script>
+            // Manage passenger information
+            // Return object containing info for one passenger
+            function createPInfo(
+                firstName,
+                lastName,
+                email,
+                emailNotif,
+                phone,
+                phoneNotif,
+                extraBags,
+                animalTransport,
+                bike,
+                skiSnow
+            ) {
+                return {
+                    firstName: firstName,
+                    lastName: lastName,
+                    email: email,
+                    emailNotif: emailNotif,
+                    phone: phone,
+                    phoneNotif: phoneNotif,
+                    extraBags: extraBags,
+                    animalTransport: animalTransport,
+                    bike: bike,
+                    skiSnow: skiSnow,
+                };
+            }
+
+            // TODO On subpage load: populate fields with saved info if stored
+
+            let passInfo = []; // Store nth passengers info (object) at index n
+            let numPassengers = 4;
+
+            // Keep track of progress
+            let currPassenger = 1; // TODO this should change with arrow press, default to 1/last when going from prev/next page?
+
+            // Update page/information on arrow clicks
+            // Make sure 1st left and last right arrow transitions to next page
+            // Update numPassengers per click
+            document.addEventListener("");
+
             // Strings to construct URL variable to pass
-            const currentPageIndex = '3';
-            const nextPageIndex = '4';
-            const prevPageVarName = 'prevPage';
+            const currentPageIndex = "3";
+            const nextPageIndex = "4";
+            const prevPageVarName = "prevPage";
             var nextButtonPath = "";
             var prevButtonPath = "";
 
             // Waits until the page is fully loaded before executing
-            document.addEventListener("DOMContentLoaded", function() {
+            document.addEventListener("DOMContentLoaded", function () {
                 // sends the visit order (index string) to the js file
-                visitOrder = readURLData('prevPage');
+                visitOrder = readURLData("prevPage");
                 // sets the previous page url based on the index at the end of the visit order string
-                prevButtonPath = indexToPath(visitOrder.slice(-1)) + '?' + prevPageVarName + "=" + visitOrder.slice(0,visitOrder.length-1);
+                prevButtonPath =
+                    indexToPath(visitOrder.slice(-1)) +
+                    "?" +
+                    prevPageVarName +
+                    "=" +
+                    visitOrder.slice(0, visitOrder.length - 1);
                 console.log(prevButtonPath);
                 setPreviousPage(prevButtonPath);
                 // creates the url path for the next button with a variable that stores the visit order
-                nextButtonPath = indexToPath(nextPageIndex) + '?' + prevPageVarName + "=" + visitOrder.concat(currentPageIndex);
+                nextButtonPath =
+                    indexToPath(nextPageIndex) + "?" + prevPageVarName + "=" + visitOrder.concat(currentPageIndex);
                 setNextPage(nextButtonPath);
+
+                // TODO setup page
+                currPassenger = 1;
+                // let numPassengers = sessionStorage.getItem("numPassengers"); // Assumes populated from search screen
+                for (let i = 1; i < numPassengers; i++) {
+                    // Populate status bar here
+                }
+                // Modify status circle size/colour (initially first selected)
             });
         </script>
     </body>
