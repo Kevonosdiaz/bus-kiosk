@@ -42,11 +42,12 @@
 }
 
 .bottom-half {
+    padding-top:20px;
     height: 65%;
     display:flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: middle;
+    align-items: center;
+    justify-content:start;
     gap:8px;
 }
 
@@ -188,4 +189,56 @@ img {
 .cancel_ticket_label:hover {
     border: 2px solid grey;
     cursor:pointer;
+}
+
+details {
+    font-size: 20px;
+    font-weight: 500;
+    width: 90%;
+    align-self: center;
+}
+
+details > summary {
+    margin:auto;
+    font-size: 20px;
+    width: 90%;
+    height: 50px;
+    display:flex;
+    align-items: center;
+    
+    padding-left: 10px;
+    border-radius: 10px;
+    background-color: var(--blue1);
+    filter: drop-shadow(2px 2px 1px var(--grey));
+    cursor: pointer;
+}
+
+details > summary > p {
+    width:50%;
+    display: flex;
+}
+
+.sum_p {
+    flex:1;
+    font-weight: 500;
+}
+
+.sum_total {
+    justify-content: flex-end;
+    padding-right:10px;
+    font-weight: 600;
+}
+
+details > p {
+    margin:auto;
+    padding: 5px;
+    width: 86%;
+    border-style: solid;
+    border-color: grey;
+    border-width: 0px 2px 2px 2px;
+    border-radius: 0px 0px 5px 5px;
+}
+
+details[open] > summary {
+    background-color: var(--orange);
 }
