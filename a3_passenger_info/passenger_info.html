@@ -47,27 +47,43 @@
                 <div class="services">
                     <div class="services-header">Additional Services</div>
                     <div class="service-box">
-                        <!-- TODO Make arrow buttons to adjust -->
+                        <!-- TODO Add counter # in service-text, add functionality -->
                         <div class="left-services">
-                            <button id="checked-bags">
-                                <div>Extra Bag</div>
-                                <div>+ $10.00</div>
-                            </button>
+                            <div class="service" id="checked-bags">
+                                <button class="left-button" id="bag-minus">-</button>
+                                <div class="service-text">
+                                    <div>Extra Bag</div>
+                                    <div>+ $10.00</div>
+                                </div>
 
-                            <button id="animal-transport">
-                                <div>Animal Transport</div>
-                                <div>+ $15.00</div>
-                            </button>
+                                <button class="right-button" id="bag-plus">+</button>
+                            </div>
+                            <div class="service" id="animal-transport">
+                                <button class="left-button" id="animal-minus">-</button>
+                                <div class="service-text">
+                                    <div>Animal Transport</div>
+                                    <div>+ $15.00</div>
+                                </div>
+                                <button class="right-button" id="animal-plus">+</button>
+                            </div>
                         </div>
                         <div class="right-services">
-                            <button id="bicycle-storage">
-                                <div>Bicycle Storage</div>
-                                <div>+ $15.00</div>
-                            </button>
-                            <button id="ski-snowboard">
-                                <div>Ski/Snowboard</div>
-                                <div>+ $10.00</div>
-                            </button>
+                            <div class="service selected" id="bicycle-storage">
+                                <button class="left-button" id="bike-minus">+</button>
+                                <div class="service-text">
+                                    <div>Bicycle Storage</div>
+                                    <div>+ $15.00</div>
+                                </div>
+                                <button class="right-button" id="bike-plus">-</button>
+                            </div>
+                            <div class="service" id="ski-snowboard">
+                                <button class="left-button" id="skisnow-minus">-</button>
+                                <div class="service-text">
+                                    <div>Ski/Snowboard</div>
+                                    <div>+ $10.00</div>
+                                </div>
+                                <button class="right-button" id="skisnow-plus">+</button>
+                            </div>
                         </div>
                     </div>
                 </div>
