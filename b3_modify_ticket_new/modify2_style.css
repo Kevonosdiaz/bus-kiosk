@@ -1,0 +1,191 @@
+:root {
+    /* Example of variables: Use like 'color: var(--white);' */
+    --black: #000;
+    --white: #fff;
+    --beige1: #e1e2c4;
+    --blue1: #b3c4cc;
+    --blue2: #a2b6cb;
+    --blue3: #657aa7;
+    --orange: #e49931;
+    --orange2: #ffd192;
+    --grey: #424242;
+    --grey2: #e7e7e7;
+    --green: green;
+    --green2: lightgreen;
+    --red: red;
+    --red2: lightcoral;
+}
+
+.main-body {
+    /* Decide different fonts to use (provide sans-serif as a "fallback") */
+    font-family: sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
+    margin: 0px;
+}
+
+.top-half, .bottom-half, .buttons {
+    width: 100%;
+    overflow:auto;
+    border-radius: 0px;
+    background-color: white;
+
+}
+
+.top-half {
+    justify-content: center;
+    align-items: center;
+    height: 15%;
+    border-bottom: solid 2px rgb(197, 200, 204);
+}
+
+.bottom-half {
+    height: 65%;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: middle;
+    gap:8px;
+}
+
+.buttons {
+    height: 20%;
+    display:flex;
+    flex-wrap:wrap;
+    overflow: none;
+    gap:4px;
+}
+
+
+.outer-div {
+    margin-top: 50px;
+    height: 700px;
+    width: 600px;
+    border-radius: 0px;
+    /* border: 1px solid black; */
+}
+
+.booking_title {
+    margin-bottom: 0px;
+    padding-bottom:0px;
+    text-align: center;
+    font-weight: 600;
+    font-size: 25px;
+    font-style: italic;
+}
+
+.booking_sum { 
+    list-style-type: none;
+    font-size: 20px;
+    display: grid;
+    justify-content: space-between;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    row-gap:0px;
+    column-gap: 0px;
+    max-block-size:0px;
+    margin-top:0px;
+    margin-left:30px;
+}
+
+.grid_item1 {
+    max-block-size:20px;
+    font-weight: 700;
+    margin-bottom:0px;
+    border-bottom: solid black 1px;
+    color: darkslategray;
+}
+
+.grid_item {  
+    max-block-size:20px;  
+    margin-bottom: 0px;
+    margin-right:auto;
+    border-bottom: solid black 1px;
+    color: darkslategray;
+}
+
+.total_item1 {    
+    max-block-size:20px;  
+    font-weight: 700;
+    margin-bottom: 0px;
+    border-bottom: solid black 1px;
+}
+
+.total_item2 {    
+    max-block-size:20px;  
+    font-weight: 700;
+    margin-bottom: 0px;
+    margin-right:auto;
+    border-bottom: solid black 1px;
+}
+
+img {
+    height: 40px;
+    width: 60px;
+    align-self: center;
+}
+
+
+.field, .field2 {
+    flex:1;
+    gap: 0px;
+    width:50%;
+    filter: drop-shadow(2px 2px 1px var(--grey));
+}
+
+.field2 {
+    flex: 0 0 100%;
+}
+
+.button_icon {
+    width: 40px;
+    height: 40px;
+}
+
+
+.cancel_ticket_label,
+.modify_ticket_label,
+.save_label {
+    flex:1;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    padding-left: 0px;
+    gap: 5px;
+    height: 40px;
+    width: 50%;
+    background-color: rgb(238, 238, 238);
+    /* background-color: #ffd192; */
+
+    border: 2px solid transparent;
+
+    font-size: 30px;
+    font-weight: 400;
+
+    border-radius: 30px;
+}
+
+.cancel_ticket_label {
+    background-color: rgb(250, 83, 83);
+}
+
+.save_label {
+    flex: 0 0 100%;
+    width:99%;
+    background-color: rgb(113, 151, 255);
+}
+
+.modify_ticket_label:hover,
+.save_label:hover {
+    /* background-color: rgb(255, 209, 146); */
+
+    border: 2px solid grey;
+    cursor:pointer;
+}
+
+.cancel_ticket_label:hover {
+    border: 2px solid grey;
+    cursor:pointer;
+}
