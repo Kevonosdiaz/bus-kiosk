@@ -69,7 +69,9 @@
 .back,
 .confirm,
 .restartConfirm,
-.restartDecline {
+.restartDecline,
+.cancelDecline,
+.cancelAccept {
     font-family: "Poppins", sans-serif;
     font-size: 24px;
     max-width: 20rem; /* Have a width scaling with 12 times the base font size */
@@ -94,7 +96,9 @@
 .back:hover,
 .confirm:hover,
 .restartConfirm:hover,
-.restartDecline:hover {
+.restartDecline:hover,
+.cancelAccept:hover,
+.cancelDecline:hover {
     border: 2px solid gray;
 }
 
