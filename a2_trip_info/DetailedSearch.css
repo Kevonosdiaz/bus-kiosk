@@ -142,18 +142,24 @@
   }
 
 .add-details {
-    border-left: 1px solid gray;
-    border-right: 1px solid gray;
-    border-bottom: 1px solid gray;
     filter: drop-shadow(1px 1px 1px var(--grey));
     margin-left: 30px;
     margin-right: 30px;
+    padding-top: 10px;
 
     transform: translateY(-4px);
     border-bottom-right-radius: 5px;
     border-bottom-left-radius: 5px;
     background-color: white;
     text-align: center;
+
+    span {
+        font-weight: 600;
+        font-size: larger;
+        border: 1px solid black;
+        border-radius: 10px;
+        padding: 5px;
+    }
 }
 
 .add-details-hidden {
@@ -165,7 +171,9 @@
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
-    border-bottom: 1px solid gray;
+    /* border-bottom: 1px solid gray; */
+    padding: 10px;
+
 }
 
 .trip-extra {
@@ -224,15 +232,18 @@
 .ds-cost-container {
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
+    justify-content: end;
+    margin-left: 60px;
 
-    p {
+    .ds-cost {
         font-size: x-large;
         font-weight: 600;
     }
-}
-
-.ds-cost {
-    font-weight: 800;
-    /* font-size: large; */
+    .ds-cost, .ds-single-cost {
+        display: inline-block;
+        align-self: flex-end;
+    }
+    .ds-single-cost {
+        margin-bottom: -15px;
+    }
 }

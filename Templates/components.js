@@ -1,3 +1,206 @@
+function BusRoute(
+    origin, 
+    destination,
+    cost,
+    departureDate, 
+    departureTime,
+    arrivalDate,
+    arrivalTime,
+    duration,
+    returnDepartureDate = "", 
+    returnDepartureTime = "",
+    returnArrivalDate = "",
+    returnArrivalTime = "",
+    returnDuration = "",
+) {
+    this.origin = origin;
+    this.destination = destination;
+    this.cost = cost
+
+    this.departureInfo = {
+        departDate: departureDate, 
+        departTime: departureTime, 
+        arriveDate: arrivalDate,
+        arriveTime: arrivalTime,
+        duration: duration
+    };
+
+    this.returnInfo = {
+        departDate: returnDepartureDate, 
+        departTime: returnDepartureTime, 
+        arriveDate: returnArrivalDate,
+        arriveTime: returnArrivalTime,
+        duration: returnDuration
+    }
+
+}
+
+function createBusRouteList() {
+    // create trip list with hardcoded values
+    const routeList = [
+        // round trips include return info
+        new BusRoute(
+            "Calgary, AB", 
+            "Edmonton, AB",
+            "185.50",
+            "1/12/2024", 
+            "9:15 AM", 
+            "1/12/2024", 
+            "2:45 PM", 
+            "5h 30 min",
+            "2/12/2024", 
+            "9:15 AM", 
+            "2/12/2024", 
+            "2:45 PM",
+            "5h 30 min",
+        ),
+        new BusRoute(
+            "Calgary, AB", 
+            "Edmonton, AB",
+            "185.50",
+            "1/12/2024", 
+            "9:15 AM", 
+            "1/12/2024", 
+            "2:45 PM",
+            "5h 30 min",
+            "2/12/2024", 
+            "9:15 AM", 
+            "2/12/2024", 
+            "2:45 PM",
+            "5h 30 min",
+        ),
+        new BusRoute(
+            "Calgary, AB", 
+            "Edmonton, AB",
+            "185.50",
+            "1/12/2024", 
+            "9:15 AM", 
+            "1/12/2024", 
+            "2:45 PM",
+            "5h 30 min",
+            "2/12/2024", 
+            "9:15 AM", 
+            "2/12/2024", 
+            "2:45 PM",
+            "5h 30 min",
+        ),
+        new BusRoute(
+            "Calgary, AB", 
+            "Edmonton, AB",
+            "185.50",
+            "1/12/2024", 
+            "9:15 AM", 
+            "1/12/2024", 
+            "2:45 PM",
+            "5h 30 min",
+            "2/12/2024", 
+            "9:15 AM", 
+            "2/12/2024", 
+            "2:45 PM",
+            "5h 30 min",
+        ),
+        new BusRoute(
+            "Calgary, AB", 
+            "Edmonton, AB",
+            "185.50",
+            "1/12/2024", 
+            "9:15 AM", 
+            "1/12/2024", 
+            "2:45 PM",
+            "5h 30 min",
+            "2/12/2024", 
+            "9:15 AM", 
+            "2/12/2024", 
+            "2:45 PM",
+            "5h 30 min",
+        ),
+        // one way trips include only original departure info
+        new BusRoute(
+            "Calgary, AB", 
+            "Edmonton, AB", 
+            "112.50",
+            "1/12/2024", 
+            "9:15 AM", 
+            "1/12/2024", 
+            "2:45 PM",
+            "5h 30 min",
+        ),
+        new BusRoute(
+            "Calgary, AB", 
+            "Edmonton, AB",
+            "112.50",
+            "1/12/2024", 
+            "10:15 AM", 
+            "1/12/2024", 
+            "3:45 PM",
+            "5h 30 min",
+        ),
+        new BusRoute(
+            "Calgary, AB", 
+            "Edmonton, AB",
+            "112.50",
+            "1/12/2024", 
+            "11:15 AM", 
+            "1/12/2024", 
+            "4:45 PM",
+            "5h 30 min",
+        ),
+        new BusRoute(
+            "Calgary, AB", 
+            "Edmonton, AB",
+            "112.50",
+            "1/12/2024", 
+            "12:15 PM", 
+            "1/12/2024", 
+            "5:45 PM",
+            "5h 30 min",
+        ),
+        new BusRoute(
+            "Calgary, AB", 
+            "Edmonton, AB",
+            "112.50",
+            "1/12/2024", 
+            "1:15 PM", 
+            "1/12/2024", 
+            "6:45 PM",
+            "5h 30 min",
+        ),
+    ];
+
+    sessionStorage.setItem("routeList", JSON.stringify(routeList))
+}
+
+function validRoute(
+    route,
+    origin, 
+    destination, 
+    departDate,
+    returnDate
+) {
+    if (route.origin.toUpperCase() === origin.toUpperCase() &&
+        route.destination.toUpperCase() === destination.toUpperCase() &&
+        route.departureInfo.departDate.toUpperCase() === departDate.toUpperCase() &&
+        route.returnInfo.departDate.toUpperCase() === returnDate.toUpperCase()) {
+            return true;
+        }
+
+    return false;
+}
+
+function matchRoutes(
+    origin, 
+    destination, 
+    departDate,
+    returnDate = ""
+) {
+    trips = JSON.parse(sessionStorage.getItem("routeList"))
+
+    var returnList = []
+    trips.map(trip => validRoute(trip, origin, destination, departDate, returnDate) && returnList.push(trip))
+    
+    return returnList
+}
+
 class Header extends HTMLElement {
     connectedCallback() {
         this.innerHTML = `
@@ -214,8 +417,11 @@ class TripItem extends HTMLElement {
                     <hr></hr>
                     <p class="ds-details-duration" id='item-info-c'></p>
                 </div>
+                <hr></hr>
                 <div class="ds-cost-container">
-                <p class="ds-cost" id='item-info-d'></p>
+                    <hr></hr>
+                    <p class="ds-single-cost" id='item-info-e'></p>
+                    <p class="ds-cost" id='item-info-d'></p>
                 </div>     
                 <input id='item-input-${optionNum}' type="radio" name="label" >
             </div>
@@ -223,39 +429,49 @@ class TripItem extends HTMLElement {
         `;
         
         
-        let info_a = this.querySelector('#item-info-a')
-        let info_b = this.querySelector('#item-info-b')
-        let info_c = this.querySelector('#item-info-c')
-        let info_d = this.querySelector('#item-info-d')
+        var info_a = this.querySelector('#item-info-a')
+        var info_b = this.querySelector('#item-info-b')
+        var info_c = this.querySelector('#item-info-c')
+        var info_d = this.querySelector('#item-info-d')
+        var info_e = this.querySelector('#item-info-e')
 
-        let depart = this.getAttribute('departTime')
-        let arrive = this.getAttribute('arriveTime')
-        let duration = this.getAttribute('duration')
-        let cost = this.getAttribute('cost')
+        var depart = this.getAttribute('departTime')
+        var arrive = this.getAttribute('arriveTime')
+        var duration = this.getAttribute('duration')
+        var cost = this.getAttribute('cost')
+        var passengers = this.getAttribute('passengers')
 
         info_a.textContent = `Depart: ${depart}`
         info_b.textContent = `Arrive: ${arrive}`
         info_c.textContent = `Duration: ${duration}`
-        info_d.textContent = `Total: ${cost}`
+        info_d.textContent = `Total: $${Number(cost) * passengers}`
+        info_e.textContent = `${passengers}x ${cost}`
     }
 
 }
 
 class AdditionalTripInfo extends HTMLElement {
     connectedCallback() {
-        let optionNum = this.getAttribute('optionNum')
+        var optionNum = this.getAttribute('optionNum')
+        var departureDate = this.getAttribute('departureDate')
+        var departureTime = this.getAttribute('departureTime')
+        var arrivalDate = this.getAttribute('arrivalDate')
+        var arrivalTime = this.getAttribute('arrivalTime')
+
         this.innerHTML = `
         <div class='add-details-hidden' id='details-${optionNum}'>
+            <span>One-way Trip - Departure Schedule</span>
             <div class="trip-summary">
                 <div class='add-details-depart'>
-                    <p style="font-weight: 600;">Departure</p>
+                    <p style="font-weight: 500;">Departure</p>
                     <p>Calgary City Center Station</p>
-                    <p>9:00AM, April 25, 2024</p>
+                    <p>${departureTime}, ${departureDate}</p>
                 </div>
+                <hr></hr>
                 <div class='add-details-arrive'>
-                    <p style="font-weight: 600;">Arrival</p>
+                    <p style="font-weight: 500;">Arrival</p>
                     <p>Edmonton International Airport</p>
-                    <p>2:15PM, April 25, 2024</p>
+                    <p>${arrivalTime}, ${arrivalDate}</p>
                 </div>
             </div>
             <div class="trip-extra">
@@ -269,19 +485,111 @@ class AdditionalTripInfo extends HTMLElement {
     }
 }
 
-class TripItemWrapper extends HTMLElement {
+class AdditionalRoundTripInfo extends HTMLElement {
     connectedCallback() {
-        let depart = this.getAttribute('departTime')
-        let arrive = this.getAttribute('arriveTime')
-        let duration = this.getAttribute('duration')
-        let cost = this.getAttribute('cost')
-        let optionNum = this.getAttribute('optionNum')
+        var optionNum = this.getAttribute('optionNum')
+        var departureDate = this.getAttribute('departureDate')
+        var departureTime = this.getAttribute('departureTime')
+        var arrivalDate = this.getAttribute('arrivalDate')
+        var arrivalTime = this.getAttribute('arrivalTime')
+        var returnDepartureDate = this.getAttribute('returnDepartureDate')
+        var returnDepartureTime = this.getAttribute('returnDepartureTime')
+        var returnArrivalDate = this.getAttribute('returnArrivalDate')
+        var returnArrivalTime = this.getAttribute('returnArrivalTime')
+
         this.innerHTML = `
-        <div>
-            <trip-item optionNum="${optionNum}" departTime="${depart}" arriveTime="${arrive}" duration="${duration}" cost="${cost}"></trip-item>
-            <trip-additional optionNum="${optionNum}"></trip-additional>
+        <div class='add-details-hidden' id='details-${optionNum}'>
+            <span>Round Trip - Departure Schedule</span>
+            <div class="trip-summary">
+                <div class='add-details-depart'>
+                    <p style="font-weight: 500;">Departure</p>
+                    <p>Calgary City Center Station</p>
+                    <p>${departureTime}, ${departureDate}</p>
+                </div>
+                <hr></hr>
+                <div class='add-details-arrive'>
+                    <p style="font-weight: 500;">Arrival</p>
+                    <p>Edmonton International Airport</p>
+                    <p>${arrivalTime}, ${arrivalDate}</p>
+                </div>
+            </div>
+            <span>Round Trip - Return Schedule</span>
+            <div class="trip-summary">
+                <div class='add-details-depart'>
+                    <p style="font-weight: 500;">Departure</p>
+                    <p>Calgary City Center Station</p>
+                    <p>${returnDepartureTime}, ${returnDepartureDate}</p>
+                </div>
+                <hr></hr>
+                <div class='add-details-arrive'>
+                    <p style="font-weight: 500;">Arrival</p>
+                    <p>Edmonton International Airport</p>
+                    <p>${returnArrivalTime}, ${returnArrivalDate}</p>
+                </div>
+            </div>
+            <div style="border-top: 1px solid gray;" class="trip-extra">
+                <p>Number of Stops: 3</p>
+                <p>15 Seats Available</p>
+                <p>Ebus</p>
+                <p>Wifi</p>
+            </div>
         </div>
         `;
+    }
+}
+
+class TripItemContainer extends HTMLElement {
+    connectedCallback() {
+        createBusRouteList();
+        // const trips = JSON.parse(sessionStorage.getItem("routeList"))
+        var origin = sessionStorage.getItem("origin")
+        var destination = sessionStorage.getItem("destination")
+        var departureDate = sessionStorage.getItem("departDate")
+        var returnDate = sessionStorage.getItem("returnDate")
+        var passengers = sessionStorage.getItem("passengers")
+        // var returnDate = ""
+        // var returnDate = "2/12/2024"
+        const validTrips = matchRoutes(origin, destination, departureDate, returnDate)
+        var itemNumber = 0
+
+        validTrips.map(
+            trip => {
+                
+                const wrapper = document.createElement('div')
+                wrapper.id = `trip-item-${itemNumber}`
+                if (returnDate === "") {
+                    wrapper.innerHTML = `
+                        <trip-item optionNum="${itemNumber}" departTime="${trip.departureInfo.departTime}" arriveTime="${trip.departureInfo.arriveTime}" duration="5 h 15 m" cost="${trip.cost}" passengers="${passengers}"></trip-item>
+                        <trip-additional 
+                            optionNum="${itemNumber}"
+                            departureDate="${trip.departureInfo.departDate}" 
+                            departureTime="${trip.departureInfo.departTime}"
+                            arrivalDate="${trip.departureInfo.arriveDate}"
+                            arrivalTime="${trip.departureInfo.arriveTime}"
+                        ></trip-additional>
+                    `
+                } else {
+                    wrapper.innerHTML = `
+                        <trip-item optionNum="${itemNumber}" departTime="${trip.departureInfo.departTime}" arriveTime="${trip.departureInfo.arriveTime}" duration="5 h 15 m" cost="${trip.cost}" passengers="${passengers}"></trip-item>
+                        <round-trip-additional 
+                            optionNum="${itemNumber}"
+                            departureDate="${trip.departureInfo.departDate}" 
+                            departureTime="${trip.departureInfo.departTime}"
+                            arrivalDate="${trip.departureInfo.arriveDate}"
+                            arrivalTime="${trip.departureInfo.arriveTime}"
+                            returnDepartureDate="${trip.returnInfo.departDate}"
+                            returnDepartureTime="${trip.returnInfo.departTime}"
+                            returnArrivalDate="${trip.returnInfo.arriveDate}"
+                            returnArrivalTime="${trip.returnInfo.arriveTime}"
+                        ></round-trip-additional>
+                    `
+                }
+                
+                itemNumber++;
+
+                document.getElementById('ds-trip-container').appendChild(wrapper)
+            }
+        );
     }
 }
 
@@ -289,7 +597,9 @@ customElements.define('main-header', Header);
 customElements.define('main-footer', Footer);
 customElements.define('trip-item', TripItem);
 customElements.define('trip-additional', AdditionalTripInfo);
-customElements.define('trip-item-wrapper', TripItemWrapper);
+customElements.define('round-trip-additional', AdditionalRoundTripInfo);
+// customElements.define('trip-item-wrapper', TripItemWrapper);
+customElements.define('trip-item-container', TripItemContainer);
 customElements.define('alt-footer',Footer2);
 customElements.define('pay-footer',Footer3);
 customElements.define('empty-footer',Footer4);

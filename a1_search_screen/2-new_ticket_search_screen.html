@@ -13,11 +13,22 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">  
   <script>
-    sessionStorage.setItem('origin', "")
-    sessionStorage.setItem('destination', "")
-    sessionStorage.setItem('departDate', "")
-    sessionStorage.setItem('arriveDate', "")
-    sessionStorage.setItem('passengers', "1")
+    if (sessionStorage.getItem('origin') === null) {
+      sessionStorage.setItem('origin', "")
+    }
+    if (sessionStorage.getItem('destination') === null) {
+      sessionStorage.setItem('destination', "")
+    }
+    if (sessionStorage.getItem('departDate') === null) {
+      sessionStorage.setItem('departDate', "")
+    }
+    if (sessionStorage.getItem('returnDate') === null) {
+      sessionStorage.setItem('returnDate', "")
+    }
+    if (sessionStorage.getItem('passengers') === null) {
+      sessionStorage.setItem('passengers', "1")
+    }
+
   </script>
 </head>
 
@@ -81,9 +92,9 @@
             <div class="field">
               <label for="calendar_input" class="label">
                 <img class="calendar_img" src="../Images/Icons/Screens/calendar black.png" alt="Schedule Calendar" />
-                Arrive Date
+                Return Date
               </label>
-              <input oninput="sessionStorage.setItem('arriveDate', this.value)" required placeholder="dd/mm/yyyy" id="calendar-input" />
+              <input oninput="sessionStorage.setItem('returnDate', this.value)" required placeholder="dd/mm/yyyy" id="calendar-input" />
               
             </div>
             <span><i>optional</i></span>
