@@ -141,24 +141,26 @@ function collapse_additional_details() {
 }
 
 function handle_trip_item_click(optionNum) {
-    let current_top_half = document.getElementById('ds-top-half')
-    let current_bottom_half = document.getElementById('ds-bottom-half')
-    let radio_button = document.getElementById(`item-input-${optionNum}`)
-    let additional_details = document.getElementById(`details-${optionNum}`)
-    let map_toggle = document.getElementById(`map-toggle`)
-    let map_toggle_text = document.getElementById(`map-toggle-text`)
-    let header_text = document.getElementById('ds-header-text')
-    let map_toggle_img_l = document.getElementById(`map-toggle-img-l`)
-    let map_toggle_img_r = document.getElementById(`map-toggle-img-r`)
+    var current_top_half = document.getElementById('ds-top-half')
+    var current_bottom_half = document.getElementById('ds-bottom-half')
+    var radio_button = document.getElementById(`item-input-${optionNum}`)
+    var additional_details = document.getElementById(`details-${optionNum}`)
+    var map_toggle = document.getElementById(`map-toggle`)
+    var map_toggle_text = document.getElementById(`map-toggle-text`)
+    var header_text = document.getElementById('ds-header-text')
+    var map_toggle_img_l = document.getElementById(`map-toggle-img-l`)
+    var map_toggle_img_r = document.getElementById(`map-toggle-img-r`)
 
     if (current_top_half.className === 'ds-top-half') {
         collapse_additional_details()
         
         if (radio_button.checked) {
             radio_button.checked = false
+            sessionStorage.setItem('selectedOption', "")
             map_toggle.className = 'ds-map-btn-hidden'
         } else {
             radio_button.checked = true
+            sessionStorage.setItem('selectedOption', optionNum)
             map_toggle_text.innerText = "HIDE MAP"
             map_toggle_img_l.src = "../Images/Icons/Screens/down-arrow.png"
             map_toggle_img_r.src = "../Images/Icons/Screens/down-arrow.png"
@@ -173,6 +175,7 @@ function handle_trip_item_click(optionNum) {
     } else if (radio_button.checked) {
         collapse_additional_details()
         radio_button.checked = false
+        sessionStorage.setItem('selectedOption', "")
         header_text.className = 'ds-header'
         map_toggle.className = 'ds-map-btn-hidden'
         additional_details.className = 'add-details-hidden'
@@ -182,7 +185,7 @@ function handle_trip_item_click(optionNum) {
         collapse_additional_details()
         additional_details.className = 'add-details'
         map_toggle.className = 'ds-map-btn'
-        
+        sessionStorage.setItem('selectedOption', optionNum)
         radio_button.checked = true
     }
 
