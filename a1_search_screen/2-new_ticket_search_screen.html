@@ -85,7 +85,7 @@
                 <img class="calendar_img" src="../Images/Icons/Screens/calendar black.png" alt="Schedule Calendar" />
                 Depart Date
               </label>
-              <input oninput="sessionStorage.setItem('departDate', this.value)" required placeholder="dd/mm/yyyy" id="calendar-input" />
+              <input oninput="sessionStorage.setItem('departDate', this.value)" required placeholder="dd/mm/yyyy" id="depart-input" />
             </div>
             <span><i style="color: red">required</i></span>
 
@@ -94,7 +94,7 @@
                 <img class="calendar_img" src="../Images/Icons/Screens/calendar black.png" alt="Schedule Calendar" />
                 Return Date
               </label>
-              <input oninput="sessionStorage.setItem('returnDate', this.value)" required placeholder="dd/mm/yyyy" id="calendar-input" />
+              <input oninput="sessionStorage.setItem('returnDate', this.value)" required placeholder="dd/mm/yyyy" id="return-input" />
               
             </div>
             <span><i>optional</i></span>
@@ -129,6 +129,26 @@
     </div> -->
     <empty-footer></empty-footer>
   </div>
+
+  <script>
+    if (sessionStorage.getItem('origin') !== "") {
+      document.getElementById('origin-input').value = sessionStorage.getItem('origin')
+    }
+    if (sessionStorage.getItem('destination') !== "") {
+      document.getElementById('dest-input').value = sessionStorage.getItem('destination')
+    }
+    if (sessionStorage.getItem('departDate') !== "") {
+      document.getElementById('depart-input').value = sessionStorage.getItem('departDate')
+    }
+    if (sessionStorage.getItem('returnDate') !== "") {
+      document.getElementById('return-input').value = sessionStorage.getItem('returnDate')
+    }
+    if (sessionStorage.getItem('passengers') !== "1") {
+      document.getElementById('passenger-count-input').value = sessionStorage.getItem('passengers')
+    }
+
+    
+  </script>
 
   <script>
     // Strings to construct URL variable to pass
