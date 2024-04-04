@@ -288,7 +288,7 @@ class AdditionalTripInfo extends HTMLElement {
 
         this.innerHTML = `
         <div class='add-details-hidden' id='details-${optionNum}'>
-            <span>One-way Trip - Departure Schedule</span>
+            <span>Departure Schedule</span>
             <div class="trip-summary">
                 <div class='add-details-depart'>
                     <p style="font-weight: 500;">Departure</p>
@@ -302,7 +302,7 @@ class AdditionalTripInfo extends HTMLElement {
                     <p>${arrivalTime}, ${arrivalDate}</p>
                 </div>
             </div>
-            <div class="trip-extra">
+            <div style="border-top: 1px solid gray;" class="trip-extra">
                 <p>Number of Stops: 3</p>
                 <p>15 Seats Available</p>
                 <p>Ebus</p>
@@ -327,7 +327,7 @@ class AdditionalRoundTripInfo extends HTMLElement {
 
         this.innerHTML = `
         <div class='add-details-hidden' id='details-${optionNum}'>
-            <span>Round Trip - Departure Schedule</span>
+            <span>Departure Schedule</span>
             <div class="trip-summary">
                 <div class='add-details-depart'>
                     <p style="font-weight: 500;">Departure</p>
@@ -341,7 +341,7 @@ class AdditionalRoundTripInfo extends HTMLElement {
                     <p>${arrivalTime}, ${arrivalDate}</p>
                 </div>
             </div>
-            <span>Round Trip - Return Schedule</span>
+            <span>Return Schedule</span>
             <div class="trip-summary">
                 <div class='add-details-depart'>
                     <p style="font-weight: 500;">Departure</p>
@@ -368,16 +368,14 @@ class AdditionalRoundTripInfo extends HTMLElement {
 
 class TripItemContainer extends HTMLElement {
     connectedCallback() {
-        // createBusRouteList();
-        // const trips = JSON.parse(sessionStorage.getItem("routeList"))
         var origin = sessionStorage.getItem("origin")
         var destination = sessionStorage.getItem("destination")
         var departureDate = sessionStorage.getItem("departDate")
         var returnDate = sessionStorage.getItem("returnDate")
         var passengers = sessionStorage.getItem("passengers")
-        // var returnDate = ""
-        // var returnDate = "2/12/2024"
+
         const validTrips = matchRoutes(origin, destination, departureDate, returnDate)
+        sessionStorage.setItem('validTrips', JSON.stringify(validTrips))
         var itemNumber = 0
 
         validTrips.map(
