@@ -1,0 +1,239 @@
+:root {
+    /* Example of variables: Use like 'color: var(--white);' */
+    --black: #000;
+    --white: #fff;
+    --beige1: #e1e2c4;
+    --blue1: #b3c4cc;
+    --blue2: #a2b6cb;
+    --blue3: #657aa7;
+    --orange: #e49931;
+    --orange2: #ffd192;
+    --grey: #424242;
+    --grey2: #e7e7e7;
+    --green: green;
+    --green2: lightgreen;
+    --red: red;
+    --red2: lightcoral;
+}
+
+.main-body {
+    /* Decide different fonts to use (provide sans-serif as a "fallback") */
+    font-family: sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
+    margin: 0px;
+}
+
+.top-half, .bottom-half {
+    width: 100%;
+    overflow:auto;
+    border-radius: 0px;
+    background-color: white;
+
+}
+
+.top-half {
+    justify-content: center;
+    align-items: center;
+    height: 33%;
+    border:none;
+}
+
+.bottom-half {
+    height: 59%;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: middle;
+    gap:8px;
+    z-index: 0;
+}
+
+.outer-div {
+    margin-top: 50px;
+    height: 700px;
+    width: 600px;
+    border-radius: 0px;
+    /* border: 1px solid black; */
+}
+
+.booking_title {
+    margin-bottom: 0px;
+    padding-bottom:0px;
+    text-align: center;
+    font-weight: 600;
+    font-size: 25px;
+    font-style: italic;
+}
+
+.booking_sum { 
+    list-style-type: none;
+    font-size: 20px;
+    display: grid;
+    justify-content: space-between;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    row-gap:0px;
+    column-gap: 0px;
+    max-block-size:0px;
+    margin-top:0px;
+    margin-left:30px;
+}
+
+.grid_item1 {
+    max-block-size:20px;
+    font-weight: 700;
+    margin-bottom:0px;
+    border-bottom: solid black 1px;
+    color: darkslategray;
+}
+
+.grid_item {  
+    max-block-size:20px;  
+    margin-bottom: 0px;
+    margin-right:auto;
+    border-bottom: solid black 1px;
+    color: darkslategray;
+}
+
+.total_item1 {    
+    max-block-size:20px;  
+    font-weight: 700;
+    margin-bottom: 0px;
+    border-bottom: solid black 1px;
+}
+
+.total_item2 {    
+    max-block-size:20px;  
+    font-weight: 700;
+    margin-bottom: 0px;
+    margin-right:auto;
+    border-bottom: solid black 1px;
+}
+
+img {
+    height: 40px;
+    width: 60px;
+    align-self: center;
+}
+
+
+.field {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0px;
+    filter: drop-shadow(2px 2px 1px var(--grey));
+}
+
+.edit_ticket_label img,
+.change_seat_label img,
+.cancel_booking_label img {
+    width: 60px;
+    height: 60px;
+}
+
+
+.edit_ticket_label,
+.change_seat_label,
+.cancel_booking_label {
+    margin-top: 2px;
+    margin-bottom: 2px;
+    border: 2px solid black;
+    display: flex;
+    align-items: center;
+    padding-left: 25px;
+    gap: 20px;
+    align-items: center;
+    height: 100px;
+    width: 600px;
+    background-color: rgb(238, 238, 238);
+    /* background-color: #ffd192; */
+
+    border: 2px solid transparent;
+
+    font-size: 30px;
+    max-width: 20rem; /* Have a width scaling with 12 times the base font size */
+    font-weight: 400;
+
+    border-radius: 30px;
+}
+
+.cancel_booking_label {
+    background-color: rgb(250, 83, 83);
+}
+
+.edit_ticket_label:hover,
+.change_seat_label:hover {
+    /* background-color: rgb(255, 209, 146); */
+
+    border: 2px solid grey;
+    cursor:pointer;
+}
+
+.cancel_booking_label:hover {
+    border: 2px solid whitesmoke;
+    cursor:pointer;
+}
+
+.cancelConfirm{
+    display: none;
+    position: fixed;
+    z-index: 1;
+    background-color: rgba(0,0,0,0.4);
+    width: 600px;
+    height: 802px;
+}
+
+.cancelConfirmContent{
+    
+    margin: auto;
+    text-align:center;
+
+    display: grid;
+    align-items: center;
+    justify-content: center;
+
+    background-color: whitesmoke;
+    padding-top:10px;
+    padding-bottom:30px;
+    margin-left: 10px;
+    margin-right:10px;
+    margin-top: 50px;
+    border-radius: 10px;
+
+    gap:0px;
+
+    font-size: 24px;
+    font-weight: 500;
+}
+
+.cancelConfirmContent img{
+    width: 130px;
+    height: 130px;
+}
+
+.cancelConfirmButtons{
+    padding-top:20px;
+    display: flex;
+    justify-content: center;
+    gap:10px;
+}
+
+.cancelDecline img,
+.cancelAccept img{
+    height: 30px;
+    width: 30px;
+}
+
+.buttons {
+    height:8%;
+}
+
+.new_total {
+    margin:auto;
+    font-size:24px;
+    font-weight:700;
+}
