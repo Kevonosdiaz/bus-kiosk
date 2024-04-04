@@ -85,7 +85,17 @@
 <script>
   const cancelbookingbtn = document.getElementById("cancelBookingLabel");
   cancelbookingbtn.onclick = function (){
+    document.getElementById('cancelConfirm').style.display = 'block';
+  }
 
+  const cancelDeclinebtn = document.getElementById("cancelDecline");
+  cancelDeclinebtn.onclick = function (){
+    document.getElementById('cancelConfirm').style.display = 'none';
+  }
+
+  const cancelAcceptbtn = document.getElementById("cancelAccept");
+  cancelAcceptbtn.onclick = function (){
+    window.location.href = indexToPath('6');
   }
 </script>
 
