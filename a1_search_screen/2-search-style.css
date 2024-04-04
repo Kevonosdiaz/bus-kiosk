@@ -124,6 +124,7 @@ input {
 
 .passenger_count_placeholder {
     border-radius: 0px;
+    text-align: center;
 }
 
 /* trying to resize and center the placeholder for input but not working*/

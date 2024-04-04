@@ -32,10 +32,7 @@
     align-items: center;
     justify-content: center;
     gap: 5px;
-    padding-top: 10px;
-    padding-left: 25px;
-    
-    
+    padding-top: 10px; 
 }
 
 img {
