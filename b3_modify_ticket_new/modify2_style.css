@@ -56,7 +56,6 @@
     display:flex;
     flex-wrap:wrap;
     overflow: none;
-    gap:2px;
 }
 
 
@@ -139,7 +138,7 @@ img {
 }
 
 .field2 {
-    flex: 0 0 96%;
+    flex: 0 0 96.5%;
 }
 
 .button_icon {
@@ -157,9 +156,9 @@ img {
     justify-content: center;
     height: 40px;
     width: 50%;
-    gap:7px;
     background-color: rgb(238, 238, 238);
     /* background-color: #ffd192; */
+    gap:7px;
 
     border: 2px solid transparent;
 
@@ -242,8 +241,9 @@ details[open] > summary::after {
 
 details > p {
     margin:auto;
-    padding: 5px;
+    padding: 7px;
     width: 86%;
+    line-height: 28px;
     border-style: solid;
     border-color: grey;
     border-width: 0px 2px 2px 2px;
