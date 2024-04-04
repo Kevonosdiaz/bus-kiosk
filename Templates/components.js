@@ -272,11 +272,52 @@ class TripItem extends HTMLElement {
         info_a.textContent = `Depart: ${depart}`
         info_b.textContent = `Arrive: ${arrive}`
         info_c.textContent = `Duration: ${duration}`
-        info_d.textContent = `Total: $${Number(cost) * passengers}`
+        info_d.textContent = `Total: ${currencyFormatter.format(Number(cost) * passengers)}`
         info_e.textContent = `${passengers}x ${cost}`
     }
 
 }
+
+function numberToMonth(monthNumber) {
+    switch (Number(monthNumber)) {
+        case 1:
+            return "Jan"
+        case 2:
+            return "Feb"
+        case 3:
+            return "Mar"
+        case 4:
+            return "Ap"
+        case 5:
+            return "May"
+        case 6:
+            return "Jun"
+        case 7:
+            return "Jul"
+        case 8:
+            return "Aug"
+        case 9:
+            return "Sept"
+        case 10:
+            return "Oct"
+        case 11:
+            return "Nov"
+        case 12:
+            return "Dec"
+        default:
+            return "NULL"
+    }
+}
+
+function Dateify(dateString) {
+    const dateArray = dateString.split('/')
+    return numberToMonth(dateArray[1]) + " " + dateArray[0] + ", " + dateArray[2]
+}
+
+const currencyFormatter = new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD', 
+})
 
 class AdditionalTripInfo extends HTMLElement {
     connectedCallback() {
@@ -285,7 +326,7 @@ class AdditionalTripInfo extends HTMLElement {
         var departureTime = this.getAttribute('departureTime')
         var arrivalDate = this.getAttribute('arrivalDate')
         var arrivalTime = this.getAttribute('arrivalTime')
-
+        Dateify(departureDate)
         this.innerHTML = `
         <div class='add-details-hidden' id='details-${optionNum}'>
             <span>Departure Schedule</span>
@@ -293,13 +334,13 @@ class AdditionalTripInfo extends HTMLElement {
                 <div class='add-details-depart'>
                     <p style="font-weight: 500;">Departure</p>
                     <p>Calgary City Center Station</p>
-                    <p>${departureTime}, ${departureDate}</p>
+                    <p>${departureTime}, ${Dateify(departureDate)}</p>
                 </div>
                 <hr></hr>
                 <div class='add-details-arrive'>
                     <p style="font-weight: 500;">Arrival</p>
                     <p>Edmonton International Airport</p>
-                    <p>${arrivalTime}, ${arrivalDate}</p>
+                    <p>${arrivalTime}, ${Dateify(arrivalDate)}</p>
                 </div>
             </div>
             <div style="border-top: 1px solid gray;" class="trip-extra">
@@ -332,13 +373,13 @@ class AdditionalRoundTripInfo extends HTMLElement {
                 <div class='add-details-depart'>
                     <p style="font-weight: 500;">Departure</p>
                     <p>Calgary City Center Station</p>
-                    <p>${departureTime}, ${departureDate}</p>
+                    <p>${departureTime}, ${Dateify(departureDate)}</p>
                 </div>
                 <hr></hr>
                 <div class='add-details-arrive'>
                     <p style="font-weight: 500;">Arrival</p>
                     <p>Edmonton International Airport</p>
-                    <p>${arrivalTime}, ${arrivalDate}</p>
+                    <p>${arrivalTime}, ${Dateify(arrivalDate)}</p>
                 </div>
             </div>
             <span>Return Schedule</span>
@@ -346,13 +387,13 @@ class AdditionalRoundTripInfo extends HTMLElement {
                 <div class='add-details-depart'>
                     <p style="font-weight: 500;">Departure</p>
                     <p>Calgary City Center Station</p>
-                    <p>${returnDepartureTime}, ${returnDepartureDate}</p>
+                    <p>${returnDepartureTime}, ${Dateify(returnDepartureDate)}</p>
                 </div>
                 <hr></hr>
                 <div class='add-details-arrive'>
                     <p style="font-weight: 500;">Arrival</p>
                     <p>Edmonton International Airport</p>
-                    <p>${returnArrivalTime}, ${returnArrivalDate}</p>
+                    <p>${returnArrivalTime}, ${Dateify(returnArrivalDate)}</p>
                 </div>
             </div>
             <div style="border-top: 1px solid gray;" class="trip-extra">
