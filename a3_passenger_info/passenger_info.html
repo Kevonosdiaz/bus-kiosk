@@ -80,7 +80,7 @@
                             </div>
                         </div>
                         <div class="right-services">
-                            <div class="service selected" id="bicycle-storage">
+                            <div class="service" id="bicycle-storage">
                                 <button class="left-button" id="bike-minus" onclick="decrement('bike-count', 2)">
                                     -
                                 </button>
@@ -141,10 +141,27 @@
         </div>
         <script>
             const serviceCosts = [10, 15, 15, 10]; // Costs of bag, animal, bike, and ski/snowboard services (in that order)
-            const currentCosts = [0, 0, 0, 0];
             const serviceTotal = document.getElementById("service-total");
+            const extraBags = document.getElementById("checked-bags");
+            const animalTransport = document.getElementById("animal-transport");
+            const bicycleStorage = document.getElementById("bicycle-storage");
+            const skiSnowboard = document.getElementById("ski-snowboard");
+            const servicesList = [extraBags, animalTransport, bicycleStorage, skiSnowboard]; // Store all services for easily selecting/deselecting
 
             const SERVICELIMIT = 10; // max number of service count per service
+
+            // Remove 'selected' class to remove selected service background
+            function deselect(serviceNo) {
+                let element = servicesList[serviceNo];
+                element.classList.remove("selected");
+            }
+
+            // Add 'selected' class to add selected service background
+            function select(serviceNo) {
+                let element = servicesList[serviceNo];
+                element.classList.add("selected");
+            }
+
             // Helper fn used to get count # from strings of pattern "Qty: #"
             function parseQty(str) {
                 arr = str.split(" "); // delimit by space
@@ -156,6 +173,7 @@
             function decrement(qtyID, serviceNo) {
                 let element = document.getElementById(qtyID);
                 let count = parseQty(element.innerText);
+                if (count === 1) deselect(serviceNo);
                 if (count > 0) {
                     // Update qty # on label
                     count--;
@@ -170,6 +188,7 @@
             function increment(qtyID, serviceNo) {
                 let element = document.getElementById(qtyID);
                 let count = parseQty(element.innerText);
+                if (count === 0) select(serviceNo);
                 if (count < SERVICELIMIT) {
                     // Update qty # on label
                     count++;
