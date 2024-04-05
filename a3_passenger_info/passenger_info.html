@@ -97,14 +97,29 @@
                     <div id="service-total">Additional Service Total: $15.00</div>
                 </div>
                 <!-- TODO Make status dynamically resizing based on nPassengers -->
-                <div class="status">
-                    <div id="stat1" class="stat-indicator completed-stat">1</div>
-                    <div class="line"></div>
-                    <div id="stat2" class="stat-indicator current-stat">2</div>
-                    <div class="line"></div>
-                    <div id="stat3" class="stat-indicator unfinished-stat">3</div>
-                    <div class="line"></div>
-                    <div id="stat4" class="stat-indicator unfinished-stat">4</div>
+                <div id="status-bar">
+                    <div class="arrow left-arrow"></div>
+                    <button class="prev" button id="nav-back">
+                        <img
+                            class="offset-img"
+                            src="../Images/Icons/Screens/back black.png"
+                            alt="Prev passenger button" />
+                    </button>
+                    <div class="status">
+                        <div id="stat1" class="stat-indicator completed-stat">1</div>
+                        <div class="line"></div>
+                        <div id="stat2" class="stat-indicator current-stat">2</div>
+                        <div class="line"></div>
+                        <div id="stat3" class="stat-indicator unfinished-stat">3</div>
+                        <div class="line"></div>
+                        <div id="stat4" class="stat-indicator unfinished-stat">4</div>
+                    </div>
+                    <button class="next" button id="nav-next">
+                        <img
+                            class="offset-img"
+                            src="../Images/Icons/Screens/black next.png"
+                            alt="Next passenger button" />
+                    </button>
                 </div>
             </div>
             <empty-footer></empty-footer>
