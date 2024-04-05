@@ -87,6 +87,7 @@
     border-radius: 8px 0px 0px 8px;
 }
 
+
 label img.origin_arrow_img {
     width: 80px;
     height:40px;
@@ -108,7 +109,7 @@ label img.passenger_img {
     width: 50px;
     height: 40px;
     padding-left: 15px;
-    padding-right: 15px;    
+    padding-right: 15px;
 }
 
 .plus_button, .minus_button {
@@ -131,7 +132,7 @@ input {
 input.passenger_count_placeholder {
     justify-content: center;
     align-self: center;
-    width:70px;
+    width:90px;
 }
 
 
