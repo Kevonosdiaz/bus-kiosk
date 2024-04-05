@@ -229,6 +229,11 @@
       if (!dropdown.contains(event.target) && event.target !== input) {
         dropdown.style.display = 'none';
       }
+
+      var passengerInput = document.getElementById('passenger-count-input');
+      if (!passengerInput.contains(event.target) && event.target !== input) {
+        if (passengerInput.value == "") {passengerInput.value = 1};
+      }
     });
 
     /*shows dropdown menus on clicks*/
