@@ -47,58 +47,73 @@
                 <div class="services">
                     <div class="services-header">Additional Services</div>
                     <div class="service-box">
-                        <!-- TODO Add counter # in service-text, add functionality -->
+                        <!-- TODO: Button click needs to update costs, and orange highlight -->
                         <div class="left-services">
                             <div class="service" id="checked-bags">
-                                <button class="left-button" id="bag-minus">-</button>
+                                <button class="left-button" id="bag-minus" onclick="decrement('bag-count', 0)">
+                                    -
+                                </button>
                                 <div class="service-text">
                                     <div>Extra Bags</div>
-                                    <div>+ $10.00</div>
+                                    <div>+ $10</div>
                                     <div class="divider"></div>
                                     <div id="bag-count">Qty: 0</div>
                                 </div>
 
-                                <button class="right-button" id="bag-plus">+</button>
+                                <button class="right-button" id="bag-plus" onclick="increment('bag-count', 0)">
+                                    +
+                                </button>
                             </div>
                             <div class="service" id="animal-transport">
-                                <button class="left-button" id="animal-minus">-</button>
+                                <button class="left-button" id="animal-minus" onclick="decrement('animal-count', 1)">
+                                    -
+                                </button>
                                 <div class="service-text">
                                     <div>Animal Transport</div>
-                                    <div>+ $15.00</div>
+                                    <div>+ $15</div>
                                     <div class="divider"></div>
                                     <div id="animal-count">Qty: 0</div>
                                 </div>
-                                <button class="right-button" id="animal-plus">+</button>
+                                <button class="right-button" id="animal-plus" onclick="increment('animal-count', 1)">
+                                    +
+                                </button>
                             </div>
                         </div>
                         <div class="right-services">
                             <div class="service selected" id="bicycle-storage">
-                                <button class="left-button" id="bike-minus">-</button>
+                                <button class="left-button" id="bike-minus" onclick="decrement('bike-count', 2)">
+                                    -
+                                </button>
                                 <div class="service-text">
                                     <div>Bicycle Storage</div>
-                                    <div>+ $15.00</div>
+                                    <div>+ $15</div>
                                     <div class="divider"></div>
-                                    <div id="bike-count">Qty: 1</div>
+                                    <div id="bike-count">Qty: 0</div>
                                 </div>
-                                <button class="right-button" id="bike-plus">+</button>
+                                <button class="right-button" id="bike-plus" onclick="increment('bike-count', 2)">
+                                    +
+                                </button>
                             </div>
                             <div class="service" id="ski-snowboard">
-                                <button class="left-button" id="skisnow-minus">-</button>
+                                <button class="left-button" id="skisnow-minus" onclick="decrement('skisnow-count', 3)">
+                                    -
+                                </button>
                                 <div class="service-text">
                                     <div>Ski/Snowboard</div>
-                                    <div>+ $10.00</div>
+                                    <div>+ $10</div>
                                     <div class="divider"></div>
                                     <div id="skisnow-count">Qty: 0</div>
                                 </div>
-                                <button class="right-button" id="skisnow-plus">+</button>
+                                <button class="right-button" id="skisnow-plus" onclick="increment('skisnow-count', 3)">
+                                    +
+                                </button>
                             </div>
                         </div>
                     </div>
-                    <div id="service-total">Additional Service Total: $15.00</div>
+                    <div id="service-total">Additional Service Total: $0</div>
                 </div>
                 <!-- TODO Make status dynamically resizing based on nPassengers -->
                 <div id="status-bar">
-                    <div class="arrow left-arrow"></div>
                     <button class="prev" button id="nav-back">
                         <img
                             class="offset-img"
@@ -125,6 +140,47 @@
             <empty-footer></empty-footer>
         </div>
         <script>
+            const serviceCosts = [10, 15, 15, 10]; // Costs of bag, animal, bike, and ski/snowboard services (in that order)
+            const currentCosts = [0, 0, 0, 0];
+            const serviceTotal = document.getElementById("service-total");
+
+            const SERVICELIMIT = 10; // max number of service count per service
+            // Helper fn used to get count # from strings of pattern "Qty: #"
+            function parseQty(str) {
+                arr = str.split(" "); // delimit by space
+                count = parseInt(arr[1]); // fetch #, parse as int
+                return count;
+            }
+
+            // increment() and decrement() used by button onclick event to update qty count and total cost
+            function decrement(qtyID, serviceNo) {
+                let element = document.getElementById(qtyID);
+                let count = parseQty(element.innerText);
+                if (count > 0) {
+                    // Update qty # on label
+                    count--;
+                    element.innerText = "Qty: " + count;
+                    // Update total cost
+                    let cost = serviceCosts[serviceNo];
+                    let currentTotal = parseInt(serviceTotal.innerText.split("$")[1]);
+                    serviceTotal.innerText = "Additional Service Total: $" + (currentTotal - cost);
+                }
+            }
+
+            function increment(qtyID, serviceNo) {
+                let element = document.getElementById(qtyID);
+                let count = parseQty(element.innerText);
+                if (count < SERVICELIMIT) {
+                    // Update qty # on label
+                    count++;
+                    element.innerText = "Qty: " + count;
+                    // Update total cost
+                    let cost = serviceCosts[serviceNo];
+                    let currentTotal = parseInt(serviceTotal.innerText.split("$")[1]);
+                    serviceTotal.innerText = "Additional Service Total: $" + (currentTotal + cost);
+                }
+            }
+
             // Manage passenger information
             // Return object containing info for one passenger
             function createPInfo(
