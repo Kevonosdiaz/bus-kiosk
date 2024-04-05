@@ -231,6 +231,19 @@
       }
     });
 
+    /*shows dropdown menus on clicks*/
+    var originInputBox = document.getElementById('origin-input');
+    originInputBox.addEventListener('click', function() {
+      var oDropdown = document.getElementById('originOptions');
+      oDropdown.style.display = 'block';
+    });
+
+    var destInputBox = document.getElementById('dest-input');
+    destInputBox.addEventListener('click', function() {
+      var dDropdown = document.getElementById('destOptions');
+      dDropdown.style.display = 'block';
+    });
+
 
   </script>
 
