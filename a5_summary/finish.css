@@ -72,11 +72,19 @@ body {
     justify-content: center;
     overflow:auto;
 }
-
+/* 
 .back,.reset {
     display:none;
+} */
+.back, .confirm {
+    display: none;
 }
 
-.confirm {
+.reset {
     margin-left:auto;
+    margin-right: auto;
 }
+
+/* .confirm {
+    margin-left:auto;
+} */

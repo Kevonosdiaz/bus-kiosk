@@ -487,7 +487,8 @@ function restartButtonClick() {
 function restartConfirmButtonFunc(){
     const yesRestartButton = document.getElementById('restartConfirm');
     yesRestartButton.addEventListener('click', function() {
-        window.location.href = indexToPath('0');
+        window.location.href = "../index.html";
+        // window.location.href = indexToPath('0');
     });
 }
 
