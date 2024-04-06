@@ -543,7 +543,7 @@ var visitOrder = "";
 function indexToPath(index) {
     var url = "";
     switch (index) {
-        case '0': url = '../0_welcome_screen/welcome_screen.html';
+        case '0': url = '../index.html';
         break;
         case '1': url = '../a1_search_screen/2-new_ticket_search_screen.html';
         break;
