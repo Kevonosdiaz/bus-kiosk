@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="modify2_style.css" />
   <link rel="stylesheet" href="../Templates/styles.css" />
   <script src="../Templates/components.js" type="text/javascript" defer></script>
-  
+  <script src="modify.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">  
@@ -27,9 +27,19 @@
           <p class="total_item2">$89.99</p>
         </ul>
     </div>
-    <div class ="bottom-half">
+    <div class="bottom-half">
+
       <details>
-        <summary><p class="sum_p">Ticket #1 - Justin</p><p class="sum_total">Cost: $29.99</p></summary>
+        <summary class="sum_box"><input type="radio" value="select" name="sum_box"><p class="sum_p">Ticket #1 - Justin</p><p class="sum_total">Cost: $29.99</p></summary>
+        <p>
+          Ticket Cost - $19.99 <br>
+          1x Extra Bag - $5.00 <br>
+          1x Ski/Snowboard - $5.00 <br>
+        </p>
+      </details>
+      
+      <details>
+        <summary class="sum_box"><input type="radio" value="select" name="sum_box"><p class="sum_p">Ticket #2 - Josh</p><p class="sum_total">Cost: $29.99</p></summary>
         <p>
           Ticket Cost - $19.99 <br>
           1x Extra Bag - $5.00 <br>
@@ -37,15 +47,9 @@
         </p>
       </details>
       <details>
-        <summary><p class="sum_p">Ticket #1 - Josh</p><p class="sum_total">Cost: $29.99</p></summary>
-        <p>
-          Ticket Cost - $19.99 <br>
-          1x Extra Bag - $5.00 <br>
-          1x Ski/Snowboard - $5.00 <br>
-        </p>
-      </details>
-      <details>
-        <summary><p class="sum_p">Ticket #1 - Jess</p><p class="sum_total">Cost: $29.99</p></summary>
+        <summary class="sum_box">
+          <input type="radio" value="select" name="sum_box"><p class="sum_p">Ticket #3 - Jess</p><p class="sum_total">Cost: $29.99</p>
+        </summary>
         <p>
           Ticket Cost - $19.99 <br>
           1x Extra Bag - $5.00 <br>
@@ -53,6 +57,7 @@
         </p>
       </details>
     </div>
+
     <div class ="buttons">
         <div class="field">
             <label for="cancelTicket" class="cancel_ticket_label" id="cancelTicketLabel">

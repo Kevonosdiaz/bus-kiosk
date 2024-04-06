@@ -204,11 +204,10 @@ details > summary {
     width: 90%;
     height: 50px;
     display:flex;
+    background:var(--blue1);
     align-items: center;
-    
     padding-left: 10px;
     border-radius: 10px;
-    background-color: var(--blue1);
     filter: drop-shadow(2px 2px 1px var(--grey));
     cursor: pointer;
 }
@@ -230,13 +229,13 @@ details > summary > p {
 }
 
 summary::after {
-    padding-right: 5px;
-    content: '⦾';
+    padding-right: 8px;
+    content: '➕';
 }
 
 details[open] > summary::after {
-    padding-right: 5px;
-    content: '⦿';
+    padding-right: 8px;
+    content: '➖';
 }
 
 details > p {
@@ -250,6 +249,13 @@ details > p {
     border-radius: 0px 0px 5px 5px;
 }
 
-details[open] > summary {
+.active {
     background-color: var(--orange);
+}
+
+input[type="radio"] {
+    width:20px;
+    height:20px;
+    margin:auto;
+    margin-right:8px;
 }
