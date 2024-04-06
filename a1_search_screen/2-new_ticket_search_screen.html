@@ -32,10 +32,15 @@
     }
     sessionStorage.setItem('selectedOption', "")
 
-    // detault to oneway trip
+    // default to oneway trip
     if (sessionStorage.getItem('isRoundTrip') === null) {
       sessionStorage.setItem('isRoundTrip', false)
     }
+
+    if (sessionStorage.getItem('returnDate-saved') === null) {
+      sessionStorage.setItem('returnDate-saved', '')
+    }
+
   </script>
 </head>
 
@@ -117,9 +122,9 @@
             <img class="calendar_img" src="../Images/Icons/Screens/calendar black.png" alt="Schedule Calendar" />
             Return Date
           </label>
-          <input oninput="sessionStorage.setItem('returnDate', this.value)" required placeholder="dd/mm/yyyy"
+          <input oninput="handleInput('returnDate', this.value)" required placeholder="dd/mm/yyyy"
             id="return-input" />
-
+            <span class="returnDate-tag" id="returnDate-tag"><i style="color: red">*</i></span>
         </div>
 
         <div class="passenger field">
@@ -158,6 +163,7 @@
         case 'origin':
         case 'destination':
         case 'departDate':
+        case 'returnDate':
           var requiredTag = document.getElementById(`${fieldName}-tag`)
           requiredTag.className = `${fieldName}-tag-hidden`
         default:
@@ -169,6 +175,7 @@
         case 'origin':
         case 'destination':
         case 'departDate':
+        case 'returnDate':
           var requiredTag = document.getElementById(`${fieldName}-tag`)
           requiredTag.className = `${fieldName}-tag`
         default:
@@ -180,6 +187,7 @@
         case 'origin':
         case 'destination':
         case 'departDate':
+        case 'returnDate':
           sessionStorage.setItem(fieldName, value)
           if (value === '') {
             showRequiredTag(fieldName)
@@ -199,6 +207,7 @@
           sessionStorage.setItem('returnDate', savedReturnDateValue)
           sessionStorage.setItem('returnDate-saved', '')
           document.getElementById('return-input').value = savedReturnDateValue
+          hideRequiredTag('returnDate')
         }
 
         sessionStorage.setItem('isRoundTrip', true)
@@ -238,6 +247,9 @@
     }
     if (sessionStorage.getItem('returnDate') !== "") {
       document.getElementById('return-input').value = sessionStorage.getItem('returnDate')
+      hideRequiredTag('returnDate')
+    } else {
+      showRequiredTag('returnDate')
     }
     if (sessionStorage.getItem('passengers') !== "1") {
       document.getElementById('passenger-count-input').value = sessionStorage.getItem('passengers')

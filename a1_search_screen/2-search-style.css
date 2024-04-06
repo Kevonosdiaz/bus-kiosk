@@ -198,6 +198,15 @@ input.passenger_count_placeholder {
     width: 0%;
 }
 
+.returnDate-tag {
+    padding-left: 15px;
+}
+
+.returnDate-tag-hidden {
+    visibility: hidden;
+    width: 0%;
+}
+
 .slider-btn {
     display: flex;
     flex-direction: row;
