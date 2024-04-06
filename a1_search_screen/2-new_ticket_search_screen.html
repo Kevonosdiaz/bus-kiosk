@@ -8,10 +8,12 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="2-search-style.css">
   <link rel="stylesheet" href="../Templates/styles.css" />
-  <script src="../Templates/components.js" type="text/javascript" defer></script>
+  <script src="../Templates/components.js" type="text/javascript"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">  
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    rel="stylesheet">
   <script>
     if (sessionStorage.getItem('origin') === null) {
       sessionStorage.setItem('origin', "")
@@ -29,96 +31,116 @@
       sessionStorage.setItem('passengers', "1")
     }
     sessionStorage.setItem('selectedOption', "")
+
+    // detault to oneway trip
+    if (sessionStorage.getItem('isRoundTrip') === null) {
+      sessionStorage.setItem('isRoundTrip', false)
+    }
   </script>
 </head>
 
 
 <body class="main-body">
   <div class="outer-div">
-    <main-header ></main-header>
+    <main-header></main-header>
     <div class="top-half">
-        <div class="main-content">
-          <div class="origin_field">
-            <label for="origin_input" class="label">
-              <img class="origin_arrow_img" src="../Images/Icons/Screens/origin arrow black.png" alt="Origin arrow" />
-              Origin
-            </label>
-            <div class="originInputMenu">
-              <input oninput="sessionStorage.setItem('origin', this.value)" type="text" onkeyup="filterOrigin()" placeholder="Enter Origin City" id="origin-input" />
-              <div id="originOptions" class="originOptions">
-                <a href="#">Calgary, AB</a>
-                <a href="#">Edmonton, AB</a>
-                <a href="#">Toronto, ON</a>
-                <a href="#">Leduc, AB</a>
-                <a href="#">Spruce Grove, AB</a>
-                <a href="#">Vancouver, BC</a>
-                <a href="#">Golden, BC</a>
-                <a href="#">Seven Persons, AB</a>
-              </div>
+      <div class="main-content">
+        <div class="origin_field">
+          <label for="origin_input" class="label">
+            <img class="origin_arrow_img" src="../Images/Icons/Screens/origin arrow black.png" alt="Origin arrow" />
+            Origin
+          </label>
+          <div class="originInputMenu">
+            <input oninput="handleInput('origin', this.value)" type="text" onkeyup="filterOrigin()"
+              placeholder="Enter Origin City" id="origin-input" />
+            <div id="originOptions" class="originOptions">
+              <a href="#">Calgary, AB</a>
+              <a href="#">Edmonton, AB</a>
+              <a href="#">Toronto, ON</a>
+              <a href="#">Leduc, AB</a>
+              <a href="#">Spruce Grove, AB</a>
+              <a href="#">Vancouver, BC</a>
+              <a href="#">Golden, BC</a>
+              <a href="#">Seven Persons, AB</a>
+            </div>
+
+          </div>
+          <span class="origin-tag" id="origin-tag"><i style="color: red">*</i></span>
+        </div>
+
+
+        <div class="field">
+          <label for="destination_input" class="label">
+            <img class="dest_arrow_img" src="../Images/Icons/Screens/destinaton arrow black.png"
+              alt="Destination arrow" />
+            Destination
+          </label>
+          <div class="destInputMenu">
+            <input type="text" oninput="handleInput('destination', this.value)" onkeyup="filterDest()"
+              placeholder="Enter Destination City" id="dest-input" />
+            <div id="destOptions" class="destOptions">
+              <a href="#">Calgary, AB</a>
+              <a href="#">Edmonton, AB</a>
+              <a href="#">Toronto, ON</a>
+              <a href="#">Leduc, AB</a>
+              <a href="#">Spruce Grove, AB</a>
+              <a href="#">Vancouver, BC</a>
+              <a href="#">Golden, BC</a>
+              <a href="#">Seven Persons, AB</a>
             </div>
           </div>
-          <span><i style="color: red">required</i></span>
-
-            <div class="field">
-              <label for="destination_input" class="label">
-                <img class="dest_arrow_img" src="../Images/Icons/Screens/destinaton arrow black.png" alt="Destination arrow" />
-                Destination
-              </label>
-              <div class="destInputMenu">
-                <input type="text" oninput="sessionStorage.setItem('destination', this.value)" onkeyup="filterDest()" placeholder="Enter Destination City" id="dest-input" />
-                <div id="destOptions" class="destOptions">
-                  <a href="#">Calgary, AB</a>
-                  <a href="#">Edmonton, AB</a>
-                  <a href="#">Toronto, ON</a>
-                  <a href="#">Leduc, AB</a>
-                  <a href="#">Spruce Grove, AB</a>
-                  <a href="#">Vancouver, BC</a>
-                  <a href="#">Golden, BC</a>
-                  <a href="#">Seven Persons, AB</a>
-                </div>
-              </div>
-            </div>
-            <span><i style="color: red">required</i></span>
-
-            <div class="field">
-              <label for="calendar_input" class="label">
-                <img class="calendar_img" src="../Images/Icons/Screens/calendar black.png" alt="Schedule Calendar" />
-                Depart Date
-              </label>
-              <input oninput="sessionStorage.setItem('departDate', this.value)" required placeholder="dd/mm/yyyy" id="depart-input" />
-            </div>
-            <span><i style="color: red">required</i></span>
-
-            <div class="field">
-              <label for="calendar_input" class="label">
-                <img class="calendar_img" src="../Images/Icons/Screens/calendar black.png" alt="Schedule Calendar" />
-                Return Date
-              </label>
-              <input oninput="sessionStorage.setItem('returnDate', this.value)" required placeholder="dd/mm/yyyy" id="return-input" />
-              
-            </div>
-            <span><i>optional</i></span>
-
-            <div class="passenger field">
-              <label for="passenger_count_input" class="label">
-                <img class="passenger_img" src="../Images/Icons/Slides/group_icon.png" alt="Passenger Count" />
-                Passenger Count
-              </label>
-              <button 
-                onclick="if (Number(document.getElementById('passenger-count-input').value) > 1) {document.getElementById('passenger-count-input').value = Number(document.getElementById('passenger-count-input').value) - 1; sessionStorage.setItem('passengers', document.getElementById('passenger-count-input').value)}" 
-                class="minus_button"
-                >
-                -
-              </button>
-              <input oninput="sessionStorage.setItem('passengers', this.value)"  class="passenger_count_placeholder" required value="1" id="passenger-count-input" />
-              <button 
-                onclick="document.getElementById('passenger-count-input').value = 1 + Number(document.getElementById('passenger-count-input').value); sessionStorage.setItem('passengers', document.getElementById('passenger-count-input').value)" 
-                class="plus_button"
-                >
-                +
-              </button>
-            </div>
+          <span class="destination-tag" id="destination-tag"><i style="color: red">*</i></span>
         </div>
+
+
+        <div class="field">
+          <label for="calendar_input" class="label">
+            <img class="calendar_img" src="../Images/Icons/Screens/calendar black.png" alt="Schedule Calendar" />
+            Depart Date
+          </label>
+          <input oninput="handleInput('departDate', this.value)" required placeholder="dd/mm/yyyy"
+            id="depart-input" />
+            <span class="departDate-tag" id="departDate-tag"><i style="color: red">*</i></span>
+        </div>
+        
+        <div class="slider-btn">
+          <p>One Way Trip</p>
+          <label class="switch">
+            <input onclick="handleToggleClick(this.checked)" id="slider-btn-input" type="checkbox">
+            <span class="slider round"></span>
+          </label>
+          <p>Round Trip</p>
+        </div>
+
+        <div class="field-hidden" id="returnDate-div">
+          <label for="calendar_input" class="label">
+            <img class="calendar_img" src="../Images/Icons/Screens/calendar black.png" alt="Schedule Calendar" />
+            Return Date
+          </label>
+          <input oninput="sessionStorage.setItem('returnDate', this.value)" required placeholder="dd/mm/yyyy"
+            id="return-input" />
+
+        </div>
+
+        <div class="passenger field">
+          <label for="passenger_count_input" class="label">
+            <img class="passenger_img" src="../Images/Icons/Slides/group_icon.png" alt="Passenger Count" />
+            Passenger Count
+          </label>
+          <button
+            onclick="if (Number(document.getElementById('passenger-count-input').value) > 1) {document.getElementById('passenger-count-input').value = Number(document.getElementById('passenger-count-input').value) - 1; sessionStorage.setItem('passengers', document.getElementById('passenger-count-input').value)}"
+            class="minus_button">
+            -
+          </button>
+          <input oninput="sessionStorage.setItem('passengers', this.value)" class="passenger_count_placeholder" required
+            value="1" id="passenger-count-input" />
+          <button
+            onclick="document.getElementById('passenger-count-input').value = 1 + Number(document.getElementById('passenger-count-input').value); sessionStorage.setItem('passengers', document.getElementById('passenger-count-input').value)"
+            class="plus_button">
+            +
+          </button>
+        </div>
+      </div>
     </div>
     <!-- <div class="bottom-half">
       <div class="ds-bottom-half">
@@ -131,14 +153,88 @@
   </div>
 
   <script>
+    function hideRequiredTag(fieldName) {
+      switch (fieldName) {
+        case 'origin':
+        case 'destination':
+        case 'departDate':
+          var requiredTag = document.getElementById(`${fieldName}-tag`)
+          requiredTag.className = `${fieldName}-tag-hidden`
+        default:
+      }
+    }
+
+    function showRequiredTag(fieldName) {
+      switch (fieldName) {
+        case 'origin':
+        case 'destination':
+        case 'departDate':
+          var requiredTag = document.getElementById(`${fieldName}-tag`)
+          requiredTag.className = `${fieldName}-tag`
+        default:
+      }
+    }
+
+    function handleInput(fieldName, value) {
+      switch (fieldName) {
+        case 'origin':
+        case 'destination':
+        case 'departDate':
+          sessionStorage.setItem(fieldName, value)
+          if (value === '') {
+            showRequiredTag(fieldName)
+          } else {
+            hideRequiredTag(fieldName)
+          }
+      }
+    }
+
+    function handleToggleClick(clickEvent) {
+      var returnDateDiv = document.getElementById('returnDate-div')
+      var returnDateValue = sessionStorage.getItem('returnDate')
+      var savedReturnDateValue = sessionStorage.getItem('returnDate-saved')
+      if (clickEvent) {
+
+        if (savedReturnDateValue !== '') {
+          sessionStorage.setItem('returnDate', savedReturnDateValue)
+          sessionStorage.setItem('returnDate-saved', '')
+          document.getElementById('return-input').value = savedReturnDateValue
+        }
+
+        sessionStorage.setItem('isRoundTrip', true)
+        returnDateDiv.className = 'field'
+        
+      } else {
+        
+        if (returnDateValue !== '') {
+          sessionStorage.setItem('returnDate-saved', returnDateValue)
+          sessionStorage.setItem('returnDate', '')
+        }
+        sessionStorage.setItem('isRoundTrip', false)
+        returnDateDiv.className = 'field-hidden'
+      }
+    }
+  </script>
+
+<!-- this script mostly sets up the page based on the state of session variables -->
+  <script>
     if (sessionStorage.getItem('origin') !== "") {
       document.getElementById('origin-input').value = sessionStorage.getItem('origin')
+      hideRequiredTag('origin')
+    } else {
+      showRequiredTag('origin')
     }
     if (sessionStorage.getItem('destination') !== "") {
       document.getElementById('dest-input').value = sessionStorage.getItem('destination')
+      hideRequiredTag('destination')
+    } else {
+      showRequiredTag('destination')
     }
     if (sessionStorage.getItem('departDate') !== "") {
       document.getElementById('depart-input').value = sessionStorage.getItem('departDate')
+      hideRequiredTag('departDate')
+    } else {
+      showRequiredTag('departDate')
     }
     if (sessionStorage.getItem('returnDate') !== "") {
       document.getElementById('return-input').value = sessionStorage.getItem('returnDate')
@@ -147,7 +243,14 @@
       document.getElementById('passenger-count-input').value = sessionStorage.getItem('passengers')
     }
 
-    
+    if (sessionStorage.getItem('isRoundTrip') === 'true') {
+      document.getElementById('slider-btn-input').checked = true
+      document.getElementById('returnDate-div').className = 'field'
+    } else if (sessionStorage.getItem('isRoundTrip') === 'false') {
+      document.getElementById('slider-btn-input').checked = false
+      document.getElementById('returnDate-div').className = 'field-hidden'
+    }
+
   </script>
 
   <script>
@@ -159,27 +262,28 @@
     var prevButtonPath = "";
 
     // Waits until the page is fully loaded before executing
-    document.addEventListener("DOMContentLoaded", function() {
-        // sends the visit order (index string) to the js file
-        visitOrder = readURLData('prevPage');
-        // sets the previous page url based on the index at the end of the visit order string
-        prevButtonPath = indexToPath(visitOrder.slice(-1)) + '?' + prevPageVarName + "=" + visitOrder.slice(0,visitOrder.length-1);
-        console.log(prevButtonPath);
-        setPreviousPage(prevButtonPath);
-        // creates the url path for the next button with a variable that stores the visit order
-        nextButtonPath = indexToPath(nextPageIndex) + '?' + prevPageVarName + "=" + visitOrder.concat(currentPageIndex);
-        setNextPage(nextButtonPath);
+    document.addEventListener("DOMContentLoaded", function () {
+      // sends the visit order (index string) to the js file
+      visitOrder = readURLData('prevPage');
+      // sets the previous page url based on the index at the end of the visit order string
+      prevButtonPath = indexToPath(visitOrder.slice(-1)) + '?' + prevPageVarName + "=" + visitOrder.slice(0, visitOrder.length - 1);
+      console.log(prevButtonPath);
+      setPreviousPage(prevButtonPath);
+      // creates the url path for the next button with a variable that stores the visit order
+      nextButtonPath = indexToPath(nextPageIndex) + '?' + prevPageVarName + "=" + visitOrder.concat(currentPageIndex);
+      setNextPage(nextButtonPath);
     });
   </script>
 
   <script>
     /*Calling filter scripts passing the different dropdowns*/
-    function filterOrigin(){
+    function filterOrigin() {
       var input = document.getElementById("origin-input");
       var div = document.getElementById('originOptions');
       var a = div.getElementsByTagName('a');
 
       filterFunction(input, div, a);
+      handleInput('origin', input.value)
     }
 
     function filterDest() {
@@ -188,6 +292,7 @@
       var a = div.getElementsByTagName('a');
 
       filterFunction(input, div, a);
+      handleInput('destination', input.value)
     }
   </script>
 
@@ -196,8 +301,8 @@
     /*Script tag to have the user click on a content of the drop down, and it will populate the text field*/
     var originMenuContent = document.querySelectorAll('.originOptions a');
     /*applies a click listener event to all drop down options*/
-    originMenuContent.forEach(function(option) {
-      option.addEventListener('click', function() {
+    originMenuContent.forEach(function (option) {
+      option.addEventListener('click', function () {
         var input = document.getElementById('origin-input');
         input.value = this.textContent; // Fills the input field with the clicked option
         document.getElementById('originOptions').style.display = 'none';
@@ -207,8 +312,8 @@
 
 
     var destMenuContent = document.querySelectorAll('.destOptions a');
-    destMenuContent.forEach(function(option) {
-      option.addEventListener('click', function() {
+    destMenuContent.forEach(function (option) {
+      option.addEventListener('click', function () {
         var input = document.getElementById('dest-input');
         input.value = this.textContent; // Fills the input field with the clicked option
         document.getElementById('destOptions').style.display = 'none';
@@ -217,7 +322,7 @@
     });
 
     // Close dropdown when clicking outside of it
-    document.body.addEventListener('click', function(event) {
+    document.body.addEventListener('click', function (event) {
       var dropdown = document.getElementById('originOptions');
       var input = document.getElementById('origin-input');
       if (!dropdown.contains(event.target) && event.target !== input) {
@@ -232,19 +337,19 @@
 
       var passengerInput = document.getElementById('passenger-count-input');
       if (!passengerInput.contains(event.target) && event.target !== input) {
-        if (passengerInput.value == "") {passengerInput.value = 1};
+        if (passengerInput.value == "") { passengerInput.value = 1 };
       }
     });
 
     /*shows dropdown menus on clicks*/
     var originInputBox = document.getElementById('origin-input');
-    originInputBox.addEventListener('click', function() {
+    originInputBox.addEventListener('click', function () {
       var oDropdown = document.getElementById('originOptions');
       oDropdown.style.display = 'block';
     });
 
     var destInputBox = document.getElementById('dest-input');
-    destInputBox.addEventListener('click', function() {
+    destInputBox.addEventListener('click', function () {
       var dDropdown = document.getElementById('destOptions');
       dDropdown.style.display = 'block';
     });
