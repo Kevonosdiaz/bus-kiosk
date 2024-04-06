@@ -54,23 +54,29 @@
             
         </div>
         <div class="bottom-half">
-            <div class="field">
-                <label for="Verify" class="verify_label" id="verifyLabel">
-                  Click to Verify
-                </label>
-              </div>
-            <div class="verification-box">
+            <div class="tickets">
+                <div class="ticket-box">
+                    <button id="ticket1" style="background-color: #ffd192;">Ticket 1</button>
+                    <button id="ticket2">Ticket 2</button>
+                </div>
+            </div>
+            <!--<div class="verification-box">
                 <p><small><b>Verify Your Email</b></small><br><small><small>Please enter the verification code sent to myemail@mail.com</small></small></p>
                 <input class="verificationcode" required placeholder="Verification Code" id="code-input"/>
                 <button id="next">Next</button>
                 <button id="resent">Resend code to Email</button>
                 <button id="resent">Send code to Phone</button>
+            </div>-->
+        </div>
+        <div class="bottom2">
+            <div class="cancel-modify">
+                <button id="cancel">Cancel Ticket</button>
+                <button id="modify">Modify Ticket</button>
             </div>
         </div>
     </div>
     <empty-footer ></empty-footer>
     <script src="../Templates/components.js"></script>
-    <script src="ticket_lookup.js" type="text/javascript"></script>
   </div>
   <script>
     // Strings to construct URL variable to pass
