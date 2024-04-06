@@ -22,7 +22,7 @@
     <main-header ></main-header>
     <div class="outer-box">
       <div class="legend_box">
-        <p class="legend">Please choose your seats<br>Remaining: 2/2</p>
+        <p class="legend">Please select your seats.</p><p class="legend2" id="count">Remaining: 0 / 0</p>
       </div>
       <div class="seat_container">
         <div class="seat_column1">
@@ -95,6 +95,10 @@
           nextButtonPath = indexToPath(nextPageIndex) + '?' + prevPageVarName + "=" + visitOrder.concat(currentPageIndex);
           setNextPage(nextButtonPath);
       });
+    </script>
+    <script>
+      var pass_count = sessionStorage.getItem('passengers');
+
     </script>
     <script src="seats.js" type="text/javascript"></script>
 </body>

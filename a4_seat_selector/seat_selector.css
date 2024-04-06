@@ -38,21 +38,37 @@ body {
 }
 
 .legend_box {
+    margin:auto;
     width: 100%;
+    height:16%;
+    gap:0px;
     display: flex;
+    flex-direction: column;
     padding-bottom:0px;
     align-items:center;
     justify-content:center;
 }
 
-.legend {
+.legend, .legend2 {
+    margin:auto;
     text-align:center;
     font-size:24px;
-    line-height:35px;
     font-weight:500;
 }
 
+.legend{
+    margin-top: 12px;
+}
+
+.legend2 {
+    font-weight:600;
+    padding:4px;
+    border: 3px solid black;
+    border-radius: 6px;
+}
+
 .seat_container {
+    margin-top:10px;
     width:100%;
     height:80%;
     display:flex;  
