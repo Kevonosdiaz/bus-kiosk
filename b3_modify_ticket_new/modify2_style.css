@@ -259,3 +259,7 @@ input[type="radio"] {
     margin:auto;
     margin-right:8px;
 }
+
+.confirm {
+    visibility: hidden;
+}
