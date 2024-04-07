@@ -30,7 +30,7 @@
     <div class="bottom-half">
 
       <details>
-        <summary class="sum_box"><input type="radio" value="select" name="sum_box"><p class="sum_p">Ticket #1 - Justin</p><p class="sum_total">Cost: $29.99</p></summary>
+        <summary class="sum_box"><input type="radio" value="select" name="sum_box"><p class="sum_p">Ticket #1<br>Gus Ryder</p><p class="sum_total">Cost: $29.99</p></summary>
         <p>
           Ticket Cost - $19.99 <br>
           1x Extra Bag - $5.00 <br>
@@ -39,7 +39,7 @@
       </details>
       
       <details>
-        <summary class="sum_box"><input type="radio" value="select" name="sum_box"><p class="sum_p">Ticket #2 - Josh</p><p class="sum_total">Cost: $29.99</p></summary>
+        <summary class="sum_box"><input type="radio" value="select" name="sum_box"><p class="sum_p">Ticket #2<br>Mo Torbus</p><p class="sum_total">Cost: $29.99</p></summary>
         <p>
           Ticket Cost - $19.99 <br>
           1x Extra Bag - $5.00 <br>
@@ -48,7 +48,7 @@
       </details>
       <details>
         <summary class="sum_box">
-          <input type="radio" value="select" name="sum_box"><p class="sum_p">Ticket #3 - Jess</p><p class="sum_total">Cost: $29.99</p>
+          <input type="radio" value="select" name="sum_box"><p class="sum_p">Ticket #3<br></p><p class="sum_total">Cost: $29.99</p>
         </summary>
         <p>
           Ticket Cost - $19.99 <br>
@@ -83,5 +83,12 @@
     <empty-footer ></empty-footer>
   </div>
 </body>
+
+<script>
+  const modifyTicketbtn = document.getElementById("modifyTicketLabel");
+  modifyTicketbtn.onclick = function (){
+    window.location.href = "modify_3.html";
+  }
+</script>
 
 </html>

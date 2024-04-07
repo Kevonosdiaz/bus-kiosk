@@ -200,9 +200,9 @@ details {
 
 details > summary {
     margin:auto;
-    font-size: 20px;
+    font-size: 22px;
     width: 90%;
-    height: 50px;
+    height: 60px;
     display:flex;
     background:var(--blue1);
     align-items: center;
@@ -213,19 +213,26 @@ details > summary {
 }
 
 details > summary > p {
-    width:50%;
-    display: flex;
+    width:30%;
 }
 
 .sum_p {
+    border-left: 1px solid grey;
+    padding-left:8px;
     flex:1;
     font-weight: 500;
+    margin-right:auto;
+    overflow:hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
 .sum_total {
-    justify-content: flex-end;
+    font-size: 24px;
+    text-align: right;
     padding-right:10px;
     font-weight: 600;
+    margin-left:auto;
 }
 
 summary::after {
