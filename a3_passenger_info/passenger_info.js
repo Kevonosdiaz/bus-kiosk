@@ -1,13 +1,15 @@
 let pName = "";
 let pEmail = "";
 let pPhone = "";
-// Email/Phone notification bools
+let pEmailNotif = false;
+let pPhoneNotif = false;
 let pBags = 0;
 let pAnimals = 0;
 let pBikes = 0;
 let pSkis = 0;
 let currentPage = 2;
 const numPassengers = Math.max(1, Number(sessionStorage.getItem("passengers")));
+const passInfo = []; // Store nth passengers info (object) at index n
 const statuses = [];
 const finishedPages = [2];
 
@@ -20,7 +22,7 @@ class PassengerInfoContainer extends HTMLElement {
             wrapper.id = `passengerWrapper${i}`;
             wrapper.innerHTML = `
             <div class="info">
-            <div class="passenger-header">Passenger ${i + 1} Info</div>
+            <div class="passenger-header" id="passenger-header" >Passenger ${i + 1} Info</div>
             <div class="field">
                 <label for="name-input" class="label">
                     <img src="../Images/Icons/Screens/personal info black.png" alt="ID card icon" />
@@ -252,9 +254,24 @@ let nextPageButton = document.getElementById("nav-next");
 prevPageButton.addEventListener("click", prevPage());
 prevPageButton.addEventListener("click", nextPage());
 
-function prevPage() {}
+// Update status bar, page header, field values to 'targetNo' page info. targetNo is actual page no, not index
+function swapPage(targetNo) {
+    document.getElementById("passenger-header").innerText = `Passenger ${targetNo} Info`;
+    currentPage = targetNo;
+    updateStatus();
+    index = targetNo - 1;
+}
 
-function nextPage() {}
+function prevPage() {
+    // TODO validate input
+    // Store any inputted fields into session vars
+    // Change current page, status, and populated field values
+}
+
+function nextPage() {
+    // Check if any required fields are left blank, allow change to next page if all filled
+    // Change current page, status, and populated field values
+}
 
 // Manage passenger information
 // Return object containing info for one passenger
@@ -284,12 +301,10 @@ function createPInfo(
     };
 }
 
+// For future reference:
+// sessionStorage.setItem("routeList", JSON.stringify(routeList));
+
 // TODO On subpage load: populate fields with saved info if stored
-
-let passInfo = []; // Store nth passengers info (object) at index n
-
-// Keep track of progress
-let currPassenger = 1; // TODO this should change with arrow press, default to 1/last when going from prev/next page?
 
 // Update page/information on arrow clicks
 // Make sure 1st left and last right arrow transitions to next page
