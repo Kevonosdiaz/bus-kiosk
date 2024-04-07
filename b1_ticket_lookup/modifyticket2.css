@@ -45,6 +45,12 @@ body {
     margin-top: 20px;
 }
 
+.requiredfield{
+    font-family:"Poppins", sans-serif;
+    text-align: center;
+    font-size: 14px;
+}
+
 .name {
     font-family:"Poppins", sans-serif;
     font-size: 20px;
@@ -301,6 +307,7 @@ label img.calendar_img {
     font-size: 25px;
     font-weight: 500;
     border-radius: 30px;
+    margin-top: 10px;
 }
 
 .verify_label:hover {
