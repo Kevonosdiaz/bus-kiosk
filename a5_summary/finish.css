@@ -76,13 +76,8 @@ body {
 .back,.reset {
     display:none;
 } */
-.back, .confirm {
+.back, .confirm, .reset {
     display: none;
-}
-
-.reset {
-    margin-left:auto;
-    margin-right: auto;
 }
 
 /* .confirm {
