@@ -319,6 +319,7 @@
         input.value = this.textContent; // Fills the input field with the clicked option
         document.getElementById('originOptions').style.display = 'none';
         sessionStorage.setItem('origin', input.value) // sends that information to the session storage
+        hideRequiredTag('origin')
       });
     });
 
@@ -330,6 +331,7 @@
         input.value = this.textContent; // Fills the input field with the clicked option
         document.getElementById('destOptions').style.display = 'none';
         sessionStorage.setItem('destination', input.value) // sends that information to the session storage
+        hideRequiredTag('destination')
       });
     });
 
