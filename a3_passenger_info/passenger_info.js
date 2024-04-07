@@ -1,10 +1,20 @@
+let pName = "";
+let pEmail = "";
+let pPhone = "";
+// Email/Phone notification bools
+let pBags = 0;
+let pAnimals = 0;
+let pBikes = 0;
+let pSkis = 0;
+let currentPage = 2;
+let numPassengers = Math.max(1, Number(sessionStorage.getItem("passengers")));
+const statuses = [];
+
+// Contains name/email/phone, as well as additional services
 class PassengerInfoContainer extends HTMLElement {
     connectedCallback() {
-        // let numPassengers = Number(sessionStorage.getItem("passengers"));
-        let numPassengers = 4;
-        // console.log(numPassengers);
-        // console.log("hello");
-        for (let i = 0; i < numPassengers; i++) {
+        for (let i = 0; i < 1; i++) {
+            // Change 1 to numPassengers for n containers
             const wrapper = document.createElement("div");
             wrapper.id = `passengerWrapper${i}`;
             wrapper.innerHTML = `
@@ -109,6 +119,7 @@ class PassengerInfoContainer extends HTMLElement {
             }
             document.getElementById(`outer`).appendChild(wrapper);
         }
+
         const statusBar = document.createElement("div");
         statusBar.innerHTML = `
         <div id="status-bar">
@@ -118,15 +129,7 @@ class PassengerInfoContainer extends HTMLElement {
                     src="../Images/Icons/Screens/back black.png"
                     alt="Prev passenger button" />
             </button>
-            <div class="status">
-                <div id="stat1" class="stat-indicator completed-stat">1</div>
-                <div class="line"></div>
-                <div id="stat2" class="stat-indicator current-stat">2</div>
-                <div class="line"></div>
-                <div id="stat3" class="stat-indicator unfinished-stat">3</div>
-                <div class="line"></div>
-                <div id="stat4" class="stat-indicator unfinished-stat">4</div>
-            </div>
+            <div class="status" id="status-container"></div>
             <button class="next" button id="nav-next">
                 <img
                     class="offset-img"
@@ -138,22 +141,44 @@ class PassengerInfoContainer extends HTMLElement {
         document.getElementById(`outer`).appendChild(statusBar);
     }
 }
+
+// Contains navigation buttons between passenger pages and page status
+class StatusBar extends HTMLElement {
+    connectedCallback() {
+        // Populate status bar based on # of passengers
+        const container = document.getElementById(`status-container`);
+        for (let i = 0; i < numPassengers; i++) {
+            const statusCircle = document.createElement("div");
+            statusCircle.id = `stat${i}`;
+            statusCircle.classList.add("stat-indicator");
+            statusCircle.innerText = `P${i + 1}`;
+            container.appendChild(statusCircle);
+            statuses.push(statusCircle);
+            if (i !== numPassengers - 1) {
+                const line = document.createElement("div");
+                line.classList.add("line");
+                container.appendChild(line);
+            }
+        }
+        updateStatus();
+    }
+}
+
 customElements.define("passenger-info-container", PassengerInfoContainer);
+customElements.define("status-bar", StatusBar);
 
-let pName;
-let pEmail;
-let pPhone;
-// Email/Phone notification bools
-let pBags;
-let pAnimals;
-let pBikes;
-let pSkis;
-let currentPage = 0;
-
+// Clear styles for all status nodes, reapply. Assumes all previous nodes are completed
 function updateStatus() {
-    // Set circle at current status
-    // Set any/all circles before
-    // Set any/all circles after
+    let curr = currentPage - 1;
+    for (let i = 0; i < numPassengers; i++) {
+        let stat = statuses[i].classList;
+        stat.remove("current-stat");
+        stat.remove("unfinished-stat");
+        stat.remove("completed-stat");
+        if (i < curr) stat.add("completed-stat");
+        else if (i === curr) stat.add("current-stat");
+        else stat.add("unfinished-stat");
+    }
 }
 
 // TODO consider allowing ability to switch to page N (or consider as "for future development")
@@ -250,7 +275,6 @@ function createPInfo(
 // TODO On subpage load: populate fields with saved info if stored
 
 let passInfo = []; // Store nth passengers info (object) at index n
-let numPassengers = 4;
 
 // Keep track of progress
 let currPassenger = 1; // TODO this should change with arrow press, default to 1/last when going from prev/next page?
