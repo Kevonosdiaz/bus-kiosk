@@ -1,17 +1,29 @@
 var checks = document.querySelectorAll('input[type=checkbox]');
-console.log(sessionStorage.getItem("passengers"))
 var max = Number(sessionStorage.getItem("passengers"));
 
+var selected = Array(32).fill(0);
+
 for (var i = 0; i < checks.length; i++)
-  checks[i].onclick = selectiveCheck;
+  checks[i].onclick = selectiveCheck;  
 
 function selectiveCheck (event) {
   console.log("click")
-  
   var checkedChecks = document.querySelectorAll(".seat:checked");
   updateText(checkedChecks.length);
-  if (checkedChecks.length >= max + 1)
+  
+  if (checkedChecks.length >= max+1) {
+    enableConfirmBtn();
     return false;
+  } else {
+    if (checkedChecks.length == max) {
+      storeSeatData();
+      enableConfirmBtn();
+    } else {
+      disableConfirmBtn();
+    }
+    
+  }
+
 }
 
 function updateText(checked)  {
@@ -20,4 +32,18 @@ function updateText(checked)  {
     rem = 0;
   document.getElementById('count').innerText = "Remaining: " + rem + " / " + String(max);
 }
+
+function storeSeatData() {
+  var checks2 = document.querySelectorAll('input[type=checkbox]');
+  for (var i = 0; i < checks2.length; i++) {
+    if (checks2[i].checked) {
+      selected[i] = 1;
+    } else {
+      selected[i] = 0;
+    } 
+  }
+  console.log(selected)
+}
+
+disableConfirmBtn();
 updateText(0);

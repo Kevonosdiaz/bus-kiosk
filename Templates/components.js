@@ -609,3 +609,6 @@ document.addEventListener("DOMContentLoaded", function() {
     restartDeclineButtonFunc();
     restartButtonClick();
 });
+
+// list of the seat numbers in the order its read in the seat selector
+var seat_order = ["A1", "B1", "A2", "B2", "A3", "B3", "A4", "B4", "A5", "B5", "A6", "B6", "A7", "B7", "A8", "B8", "C1", "D1", "C2", "D2", "C3", "D3", "C4", "D4", "C5", "D5", "C6", "D6", "C7", "D7", "C8", "D8"];
