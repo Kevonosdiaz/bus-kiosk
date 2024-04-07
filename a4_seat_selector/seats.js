@@ -1,5 +1,5 @@
 var checks = document.querySelectorAll('input[type=checkbox]');
-var max = Number(sessionStorage.getItem("passengers"));
+var max = Number(sessionStorage.getItem("passengers")); // add an int to this to test with doing the entire booking
 
 var selected = Array(32).fill(0);
 
@@ -20,10 +20,8 @@ function selectiveCheck (event) {
       enableConfirmBtn();
     } else {
       disableConfirmBtn();
-    }
-    
+    } 
   }
-
 }
 
 function updateText(checked)  {
