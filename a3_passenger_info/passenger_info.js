@@ -7,8 +7,9 @@ let pAnimals = 0;
 let pBikes = 0;
 let pSkis = 0;
 let currentPage = 2;
-let numPassengers = Math.max(1, Number(sessionStorage.getItem("passengers")));
+const numPassengers = Math.max(1, Number(sessionStorage.getItem("passengers")));
 const statuses = [];
+const finishedPages = [2];
 
 // Contains name/email/phone, as well as additional services
 class PassengerInfoContainer extends HTMLElement {
@@ -142,7 +143,7 @@ class PassengerInfoContainer extends HTMLElement {
     }
 }
 
-// Contains navigation buttons between passenger pages and page status
+// Add status circles and lines to status bar
 class StatusBar extends HTMLElement {
     connectedCallback() {
         // Populate status bar based on # of passengers
@@ -167,7 +168,8 @@ class StatusBar extends HTMLElement {
 customElements.define("passenger-info-container", PassengerInfoContainer);
 customElements.define("status-bar", StatusBar);
 
-// Clear styles for all status nodes, reapply. Assumes all previous nodes are completed
+// Clear styles for all status nodes, reapply correct style
+// Assumes all previous nodes are completed
 function updateStatus() {
     let curr = currentPage - 1;
     for (let i = 0; i < numPassengers; i++) {
@@ -175,14 +177,14 @@ function updateStatus() {
         stat.remove("current-stat");
         stat.remove("unfinished-stat");
         stat.remove("completed-stat");
-        if (i < curr) stat.add("completed-stat");
-        else if (i === curr) stat.add("current-stat");
+        if (i === curr) stat.add("current-stat");
+        else if (i < curr || finishedPages.includes(i)) stat.add("completed-stat");
         else stat.add("unfinished-stat");
     }
 }
 
 // TODO consider allowing ability to switch to page N (or consider as "for future development")
-function switchPage(pageNo) {}
+// function switchPage(pageNo) {}
 
 const serviceCosts = [10, 15, 15, 10]; // Costs of bag, animal, bike, and ski/snowboard services (in that order)
 const serviceTotal = document.getElementById("service-total");
@@ -243,6 +245,16 @@ function increment(qtyID, serviceNo) {
         serviceTotal.innerText = "Additional Service Total: $" + (currentTotal + cost);
     }
 }
+
+// Handle page back/next button click events
+let prevPageButton = document.getElementById("nav-back");
+let nextPageButton = document.getElementById("nav-next");
+prevPageButton.addEventListener("click", prevPage());
+prevPageButton.addEventListener("click", nextPage());
+
+function prevPage() {}
+
+function nextPage() {}
 
 // Manage passenger information
 // Return object containing info for one passenger
