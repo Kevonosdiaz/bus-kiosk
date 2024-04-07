@@ -12,6 +12,7 @@ const numPassengers = Math.max(1, Number(sessionStorage.getItem("passengers")));
 const passInfo = []; // Store nth passengers info (object) at index n
 const statuses = [];
 const finishedPages = [2];
+disableConfirmBtn();
 
 // Contains name/email/phone, as well as additional services
 class PassengerInfoContainer extends HTMLElement {
@@ -135,6 +136,7 @@ class PassengerInfoContainer extends HTMLElement {
             <div class="status" id="status-container"></div>
             <button class="next" button id="nav-next">
                 <img
+                    id="nav-next-img"
                     class="offset-img"
                     src="../Images/Icons/Screens/black next.png"
                     alt="Next passenger button" />
@@ -252,6 +254,24 @@ let prevPageButton = document.getElementById("nav-back");
 let nextPageButton = document.getElementById("nav-next");
 prevPageButton.addEventListener("click", prevPage);
 nextPageButton.addEventListener("click", nextPage);
+
+// Prevent user from going to next passenger page
+function disableNextPage() {
+    let nextBtn = document.getElementById("nav-next");
+    let nextBtnImg = document.getElementById("nav-next-img");
+    nextBtnImg.src = "../Images/Icons/Screens/x circle black.png";
+    nextBtn.disabled = true;
+    nextBtn.className = "disabled";
+}
+
+// Allow user to go to next page (ex. when all fields are filled)
+function enableNextPage() {
+    let nextBtn = document.getElementById("nav-next");
+    let nextBtnImg = document.getElementById("nav-next-img");
+    nextBtnImg.src = "../Images/Icons/Screens/black next.png";
+    nextBtn.disabled = false;
+    nextBtn.className = "next";
+}
 
 // Update status bar, page header, field values to 'targetNo' page info. targetNo is actual page no, not index
 function swapPage(targetNo) {

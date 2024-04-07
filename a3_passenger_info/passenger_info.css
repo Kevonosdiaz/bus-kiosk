@@ -255,6 +255,10 @@ button:hover {
     color: #000;
 }
 
+.disabled {
+    background-color: grey;
+}
+
 .selected {
     background-color: #ffd192;
 }
