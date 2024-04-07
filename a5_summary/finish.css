@@ -72,14 +72,7 @@ body {
     justify-content: center;
     overflow:auto;
 }
-/* 
-.back,.reset {
-    display:none;
-} */
+
 .back, .confirm, .reset {
     display: none;
 }
-
-/* .confirm {
-    margin-left:auto;
-} */
