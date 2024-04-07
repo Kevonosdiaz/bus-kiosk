@@ -35,6 +35,7 @@ function disableConfirmBtn() {
     confirmBtnImg.src = "../Images/Icons/Screens/x circle black.png"
     confirmBtn.disabled = true
     confirmBtn.className = 'confirm-disabled'
+    confirmBtn.style.backgroundColor = '#C6C6C6'
   }
 
   function enableConfirmBtn() {
@@ -43,6 +44,7 @@ function disableConfirmBtn() {
     confirmBtnImg.src = "../Images/Icons/Screens/green next.png"
     confirmBtn.disabled = false
     confirmBtn.className = 'confirm'
+    confirmBtn.style.backgroundColor = '#FFFFFF'
   }
 
 class Header extends HTMLElement {
