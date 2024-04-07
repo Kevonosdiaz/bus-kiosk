@@ -38,6 +38,7 @@
   <script>
     if (sessionStorage.getItem('selectedOption') === null) {
       sessionStorage.setItem('selectedOption', "")
+      disableConfirmBtn()
     } else {
       var optionNum = sessionStorage.getItem('selectedOption')
       if (optionNum !== "") {
@@ -62,6 +63,9 @@
         map_toggle_img_r.src = "../Images/Icons/Screens/up-arrow.png"
         current_bottom_half.className = 'ds-bottom-half'
         current_top_half.className = 'ds-top-half-btn'
+        enableConfirmBtn()
+      } else {
+        disableConfirmBtn()
       }
       
     }
@@ -73,11 +77,6 @@
     const prevPageVarName = 'prevPage';
     var nextButtonPath = "";
     var prevButtonPath = "";
-    console.log(sessionStorage.getItem("origin"))
-    console.log(sessionStorage.getItem("destination"))
-    console.log(sessionStorage.getItem("departDate"))
-    console.log(sessionStorage.getItem("returnDate"))
-    console.log(sessionStorage.getItem("passengers"))
     
     // Waits until the page is fully loaded before executing
     document.addEventListener("DOMContentLoaded", function() {

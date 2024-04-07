@@ -29,6 +29,22 @@ function matchRoutes(
     return returnList
 }
 
+function disableConfirmBtn() {
+    var confirmBtn = document.getElementById('confirm')
+    var confirmBtnImg = document.getElementById('confirm-img')
+    confirmBtnImg.src = "../Images/Icons/Screens/x circle black.png"
+    confirmBtn.disabled = true
+    confirmBtn.className = 'confirm-disabled'
+  }
+
+  function enableConfirmBtn() {
+    var confirmBtn = document.getElementById('confirm')
+    var confirmBtnImg = document.getElementById('confirm-img')
+    confirmBtnImg.src = "../Images/Icons/Screens/green next.png"
+    confirmBtn.disabled = false
+    confirmBtn.className = 'confirm'
+  }
+
 class Header extends HTMLElement {
     connectedCallback() {
         this.innerHTML = `
@@ -65,7 +81,7 @@ class Header extends HTMLElement {
 
                 <button class="confirm" button id="confirm">
                     Next
-                    <img class="offset-img" src="../Images/Icons/Screens/green next.png" alt="Green checkmark" />
+                    <img class="offset-img" id="confirm-img" src="../Images/Icons/Screens/green next.png" alt="Green checkmark" />
                 </button>
             </div>
 
@@ -158,6 +174,7 @@ function handle_trip_item_click(optionNum) {
             radio_button.checked = false
             sessionStorage.setItem('selectedOption', "")
             map_toggle.className = 'ds-map-btn-hidden'
+            disableConfirmBtn()
         } else {
             radio_button.checked = true
             sessionStorage.setItem('selectedOption', optionNum)
@@ -169,6 +186,7 @@ function handle_trip_item_click(optionNum) {
             current_bottom_half.className = 'ds-bottom-half-visible'
             additional_details.className = 'add-details'
             map_toggle.className = 'ds-map-btn'
+            enableConfirmBtn()
         }
         
         
@@ -181,12 +199,14 @@ function handle_trip_item_click(optionNum) {
         additional_details.className = 'add-details-hidden'
         current_top_half.className = 'ds-top-half'
         current_bottom_half.className = 'ds-bottom-half'
+        disableConfirmBtn()
     } else {
         collapse_additional_details()
         additional_details.className = 'add-details'
         map_toggle.className = 'ds-map-btn'
         sessionStorage.setItem('selectedOption', optionNum)
         radio_button.checked = true
+        enableConfirmBtn()
     }
 
 
@@ -468,7 +488,6 @@ customElements.define('main-footer', Footer);
 customElements.define('trip-item', TripItem);
 customElements.define('trip-additional', AdditionalTripInfo);
 customElements.define('round-trip-additional', AdditionalRoundTripInfo);
-// customElements.define('trip-item-wrapper', TripItemWrapper);
 customElements.define('trip-item-container', TripItemContainer);
 customElements.define('alt-footer',Footer2);
 customElements.define('pay-footer',Footer3);

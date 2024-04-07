@@ -40,7 +40,6 @@
     if (sessionStorage.getItem('returnDate-saved') === null) {
       sessionStorage.setItem('returnDate-saved', '')
     }
-
   </script>
 </head>
 
@@ -147,13 +146,6 @@
         </div>
       </div>
     </div>
-    <!-- <div class="bottom-half">
-      <div class="ds-bottom-half">
-        <div class="ds-bottom-container">
-          <img src="../Images/map-directions.png">
-        </div>
-      </div>
-    </div> -->
     <empty-footer></empty-footer>
   </div>
 
@@ -194,6 +186,7 @@
           } else {
             hideRequiredTag(fieldName)
           }
+          validateFormState()
       }
     }
 
@@ -222,6 +215,41 @@
         sessionStorage.setItem('isRoundTrip', false)
         returnDateDiv.className = 'field-hidden'
       }
+      validateFormState()
+    }
+
+    function validateFormState() {
+      var origin = sessionStorage.getItem('origin')
+      var dest = sessionStorage.getItem('destination')
+      var departDate = sessionStorage.getItem('departDate')
+      var passengers = sessionStorage.getItem('passengers')
+      var isValid = (origin?.length > 0) && 
+                    (dest?.length > 0) && 
+                    (departDate?.length > 0) && 
+                    (Number(passengers) > 0)
+
+      if (sessionStorage.getItem('isRoundTrip') === 'true') {
+
+        var returnDate = sessionStorage.getItem('returnDate')
+        if (isValid && returnDate?.length > 0) {
+            enableConfirmBtn()
+        } else {
+            disableConfirmBtn()
+        }
+        
+        return isValid && (returnDate.length > 0)
+      } else {
+
+        if (isValid) {
+          enableConfirmBtn()
+        } else {
+          disableConfirmBtn()
+        }
+
+        return isValid
+      }
+
+      
     }
   </script>
 
@@ -263,6 +291,7 @@
       document.getElementById('returnDate-div').className = 'field-hidden'
     }
 
+    console.log(validateFormState())
   </script>
 
   <script>
@@ -295,7 +324,7 @@
       var a = div.getElementsByTagName('a');
 
       filterFunction(input, div, a);
-      hideRequiredTag('origin')
+      // hideRequiredTag('origin')
     }
 
     function filterDest() {
@@ -304,7 +333,7 @@
       var a = div.getElementsByTagName('a');
 
       filterFunction(input, div, a);
-      hideRequiredTag('destination')
+      // hideRequiredTag('destination')
     }
   </script>
 
@@ -320,6 +349,7 @@
         document.getElementById('originOptions').style.display = 'none';
         sessionStorage.setItem('origin', input.value) // sends that information to the session storage
         hideRequiredTag('origin')
+        console.log(validateFormState())
       });
     });
 
@@ -332,6 +362,7 @@
         document.getElementById('destOptions').style.display = 'none';
         sessionStorage.setItem('destination', input.value) // sends that information to the session storage
         hideRequiredTag('destination')
+        console.log(validateFormState())
       });
     });
 
