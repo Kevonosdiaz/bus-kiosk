@@ -102,11 +102,10 @@
             <img class="calendar_img" src="../Images/Icons/Screens/calendar black.png" alt="Schedule Calendar" />
             Depart Date
           </label>
-          <input oninput="handleInput('departDate', this.value)" required placeholder="dd/mm/yyyy"
-            id="depart-input" />
-            <span class="departDate-tag" id="departDate-tag"><i style="color: red">*</i></span>
+          <input oninput="handleInput('departDate', this.value)" required placeholder="dd/mm/yyyy" id="depart-input" />
+          <span class="departDate-tag" id="departDate-tag"><i style="color: red">*</i></span>
         </div>
-        
+
         <div class="slider-btn">
           <p>One Way Trip</p>
           <label class="switch">
@@ -121,9 +120,8 @@
             <img class="calendar_img" src="../Images/Icons/Screens/calendar black.png" alt="Schedule Calendar" />
             Return Date
           </label>
-          <input oninput="handleInput('returnDate', this.value)" required placeholder="dd/mm/yyyy"
-            id="return-input" />
-            <span class="returnDate-tag" id="returnDate-tag"><i style="color: red">*</i></span>
+          <input oninput="handleInput('returnDate', this.value)" required placeholder="dd/mm/yyyy" id="return-input" />
+          <span class="returnDate-tag" id="returnDate-tag"><i style="color: red">*</i></span>
         </div>
 
         <div class="passenger field">
@@ -205,9 +203,9 @@
 
         sessionStorage.setItem('isRoundTrip', true)
         returnDateDiv.className = 'field'
-        
+
       } else {
-        
+
         if (returnDateValue !== '') {
           sessionStorage.setItem('returnDate-saved', returnDateValue)
           sessionStorage.setItem('returnDate', '')
@@ -223,20 +221,20 @@
       var dest = sessionStorage.getItem('destination')
       var departDate = sessionStorage.getItem('departDate')
       var passengers = sessionStorage.getItem('passengers')
-      var isValid = (origin?.length > 0) && 
-                    (dest?.length > 0) && 
-                    (departDate?.length > 0) && 
-                    (Number(passengers) > 0)
+      var isValid = (origin?.length > 0) &&
+        (dest?.length > 0) &&
+        (departDate?.length > 0) &&
+        (Number(passengers) > 0)
 
       if (sessionStorage.getItem('isRoundTrip') === 'true') {
 
         var returnDate = sessionStorage.getItem('returnDate')
         if (isValid && returnDate?.length > 0) {
-            enableConfirmBtn()
+          enableConfirmBtn()
         } else {
-            disableConfirmBtn()
+          disableConfirmBtn()
         }
-        
+
         return isValid && (returnDate.length > 0)
       } else {
 
@@ -249,11 +247,11 @@
         return isValid
       }
 
-      
+
     }
   </script>
 
-<!-- this script mostly sets up the page based on the state of session variables -->
+  <!-- this script mostly sets up the page based on the state of session variables -->
   <script>
     if (sessionStorage.getItem('origin') !== "") {
       document.getElementById('origin-input').value = sessionStorage.getItem('origin')
