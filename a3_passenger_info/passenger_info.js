@@ -1,20 +1,27 @@
 let pName = "";
 let pEmail = "";
 let pPhone = "";
+// TODO Add checkboxes for ticket copy/notification (?) opt-in
 let pEmailNotif = false;
 let pPhoneNotif = false;
-let pBags = 0;
-let pAnimals = 0;
-let pBikes = 0;
-let pSkis = 0;
 let currentPage = 2; // Page number, not it's index number
 const numPassengers = Math.max(1, Number(sessionStorage.getItem("passengers")));
-const passInfo = []; // Store nth passengers info (object) at index n
+let passInfo = []; // Store nth passengers info (object) at index n
 const statuses = [];
 const finishedPages = [2];
 disableConfirmBtn();
 
+// Functions to fetch/push passenger info, using session variables
+function fetchPassInfo() {
+    passInfo = JSON.parse(sessionStorage.getItem("pInfo"));
+}
+
+function pushPassInfo() {
+    sessionStorage.setItem("pInfo", JSON.stringify(passInfo));
+}
+
 // Contains name/email/phone, as well as additional services
+// TODO Add info/help button for 1st page only
 class PassengerInfoContainer extends HTMLElement {
     connectedCallback() {
         for (let i = 0; i < 1; i++) {
@@ -195,19 +202,49 @@ const extraBags = document.getElementById("checked-bags");
 const animalTransport = document.getElementById("animal-transport");
 const bicycleStorage = document.getElementById("bicycle-storage");
 const skiSnowboard = document.getElementById("ski-snowboard");
-const servicesList = [extraBags, animalTransport, bicycleStorage, skiSnowboard]; // Store all services for easily selecting/deselecting
+const sList = [extraBags, animalTransport, bicycleStorage, skiSnowboard]; // Store all services for easily selecting/deselecting
+const sCount = [0, 0, 0, 0]; // Store qty of each service
 
 const SERVICELIMIT = 10; // max number of service count per service
 
+// Store current state of fields into variables
+function fetchFields() {
+    pName = document.getElementById("name-input").value;
+    pEmail = document.getElementById("email-input").value;
+    pPhone = document.getElementById("phone-input").value;
+    // Note: service quantities are stored in servicesCount, updated automatically
+}
+
+// Update passInfo for nth passenger
+function updatePassInfoN(n) {
+    names = pName.split(" "); // Assumes name in format "first last"
+    pInfo = createPInfo(
+        names[0],
+        names[1],
+        pEmail,
+        pEmailNotif,
+        pPhone,
+        pPhoneNotif,
+        sCount[0],
+        sCount[1],
+        sCount[2],
+        sCount[3]
+    );
+    passInfo[n] = pInfo;
+}
+
+// Fetch passenger object for nth passenger
+function getPassInfoN(n) {}
+
 // Remove 'selected' class to remove selected service background
 function deselect(serviceNo) {
-    let element = servicesList[serviceNo];
+    let element = sList[serviceNo];
     element.classList.remove("selected");
 }
 
 // Add 'selected' class to add selected service background
 function select(serviceNo) {
-    let element = servicesList[serviceNo];
+    let element = sList[serviceNo];
     element.classList.add("selected");
 }
 
@@ -224,9 +261,10 @@ function decrement(qtyID, serviceNo) {
     let count = parseQty(element.innerText);
     if (count === 1) deselect(serviceNo);
     if (count > 0) {
-        // Update qty # on label
+        // Update qty # on label + in count array
         count--;
         element.innerText = "Qty: " + count;
+        sCount[serviceNo] = count;
         // Update total cost
         let cost = serviceCosts[serviceNo];
         let currentTotal = parseInt(serviceTotal.innerText.split("$")[1]);
@@ -239,9 +277,10 @@ function increment(qtyID, serviceNo) {
     let count = parseQty(element.innerText);
     if (count === 0) select(serviceNo);
     if (count < SERVICELIMIT) {
-        // Update qty # on label
+        // Update qty # on label + in count array
         count++;
         element.innerText = "Qty: " + count;
+        sCount[serviceNo] = count;
         // Update total cost
         let cost = serviceCosts[serviceNo];
         let currentTotal = parseInt(serviceTotal.innerText.split("$")[1]);
@@ -274,6 +313,7 @@ function enableNextPage() {
 }
 
 // Update status bar, page header, field values to 'targetNo' page info. targetNo is actual page no, not index
+// TODO Show/hide required fields, help info pop-up for first page
 function swapPage(targetNo) {
     document.getElementById("passenger-header").innerText = `Passenger ${targetNo} Info`;
     currentPage = targetNo;
@@ -283,7 +323,6 @@ function swapPage(targetNo) {
 
 function prevPage() {
     if (currentPage === 1) return; // Don't switch on first page
-    // TODO validate input
     // Store any inputted fields into session vars
     // Change current page, status, and populated field values
     swapPage(currentPage - 1);
@@ -292,6 +331,7 @@ function prevPage() {
 function nextPage() {
     if (currentPage === numPassengers) return; // Don't switch on last page
     // Check if any required fields are left blank, allow change to next page if all filled
+
     // Change current page, status, and populated field values
     swapPage(currentPage + 1);
 }
