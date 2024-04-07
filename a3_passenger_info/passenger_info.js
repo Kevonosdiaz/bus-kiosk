@@ -7,7 +7,7 @@ let pBags = 0;
 let pAnimals = 0;
 let pBikes = 0;
 let pSkis = 0;
-let currentPage = 2;
+let currentPage = 2; // Page number, not it's index number
 const numPassengers = Math.max(1, Number(sessionStorage.getItem("passengers")));
 const passInfo = []; // Store nth passengers info (object) at index n
 const statuses = [];
@@ -124,8 +124,8 @@ class PassengerInfoContainer extends HTMLElement {
         }
 
         const statusBar = document.createElement("div");
+        statusBar.id = "status-bar";
         statusBar.innerHTML = `
-        <div id="status-bar">
             <button class="prev" button id="nav-back">
                 <img
                     class="offset-img"
@@ -139,7 +139,6 @@ class PassengerInfoContainer extends HTMLElement {
                     src="../Images/Icons/Screens/black next.png"
                     alt="Next passenger button" />
             </button>
-        </div>
         `;
         document.getElementById(`outer`).appendChild(statusBar);
     }
@@ -251,8 +250,8 @@ function increment(qtyID, serviceNo) {
 // Handle page back/next button click events
 let prevPageButton = document.getElementById("nav-back");
 let nextPageButton = document.getElementById("nav-next");
-prevPageButton.addEventListener("click", prevPage());
-prevPageButton.addEventListener("click", nextPage());
+prevPageButton.addEventListener("click", prevPage);
+nextPageButton.addEventListener("click", nextPage);
 
 // Update status bar, page header, field values to 'targetNo' page info. targetNo is actual page no, not index
 function swapPage(targetNo) {
@@ -263,14 +262,18 @@ function swapPage(targetNo) {
 }
 
 function prevPage() {
+    if (currentPage === 1) return; // Don't switch on first page
     // TODO validate input
     // Store any inputted fields into session vars
     // Change current page, status, and populated field values
+    swapPage(currentPage - 1);
 }
 
 function nextPage() {
+    if (currentPage === numPassengers) return; // Don't switch on last page
     // Check if any required fields are left blank, allow change to next page if all filled
     // Change current page, status, and populated field values
+    swapPage(currentPage + 1);
 }
 
 // Manage passenger information
