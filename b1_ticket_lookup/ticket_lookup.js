@@ -110,6 +110,7 @@ function verifyInfo() {
 
 nextBtn.onclick = function () {
     if (verifyCode()) {
+        sessionStorage.setItem('seatsSelected', JSON.stringify([0,0,0,0,0,0,0,0,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]))
         location.href = "../b2_modify_stream/b2.1_modify_booking_options.html";
     } else {
         var div = document.getElementById('vbox');

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>BlueArrow - Transaction Completed</title>
+  <link rel="stylesheet" href="../Templates/1-box-template.css">
+  <link rel="stylesheet" href="../Templates/styles.css" />
+  <link rel="stylesheet" href="confirm.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <script src="../Templates/components.js" type="text/javascript" defer></script>
+</head>
+
+
+<body class="main-body">
+  <div class="outer-div">
+    <main-header ></main-header>
+    <div class="outer-box">
+      <p class="title_fin">Would you like to save your seat changes?</p>
+      <div class="field2">
+        <label for="Save" class="save_label" id="confirmSeatsLabel">
+            <img class="button_icon" src="../Images/Icons/Screens/save black.png" alt="Save Changes" />
+            Save Changes
+        </label>
+    </div>
+    </div>
+    <empty-footer ></empty-footer>
+  </div>
+  <script>
+    const saveSeats = document.getElementById('confirmSeatsLabel');
+    saveSeats.onclick = function () {
+        sessionStorage.setItem("seatsSelected", sessionStorage.getItem("temp-selectedSeats"));
+        window.location = "../b2_modify_stream/b2.1_modify_booking_options.html";
+    }
+  </script>
+</body>
+
+</html>

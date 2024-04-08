@@ -1,0 +1,113 @@
+::root {
+    /* Example of variables: Use like 'color: var(--white);' */
+    --black: #000;
+    --white: #fff;
+}
+
+.title_fin {
+    margin-bottom: 15px;
+    text-align: center;
+    font-size: 25px;
+    font-weight: 600;
+    padding:5px;
+    border-radius: 15px;
+}
+
+body {
+    /* Decide different fonts to use (provide sans-serif as a "fallback") */
+    font-family: sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--grey2);
+}
+
+.main-body {
+    font-family:"Poppins", sans-serif;
+}
+
+.outer-box {
+    overflow:auto;
+    border:none;
+    background-color:white;
+}
+
+.header {
+    border:none;
+    border-radius:8px 8px 0px 0px;
+}
+
+.footer {
+    border:none;
+    border-radius:0px 0px 8px 8px;
+}
+
+.outer-box{
+    overflow:auto;
+    display:flex;
+    flex-direction:column;
+    align-items: center;
+    justify-content: center;
+}
+
+.main-content {
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow:auto;
+}
+
+.confirm {
+    visibility: hidden;
+}
+
+img {
+    height: 40px;
+    width: 60px;
+    align-self: center;
+}
+
+
+.field2 {
+    gap: 0px;
+    padding-left:8px;
+    padding-right:8px;
+    width:50%;
+    filter: drop-shadow(2px 2px 1px var(--grey));
+}
+
+.button_icon {
+    width: 40px;
+    height: 40px;
+}
+
+.save_label {
+    flex:1;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    width: 50%;
+    background-color: rgb(238, 238, 238);
+    /* background-color: #ffd192; */
+    gap:7px;
+
+    border: 2px solid transparent;
+
+    font-size: 30px;
+    font-weight: 400;
+
+    border-radius: 30px;
+    flex: 0 0 100%;
+    width:100%;
+    background-color: rgb(113, 151, 255);
+}
+
+.save_label:hover {
+    /* background-color: rgb(255, 209, 146); */
+
+    border: 2px solid grey;
+    cursor:pointer;
+}
