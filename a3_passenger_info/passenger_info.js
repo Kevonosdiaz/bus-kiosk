@@ -4,12 +4,13 @@ let pPhone = "";
 // TODO Add checkboxes for ticket copy/notification (?) opt-in
 let pEmailNotif = false;
 let pPhoneNotif = false;
-let currentPage = 2; // Page number, not it's index number
+let currentPage = 1; // Page number, not it's index number
 const numPassengers = Math.max(1, Number(sessionStorage.getItem("passengers")));
 let passInfo = []; // Store nth passengers info (object) at index n
 const statuses = [];
-const finishedPages = [2];
+const finishedPages = [];
 disableConfirmBtn();
+let totalServiceCost;
 
 // Contains name/email/phone, as well as additional services
 // TODO Add info/help button for 1st page only
@@ -27,21 +28,21 @@ class PassengerInfoContainer extends HTMLElement {
                     <img src="../Images/Icons/Screens/personal info black.png" alt="ID card icon" />
                     Name
                 </label>
-                <input oninput="pName=this.value" required placeholder="firstname lastname" id="name-input" />
+                <input oninput="handleInput()" required placeholder="firstname lastname" id="name-input" />
             </div>
             <div class="field">
                 <label for="email-input" class="label">
                     <img src="../Images/Icons/Screens/email black.png" alt="Email icon" />
                     Email
                 </label>
-                <input required placeholder="ex. myEmail@mail.com" id="email-input" />
+                <input required placeholder="ex. myEmail@mail.com" id="email-input" oninput="handleInput()" />
             </div>
             <div class="field">
                 <label for="phone-input" class="label">
                     <img src="../Images/Icons/Screens/phone black.png" alt="Phone icon" />
                     Phone
                 </label>
-                <input type="text" required placeholder="ex. 1112223333" id="phone-input" />
+                <input type="text" required placeholder="ex. 1112223333" id="phone-input" oninput="handleInput()"/>
             </div>
         </div>
         <div class="services">
@@ -214,8 +215,23 @@ function fetchFields() {
     // Note: service quantities are stored in servicesCount, updated automatically
 }
 
+// Reset value of name, email, phone fields
+// TODO reset notif checkboxes too!
+function clearFields() {
+    pName = "";
+    pEmail = "";
+    pEmailNotif = false;
+    pPhone = "";
+    pPhoneNotif = false;
+    document.getElementById("name-input").value = "";
+    document.getElementById("email-input").value = "";
+    document.getElementById("phone-input").value = "";
+}
+
 // Populate fields based on nth passenger's currently stored info
 function restoreFields(n) {
+    if (passInfo.length <= n) return;
+    console.log("Attempting to restore field");
     let p = passInfo[n];
     // Handle info fields
     pName = p.firstName + " " + p.lastName;
@@ -253,6 +269,7 @@ function updatePassInfoN(n) {
         sCount[2],
         sCount[3]
     );
+    console.log(JSON.stringify(pInfo));
     passInfo[n] = pInfo;
 }
 
@@ -314,8 +331,9 @@ function setQty(qtyID, serviceNo, newQty) {
     let element = document.getElementById(qtyID);
     let oldQty = parseQty(element.innerText);
 
-    if (newQty === 1) deselect(serviceNo);
-    if (oldQty > 0) {
+    if (newQty === 0) deselect(serviceNo);
+    else select(serviceNo);
+    if (oldQty !== newQty) {
         let diff = newQty - oldQty; // Allow for increasing/decreasing service total cost
         let costPerServ = serviceCosts[serviceNo];
         let currentTotal = parseInt(serviceTotal.innerText.split("$")[1]);
@@ -323,6 +341,17 @@ function setQty(qtyID, serviceNo, newQty) {
         serviceTotal.innerText = "Additional Service Total: $" + newCost;
     }
     element.innerText = "Qty: " + newQty;
+}
+
+function clearQty() {
+    let ids = ["bag-count", "animal-count", "bike-count", "skisnow-count"];
+    for (let i = 0; i < ids.length; i++) {
+        sCount[i] = 0;
+        let element = document.getElementById(ids[i]);
+        element.innerText = "Qty: 0";
+        deselect(i);
+    }
+    serviceTotal.innerText = "Additional Service Total: $0";
 }
 
 // Handle page back/next button click events
@@ -361,21 +390,34 @@ function swapPage(targetNo) {
 function prevPage() {
     if (currentPage === 1) return; // Don't switch on first page
     // Store any inputted fields into session vars
-    // Change current page, status, and populated field values
-    swapPage(currentPage - 1);
-    // Restore fields for prev page if saved
-    if (passInfo[currentPage - 1] != null) {
-        restoreFields(currentPage);
+    if (!checkStrictReqEmpty() && validateName()) updatePassInfoN(currentPage - 1);
+    // Restore fields for prev page if saved (should be saved)
+    console.log("About to check for restoring prev!");
+    if (passInfo[currentPage - 2] !== null) {
+        restoreFields(currentPage - 2);
+        handleInput();
+    } else {
+        clearFields();
+        clearQty();
     }
+    swapPage(currentPage - 1); // Change current page, status, and populated field values
 }
 
 function nextPage() {
     if (currentPage === numPassengers) return; // Don't switch on last page
     updatePassInfoN(currentPage - 1); // Update for current passenger (*0-indexed fn)
     swapPage(currentPage + 1); // Change current page/status
-    // Restore fields for next page if saved
+
     if (passInfo[currentPage] != null) {
+        // Restore fields for next page if saved
         restoreFields(currentPage);
+        handleInput();
+        enableNextPage();
+    } else {
+        // Clear and disable ability to move to next page otherwise
+        disableNextPage();
+        clearFields();
+        clearQty();
     }
 }
 
@@ -411,16 +453,40 @@ function createPInfo(
 // sessionStorage.setItem("routeList", JSON.stringify(routeList));
 
 document.addEventListener("DOMContentLoaded", function () {
-    // Load first subpage information right away
+    // Load first subpage information right away, initialize some stuff
     fetchPassInfo();
+    if (passInfo === null) passInfo = [];
+    if (finishedPages.length === 0) {
+        for (let i = 0; i < numPassengers; i++) finishedPages.push(false);
+    }
     restoreFields(0);
+    let size = passInfo.length;
+    if (size === 0) disableNextPage();
+    if (size < numPassengers) disableConfirmBtn();
 });
 // Update page/information on arrow clicks
 // Make sure 1st left and last right arrow transitions to next page
 // Update numPassengers per click
 // document.addEventListener("");
 
-// TODO oninput listeners => check for fields and re-enable/disable
+// oninput listener handler => check for fields and re-enable/disable next button
+function handleInput() {
+    fetchFields();
+    console.log(checkEmpty());
+    if (currentPage === 1) {
+        // Different required fields for first
+        if (checkEmpty() || !validateAllFields()) {
+            disableNextPage();
+        } else enableNextPage();
+    } else if (currentPage === numPassengers) {
+        // Check if we can enable next page btn
+        if (checkStrictReqEmpty() || !validateName()) disableConfirmBtn();
+        else enableConfirmBtn();
+    } else {
+        if (checkStrictReqEmpty() || !validateName()) disableNextPage();
+        else enableNextPage();
+    }
+}
 
 // Check if all fields are empty (all required for first passsenger/leader)
 function checkEmpty() {
@@ -442,3 +508,24 @@ function validateAllFields() {
 function validateName() {
     return /[a-zA-Z]+\s+[a-zA-Z]+/.test(pName);
 }
+
+// Strings to construct URL variable to pass
+const currentPageIndex = "3";
+const nextPageIndex = "4";
+const prevPageVarName = "prevPage";
+var nextButtonPath = "";
+var prevButtonPath = "";
+
+// Waits until the page is fully loaded before executing
+document.addEventListener("DOMContentLoaded", function () {
+    // sends the visit order (index string) to the js file
+    visitOrder = readURLData("prevPage");
+    // sets the previous page url based on the index at the end of the visit order string
+    prevButtonPath =
+        indexToPath(visitOrder.slice(-1)) + "?" + prevPageVarName + "=" + visitOrder.slice(0, visitOrder.length - 1);
+    console.log(prevButtonPath);
+    setPreviousPage(prevButtonPath);
+    // creates the url path for the next button with a variable that stores the visit order
+    nextButtonPath = indexToPath(nextPageIndex) + "?" + prevPageVarName + "=" + visitOrder.concat(currentPageIndex);
+    setNextPage(nextButtonPath);
+});
