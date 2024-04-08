@@ -42,7 +42,7 @@
     align-items: center;
     justify-content: center;
     gap: 1px;
-    .field, .origin_field, .switch, .passenger {
+    .switch  {
         filter: drop-shadow(2px 2px 1px var(--grey));
     }
     
