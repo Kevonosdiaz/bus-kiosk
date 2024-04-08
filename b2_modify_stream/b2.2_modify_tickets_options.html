@@ -9,7 +9,6 @@
   <link rel="stylesheet" href="b2.1_style.css" />
   <link rel="stylesheet" href="b2.2_style.css" />
   <link rel="stylesheet" href="../Templates/styles.css" />
-  <script src="modify.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">  
@@ -20,33 +19,35 @@
   <div class="outer-div">
     <main-header ></main-header>
     <div class="top-half">
-      <p class="booking_title">Booking #BUS123</p>
+      <p class="booking_title">Modifying Tickets for Booking #BUS123</p>
         <ul class="booking_sum">
-          <p class="total_item1">New Total</p>
+          <p class="total_item1">Original Total</p>
           <p class="total_item2">$149.97</p>
+          <p class="ntotal_item1">New Total</p>
+          <p class="ntotal_item2" id="new_total">$149.97</p>
         </ul>
     </div>
     <div class="bottom-half">
 
-      <details>
-        <summary class="sum_box"><input type="radio" value="select" name="sum_box"><p class="sum_p">Ticket #1<br>Gus Ryder</p><p class="sum_total">Cost: $44.99</p></summary>
+      <details id="ticket1">
+        <summary class="sum_box"><input type="radio" value="1" name="sum_box"><p class="sum_p">Ticket #1<br>Gus Ryder</p><p class="sum_total">Cost: $44.99</p></summary>
         <p>
           Ticket Cost - $29.99 <br>
           1x Animal Transport - $15.00
         </p>
       </details>
       
-      <details>
-        <summary class="sum_box"><input type="radio" value="select" name="sum_box"><p class="sum_p">Ticket #2<br>Mo Torbus</p><p class="sum_total">Cost: $54.99</p></summary>
+      <details id="ticket2">
+        <summary class="sum_box"><input type="radio" value="2" name="sum_box"><p class="sum_p">Ticket #2<br>Mo Torbus</p><p class="sum_total">Cost: $54.99</p></summary>
         <p>
           Ticket Cost - $29.99 <br>
           1x Extra Bag - $10.00 <br>
           1x Bicycle Storage - $15.00 <br>
         </p>
       </details>
-      <details>
+      <details id="ticket3">
         <summary class="sum_box">
-          <input type="radio" value="select" name="sum_box"><p class="sum_p">Ticket #3<br>Carrie Awning</p><p class="sum_total">Cost: $49.99</p>
+          <input type="radio" value="3" name="sum_box"><p class="sum_p">Ticket #3<br>Carrie Awning</p><p class="sum_total">Cost: $49.99</p>
         </summary>
         <p>
           Ticket Cost - $29.99 <br>
@@ -87,14 +88,8 @@
   modifyTicketbtn.onclick = function (){
     window.location.href = "b2.3_edit_ticket.html";
   }
-
-  const backBtn = document.getElementById('back');
-  backBtn.removeEventListener('click');
-  backBtn.onclick = function () {
-    window.href.location="./b2.1_modify_tickets_options.html";
-  }
 </script>
 <script src="../Templates/components.js" type="text/javascript"></script>
-
+<script src="modify.js"></script>
 
 </html>
