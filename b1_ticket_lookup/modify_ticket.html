@@ -61,7 +61,7 @@
               </div>
             <div class="verification-box" id="vbox">
                 <p><small><b>Verify Your Email</b></small><br><small><small>Please enter the verification code sent to myemail@mail.com</small></small></p>
-                <input class="verificationcode" required placeholder="Verification Code" id="code-input"/>
+                <input class="verificationcode" required placeholder="Verification Code" id="code-input" oninput="handleInput('vcode', this.value)"/>
                 <button class="v_next" id="next">Next</button>
                 <button id="resent">Resend code to Email</button>
                 <button id="resent">Send code to Phone</button>
@@ -95,22 +95,5 @@
   </script>
 
 </body>
-<script>
-    function handleInput(fieldName, value) {
-        switch (fieldName) {
-          case 'name':
-          case 'email':
-          case 'phone':
-          case 'bookingid':
-            sessionStorage.setItem(fieldName, value)
-            if (value === '') {
-              showRequiredTag(fieldName)
-            } else {
-              hideRequiredTag(fieldName)
-            }
-            validateFormState()
-        }
-      }
-</script>
 
 </html>
