@@ -11,15 +11,6 @@ const statuses = [];
 const finishedPages = [2];
 disableConfirmBtn();
 
-// Functions to fetch/push passenger info, using session variables
-function fetchPassInfo() {
-    passInfo = JSON.parse(sessionStorage.getItem("pInfo"));
-}
-
-function pushPassInfo() {
-    sessionStorage.setItem("pInfo", JSON.stringify(passInfo));
-}
-
 // Contains name/email/phone, as well as additional services
 // TODO Add info/help button for 1st page only
 class PassengerInfoContainer extends HTMLElement {
@@ -192,6 +183,15 @@ function updateStatus() {
     }
 }
 
+// Functions to fetch/push passenger info, using session variables
+function fetchPassInfo() {
+    passInfo = JSON.parse(sessionStorage.getItem("pInfo"));
+}
+
+function pushPassInfo() {
+    sessionStorage.setItem("pInfo", JSON.stringify(passInfo));
+}
+
 // TODO consider allowing ability to switch to page N (or consider as "for future development")
 // function switchPage(pageNo) {}
 
@@ -214,6 +214,30 @@ function fetchFields() {
     // Note: service quantities are stored in servicesCount, updated automatically
 }
 
+// Populate fields based on nth passenger's currently stored info
+function restoreFields(n) {
+    let p = passInfo[n];
+    // Handle info fields
+    pName = p.firstName + " " + p.lastName;
+    pEmail = p.email;
+    pEmailNotif = p.emailNotif;
+    pPhone = p.phone;
+    pPhoneNotif = p.phoneNotif;
+    // TODO Modify when notif is added
+    document.getElementById("name-input").value = pName;
+    document.getElementById("email-input").value = pEmail;
+    document.getElementById("phone-input").value = pPhone;
+    // Handle additional services
+    sCount[0] = p.extraBags;
+    sCount[1] = p.animalTransport;
+    sCount[2] = p.bike;
+    sCount[3] = p.skiSnow;
+    setQty("bag-count", 0, sCount[0]);
+    setQty("animal-count", 1, sCount[1]);
+    setQty("bike-count", 2, sCount[2]);
+    setQty("skisnow-count", 3, sCount[3]);
+}
+
 // Update passInfo for nth passenger
 function updatePassInfoN(n) {
     names = pName.split(" "); // Assumes name in format "first last"
@@ -232,9 +256,6 @@ function updatePassInfoN(n) {
     passInfo[n] = pInfo;
 }
 
-// Fetch passenger object for nth passenger
-function getPassInfoN(n) {}
-
 // Remove 'selected' class to remove selected service background
 function deselect(serviceNo) {
     let element = sList[serviceNo];
@@ -249,8 +270,8 @@ function select(serviceNo) {
 
 // Helper fn used to get count # from strings of pattern "Qty: #"
 function parseQty(str) {
-    arr = str.split(" "); // delimit by space
-    count = parseInt(arr[1]); // fetch #, parse as int
+    let arr = str.split(" "); // delimit by space
+    let count = parseInt(arr[1]); // fetch #, parse as int
     return count;
 }
 
@@ -285,6 +306,23 @@ function increment(qtyID, serviceNo) {
         let currentTotal = parseInt(serviceTotal.innerText.split("$")[1]);
         serviceTotal.innerText = "Additional Service Total: $" + (currentTotal + cost);
     }
+}
+
+// Like increment() and decrement(), but designed for restoring page info
+// Directly sets value of qty, and adjusts service cost total
+function setQty(qtyID, serviceNo, newQty) {
+    let element = document.getElementById(qtyID);
+    let oldQty = parseQty(element.innerText);
+
+    if (newQty === 1) deselect(serviceNo);
+    if (oldQty > 0) {
+        let diff = newQty - oldQty; // Allow for increasing/decreasing service total cost
+        let costPerServ = serviceCosts[serviceNo];
+        let currentTotal = parseInt(serviceTotal.innerText.split("$")[1]);
+        let newCost = currentTotal + diff * costPerServ;
+        serviceTotal.innerText = "Additional Service Total: $" + newCost;
+    }
+    element.innerText = "Qty: " + newQty;
 }
 
 // Handle page back/next button click events
@@ -331,8 +369,11 @@ function nextPage() {
     if (currentPage === numPassengers) return; // Don't switch on last page
     // Check if any required fields are left blank, allow change to next page if all filled
 
-    // Change current page, status, and populated field values
-    swapPage(currentPage + 1);
+    swapPage(currentPage + 1); // Change current page/status
+    // Restore fields for next page if saved
+    if (passInfo[currentPage] != null) {
+        restoreFields(currentPage);
+    }
 }
 
 // Manage passenger information
@@ -366,8 +407,11 @@ function createPInfo(
 // For future reference:
 // sessionStorage.setItem("routeList", JSON.stringify(routeList));
 
-// TODO On subpage load: populate fields with saved info if stored
-
+document.addEventListener("DOMContentLoaded", function () {
+    // Load first subpage information right away
+    fetchPassInfo();
+    restoreFields(0);
+});
 // Update page/information on arrow clicks
 // Make sure 1st left and last right arrow transitions to next page
 // Update numPassengers per click
