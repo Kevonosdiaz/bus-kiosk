@@ -68,6 +68,7 @@ function verifyInfo() {
             div.style.display = "none";
         } else {
             div.style.display = "flex";
+            document.getElementById('vbox_text').innerText = "Please enter the verification code sent to \n" + String(sessionStorage.getItem('m-email'));
             verifyLabel.style.display = 'none';
         }
     }
