@@ -216,20 +216,33 @@
       validateFormState()
     }
 
+    function validateString(stringToValidate, type) {
+      switch (type) {
+        case 'origin':
+        case 'destination':
+          return /^[a-zA-Z]+\,\ [a-zA-Z]{2}$/.test(stringToValidate)
+
+        case 'departDate':
+        case 'returnDate':
+          return /^([0-9]{1,2}\/[0-9]{1,2}\/[0-9]{4})$/.test(stringToValidate)
+        default:
+          return false
+      }
+    }
+
     function validateFormState() {
       var origin = sessionStorage.getItem('origin')
       var dest = sessionStorage.getItem('destination')
       var departDate = sessionStorage.getItem('departDate')
       var passengers = sessionStorage.getItem('passengers')
-      var isValid = (origin?.length > 0) &&
-        (dest?.length > 0) &&
-        (departDate?.length > 0) &&
-        (Number(passengers) > 0)
+      var isValid = validateString(origin, 'origin') &&
+                    validateString(dest, 'destination') &&
+                    validateString(departDate, 'departDate')
 
       if (sessionStorage.getItem('isRoundTrip') === 'true') {
 
         var returnDate = sessionStorage.getItem('returnDate')
-        if (isValid && returnDate?.length > 0) {
+        if (isValid && validateString(returnDate, 'returnDate')) {
           enableConfirmBtn()
         } else {
           disableConfirmBtn()
