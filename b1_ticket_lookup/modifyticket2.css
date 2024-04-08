@@ -312,8 +312,6 @@ label img.calendar_img {
 }
 
 .verify_label:hover {
-    /* background-color: rgb(255, 209, 146); */
-
     border: 2px solid grey;
     cursor:not-allowed;
 }
@@ -324,5 +322,15 @@ label img.calendar_img {
 }
 
 .v_next {
-    background-color: rgb(113, 151, 255);
+    background-color:#C6C6C6;
+    color:#5D5D5D;
+}
+
+.v_next:hover {
+    border: 2px solid grey;
+    cursor:not-allowed;
+}
+
+.resend:hover {
+    border: 2px solid grey;
 }

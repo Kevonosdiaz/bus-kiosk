@@ -1,4 +1,5 @@
 const verifyLabel = document.getElementById('verifyLabel');
+const nextBtn = document.getElementById('next');
 
 sessionStorage.setItem('m-name', "")
 sessionStorage.setItem('m-email', "")
@@ -21,6 +22,17 @@ function handleInput(fieldName, value) {
             verifyLabel.style.backgroundColor = "#C6C6C6";
             verifyLabel.style.color = "#5D5D5D";
         }
+      case 'm-vcode':
+        sessionStorage.setItem(fieldName, value)
+        if (verifyCode()) {
+            nextBtn.style.backgroundColor = "#7197FF";
+            nextBtn.style.color = "#000000";
+            nextBtn.style.cursor = 'pointer';
+        } else {
+            nextBtn.style.cursor = 'not-allowed';
+            nextBtn.style.backgroundColor = "#C6C6C6";
+            nextBtn.style.color = "#5D5D5D";
+        }
     }
   }
 
@@ -33,11 +45,17 @@ function checkEmpty() {
 }
 
 function checkFormat() {
-    if ( (/[a-zA-Z]+\s+[a-zA-Z]+/.test(sessionStorage.getItem('m-name'))) && (/\@/.test(sessionStorage.getItem('m-email'))) && (/^\d{10}$/g.test(sessionStorage.getItem('m-phone'))) && (/^[a-zA-Z0-9]{6}$/.test(sessionStorage.getItem('m-bookingid')))) {
-        console.log(1)
+    if ( (/[a-zA-Z]+\s+[a-zA-Z]+/.test(sessionStorage.getItem('m-name'))) && (/\@/.test(sessionStorage.getItem('m-email'))) && (/^\d{10}$/.test(sessionStorage.getItem('m-phone'))) && (/^[a-zA-Z0-9]{6}$/.test(sessionStorage.getItem('m-bookingid')))) {
         return true
     } else {
-        console.log(0)
+        return false
+    }
+}
+
+function verifyCode() {
+    if ( /^\d{6}$/.test(sessionStorage.getItem('m-vcode'))) {
+        return true
+    } else {
         return false
     }
 }
@@ -56,8 +74,11 @@ function verifyInfo() {
   });
 }
 
-document.getElementById('next').onclick = function () {
-    location.href = "../b2_modify_stream/b2.1_modify_booking_options.html";
+nextBtn.onclick = function () {
+    if (verifyCode()) {
+        location.href = "../b2_modify_stream/b2.1_modify_booking_options.html";
+    }
+    
 };
 
 document.getElementById('back').onclick = function () {
