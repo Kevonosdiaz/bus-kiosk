@@ -231,7 +231,7 @@ function clearFields() {
 // Populate fields based on nth passenger's currently stored info
 function restoreFields(n) {
     if (passInfo.length <= n) return;
-    console.log("Attempting to restore field");
+    // console.log("Attempting to restore field");
     let p = passInfo[n];
     // Handle info fields
     pName = p.firstName + " " + p.lastName;
@@ -269,7 +269,7 @@ function updatePassInfoN(n) {
         sCount[2],
         sCount[3]
     );
-    console.log(JSON.stringify(pInfo));
+    // console.log(JSON.stringify(pInfo));
     passInfo[n] = pInfo;
 }
 
@@ -384,7 +384,7 @@ function swapPage(targetNo) {
     document.getElementById("passenger-header").innerText = `Passenger ${targetNo} Info`;
     currentPage = targetNo;
     updateStatus();
-    index = targetNo - 1;
+    // let index = targetNo - 1;
 }
 
 function prevPage() {
@@ -392,7 +392,7 @@ function prevPage() {
     // Store any inputted fields into session vars
     if (!checkStrictReqEmpty() && validateName()) updatePassInfoN(currentPage - 1);
     // Restore fields for prev page if saved (should be saved)
-    console.log("About to check for restoring prev!");
+    // console.log("About to check for restoring prev!");
     if (passInfo[currentPage - 2] !== null) {
         restoreFields(currentPage - 2);
         handleInput();
@@ -406,7 +406,6 @@ function prevPage() {
 function nextPage() {
     if (currentPage === numPassengers) return; // Don't switch on last page
     updatePassInfoN(currentPage - 1); // Update for current passenger (*0-indexed fn)
-    swapPage(currentPage + 1); // Change current page/status
 
     if (passInfo[currentPage] != null) {
         // Restore fields for next page if saved
@@ -419,6 +418,7 @@ function nextPage() {
         clearFields();
         clearQty();
     }
+    swapPage(currentPage + 1); // Change current page/status
 }
 
 // Manage passenger information
@@ -472,7 +472,7 @@ document.addEventListener("DOMContentLoaded", function () {
 // oninput listener handler => check for fields and re-enable/disable next button
 function handleInput() {
     fetchFields();
-    console.log(checkEmpty());
+    // console.log(checkEmpty());
     if (currentPage === 1) {
         // Different required fields for first
         if (checkEmpty() || !validateAllFields()) {
@@ -480,10 +480,13 @@ function handleInput() {
         } else enableNextPage();
     } else if (currentPage === numPassengers) {
         // Check if we can enable next page btn
-        if (checkStrictReqEmpty() || !validateName()) disableConfirmBtn();
-        else enableConfirmBtn();
+        if (checkStrictReqEmpty() || !validateRequiredOrFilledFields()) disableConfirmBtn();
+        else {
+            console.log("Enabling Confirm button!");
+            enableConfirmBtn();
+        }
     } else {
-        if (checkStrictReqEmpty() || !validateName()) disableNextPage();
+        if (checkStrictReqEmpty() || !validateRequiredOrFilledFields()) disableNextPage();
         else enableNextPage();
     }
 }
@@ -502,6 +505,16 @@ function checkStrictReqEmpty() {
 // Use regex to validate formatting of all fields
 function validateAllFields() {
     return validateName() && /\@/.test(pEmail) && /^\d{10}$/g.test(pPhone);
+}
+
+// If email/phone are filled, they should be checked as well, even if not required
+function validateRequiredOrFilledFields() {
+    let name = validateName();
+    let email = true;
+    let phone = true;
+    if (pEmail !== "") email = /\@/.test(pEmail);
+    if (pPhone !== "") phone = /^\d{10}$/g.test(pPhone);
+    return name && email && phone;
 }
 
 // Validate just name, which is required for all passengers
@@ -523,7 +536,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // sets the previous page url based on the index at the end of the visit order string
     prevButtonPath =
         indexToPath(visitOrder.slice(-1)) + "?" + prevPageVarName + "=" + visitOrder.slice(0, visitOrder.length - 1);
-    console.log(prevButtonPath);
+    // console.log(prevButtonPath);
     setPreviousPage(prevButtonPath);
     // creates the url path for the next button with a variable that stores the visit order
     nextButtonPath = indexToPath(nextPageIndex) + "?" + prevPageVarName + "=" + visitOrder.concat(currentPageIndex);
