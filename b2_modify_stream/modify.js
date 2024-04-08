@@ -63,16 +63,13 @@ cancelAcceptbtn.onclick = function () {
   if (rbutton != null) {
     document.getElementById('cancelConfirm').style.display = 'none';
     var ticketnum = String(rbutton.value);
-    console.log(ticketnum)
     for (var i = 0; i < tickets.length; i++) {
       if (ticketnum == tickets[i][tnum_i])  {
         tickets.splice(i, 1);
-        console.log("found")
       }
     }
     switch (ticketnum){
       case "1":
-        console.log("bye")
         document.getElementById('ticket1').style.display = "none";
         break;
       case "2":
@@ -82,8 +79,8 @@ cancelAcceptbtn.onclick = function () {
         document.getElementById('ticket3').style.display = "none";
         break;
     }
-      
-    console.log(tickets)
+    
+    rbutton.checked = false;
     updateText()
   }
 }
@@ -93,7 +90,6 @@ cancelTicketbtn.onclick = function(){
   if (document.querySelector('input[type="radio"]:checked') != null)
     document.getElementById('cancelConfirm').style.display = 'block';
 }
-
 
 calcTotal()
 old_total = total
