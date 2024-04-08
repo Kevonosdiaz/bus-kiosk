@@ -29,7 +29,7 @@
                         <label for="name-input" class="label">
                             <img src="../Images/Icons/Screens/personal info black.png" alt="ID card icon" />Passenger Name<span style="color: red">*</span>
                         </label>
-                        <input required placeholder="First name Last name" id="name-input" oninput="handleInput('m-name', this.value)"/>
+                        <input required placeholder="ex. FirstName LastName" id="name-input" oninput="handleInput('m-name', this.value)"/>
                     </div>
                     <div class="field">
                         <label for="email-input" class="label">
@@ -41,13 +41,13 @@
                         <label for="phone-input" class="label">
                             <img src="../Images/Icons/Screens/phone black.png" alt="Phone icon" />Phone<span style="color: red">*</span>
                         </label>
-                        <input required placeholder="ex. (111) 222 3333" id="phone-input" oninput="handleInput('m-phone', this.value)"/>
+                        <input required placeholder="ex. 1112223333" id="phone-input" oninput="handleInput('m-phone', this.value)"/>
                     </div>
                     <div class="field">
                         <label for="ticketno-input" class="label">
                             <img src="../Images/Icons/Screens/ticket black.png" alt="Ticket icon" />Booking Number<span style="color: red">*</span>
                         </label>
-                        <input required placeholder="ex. A12345" id="ticketno-input" oninput="handleInput('m-bookingid', this.value)"/>
+                        <input required placeholder="ex. A12Bc3" id="ticketno-input" oninput="handleInput('m-bookingid', this.value)"/>
                     </div>
                 </div>
             </div>
@@ -61,10 +61,10 @@
               </div>
             <div class="verification-box" id="vbox">
                 <p><small><b>Verify Your Email</b></small><br><small><small>Please enter the verification code sent to myemail@mail.com</small></small></p>
-                <input class="verificationcode" required placeholder="Verification Code" id="code-input" oninput="handleInput('m-vcode', this.value)"/>
+                <input class="verificationcode" required placeholder="ex. 123456" id="code-input" oninput="handleInput('m-vcode', this.value)"/>
                 <button class="v_next" id="next">Next</button>
-                <button id="resent">Resend code to Email</button>
-                <button id="resent">Send code to Phone</button>
+                <button class="resend" id="resent">Resend code to Email</button>
+                <button class="resend" id="resent">Send code to Phone</button>
             </div>
         </div>
     </div>
