@@ -19,6 +19,24 @@
 <body class="main-body">
   <div class="outer-div">
     <main-header ></main-header>
+    <div id="cancelConfirm" class="cancelConfirm">
+      <div class = "cancelConfirmContent">
+        <div class="warning_symbol">
+          <img class = "warning" src = "../Images/Icons/Screens/warning_triangle.png" />
+        </div>
+        <p style="margin-top: 0px;">Are you sure you want to Cancel the booking?</p>
+        <div class="cancelConfirmButtons">
+          <button class = "cancelDecline" button id="cancelDecline">
+            <img class="declineRestart" src="../Images/Icons/Screens/x circle black.png"/>
+            No
+          </button>
+          <button class="cancelAccept" button id="cancelAccept">
+            <img class="confirmRestart" src="../Images/Icons/Screens/confirm red.png" />
+            Yes
+          </button>
+        </div>
+      </div>
+    </div>
     <div class="top-half">
       <p class="booking_title">Booking #BUS123</p>
         <ul class="booking_sum">
@@ -86,6 +104,21 @@
   const modifyTicketbtn = document.getElementById("modifyTicketLabel");
   modifyTicketbtn.onclick = function (){
     window.location.href = "b2.3_edit_ticket.html";
+  }
+
+  const cancelTicketbtn = document.getElementById("cancelTicketLabel");
+  cancelTicketbtn.onclick = function(){
+    document.getElementById('cancelConfirm').style.display = 'block';
+  }
+
+  const cancelDeclinebtn = document.getElementById("cancelDecline");
+  cancelDeclinebtn.onclick = function (){
+    document.getElementById('cancelConfirm').style.display = 'none';
+  }
+
+  const cancelAcceptbtn = document.getElementById("cancelAccept");
+  cancelAcceptbtn.onclick = function (){
+    
   }
 
   const backBtn = document.getElementById('back');

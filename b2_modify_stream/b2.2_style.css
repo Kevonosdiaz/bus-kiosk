@@ -270,3 +270,53 @@ input[type="radio"] {
 .confirm {
     visibility: hidden;
 }
+
+.cancelConfirm{
+    display: none;
+    position: fixed;
+    z-index: 1;
+    background-color: rgba(0,0,0,0.4);
+    width: 600px;
+    height: 802px;
+}
+
+.cancelConfirmContent{
+    
+    margin: auto;
+    text-align:center;
+
+    display: grid;
+    align-items: center;
+    justify-content: center;
+
+    background-color: whitesmoke;
+    padding-top:10px;
+    padding-bottom:30px;
+    margin-left: 10px;
+    margin-right:10px;
+    margin-top: 50px;
+    border-radius: 10px;
+
+    gap:0px;
+
+    font-size: 24px;
+    font-weight: 500;
+}
+
+.cancelConfirmContent img{
+    width: 130px;
+    height: 130px;
+}
+
+.cancelConfirmButtons{
+    padding-top:20px;
+    display: flex;
+    justify-content: center;
+    gap:10px;
+}
+
+.cancelDecline img,
+.cancelAccept img{
+    height: 30px;
+    width: 30px;
+}
