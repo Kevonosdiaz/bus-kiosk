@@ -57,30 +57,41 @@ function updateText() {
   document.getElementById('new_total').innerText = String(total);
 }
 
-const cancelBtn = document.getElementById('cancelTicketLabel')
-cancelBtn.onclick = function () {
-  var ticketnum = String(document.querySelector('input[type="radio"]:checked').value);
-  for (var i = 0; i < tickets.length; i++) {
-    if (ticketnum == tickets[i][tnum_i])  {
-      tickets.splice(i, 1);
-      console.log("found")
+const cancelAcceptbtn = document.getElementById("cancelAccept");
+cancelAcceptbtn.onclick = function () {
+  var rbutton = document.querySelector('input[type="radio"]:checked');
+  if (rbutton != null) {
+    document.getElementById('cancelConfirm').style.display = 'none';
+    var ticketnum = String(rbutton.value);
+    console.log(ticketnum)
+    for (var i = 0; i < tickets.length; i++) {
+      if (ticketnum == tickets[i][tnum_i])  {
+        tickets.splice(i, 1);
+        console.log("found")
+      }
     }
+    switch (ticketnum){
+      case "1":
+        console.log("bye")
+        document.getElementById('ticket1').style.display = "none";
+        break;
+      case "2":
+        document.getElementById('ticket2').style.display = "none";
+        break;
+      case "3":
+        document.getElementById('ticket3').style.display = "none";
+        break;
+    }
+      
+    console.log(tickets)
+    updateText()
   }
-  switch (ticketnum){
-    case "1":
-      console.log("bye")
-      document.getElementById('ticket1').style.display = "none";
-      break;
-    case "2":
-      document.getElementById('ticket2').style.display = "none";
-      break;
-    case "3":
-      document.getElementById('ticket3').style.display = "none";
-      break;
-  }
-    
-  console.log(tickets)
-  updateText()
+}
+
+const cancelTicketbtn = document.getElementById("cancelTicketLabel");
+cancelTicketbtn.onclick = function(){
+  if (document.querySelector('input[type="radio"]:checked') != null)
+    document.getElementById('cancelConfirm').style.display = 'block';
 }
 
 
