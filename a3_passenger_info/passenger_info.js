@@ -422,11 +422,23 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // TODO oninput listeners => check for fields and re-enable/disable
 
+// Check if all fields are empty (all required for first passsenger/leader)
 function checkEmpty() {
     if (pName == "" || pEmail == "" || pPhone == "") return true;
     else return false;
 }
 
+// Check if name field is empty (only field required across all passengers)
 function checkStrictReqEmpty() {
     return pName == "" ? true : false;
+}
+
+// Use regex to validate formatting of all fields
+function validateAllFields() {
+    return validateName() && /\@/.test(pEmail) && /^\d{10}$/g.test(pPhone);
+}
+
+// Validate just name, which is required for all passengers
+function validateName() {
+    return /[a-zA-Z]+\s+[a-zA-Z]+/.test(pName);
 }
