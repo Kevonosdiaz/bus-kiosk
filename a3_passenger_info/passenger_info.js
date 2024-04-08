@@ -238,7 +238,7 @@ function restoreFields(n) {
     setQty("skisnow-count", 3, sCount[3]);
 }
 
-// Update passInfo for nth passenger
+// Update passInfo for nth passenger (0-indexed)
 function updatePassInfoN(n) {
     names = pName.split(" "); // Assumes name in format "first last"
     pInfo = createPInfo(
@@ -363,12 +363,15 @@ function prevPage() {
     // Store any inputted fields into session vars
     // Change current page, status, and populated field values
     swapPage(currentPage - 1);
+    // Restore fields for prev page if saved
+    if (passInfo[currentPage - 1] != null) {
+        restoreFields(currentPage);
+    }
 }
 
 function nextPage() {
     if (currentPage === numPassengers) return; // Don't switch on last page
-    // Check if any required fields are left blank, allow change to next page if all filled
-
+    updatePassInfoN(currentPage - 1); // Update for current passenger (*0-indexed fn)
     swapPage(currentPage + 1); // Change current page/status
     // Restore fields for next page if saved
     if (passInfo[currentPage] != null) {
@@ -416,3 +419,14 @@ document.addEventListener("DOMContentLoaded", function () {
 // Make sure 1st left and last right arrow transitions to next page
 // Update numPassengers per click
 // document.addEventListener("");
+
+// TODO oninput listeners => check for fields and re-enable/disable
+
+function checkEmpty() {
+    if (pName == "" || pEmail == "" || pPhone == "") return true;
+    else return false;
+}
+
+function checkStrictReqEmpty() {
+    return pName == "" ? true : false;
+}
