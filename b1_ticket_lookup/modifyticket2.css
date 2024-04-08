@@ -334,3 +334,18 @@ label img.calendar_img {
 .resend:hover {
     border: 2px solid grey;
 }
+
+.msg_box {
+    margin-top:50px;
+    margin-right:20px;
+    margin-left:20px;
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+
+.msg {
+    font-size: 22px;
+    color:rgb(182, 0, 0);
+    text-align: center;
+}
