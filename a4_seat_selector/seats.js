@@ -1,5 +1,5 @@
 var checks = document.querySelectorAll('input[type=checkbox]');
-var max = Number(sessionStorage.getItem("passengers"))+1; // add an int to this to test with doing the entire booking
+var max = Number(sessionStorage.getItem("passengers")); // add an int to this to test with doing the entire booking
 
 var selected = Array(32).fill(0);
 

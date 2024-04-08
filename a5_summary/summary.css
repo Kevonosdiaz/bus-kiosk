@@ -40,14 +40,20 @@ body {
 
 .info_box {
     height:94%;
-    overflow:auto;
+    /* overflow:auto; */
 }
 
-.outer-box {
+.summary-outer-box {
+    height: 94%;
     padding:0;
     border:none;
-    overflow:hidden;
+    /* overflow:hidden; */
+    overflow-y: scroll;
     background-color: white;
+}
+
+.summary-info-box {
+    /* overflow: scroll; */
 }
 
 .main_list {

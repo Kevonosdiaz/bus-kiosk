@@ -26,6 +26,7 @@ function matchRoutes(
     var returnList = []
     trips.map(trip => validRoute(trip, origin, destination, departDate, returnDate) && returnList.push(trip))
     
+    sessionStorage.setItem('selectedTrip', JSON.stringify(returnList))
     return returnList
 }
 

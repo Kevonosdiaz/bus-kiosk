@@ -7,11 +7,15 @@ function BusRoute(
     arrivalDate,
     arrivalTime,
     duration,
+    pickUpLocation,
+    dropOffLocation,
     returnDepartureDate = "", 
     returnDepartureTime = "",
     returnArrivalDate = "",
     returnArrivalTime = "",
     returnDuration = "",
+    returnPickUpLocation = "",
+    returnDropOffLocation = "",
 ) {
     this.origin = origin;
     this.destination = destination;
@@ -22,7 +26,9 @@ function BusRoute(
         departTime: departureTime, 
         arriveDate: arrivalDate,
         arriveTime: arrivalTime,
-        duration: duration
+        duration: duration,
+        pickUpLocation: pickUpLocation,
+        dropOffLocation: dropOffLocation
     };
 
     this.returnInfo = {
@@ -30,7 +36,9 @@ function BusRoute(
         departTime: returnDepartureTime, 
         arriveDate: returnArrivalDate,
         arriveTime: returnArrivalTime,
-        duration: returnDuration
+        duration: returnDuration,
+        pickUpLocation: returnPickUpLocation,
+        dropOffLocation: returnDropOffLocation,
     }
 
 }
@@ -48,11 +56,15 @@ function createBusRouteList() {
             "1/12/2024", 
             "2:45 PM", 
             "5h 30 min",
+            "Calgary International Airport",
+            "Edmonton SE Station",
             "2/12/2024", 
             "9:15 AM", 
             "2/12/2024", 
             "2:45 PM",
             "5h 30 min",
+            "Edmonton SE Station",
+            "Calgary International Airport",
         ),
         new BusRoute(
             "Calgary, AB", 
@@ -63,11 +75,15 @@ function createBusRouteList() {
             "1/12/2024", 
             "2:45 PM",
             "5h 30 min",
+            "Calgary International Airport",
+            "Edmonton SE Station",
             "2/12/2024", 
             "9:15 AM", 
             "2/12/2024", 
             "2:45 PM",
             "5h 30 min",
+            "Edmonton SE Station",
+            "Calgary International Airport",
         ),
         new BusRoute(
             "Calgary, AB", 
@@ -78,11 +94,15 @@ function createBusRouteList() {
             "1/12/2024", 
             "2:45 PM",
             "5h 30 min",
+            "Calgary International Airport",
+            "Edmonton SE Station",
             "2/12/2024", 
             "9:15 AM", 
             "2/12/2024", 
             "2:45 PM",
             "5h 30 min",
+            "Edmonton SE Station",
+            "Calgary International Airport",
         ),
         new BusRoute(
             "Calgary, AB", 
@@ -93,11 +113,15 @@ function createBusRouteList() {
             "1/12/2024", 
             "2:45 PM",
             "5h 30 min",
+            "Calgary International Airport",
+            "Edmonton SE Station",
             "2/12/2024", 
             "9:15 AM", 
             "2/12/2024", 
             "2:45 PM",
             "5h 30 min",
+            "Edmonton SE Station",
+            "Calgary International Airport",
         ),
         new BusRoute(
             "Calgary, AB", 
@@ -108,11 +132,15 @@ function createBusRouteList() {
             "1/12/2024", 
             "2:45 PM",
             "5h 30 min",
+            "Calgary International Airport",
+            "Edmonton SE Station",
             "2/12/2024", 
             "9:15 AM", 
             "2/12/2024", 
             "2:45 PM",
             "5h 30 min",
+            "Edmonton SE Station",
+            "Calgary International Airport",
         ),
         // one way trips include only original departure info
         new BusRoute(
@@ -124,6 +152,8 @@ function createBusRouteList() {
             "1/12/2024", 
             "2:45 PM",
             "5h 30 min",
+            "Calgary International Airport",
+            "Edmonton SE Station"
         ),
         new BusRoute(
             "Calgary, AB", 
@@ -134,6 +164,8 @@ function createBusRouteList() {
             "1/12/2024", 
             "3:45 PM",
             "5h 30 min",
+            "Calgary International Airport",
+            "Edmonton SE Station"
         ),
         new BusRoute(
             "Calgary, AB", 
@@ -144,6 +176,8 @@ function createBusRouteList() {
             "1/12/2024", 
             "4:45 PM",
             "5h 30 min",
+            "Calgary International Airport",
+            "Edmonton SE Station"
         ),
         new BusRoute(
             "Calgary, AB", 
@@ -154,6 +188,8 @@ function createBusRouteList() {
             "1/12/2024", 
             "5:45 PM",
             "5h 30 min",
+            "Calgary International Airport",
+            "Edmonton SE Station"
         ),
         new BusRoute(
             "Calgary, AB", 
@@ -164,6 +200,8 @@ function createBusRouteList() {
             "1/12/2024", 
             "6:45 PM",
             "5h 30 min",
+            "Calgary International Airport",
+            "Edmonton SE Station"
         ),
     ];
 
