@@ -12,7 +12,7 @@ function handleInput(fieldName, value) {
       case 'm-phone':
       case 'm-bookingid':
         sessionStorage.setItem(fieldName, value)
-        if (!checkEmpty()) {
+        if ((!checkEmpty()) && checkFormat()) {
             verifyLabel.style.backgroundColor = "#7197FF";
             verifyLabel.style.color = "#000000";
             verifyLabel.style.cursor = 'pointer';
@@ -21,12 +21,6 @@ function handleInput(fieldName, value) {
             verifyLabel.style.backgroundColor = "#C6C6C6";
             verifyLabel.style.color = "#5D5D5D";
         }
-       /* if (value === '') {
-          showRequiredTag(fieldName)
-        } else {
-          hideRequiredTag(fieldName)
-        }
-        validateFormState()*/
     }
   }
 
@@ -38,10 +32,20 @@ function checkEmpty() {
     }
 }
 
+function checkFormat() {
+    if ( (/[a-zA-Z]+\s+[a-zA-Z]+/.test(sessionStorage.getItem('m-name'))) && (/\@/.test(sessionStorage.getItem('m-email'))) && (/^\d{10}$/g.test(sessionStorage.getItem('m-phone'))) && (/^[a-zA-Z0-9]{6}$/.test(sessionStorage.getItem('m-bookingid')))) {
+        console.log(1)
+        return true
+    } else {
+        console.log(0)
+        return false
+    }
+}
+
 function verifyInfo() {
   verifyLabel.addEventListener('click', function() {
     var div = document.getElementById('vbox');
-    if (!checkEmpty()) {
+    if (!checkEmpty() && checkFormat()) {
         if (div.style.display === "flex") {
             div.style.display = "none";
         } else {
@@ -63,5 +67,3 @@ document.getElementById('back').onclick = function () {
 document.addEventListener("DOMContentLoaded", function() {
     verifyInfo();
 });
-
-
