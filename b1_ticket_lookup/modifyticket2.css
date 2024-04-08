@@ -303,18 +303,19 @@ label img.calendar_img {
     height: 40px;
     width: 220px;
     border: 2px solid transparent;
-    background-color: rgb(113, 151, 255);
     font-size: 25px;
     font-weight: 500;
     border-radius: 30px;
-    margin-top: 10px;
+    margin-top: 20px;
+    background-color:#C6C6C6;
+    color:#5D5D5D;
 }
 
 .verify_label:hover {
     /* background-color: rgb(255, 209, 146); */
 
     border: 2px solid grey;
-    cursor:pointer;
+    cursor:not-allowed;
 }
 
 

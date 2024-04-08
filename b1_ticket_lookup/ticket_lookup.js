@@ -1,19 +1,59 @@
 const verifyLabel = document.getElementById('verifyLabel');
-console.log(verifyLabel)
+
+sessionStorage.setItem('m-name', "")
+sessionStorage.setItem('m-email', "")
+sessionStorage.setItem('m-phone', "")
+sessionStorage.setItem('m-bookingid', "")
+
+function handleInput(fieldName, value) {
+    switch (fieldName) {
+      case 'm-name':
+      case 'm-email':
+      case 'm-phone':
+      case 'm-bookingid':
+        sessionStorage.setItem(fieldName, value)
+        if (!checkEmpty()) {
+            verifyLabel.style.backgroundColor = "#7197FF";
+            verifyLabel.style.color = "#000000";
+            verifyLabel.style.cursor = 'pointer';
+        } else {
+            verifyLabel.style.cursor = 'not-allowed';
+            verifyLabel.style.backgroundColor = "#C6C6C6";
+            verifyLabel.style.color = "#5D5D5D";
+        }
+       /* if (value === '') {
+          showRequiredTag(fieldName)
+        } else {
+          hideRequiredTag(fieldName)
+        }
+        validateFormState()*/
+    }
+  }
+
+function checkEmpty() {
+    if (sessionStorage.getItem('m-name') == "" || sessionStorage.getItem('m-email') == "" || sessionStorage.getItem('m-phone') == "" || sessionStorage.getItem('m-bookingid') == "") {
+        return true
+    } else {
+        return false
+    }
+}
+
 function verifyInfo() {
   verifyLabel.addEventListener('click', function() {
     var div = document.getElementById('vbox');
-    if (div.style.display === "flex") {
-        div.style.display = "none";
-    } else {
-        div.style.display = "flex";
-        verifyLabel.style.display = 'none';
+    if (!checkEmpty()) {
+        if (div.style.display === "flex") {
+            div.style.display = "none";
+        } else {
+            div.style.display = "flex";
+            verifyLabel.style.display = 'none';
+        }
     }
   });
 }
 
 document.getElementById('next').onclick = function () {
-    location.href = "../b3_modify_ticket_new/modify_1.html";
+    location.href = "../b2_modify_stream/b2.1_modify_booking_options.html";
 };
 
 document.getElementById('back').onclick = function () {
