@@ -182,7 +182,7 @@
         case 'departDate':
         case 'returnDate':
           sessionStorage.setItem(fieldName, value)
-          if (value === '') {
+          if (value === '' || !validateString(value, fieldName)) {
             showRequiredTag(fieldName)
           } else {
             hideRequiredTag(fieldName)
@@ -258,13 +258,14 @@
       if (sessionStorage.getItem('isRoundTrip') === 'true') {
 
         var returnDate = sessionStorage.getItem('returnDate')
-        if (isValid && validateString(returnDate, 'returnDate')) {
+        var isValidReturnTrip = isValid && validateString(returnDate, 'returnDate')
+        if (isValidReturnTrip) {
           enableConfirmBtn()
         } else {
           disableConfirmBtn()
         }
 
-        return isValid && (returnDate.length > 0)
+        return isValidReturnTrip
       } else {
 
         if (isValid) {
