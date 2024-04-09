@@ -21,7 +21,6 @@
  */
 
 const radios = document.querySelectorAll('input[type="radio"]');
-console.log(radios)
 radios.forEach(radio => {
   radio.onclick = () => {
     var actives = document.querySelectorAll('.active');
@@ -34,45 +33,46 @@ radios.forEach(radio => {
         sessionStorage.setItem('ticket_to_mod', JSON.stringify(tickets[i]))
       }
     }
-    console.log(sessionStorage.getItem('ticket_to_mod'))
   }
 
 })
 
-const tnum_i = 0
-const name_i = 1
-const total_i = 2
-const tcost_i = 3
-const adds_i = 4
-const bag_i = 0
-const bic_i = 1
-const ani_i = 2
-const ski_i = 3
+const tnum_i = 0 // Ticket Number index
+const name_i = 1 // Passenger Name index
+const total_i = 2 // Total ticket cost index (ticket + additional)
+const tcost_i = 3 // Ticket cost  index
+const adds_i = 4 // Additional Services index
+const bag_i = 0 // Extra Bags index
+const bic_i = 1  // Bicycle Storage index
+const ani_i = 2 // Animal Transport index
+const ski_i = 3 // Ski/Snowboard index
 
 const add_costs  = [10.00, 15.00, 15.00, 10.00]
 var total = 0.0
 var old_total = 0.0
-var ticket1 = ["1", "Gus Ryder", 0.0, 29.99, [0.0, 0.0, 1.0, 0.0]]
-var ticket2 = ["2", "Mo Torbus", 0.0, 29.99, [1.0, 1.0,  0.0, 0.0]]
+var ticket1 = ["1", "Gus Ryder", 0.0, 29.99, [0.0, 0.0, 3.0, 0.0]]
+var ticket2 = ["2", "Mo Torbus", 0.0, 29.99, [1.0, 1.0, 0.0, 0.0]]
 var ticket3 = ["3", "Carrie Awning", 0.0, 29.99, [1.0, 0.0, 0.0, 1.0]]
 
-var tickets = [ticket1, ticket2, ticket3]
+sessionStorage.setItem('m-tick-list', JSON.stringify([ticket1, ticket2, ticket3]))
+var tickets = JSON.parse(sessionStorage.getItem('m-tick-list'))
 
 function calcTotal() {
   total = 0.0
   for (var i = 0; i < tickets.length; i++) {
-    total += tickets[i][tcost_i];
-    var sum = 0.0;
+    var sum = tickets[i][tcost_i];
     for (var j = 0; j < add_costs.length; j++) {
       sum += tickets[i][adds_i][j] * add_costs[j];
     }
     tickets[i][total_i] = sum;
     total += tickets[i][total_i];
+    tickets[i][total_i] = tickets[i][total_i].toFixed(2);
   }
-  total = total.toFixed(2);
+  sessionStorage.setItem('m-tick-list', JSON.stringify(tickets));
+  total = total.toFixed(2)
 }
 
-function updateText() {
+function updateTotal() {
   calcTotal();
   document.getElementById('new_total').innerText = String(total);
 }
@@ -111,7 +111,7 @@ cancelAcceptbtn.onclick = function () {
     
     rbutton.checked = false;
     toggleButtons()
-    updateText()
+    updateTotal()
   }
 }
 
@@ -123,6 +123,45 @@ function toggleButtons() {
     cancelTicketbtn.classList.add('disabled');
     modifyTicketbtn.classList.add('disabled');
   }
+}
+
+function updateSummmary(tcost, adds) {
+  var summary_string = "";
+  summary_string = summary_string + "Ticket Cost - $"+String(tcost)+"\n"
+  if (adds[bag_i] > 0) {
+    summary_string = summary_string + String(adds[bag_i])+"x Extra Bags - $"+String(adds[bag_i] * add_costs[bag_i])+"\n";
+  }
+  if (adds[bic_i] > 0) {
+    summary_string = summary_string + String(adds[bic_i])+"x Bicycle Storage - $"+String(adds[bic_i] * add_costs[bic_i])+"\n";
+  }
+  if (adds[ani_i] > 0) {
+    summary_string = summary_string + String(adds[ani_i])+"x Animal Transport - $"+String(adds[ani_i] * add_costs[ani_i])+"\n";
+  }
+  if (adds[ski_i] > 0) {
+    summary_string = summary_string + String(adds[ski_i])+"x Ski/Snowboard - $"+String(adds[ski_i] * add_costs[ski_i])+"\n";
+  }
+
+  return summary_string
+}
+
+function updateTickets() {
+  var data = JSON.parse(sessionStorage.getItem('m-tick-list'));
+  data.forEach(t => {
+    switch (t[tnum_i]) {
+      case "1":
+        document.getElementById('tick1_total').innerText = "Cost: $"+String(t[total_i]);
+        document.getElementById('t1_sum').innerText = updateSummmary(t[tcost_i], t[adds_i]);  
+        break;
+      case "2":
+        document.getElementById('tick2_total').innerText = "Cost: $"+String(t[total_i]);
+        document.getElementById('t2_sum').innerText = updateSummmary(t[tcost_i], t[adds_i]);
+        break;
+      case "3":
+        document.getElementById('tick3_total').innerText = "Cost: $"+String(t[total_i]);
+        document.getElementById('t3_sum').innerText = updateSummmary(t[tcost_i], t[adds_i]);
+        break;
+    }
+  })
 }
 
 const cancelTicketbtn = document.getElementById("cancelTicketLabel");
@@ -142,7 +181,8 @@ toggleButtons()
 calcTotal()
 old_total = total
 document.getElementById('old_total').innerText = String(old_total);
-updateText()
+updateTotal()
+updateTickets()
 sessionStorage.setItem("m-ticket1", JSON.stringify(ticket1))
 sessionStorage.setItem("m-ticket2", JSON.stringify(ticket1))
 sessionStorage.setItem("m-ticket3", JSON.stringify(ticket1))
