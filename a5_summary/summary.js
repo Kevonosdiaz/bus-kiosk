@@ -56,7 +56,7 @@ class SummaryInfo extends HTMLElement {
                 <p class="grid_item1">Date of Trip</p>
                 <p class="grid_item">${Dateify(selectedTrip.departureInfo.departDate)}</p>
                 <p class="grid_item1">Trip Type</p>
-                <p class="grid_item">One Way</p>
+                <p class="grid_item">One Way Trip</p>
                 <p class="grid_item1">Pick-Up Location</p>
                 <p class="grid_item">${selectedTrip.departureInfo.pickUpLocation}</p>
                 <p class="grid_item1">Departure Time</p>
