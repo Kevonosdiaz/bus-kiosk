@@ -245,7 +245,7 @@ function clearFields() {
 // Populate fields based on nth passenger's currently stored info
 function restoreFields(n) {
     if (passInfo.length <= n) return;
-    console.log("Attempting to restore field");
+    // console.log("Attempting to restore field");
     let p = passInfo[n];
     // Handle info fields
     pName = p.firstName + " " + p.lastName;
@@ -262,7 +262,7 @@ function restoreFields(n) {
     sCount[1] = p.animalTransport;
     sCount[2] = p.bike;
     sCount[3] = p.skiSnow;
-    console.log(JSON.stringify(sCount));
+    // console.log(JSON.stringify(sCount));
     setQty("bag-count", 0, sCount[0]);
     setQty("animal-count", 1, sCount[1]);
     setQty("bike-count", 2, sCount[2]);
@@ -285,7 +285,7 @@ function updatePassInfoN(n) {
         sCount[3],
         addServiceTotal
     );
-    console.log(JSON.stringify(pInfo));
+    // console.log(JSON.stringify(pInfo));
     passInfo[n] = pInfo;
     pushPassInfo();
 }
@@ -485,7 +485,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Load first subpage information right away, initialize some stuff
     currentPage = 1;
     fetchPassInfo();
-    console.log(JSON.stringify(passInfo));
+    // console.log(JSON.stringify(passInfo));
     // console.log("Onload event!");
     if (passInfo === null) passInfo = [];
     if (finishedPages.length === 0) {
