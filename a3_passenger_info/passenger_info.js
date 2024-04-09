@@ -29,6 +29,7 @@ class PassengerInfoContainer extends HTMLElement {
                     Name
                 </label>
                 <input oninput="handleInput()" required placeholder="firstname lastname" id="name-input" />
+                <span class="tag" id="name-tag"><i style="color: red">*</i></span>
             </div>
             <div class="field">
                 <label for="email-input" class="label">
@@ -36,6 +37,7 @@ class PassengerInfoContainer extends HTMLElement {
                     Email
                 </label>
                 <input required placeholder="ex. myEmail@mail.com" id="email-input" oninput="handleInput()" />
+                <span class="tag" id="email-tag"><i style="color: red">*</i></span>
             </div>
             <div class="field">
                 <label for="phone-input" class="label">
@@ -43,6 +45,7 @@ class PassengerInfoContainer extends HTMLElement {
                     Phone
                 </label>
                 <input type="text" required placeholder="ex. 1112223333" id="phone-input" oninput="handleInput()"/>
+                <span class="tag" id="phone-tag"><i style="color: red">*</i></span>
             </div>
         </div>
         <div class="services">
@@ -389,6 +392,7 @@ function swapPage(targetNo) {
 
 function prevPage() {
     if (currentPage === 1) return; // Don't switch on first page
+    if (currentPage === 2) pageOneDisplay();
     // Store any inputted fields into session vars
     if (!checkStrictReqEmpty() && validateName()) updatePassInfoN(currentPage - 1);
     // Restore fields for prev page if saved (should be saved)
@@ -407,7 +411,7 @@ function nextPage() {
     if (currentPage === numPassengers) return; // Don't switch on last page
     updatePassInfoN(currentPage - 1); // Update for current passenger (*0-indexed fn)
     pushPassInfo();
-
+    otherPageDisplay(); // Guaranteed to not be first page
     swapPage(currentPage + 1); // Change current page/status
     if (passInfo[currentPage - 1] != null) {
         // Restore fields for next page if saved
@@ -461,6 +465,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (finishedPages.length === 0) {
         for (let i = 0; i < numPassengers; i++) finishedPages.push(false);
     }
+    pageOneDisplay(); // Show special elements for first page
     restoreFields(0);
     handleInput();
     // let size = passInfo.length;
@@ -476,7 +481,7 @@ document.addEventListener("DOMContentLoaded", function () {
 function handleInput() {
     fetchFields();
     // console.log(checkEmpty());
-    if (currentPage === 1) {
+    if (currentPage === 1 && !(1 === numPassengers)) {
         // Different required fields for first
         if (checkEmpty() || !validateAllFields()) {
             disableNextPage();
@@ -487,6 +492,8 @@ function handleInput() {
         else {
             console.log("Enabling Confirm button!");
             enableConfirmBtn();
+            updatePassInfoN(currentPage - 1); // Update for current passenger (*0-indexed fn)
+            pushPassInfo();
         }
     } else {
         if (checkStrictReqEmpty() || !validateRequiredOrFilledFields()) disableNextPage();
@@ -545,3 +552,19 @@ document.addEventListener("DOMContentLoaded", function () {
     nextButtonPath = indexToPath(nextPageIndex) + "?" + prevPageVarName + "=" + visitOrder.concat(currentPageIndex);
     setNextPage(nextButtonPath);
 });
+
+// Display special instructions, required fields for first page
+function pageOneDisplay() {
+    let emailTag = document.getElementById("email-tag");
+    let phoneTag = document.getElementById("phone-tag");
+    emailTag.style.display = "block";
+    phoneTag.style.display = "block";
+}
+
+// Hide special fields used for page one
+function otherPageDisplay() {
+    let emailTag = document.getElementById("email-tag");
+    let phoneTag = document.getElementById("phone-tag");
+    emailTag.style.display = "none";
+    phoneTag.style.display = "none";
+}
