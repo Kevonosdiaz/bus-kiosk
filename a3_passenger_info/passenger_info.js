@@ -4,11 +4,12 @@ let pPhone = "";
 // TODO Add checkboxes for ticket copy/notification (?) opt-in
 let pEmailNotif = false;
 let pPhoneNotif = false;
-let currentPage = 1; // Page number, not it's index number
+let currentPage = 1; // Page number, not its index number
+let addServiceTotal = 0;
 const numPassengers = Math.max(1, Number(sessionStorage.getItem("passengers")));
 let passInfo = []; // Store nth passengers info (object) at index n
 const statuses = [];
-const finishedPages = [];
+let finishedPages = [];
 disableConfirmBtn();
 let totalServiceCost;
 
@@ -182,7 +183,7 @@ function updateStatus() {
         stat.remove("unfinished-stat");
         stat.remove("completed-stat");
         if (i === curr) stat.add("current-stat");
-        else if (i < curr || finishedPages.includes(i)) stat.add("completed-stat");
+        else if (i < curr || finishedPages[i]) stat.add("completed-stat");
         else stat.add("unfinished-stat");
     }
 }
@@ -270,7 +271,8 @@ function updatePassInfoN(n) {
         sCount[0],
         sCount[1],
         sCount[2],
-        sCount[3]
+        sCount[3],
+        addServiceTotal
     );
     // console.log(JSON.stringify(pInfo));
     passInfo[n] = pInfo;
@@ -308,7 +310,10 @@ function decrement(qtyID, serviceNo) {
         // Update total cost
         let cost = serviceCosts[serviceNo];
         let currentTotal = parseInt(serviceTotal.innerText.split("$")[1]);
-        serviceTotal.innerText = "Additional Service Total: $" + (currentTotal - cost);
+        let newCost = currentTotal - cost;
+        addServiceTotal = newCost;
+        serviceTotal.innerText = "Additional Service Total: $" + newCost;
+        updatePassInfoN(currentPage - 1);
     }
 }
 
@@ -324,7 +329,10 @@ function increment(qtyID, serviceNo) {
         // Update total cost
         let cost = serviceCosts[serviceNo];
         let currentTotal = parseInt(serviceTotal.innerText.split("$")[1]);
-        serviceTotal.innerText = "Additional Service Total: $" + (currentTotal + cost);
+        let newCost = currentTotal + cost;
+        addServiceTotal = newCost;
+        serviceTotal.innerText = "Additional Service Total: $" + newCost;
+        updatePassInfoN(currentPage - 1);
     }
 }
 
@@ -341,7 +349,9 @@ function setQty(qtyID, serviceNo, newQty) {
         let costPerServ = serviceCosts[serviceNo];
         let currentTotal = parseInt(serviceTotal.innerText.split("$")[1]);
         let newCost = currentTotal + diff * costPerServ;
+        addServiceTotal = newCost;
         serviceTotal.innerText = "Additional Service Total: $" + newCost;
+        updatePassInfoN(currentPage - 1);
     }
     element.innerText = "Qty: " + newQty;
 }
@@ -355,6 +365,8 @@ function clearQty() {
         deselect(i);
     }
     serviceTotal.innerText = "Additional Service Total: $0";
+    addServiceTotal = 0;
+    // updatePassInfoN(currentPage - 1);
 }
 
 // Handle page back/next button click events
@@ -395,6 +407,7 @@ function prevPage() {
     if (currentPage === 2) pageOneDisplay();
     // Store any inputted fields into session vars
     if (!checkStrictReqEmpty() && validateName()) updatePassInfoN(currentPage - 1);
+    finishedPages[currentPage - 1] = true;
     // Restore fields for prev page if saved (should be saved)
     // console.log("About to check for restoring prev!");
     swapPage(currentPage - 1); // Change current page, status, and populated field values
@@ -438,7 +451,8 @@ function createPInfo(
     extraBags,
     animalTransport,
     bike,
-    skiSnow
+    skiSnow,
+    serviceCost
 ) {
     return {
         firstName: firstName,
@@ -451,16 +465,15 @@ function createPInfo(
         animalTransport: animalTransport,
         bike: bike,
         skiSnow: skiSnow,
+        serviceCost: serviceCost,
     };
 }
 
-// For future reference:
-// sessionStorage.setItem("routeList", JSON.stringify(routeList));
-
 document.addEventListener("DOMContentLoaded", function () {
     // Load first subpage information right away, initialize some stuff
+    currentPage = 1;
     fetchPassInfo();
-    console.log("Onload event!");
+    // console.log("Onload event!");
     if (passInfo === null) passInfo = [];
     if (finishedPages.length === 0) {
         for (let i = 0; i < numPassengers; i++) finishedPages.push(false);
@@ -468,6 +481,9 @@ document.addEventListener("DOMContentLoaded", function () {
     pageOneDisplay(); // Show special elements for first page
     restoreFields(0);
     handleInput();
+    tmp = sessionStorage.getItem("finished-pages");
+    if (tmp !== null) finishedPages = tmp;
+    if (checkCompletion()) enableConfirmBtn();
     // let size = passInfo.length;
     // if (size === 0) disableNextPage();
     // if (size < numPassengers) disableConfirmBtn();
@@ -485,19 +501,31 @@ function handleInput() {
         // Different required fields for first
         if (checkEmpty() || !validateAllFields()) {
             disableNextPage();
-        } else enableNextPage();
+            finishedPages[currentPage - 2] = false;
+        } else {
+            enableNextPage();
+            finishedPages[currentPage - 2] = true;
+        }
     } else if (currentPage === numPassengers) {
         // Check if we can enable next page btn
-        if (checkStrictReqEmpty() || !validateRequiredOrFilledFields()) disableConfirmBtn();
-        else {
-            console.log("Enabling Confirm button!");
+        if (checkStrictReqEmpty() || !validateRequiredOrFilledFields()) {
+            disableConfirmBtn();
+            finishedPages[currentPage - 2] = false;
+        } else {
             enableConfirmBtn();
             updatePassInfoN(currentPage - 1); // Update for current passenger (*0-indexed fn)
             pushPassInfo();
+            finishedPages[currentPage - 2] = true;
+            sessionStorage.setItem("finished-pages", JSON.stringify(finishedPages));
         }
     } else {
-        if (checkStrictReqEmpty() || !validateRequiredOrFilledFields()) disableNextPage();
-        else enableNextPage();
+        if (checkStrictReqEmpty() || !validateRequiredOrFilledFields()) {
+            disableNextPage();
+            finishedPages[currentPage - 2] = false;
+        } else {
+            enableNextPage();
+            finishedPages[currentPage - 2] = true;
+        }
     }
 }
 
@@ -567,4 +595,11 @@ function otherPageDisplay() {
     let phoneTag = document.getElementById("phone-tag");
     emailTag.style.display = "none";
     phoneTag.style.display = "none";
+}
+
+// Check if all pages have been completed
+function checkCompletion() {
+    let flag = true;
+    for (let i = 0; i < numPassengers; i++) flag = flag && finishedPages[i];
+    return flag;
 }
