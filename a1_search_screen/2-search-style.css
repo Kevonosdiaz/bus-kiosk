@@ -12,28 +12,17 @@
 .top-half {
     width: 100%;
     height: 100%;
-    overflow: auto;
     border-radius: 0px;
-    /*border: 1px solid black;*/
     background-color: white;
-    /*background-color: #3e5ba0;*/
 }
 
-.bottom-half {
-    border: 1px solid black;
-    width: 100%;
-    height: 50%;
-    overflow: auto;
-    border-radius: 0px;
-    background-color: white;
-}
 
 .outer-div {
     margin-top: 50px;
     height: 700px;
     width: 600px;
     border-radius: 0px;
-    /* border: 1px solid black; */
+    margin-top: 50px;
 }
 
 .main-content {

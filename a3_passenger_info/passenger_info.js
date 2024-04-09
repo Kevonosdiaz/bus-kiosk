@@ -4,11 +4,12 @@ let pPhone = "";
 // TODO Add checkboxes for ticket copy/notification (?) opt-in
 let pEmailNotif = false;
 let pPhoneNotif = false;
-let currentPage = 1; // Page number, not it's index number
+let currentPage = 1; // Page number, not its index number
+let addServiceTotal = 0;
 const numPassengers = Math.max(1, Number(sessionStorage.getItem("passengers")));
 let passInfo = []; // Store nth passengers info (object) at index n
 const statuses = [];
-const finishedPages = [];
+let finishedPages = [];
 disableConfirmBtn();
 let totalServiceCost;
 
@@ -22,27 +23,40 @@ class PassengerInfoContainer extends HTMLElement {
             wrapper.id = `passengerWrapper${i}`;
             wrapper.innerHTML = `
             <div class="info">
-            <div class="passenger-header" id="passenger-header" >Passenger ${i + 1} Info</div>
-            <div class="field">
-                <label for="name-input" class="label">
-                    <img src="../Images/Icons/Screens/personal info black.png" alt="ID card icon" />
-                    Name
-                </label>
-                <input oninput="handleInput()" required placeholder="firstname lastname" id="name-input" />
+            <div class="header-container">
+                <div class="passenger-header" id="passenger-header" >Passenger ${i + 1} Info</div>
+                <button class="question" id="question" onclick="togglePopUp()">?</button>
             </div>
-            <div class="field">
-                <label for="email-input" class="label">
-                    <img src="../Images/Icons/Screens/email black.png" alt="Email icon" />
-                    Email
-                </label>
-                <input required placeholder="ex. myEmail@mail.com" id="email-input" oninput="handleInput()" />
+            <div id="fields-container">
+                <div id="fields">
+                    <div class="field">
+                    <label for="name-input" class="label">
+                        <img src="../Images/Icons/Screens/personal info black.png" alt="ID card icon" />
+                        Name
+                    </label>
+                    <input oninput="handleInput()" required placeholder="firstname lastname" id="name-input" />
+                    <span class="tag" id="name-tag"><i style="color: red">*</i></span>
+                </div>
+                <div class="field">
+                    <label for="email-input" class="label">
+                        <img src="../Images/Icons/Screens/email black.png" alt="Email icon" />
+                        Email
+                    </label>
+                    <input required placeholder="ex. myEmail@mail.com" id="email-input" oninput="handleInput()" />
+                    <span class="tag" id="email-tag"><i style="color: red">*</i></span>
+                </div>
+                <div class="field">
+                    <label for="phone-input" class="label">
+                        <img src="../Images/Icons/Screens/phone black.png" alt="Phone icon" />
+                        Phone
+                    </label>
+                    <input type="text" required placeholder="ex. 1112223333" id="phone-input" oninput="handleInput()"/>
+                    <span class="tag" id="phone-tag"><i style="color: red">*</i></span>
+                </div>
             </div>
-            <div class="field">
-                <label for="phone-input" class="label">
-                    <img src="../Images/Icons/Screens/phone black.png" alt="Phone icon" />
-                    Phone
-                </label>
-                <input type="text" required placeholder="ex. 1112223333" id="phone-input" oninput="handleInput()"/>
+            <div id="popup">
+                <button id="popup-close" onclick="togglePopUp()">X</button>
+                <div id="popup-message">Please input email and phone for passenger 1. These will be used for confirmation if modifying the ticket, and for communication.</div>
             </div>
         </div>
         <div class="services">
@@ -179,7 +193,7 @@ function updateStatus() {
         stat.remove("unfinished-stat");
         stat.remove("completed-stat");
         if (i === curr) stat.add("current-stat");
-        else if (i < curr || finishedPages.includes(i)) stat.add("completed-stat");
+        else if (i < curr || finishedPages[i]) stat.add("completed-stat");
         else stat.add("unfinished-stat");
     }
 }
@@ -248,6 +262,7 @@ function restoreFields(n) {
     sCount[1] = p.animalTransport;
     sCount[2] = p.bike;
     sCount[3] = p.skiSnow;
+    console.log(JSON.stringify(sCount));
     setQty("bag-count", 0, sCount[0]);
     setQty("animal-count", 1, sCount[1]);
     setQty("bike-count", 2, sCount[2]);
@@ -267,10 +282,12 @@ function updatePassInfoN(n) {
         sCount[0],
         sCount[1],
         sCount[2],
-        sCount[3]
+        sCount[3],
+        addServiceTotal
     );
     console.log(JSON.stringify(pInfo));
     passInfo[n] = pInfo;
+    pushPassInfo();
 }
 
 // Remove 'selected' class to remove selected service background
@@ -305,7 +322,10 @@ function decrement(qtyID, serviceNo) {
         // Update total cost
         let cost = serviceCosts[serviceNo];
         let currentTotal = parseInt(serviceTotal.innerText.split("$")[1]);
-        serviceTotal.innerText = "Additional Service Total: $" + (currentTotal - cost);
+        let newCost = currentTotal - cost;
+        addServiceTotal = newCost;
+        serviceTotal.innerText = "Additional Service Total: $" + newCost;
+        updatePassInfoN(currentPage - 1);
     }
 }
 
@@ -321,7 +341,10 @@ function increment(qtyID, serviceNo) {
         // Update total cost
         let cost = serviceCosts[serviceNo];
         let currentTotal = parseInt(serviceTotal.innerText.split("$")[1]);
-        serviceTotal.innerText = "Additional Service Total: $" + (currentTotal + cost);
+        let newCost = currentTotal + cost;
+        addServiceTotal = newCost;
+        serviceTotal.innerText = "Additional Service Total: $" + newCost;
+        updatePassInfoN(currentPage - 1);
     }
 }
 
@@ -338,7 +361,9 @@ function setQty(qtyID, serviceNo, newQty) {
         let costPerServ = serviceCosts[serviceNo];
         let currentTotal = parseInt(serviceTotal.innerText.split("$")[1]);
         let newCost = currentTotal + diff * costPerServ;
+        addServiceTotal = newCost;
         serviceTotal.innerText = "Additional Service Total: $" + newCost;
+        updatePassInfoN(currentPage - 1);
     }
     element.innerText = "Qty: " + newQty;
 }
@@ -352,6 +377,8 @@ function clearQty() {
         deselect(i);
     }
     serviceTotal.innerText = "Additional Service Total: $0";
+    addServiceTotal = 0;
+    // updatePassInfoN(currentPage - 1);
 }
 
 // Handle page back/next button click events
@@ -384,33 +411,36 @@ function swapPage(targetNo) {
     document.getElementById("passenger-header").innerText = `Passenger ${targetNo} Info`;
     currentPage = targetNo;
     updateStatus();
-    index = targetNo - 1;
+    // let index = targetNo - 1;
 }
 
 function prevPage() {
     if (currentPage === 1) return; // Don't switch on first page
+    if (currentPage === 2) pageOneDisplay();
     // Store any inputted fields into session vars
     if (!checkStrictReqEmpty() && validateName()) updatePassInfoN(currentPage - 1);
+    finishedPages[currentPage - 1] = true;
     // Restore fields for prev page if saved (should be saved)
-    console.log("About to check for restoring prev!");
-    if (passInfo[currentPage - 2] !== null) {
-        restoreFields(currentPage - 2);
+    // console.log("About to check for restoring prev!");
+    swapPage(currentPage - 1); // Change current page, status, and populated field values
+    if (passInfo[currentPage - 1] !== null) {
+        restoreFields(currentPage - 1);
         handleInput();
     } else {
         clearFields();
         clearQty();
     }
-    swapPage(currentPage - 1); // Change current page, status, and populated field values
 }
 
 function nextPage() {
     if (currentPage === numPassengers) return; // Don't switch on last page
     updatePassInfoN(currentPage - 1); // Update for current passenger (*0-indexed fn)
+    pushPassInfo();
+    otherPageDisplay(); // Guaranteed to not be first page
     swapPage(currentPage + 1); // Change current page/status
-
-    if (passInfo[currentPage] != null) {
+    if (passInfo[currentPage - 1] != null) {
         // Restore fields for next page if saved
-        restoreFields(currentPage);
+        restoreFields(currentPage - 1);
         handleInput();
         enableNextPage();
     } else {
@@ -433,7 +463,8 @@ function createPInfo(
     extraBags,
     animalTransport,
     bike,
-    skiSnow
+    skiSnow,
+    serviceCost
 ) {
     return {
         firstName: firstName,
@@ -446,23 +477,30 @@ function createPInfo(
         animalTransport: animalTransport,
         bike: bike,
         skiSnow: skiSnow,
+        serviceCost: serviceCost,
     };
 }
 
-// For future reference:
-// sessionStorage.setItem("routeList", JSON.stringify(routeList));
-
 document.addEventListener("DOMContentLoaded", function () {
     // Load first subpage information right away, initialize some stuff
+    currentPage = 1;
     fetchPassInfo();
+    console.log(JSON.stringify(passInfo));
+    // console.log("Onload event!");
     if (passInfo === null) passInfo = [];
     if (finishedPages.length === 0) {
         for (let i = 0; i < numPassengers; i++) finishedPages.push(false);
     }
+    pageOneDisplay(); // Show special elements for first page
+    document.getElementById("popup").style.display = "flex";
     restoreFields(0);
-    let size = passInfo.length;
-    if (size === 0) disableNextPage();
-    if (size < numPassengers) disableConfirmBtn();
+    handleInput();
+    tmp = sessionStorage.getItem("finished-pages");
+    if (tmp !== null) finishedPages = tmp;
+    if (checkCompletion()) enableConfirmBtn();
+    // let size = passInfo.length;
+    // if (size === 0) disableNextPage();
+    // if (size < numPassengers) disableConfirmBtn();
 });
 // Update page/information on arrow clicks
 // Make sure 1st left and last right arrow transitions to next page
@@ -472,19 +510,36 @@ document.addEventListener("DOMContentLoaded", function () {
 // oninput listener handler => check for fields and re-enable/disable next button
 function handleInput() {
     fetchFields();
-    console.log(checkEmpty());
-    if (currentPage === 1) {
+    // console.log(checkEmpty());
+    if (currentPage === 1 && !(1 === numPassengers)) {
         // Different required fields for first
         if (checkEmpty() || !validateAllFields()) {
             disableNextPage();
-        } else enableNextPage();
+            finishedPages[currentPage - 2] = false;
+        } else {
+            enableNextPage();
+            finishedPages[currentPage - 2] = true;
+        }
     } else if (currentPage === numPassengers) {
         // Check if we can enable next page btn
-        if (checkStrictReqEmpty() || !validateName()) disableConfirmBtn();
-        else enableConfirmBtn();
+        if (checkStrictReqEmpty() || !validateRequiredOrFilledFields()) {
+            disableConfirmBtn();
+            finishedPages[currentPage - 2] = false;
+        } else {
+            enableConfirmBtn();
+            updatePassInfoN(currentPage - 1); // Update for current passenger (*0-indexed fn)
+            pushPassInfo();
+            finishedPages[currentPage - 2] = true;
+            sessionStorage.setItem("finished-pages", JSON.stringify(finishedPages));
+        }
     } else {
-        if (checkStrictReqEmpty() || !validateName()) disableNextPage();
-        else enableNextPage();
+        if (checkStrictReqEmpty() || !validateRequiredOrFilledFields()) {
+            disableNextPage();
+            finishedPages[currentPage - 2] = false;
+        } else {
+            enableNextPage();
+            finishedPages[currentPage - 2] = true;
+        }
     }
 }
 
@@ -502,6 +557,16 @@ function checkStrictReqEmpty() {
 // Use regex to validate formatting of all fields
 function validateAllFields() {
     return validateName() && /\@/.test(pEmail) && /^\d{10}$/g.test(pPhone);
+}
+
+// If email/phone are filled, they should be checked as well, even if not required
+function validateRequiredOrFilledFields() {
+    let name = validateName();
+    let email = true;
+    let phone = true;
+    if (pEmail !== "") email = /\@/.test(pEmail);
+    if (pPhone !== "") phone = /^\d{10}$/g.test(pPhone);
+    return name && email && phone;
 }
 
 // Validate just name, which is required for all passengers
@@ -523,9 +588,45 @@ document.addEventListener("DOMContentLoaded", function () {
     // sets the previous page url based on the index at the end of the visit order string
     prevButtonPath =
         indexToPath(visitOrder.slice(-1)) + "?" + prevPageVarName + "=" + visitOrder.slice(0, visitOrder.length - 1);
-    console.log(prevButtonPath);
+    // console.log(prevButtonPath);
     setPreviousPage(prevButtonPath);
     // creates the url path for the next button with a variable that stores the visit order
     nextButtonPath = indexToPath(nextPageIndex) + "?" + prevPageVarName + "=" + visitOrder.concat(currentPageIndex);
     setNextPage(nextButtonPath);
 });
+
+// On pressing (?) button, toggle help pop-up
+function togglePopUp() {
+    if (document.getElementById("popup").style.display === "flex") {
+        document.getElementById("popup").style.display = "none";
+    } else {
+        document.getElementById("popup").style.display = "flex";
+    }
+}
+
+// Display special instructions, required fields for first page
+function pageOneDisplay() {
+    let emailTag = document.getElementById("email-tag");
+    let phoneTag = document.getElementById("phone-tag");
+    emailTag.style.display = "block";
+    phoneTag.style.display = "block";
+    document.getElementById("question").style.display = "block";
+    document.getElementById("popup").style.display = "none";
+}
+
+// Hide special fields used for page one
+function otherPageDisplay() {
+    let emailTag = document.getElementById("email-tag");
+    let phoneTag = document.getElementById("phone-tag");
+    emailTag.style.display = "none";
+    phoneTag.style.display = "none";
+    document.getElementById("question").style.display = "none";
+    document.getElementById("popup").style.display = "none";
+}
+
+// Check if all pages have been completed
+function checkCompletion() {
+    let flag = true;
+    for (let i = 0; i < numPassengers; i++) flag = flag && finishedPages[i];
+    return flag;
+}

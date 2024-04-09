@@ -43,7 +43,7 @@
 
 .bottom-half {
     padding-top:20px;
-    height: 65%;
+    height: 60%;
     display:flex;
     flex-direction: column;
     align-items: center;
@@ -322,4 +322,14 @@ input[type="radio"] {
 .cancelAccept img{
     height: 30px;
     width: 30px;
+}
+
+.disabled {
+    background-color: #C6C6C6;
+    cursor:not-allowed;
+    color:#5D5D5D;
+}
+
+.disabled:hover {
+    border:2px solid transparent;
 }
