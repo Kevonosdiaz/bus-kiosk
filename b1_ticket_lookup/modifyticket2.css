@@ -42,7 +42,7 @@ body {
     font-weight:600;
     display: flex;
     justify-content: center;
-    margin-top: 20px;
+    /*margin-top: 20px;*/
 }
 
 .requiredfield{
@@ -306,7 +306,7 @@ label img.calendar_img {
     font-size: 25px;
     font-weight: 500;
     border-radius: 30px;
-    margin-top: 20px;
+    margin-top: 25px;
     background-color:#C6C6C6;
     color:#5D5D5D;
 }
