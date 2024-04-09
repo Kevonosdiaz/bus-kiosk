@@ -83,4 +83,18 @@
 </body>
 <script src="../Templates/components.js" type="text/javascript"></script>
 <script src="change_seats.js" type="text/javascript"></script>
+<script>
+  const currentPageIndex = '12';
+  const prevPageVarName = 'prevPage';
+  var prevButtonPath = "";
+
+  // Waits until the page is fully loaded before executing
+  document.addEventListener("DOMContentLoaded", function() {
+      // sends the visit order (index string) to the js file
+      visitOrder = readURLData('prevPage');
+      // sets the previous page url based on the index at the end of the visit order string
+      prevButtonPath = "../b2_modify_stream/b2.1_modify_booking_options.html" + '?' + prevPageVarName + "=" + currentPageIndex;
+      setPreviousPage(prevButtonPath);
+  });
+</script>
 </html>

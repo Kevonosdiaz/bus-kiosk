@@ -36,6 +36,20 @@
         sessionStorage.setItem("seatsSelected", sessionStorage.getItem("temp-selectedSeats"));
         window.location = "../b2_modify_stream/b2.1_modify_booking_options.html";
     }
+
+    // Strings to construct URL variable to pass
+    const currentPageIndex = '13';
+    const prevPageVarName = 'prevPage';
+    var prevButtonPath = "";
+
+    // Waits until the page is fully loaded before executing
+    document.addEventListener("DOMContentLoaded", function() {
+        // sends the visit order (index string) to the js file
+        visitOrder = readURLData('prevPage');
+        // sets the previous page url based on the index at the end of the visit order string
+        prevButtonPath = "../b4_change_seats/change_seats.html" + '?' + prevPageVarName + "=" + currentPageIndex;
+        setPreviousPage(prevButtonPath);
+    });
   </script>
 </body>
 

@@ -114,4 +114,18 @@
             <empty-footer></empty-footer>
         </div>
     </body>
+<script>
+    const currentPageIndex = '11';
+    const prevPageVarName = 'prevPage';
+    var prevButtonPath = "";
+
+    // Waits until the page is fully loaded before executing
+    document.addEventListener("DOMContentLoaded", function() {
+        // sends the visit order (index string) to the js file
+        visitOrder = readURLData('prevPage');
+        // sets the previous page url based on the index at the end of the visit order string
+        prevButtonPath = "../b2_modify_stream/b2.2_modify_tickets_options.html" + '?' + prevPageVarName + "=" + currentPageIndex;
+        setPreviousPage(prevButtonPath);
+    });   
+</script>
 </html>

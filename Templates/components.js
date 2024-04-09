@@ -573,7 +573,20 @@ function indexToPath(index) {
             url = "../b1_ticket_lookup/modify_ticket.html";
             break;
         case "9":
-            url = "../b2_ticket_modification/modify_ticket2.html";
+            url = "../b2_modify_stream/b2.1_modify_booking_options.html";
+            break;
+        case "10":
+            url = "../b2_modify_stream/b2.2_modify_tickets_options.html";
+            break;
+        case "11":
+            url = "../b2_modify_stream/b2.3_edit_ticket.html";
+            break;
+        case "12":
+            url = "../b4_change_seats/change_seats.html";
+            break;
+        case "13":
+            url = "../b4_change_seats/confirm_seats.html";
+            break;
     }
 
     return url;
