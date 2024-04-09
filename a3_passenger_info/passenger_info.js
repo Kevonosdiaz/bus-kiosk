@@ -23,30 +23,40 @@ class PassengerInfoContainer extends HTMLElement {
             wrapper.id = `passengerWrapper${i}`;
             wrapper.innerHTML = `
             <div class="info">
-            <div class="passenger-header" id="passenger-header" >Passenger ${i + 1} Info</div>
-            <div class="field">
-                <label for="name-input" class="label">
-                    <img src="../Images/Icons/Screens/personal info black.png" alt="ID card icon" />
-                    Name
-                </label>
-                <input oninput="handleInput()" required placeholder="firstname lastname" id="name-input" />
-                <span class="tag" id="name-tag"><i style="color: red">*</i></span>
+            <div class="header-container">
+                <div class="passenger-header" id="passenger-header" >Passenger ${i + 1} Info</div>
+                <button class="question" id="question" onclick="togglePopUp()">?</button>
             </div>
-            <div class="field">
-                <label for="email-input" class="label">
-                    <img src="../Images/Icons/Screens/email black.png" alt="Email icon" />
-                    Email
-                </label>
-                <input required placeholder="ex. myEmail@mail.com" id="email-input" oninput="handleInput()" />
-                <span class="tag" id="email-tag"><i style="color: red">*</i></span>
+            <div id="fields-container">
+                <div id="fields">
+                    <div class="field">
+                    <label for="name-input" class="label">
+                        <img src="../Images/Icons/Screens/personal info black.png" alt="ID card icon" />
+                        Name
+                    </label>
+                    <input oninput="handleInput()" required placeholder="firstname lastname" id="name-input" />
+                    <span class="tag" id="name-tag"><i style="color: red">*</i></span>
+                </div>
+                <div class="field">
+                    <label for="email-input" class="label">
+                        <img src="../Images/Icons/Screens/email black.png" alt="Email icon" />
+                        Email
+                    </label>
+                    <input required placeholder="ex. myEmail@mail.com" id="email-input" oninput="handleInput()" />
+                    <span class="tag" id="email-tag"><i style="color: red">*</i></span>
+                </div>
+                <div class="field">
+                    <label for="phone-input" class="label">
+                        <img src="../Images/Icons/Screens/phone black.png" alt="Phone icon" />
+                        Phone
+                    </label>
+                    <input type="text" required placeholder="ex. 1112223333" id="phone-input" oninput="handleInput()"/>
+                    <span class="tag" id="phone-tag"><i style="color: red">*</i></span>
+                </div>
             </div>
-            <div class="field">
-                <label for="phone-input" class="label">
-                    <img src="../Images/Icons/Screens/phone black.png" alt="Phone icon" />
-                    Phone
-                </label>
-                <input type="text" required placeholder="ex. 1112223333" id="phone-input" oninput="handleInput()"/>
-                <span class="tag" id="phone-tag"><i style="color: red">*</i></span>
+            <div id="popup">
+                <button id="popup-close" onclick="togglePopUp()">X</button>
+                <div id="popup-message">Please input email and phone for passenger 1. These will be used for confirmation if modifying the ticket, and for communication.</div>
             </div>
         </div>
         <div class="services">
@@ -235,7 +245,7 @@ function clearFields() {
 // Populate fields based on nth passenger's currently stored info
 function restoreFields(n) {
     if (passInfo.length <= n) return;
-    // console.log("Attempting to restore field");
+    console.log("Attempting to restore field");
     let p = passInfo[n];
     // Handle info fields
     pName = p.firstName + " " + p.lastName;
@@ -252,6 +262,7 @@ function restoreFields(n) {
     sCount[1] = p.animalTransport;
     sCount[2] = p.bike;
     sCount[3] = p.skiSnow;
+    console.log(JSON.stringify(sCount));
     setQty("bag-count", 0, sCount[0]);
     setQty("animal-count", 1, sCount[1]);
     setQty("bike-count", 2, sCount[2]);
@@ -274,8 +285,9 @@ function updatePassInfoN(n) {
         sCount[3],
         addServiceTotal
     );
-    // console.log(JSON.stringify(pInfo));
+    console.log(JSON.stringify(pInfo));
     passInfo[n] = pInfo;
+    pushPassInfo();
 }
 
 // Remove 'selected' class to remove selected service background
@@ -473,12 +485,14 @@ document.addEventListener("DOMContentLoaded", function () {
     // Load first subpage information right away, initialize some stuff
     currentPage = 1;
     fetchPassInfo();
+    console.log(JSON.stringify(passInfo));
     // console.log("Onload event!");
     if (passInfo === null) passInfo = [];
     if (finishedPages.length === 0) {
         for (let i = 0; i < numPassengers; i++) finishedPages.push(false);
     }
     pageOneDisplay(); // Show special elements for first page
+    document.getElementById("popup").style.display = "flex";
     restoreFields(0);
     handleInput();
     tmp = sessionStorage.getItem("finished-pages");
@@ -581,12 +595,23 @@ document.addEventListener("DOMContentLoaded", function () {
     setNextPage(nextButtonPath);
 });
 
+// On pressing (?) button, toggle help pop-up
+function togglePopUp() {
+    if (document.getElementById("popup").style.display === "flex") {
+        document.getElementById("popup").style.display = "none";
+    } else {
+        document.getElementById("popup").style.display = "flex";
+    }
+}
+
 // Display special instructions, required fields for first page
 function pageOneDisplay() {
     let emailTag = document.getElementById("email-tag");
     let phoneTag = document.getElementById("phone-tag");
     emailTag.style.display = "block";
     phoneTag.style.display = "block";
+    document.getElementById("question").style.display = "block";
+    document.getElementById("popup").style.display = "none";
 }
 
 // Hide special fields used for page one
@@ -595,6 +620,8 @@ function otherPageDisplay() {
     let phoneTag = document.getElementById("phone-tag");
     emailTag.style.display = "none";
     phoneTag.style.display = "none";
+    document.getElementById("question").style.display = "none";
+    document.getElementById("popup").style.display = "none";
 }
 
 // Check if all pages have been completed
