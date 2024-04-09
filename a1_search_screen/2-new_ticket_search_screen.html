@@ -50,7 +50,7 @@
     <div class="top-half">
       <div class="main-content">
         <h1>Enter Your Trip Details</h1>
-        <p><span style="color: red;">*</span> marked fields are mandatory</p>
+        <p style="margin-top: -20px;"><span style="color: red;">*</span> indicates a required field</p>
         <div class="origin_field">
           <label for="origin_input" class="label">
             <img class="origin_arrow_img" src="../Images/Icons/Screens/origin arrow black.png" alt="Origin arrow" />
@@ -109,12 +109,12 @@
         </div>
 
         <div class="slider-btn">
-          <p>One Way Trip</p>
+          <p style="font-weight: 700;" id="one-way-toggle-tag">One Way Trip</p>
           <label class="switch">
             <input onclick="handleToggleClick(this.checked)" id="slider-btn-input" type="checkbox">
             <span class="slider round"></span>
           </label>
-          <p>Round Trip</p>
+          <p style="color: gray; font-weight: 700;" id="round-trip-toggle-tag">Round Trip</p>
         </div>
 
         <div class="field-hidden" id="returnDate-div">
@@ -182,7 +182,7 @@
         case 'departDate':
         case 'returnDate':
           sessionStorage.setItem(fieldName, value)
-          if (value === '') {
+          if (value === '' || !validateString(value, fieldName)) {
             showRequiredTag(fieldName)
           } else {
             hideRequiredTag(fieldName)
@@ -191,12 +191,25 @@
       }
     }
 
+    function handleToggleText(clickEvent) {
+      var roundTripText = document.getElementById('round-trip-toggle-tag')
+      var oneWayText = document.getElementById('one-way-toggle-tag')
+      if (clickEvent) {
+        roundTripText.style.color = 'black';
+        oneWayText.style.color = 'gray';
+      } else {
+        roundTripText.style.color = 'gray';
+        oneWayText.style.color = 'black';
+      }
+    }
+
     function handleToggleClick(clickEvent) {
       var returnDateDiv = document.getElementById('returnDate-div')
       var returnDateValue = sessionStorage.getItem('returnDate')
       var savedReturnDateValue = sessionStorage.getItem('returnDate-saved')
+      handleToggleText(clickEvent)
+      
       if (clickEvent) {
-
         if (savedReturnDateValue !== '') {
           sessionStorage.setItem('returnDate', savedReturnDateValue)
           sessionStorage.setItem('returnDate-saved', '')
@@ -245,13 +258,14 @@
       if (sessionStorage.getItem('isRoundTrip') === 'true') {
 
         var returnDate = sessionStorage.getItem('returnDate')
-        if (isValid && validateString(returnDate, 'returnDate')) {
+        var isValidReturnTrip = isValid && validateString(returnDate, 'returnDate')
+        if (isValidReturnTrip) {
           enableConfirmBtn()
         } else {
           disableConfirmBtn()
         }
 
-        return isValid && (returnDate.length > 0)
+        return isValidReturnTrip
       } else {
 
         if (isValid) {
