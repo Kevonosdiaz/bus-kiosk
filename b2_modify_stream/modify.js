@@ -53,6 +53,7 @@ var old_total = 0.0
 var ticket1 = ["1", "Gus Ryder", 0.0, 29.99, [0.0, 0.0, 1.0, 0.0]]
 var ticket2 = ["2", "Mo Torbus", 0.0, 29.99, [1.0, 1.0, 0.0, 0.0]]
 var ticket3 = ["3", "Carrie Awning", 0.0, 29.99, [1.0, 0.0, 0.0, 1.0]]
+var t_cancelled = [];
 
 if (JSON.parse(sessionStorage.getItem('m-tick-list')) != null) {
   var tickets = JSON.parse(sessionStorage.getItem('m-tick-list'))
@@ -62,18 +63,31 @@ if (JSON.parse(sessionStorage.getItem('m-tick-list')) != null) {
   calcTotal()
   old_total = total
   sessionStorage.setItem('m-old-total', JSON.stringify(old_total))
+
+}
+
+if (sessionStorage.getItem('cancelled_ts') == null) {
+  sessionStorage.setItem('cancelled_ts', JSON.stringify([false, false, false]))
+  t_cancelled = [false, false, false]
+  console.log(t_cancelled)
+} else {
+  t_cancelled = JSON.parse(sessionStorage.getItem('cancelled_ts'))
+  console.log(t_cancelled)
 }
 
 function calcTotal() {
   total = 0.0
   for (var i = 0; i < tickets.length; i++) {
-    var sum = tickets[i][tcost_i];
-    for (var j = 0; j < add_costs.length; j++) {
-      sum += tickets[i][adds_i][j] * add_costs[j];
+    if (!t_cancelled[i]) {
+      var sum = tickets[i][tcost_i];
+      for (var j = 0; j < add_costs.length; j++) {
+        sum += tickets[i][adds_i][j] * add_costs[j];
+      }
+      tickets[i][total_i] = sum;
+      total += tickets[i][total_i];
+      tickets[i][total_i] = tickets[i][total_i].toFixed(2);
     }
-    tickets[i][total_i] = sum;
-    total += tickets[i][total_i];
-    tickets[i][total_i] = tickets[i][total_i].toFixed(2);
+    
   }
   sessionStorage.setItem('m-tick-list', JSON.stringify(tickets));
   total = total.toFixed(2)
@@ -101,7 +115,8 @@ cancelAcceptbtn.onclick = function () {
     var ticketnum = String(rbutton.value);
     for (var i = 0; i < tickets.length; i++) {
       if (ticketnum == tickets[i][tnum_i])  {
-        tickets.splice(i, 1);
+        //tickets.splice(i, 1);
+        t_cancelled[i] = true;
       }
     }
     switch (ticketnum){
@@ -171,25 +186,78 @@ function updateTickets() {
   })
 }
 
+function check_cancelled() {
+  for (var i = 0; i < t_cancelled.length; i++) {
+    if (t_cancelled[i] == true) {
+      switch (i) {
+        case 0:
+          document.getElementById('ticket1').style.display = "none";
+          break;
+        case 1:
+          document.getElementById('ticket2').style.display = "none";
+          break;
+        case 2:
+          document.getElementById('ticket3').style.display = "none";
+          break;
+      }
+    }
+  }
+}
+
 const cancelTicketbtn = document.getElementById("cancelTicketLabel");
 cancelTicketbtn.onclick = function(){
   if (isRadioSelected())
     document.getElementById('cancelConfirm').style.display = 'block';
 }
 
+const savebtn = document.getElementById("saveLabel");
+savebtn.onclick = function(){
+  document.getElementById('saveConfirm').style.display = 'block';
+}
+
 const modifyTicketbtn = document.getElementById("modifyTicketLabel");
 modifyTicketbtn.onclick = function (){
   if (isRadioSelected())
+    sessionStorage.setItem('cancelled_ts', JSON.stringify(t_cancelled))
     document.querySelector('input[type="radio"]:checked').checked = false;
     window.location.href = "b2.3_edit_ticket.html";
+}
+
+const backBtn = document.getElementById('back');
+backBtn.onclick = function () {
+  sessionStorage.setItem('cancelled_ts', JSON.stringify([false, false, false]))
+  sessionStorage.setItem('m-tick-list', JSON.stringify([ticket1, ticket2, ticket3]))
+}
+
+const saveAcceptbtn = document.getElementById("saveAccept");
+saveAcceptbtn.onclick = function (){
+  old_total = parseFloat(JSON.parse(sessionStorage.getItem('m-old-total')))
+  console.log(total)
+  if (total == 0.00) {
+    // no tickets, cancel booking
+    window.location.href = "../b3_modify_finish/cancel_finish.html"
+  } else if (total > old_total) {
+    console.log()
+    // pay new amount
+    window.location.href = "../a5_summary/pay.html";
+  } else if (total < old_total) {
+    // refund screen
+    window.location.href = "../b3_modify_finish/modify_finish_refund.html";s
+  } else {
+    // same amount. could be different services so print new booking
+    window.location.href = "../b3_modify_finish/modify_finish_same.html";
+  }
 }
 
 toggleButtons()
 calcTotal()
 updateTotal()
 updateTickets()
+check_cancelled()
 document.getElementById('old_total').innerText = JSON.parse(sessionStorage.getItem('m-old-total'));
 sessionStorage.setItem("m-ticket1", JSON.stringify(ticket1))
 sessionStorage.setItem("m-ticket2", JSON.stringify(ticket1))
 sessionStorage.setItem("m-ticket3", JSON.stringify(ticket1))
 sessionStorage.setItem("m-total", total)
+document.getElementById('saveAccept').style.backgroundColor = "#7197ff";
+document.getElementById('cancelAccept').style.backgroundColor = "#fa5353";

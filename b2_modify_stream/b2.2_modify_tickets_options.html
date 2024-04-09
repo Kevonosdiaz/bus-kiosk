@@ -30,7 +30,25 @@
             No
           </button>
           <button class="cancelAccept" button id="cancelAccept">
-            <img class="confirmRestart" src="../Images/Icons/Screens/confirm red.png" />
+            <img class="confirmRestart" src="../Images/Icons/Screens/confirm black.png" />
+            Yes
+          </button>
+        </div>
+      </div>
+    </div>
+    <div id="saveConfirm" class="cancelConfirm">
+      <div class = "cancelConfirmContent">
+        <div class="warning_symbol">
+          <img class = "warning" src = "../Images/Icons/Screens/save black.png" />
+        </div>
+        <p style="margin-top: 0px;" id="save_msg">Are you sure you want to save these changes and finish modifying this booking?</p>
+        <div class="cancelConfirmButtons">
+          <button class = "cancelDecline" button id="saveDecline">
+            <img class="declineRestart" src="../Images/Icons/Screens/x circle black.png"/>
+            No
+          </button>
+          <button class="cancelAccept" button id="saveAccept">
+            <img class="confirmRestart" src="../Images/Icons/Screens/confirm black.png" />
             Yes
           </button>
         </div>
@@ -97,6 +115,13 @@
   cancelDeclinebtn.onclick = function (){
     document.getElementById('cancelConfirm').style.display = 'none';
   }
+
+  const saveDeclinebtn = document.getElementById("saveDecline");
+  saveDeclinebtn.onclick = function (){
+    document.getElementById('saveConfirm').style.display = 'none';
+  }
+
+
   const currentPageIndex = '10';
   const prevPageVarName = 'prevPage';
   var prevButtonPath = "";

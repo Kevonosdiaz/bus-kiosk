@@ -172,13 +172,13 @@ img {
 }
 
 .cancel_ticket_label {
-    background-color: rgb(250, 83, 83);
+    background-color: #fa5353;
 }
 
 .save_label {
     flex: 0 0 100%;
     width:100%;
-    background-color: rgb(113, 151, 255);
+    background-color: #7197ff;
 }
 
 .modify_ticket_label:hover,
