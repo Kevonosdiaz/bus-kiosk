@@ -118,7 +118,6 @@ class PassengerInfoContainer extends HTMLElement {
                     </div>
                 </div>
             </div>
-            <div id="service-total">Additional Service Total: $0</div>
         </div>
             
             `;
@@ -192,17 +191,34 @@ function updateStatus() {
     }
 }
 
+
+const tnum_i = 0 // Ticket Number index
+const name_i = 1 // Passenger Name index
+const total_i = 2 // Total ticket cost index (ticket + additional)
+const tcost_i = 3 // Ticket cost  index
+const adds_i = 4 // Additional Services index
+const bag_i = 0 // Extra Bags index
+const bic_i = 1  // Bicycle Storage index
+const ani_i = 2 // Animal Transport index
+const ski_i = 3 // Ski/Snowboard index
+
+// get ticket info that needs to be modified
+var ticket = JSON.parse(sessionStorage.getItem('ticket_to_mod'))
+console.log(ticket)
+
+
 // TODO consider allowing ability to switch to page N (or consider as "for future development")
 // function switchPage(pageNo) {}
 
-const serviceCosts = [10, 15, 15, 10]; // Costs of bag, animal, bike, and ski/snowboard services (in that order)
-const serviceTotal = document.getElementById("service-total");
+const serviceCosts = [10.00, 15.00, 15.00, 10.00]; // Costs of bag, animal, bike, and ski/snowboard services (in that order)
+const serviceTotal = document.getElementById("totalnew");
 const extraBags = document.getElementById("checked-bags");
 const animalTransport = document.getElementById("animal-transport");
 const bicycleStorage = document.getElementById("bicycle-storage");
 const skiSnowboard = document.getElementById("ski-snowboard");
 const sList = [extraBags, animalTransport, bicycleStorage, skiSnowboard]; // Store all services for easily selecting/deselecting
-const sCount = [0, 0, 0, 0]; // Store qty of each service
+const sCount = ticket[adds_i]; // Store qty of each service
+console.log(sCount)
 
 const SERVICELIMIT = 10; // max number of service count per service
 
@@ -250,7 +266,7 @@ function select(serviceNo) {
 // Helper fn used to get count # from strings of pattern "Qty: #"
 function parseQty(str) {
     arr = str.split(" "); // delimit by space
-    count = parseInt(arr[1]); // fetch #, parse as int
+    var  count = parseInt(arr[1]); // fetch #, parse as int
     return count;
 }
 
@@ -266,8 +282,8 @@ function decrement(qtyID, serviceNo) {
         sCount[serviceNo] = count;
         // Update total cost
         let cost = serviceCosts[serviceNo];
-        let currentTotal = parseInt(serviceTotal.innerText.split("$")[1]);
-        serviceTotal.innerText = "Additional Service Total: $" + (currentTotal - cost);
+        let currentTotal = parseFloat(serviceTotal.innerText.split("$")[1]);
+        serviceTotal.innerText = "New Total - $" + (currentTotal - cost).toFixed(2);
     }
 }
 
@@ -282,16 +298,16 @@ function increment(qtyID, serviceNo) {
         sCount[serviceNo] = count;
         // Update total cost
         let cost = serviceCosts[serviceNo];
-        let currentTotal = parseInt(serviceTotal.innerText.split("$")[1]);
-        serviceTotal.innerText = "Additional Service Total: $" + (currentTotal + cost);
+        let currentTotal = parseFloat(serviceTotal.innerText.split("$")[1]);
+        serviceTotal.innerText = "New Total - $" + (currentTotal + cost).toFixed(2);
     }
 }
 
 // Handle page back/next button click events
-let prevPageButton = document.getElementById("nav-back");
-let nextPageButton = document.getElementById("nav-next");
-prevPageButton.addEventListener("click", prevPage);
-nextPageButton.addEventListener("click", nextPage);
+//let prevPageButton = document.getElementById("nav-back");
+//let nextPageButton = document.getElementById("nav-next");
+//prevPageButton.addEventListener("click", prevPage);
+//nextPageButton.addEventListener("click", nextPage);
 
 // Prevent user from going to next passenger page
 function disableNextPage() {
@@ -363,6 +379,38 @@ function createPInfo(
     };
 }
 
+function setText() {
+    document.getElementById('b_title').innerText = "Modifying Ticket #"+ticket[tnum_i];
+    document.getElementById('pname').innerText = ticket[name_i];
+    if (ticket[tnum_i] == "1")  {
+        document.getElementById('pemail').innerText = "gus.ryder@bmail.com";
+        document.getElementById('pphone').innerText = "111-222-3333";
+    } else {
+        document.getElementById('pemail').innerText = "None";
+        document.getElementById('pphone').innerText = "None";
+    }
+    document.getElementById('totalc').innerText = String(ticket[total_i]);
+
+    document.getElementById('bag-count').innerText = "Qty: "+String(ticket[adds_i][bag_i]);
+    document.getElementById('animal-count').innerText = "Qty: "+String(ticket[adds_i][ani_i]);
+    document.getElementById('bike-count').innerText = "Qty: "+String(ticket[adds_i][bic_i]);
+    document.getElementById('skisnow-count').innerText = "Qty: "+String(ticket[adds_i][ski_i]);
+    for (var i = 0; i < 4; i++) {
+        if (ticket[adds_i][i] > 0) {
+            if (i == 1) {
+                select(2)
+            } else if (i == 2) {
+                select(1)
+            } else {
+                select(i)
+            }
+        }
+    }
+
+    document.getElementById('totalnew').innerText = "New Total - $"+String(ticket[total_i]);
+} 
+
+setText()
 // For future reference:
 // sessionStorage.setItem("routeList", JSON.stringify(routeList));
 

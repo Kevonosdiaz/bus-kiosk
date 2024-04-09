@@ -238,6 +238,6 @@ img {
     font-weight:700;
 }
 
-.confirm {
+.confirm, .confirm-disabled {
     visibility: hidden;
 }

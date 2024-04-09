@@ -50,7 +50,7 @@ const ski_i = 3 // Ski/Snowboard index
 const add_costs  = [10.00, 15.00, 15.00, 10.00]
 var total = 0.0
 var old_total = 0.0
-var ticket1 = ["1", "Gus Ryder", 0.0, 29.99, [0.0, 0.0, 3.0, 0.0]]
+var ticket1 = ["1", "Gus Ryder", 0.0, 29.99, [0.0, 0.0, 1.0, 0.0]]
 var ticket2 = ["2", "Mo Torbus", 0.0, 29.99, [1.0, 1.0, 0.0, 0.0]]
 var ticket3 = ["3", "Carrie Awning", 0.0, 29.99, [1.0, 0.0, 0.0, 1.0]]
 
