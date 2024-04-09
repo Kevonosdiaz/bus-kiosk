@@ -52,10 +52,6 @@ body {
     background-color: white;
 }
 
-.summary-info-box {
-    /* overflow: scroll; */
-}
-
 .main_list {
     list-style-type: none;
     font-size: 20px;
@@ -73,7 +69,8 @@ body {
     list-style-type: none;
     font-size: 20px;
     line-height: 30px;
-    padding-left: 50px;
+    /* padding-left: 50px; */
+    margin-left: 10px;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(2, 1fr);
@@ -85,12 +82,14 @@ body {
     border-radius: 8px;
     padding-bottom:4px;
     padding-top:4px;
+    width: 90%;
 }
 
 .grid_item1 {
     font-weight: 500;
     margin-bottom:5px;
     border-bottom: solid black 1px;
+    
 }
 
 .grid_item {    
