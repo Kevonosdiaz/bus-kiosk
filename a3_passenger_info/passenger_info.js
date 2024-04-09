@@ -393,23 +393,25 @@ function prevPage() {
     if (!checkStrictReqEmpty() && validateName()) updatePassInfoN(currentPage - 1);
     // Restore fields for prev page if saved (should be saved)
     // console.log("About to check for restoring prev!");
-    if (passInfo[currentPage - 2] !== null) {
-        restoreFields(currentPage - 2);
+    swapPage(currentPage - 1); // Change current page, status, and populated field values
+    if (passInfo[currentPage - 1] !== null) {
+        restoreFields(currentPage - 1);
         handleInput();
     } else {
         clearFields();
         clearQty();
     }
-    swapPage(currentPage - 1); // Change current page, status, and populated field values
 }
 
 function nextPage() {
     if (currentPage === numPassengers) return; // Don't switch on last page
     updatePassInfoN(currentPage - 1); // Update for current passenger (*0-indexed fn)
+    pushPassInfo();
 
-    if (passInfo[currentPage] != null) {
+    swapPage(currentPage + 1); // Change current page/status
+    if (passInfo[currentPage - 1] != null) {
         // Restore fields for next page if saved
-        restoreFields(currentPage);
+        restoreFields(currentPage - 1);
         handleInput();
         enableNextPage();
     } else {
@@ -418,7 +420,6 @@ function nextPage() {
         clearFields();
         clearQty();
     }
-    swapPage(currentPage + 1); // Change current page/status
 }
 
 // Manage passenger information
@@ -455,14 +456,16 @@ function createPInfo(
 document.addEventListener("DOMContentLoaded", function () {
     // Load first subpage information right away, initialize some stuff
     fetchPassInfo();
+    console.log("Onload event!");
     if (passInfo === null) passInfo = [];
     if (finishedPages.length === 0) {
         for (let i = 0; i < numPassengers; i++) finishedPages.push(false);
     }
     restoreFields(0);
-    let size = passInfo.length;
-    if (size === 0) disableNextPage();
-    if (size < numPassengers) disableConfirmBtn();
+    handleInput();
+    // let size = passInfo.length;
+    // if (size === 0) disableNextPage();
+    // if (size < numPassengers) disableConfirmBtn();
 });
 // Update page/information on arrow clicks
 // Make sure 1st left and last right arrow transitions to next page
