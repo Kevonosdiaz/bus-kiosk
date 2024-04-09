@@ -1,4 +1,4 @@
-document.addEventListener('change', (evt) => {
+/* document.addEventListener('change', (evt) => {
     // evt.currentTarget is the .radiogroup element
     // and we search for all elements with the active class
     evt.currentTarget
@@ -18,6 +18,26 @@ document.addEventListener('change', (evt) => {
       .closest('.sum_box')
       .classList.add('active');
   }, true);
+ */
+
+const radios = document.querySelectorAll('input[type="radio"]');
+console.log(radios)
+radios.forEach(radio => {
+  radio.onclick = () => {
+    var actives = document.querySelectorAll('.active');
+    actives.forEach(act => { act.classList.remove('active')})
+    toggleButtons()
+    radio.closest('.sum_box').classList.add('active');
+    
+    for (var i = 0; i < tickets.length; i++) {
+      if (String(radio.value) == tickets[i][tnum_i])  {
+        sessionStorage.setItem('ticket_to_mod', JSON.stringify(tickets[i]))
+      }
+    }
+    console.log(sessionStorage.getItem('ticket_to_mod'))
+  }
+
+})
 
 const tnum_i = 0
 const name_i = 1
@@ -57,10 +77,19 @@ function updateText() {
   document.getElementById('new_total').innerText = String(total);
 }
 
-const cancelAcceptbtn = document.getElementById("cancelAccept");
-cancelAcceptbtn.onclick = function () {
+function isRadioSelected() {
   var rbutton = document.querySelector('input[type="radio"]:checked');
   if (rbutton != null) {
+    return true
+  } else {
+    return false
+  }
+}
+
+const cancelAcceptbtn = document.getElementById("cancelAccept");
+cancelAcceptbtn.onclick = function () {
+  if (isRadioSelected()) {
+    var rbutton = document.querySelector('input[type="radio"]:checked');
     document.getElementById('cancelConfirm').style.display = 'none';
     var ticketnum = String(rbutton.value);
     for (var i = 0; i < tickets.length; i++) {
@@ -81,16 +110,35 @@ cancelAcceptbtn.onclick = function () {
     }
     
     rbutton.checked = false;
+    toggleButtons()
     updateText()
+  }
+}
+
+function toggleButtons() {
+  if (isRadioSelected()) {
+    cancelTicketbtn.classList.remove('disabled');
+    modifyTicketbtn.classList.remove('disabled');
+  } else {
+    cancelTicketbtn.classList.add('disabled');
+    modifyTicketbtn.classList.add('disabled');
   }
 }
 
 const cancelTicketbtn = document.getElementById("cancelTicketLabel");
 cancelTicketbtn.onclick = function(){
-  if (document.querySelector('input[type="radio"]:checked') != null)
+  if (isRadioSelected())
     document.getElementById('cancelConfirm').style.display = 'block';
 }
 
+const modifyTicketbtn = document.getElementById("modifyTicketLabel");
+modifyTicketbtn.onclick = function (){
+  if (isRadioSelected())
+    document.querySelector('input[type="radio"]:checked').checked = false;
+    window.location.href = "b2.3_edit_ticket.html";
+}
+
+toggleButtons()
 calcTotal()
 old_total = total
 document.getElementById('old_total').innerText = String(old_total);
