@@ -198,12 +198,14 @@ const total_i = 2 // Total ticket cost index (ticket + additional)
 const tcost_i = 3 // Ticket cost  index
 const adds_i = 4 // Additional Services index
 const bag_i = 0 // Extra Bags index
-const bic_i = 1  // Bicycle Storage index
-const ani_i = 2 // Animal Transport index
+const ani_i = 1  // Animal Storage index
+const bic_i = 2 // Bicycle Storage index
 const ski_i = 3 // Ski/Snowboard index
 
 // get ticket info that needs to be modified
-var ticket = JSON.parse(sessionStorage.getItem('ticket_to_mod'))
+var ticket_index = JSON.parse(sessionStorage.getItem('ticket_to_mod'))
+var ticket_list = JSON.parse(sessionStorage.getItem('m-tick-list'))
+var ticket = ticket_list[[ticket_index]]
 console.log(ticket)
 
 
@@ -397,18 +399,20 @@ function setText() {
     document.getElementById('skisnow-count').innerText = "Qty: "+String(ticket[adds_i][ski_i]);
     for (var i = 0; i < 4; i++) {
         if (ticket[adds_i][i] > 0) {
-            if (i == 1) {
-                select(2)
-            } else if (i == 2) {
-                select(1)
-            } else {
-                select(i)
-            }
+            select(i)
         }
     }
 
     document.getElementById('totalnew').innerText = "New Total - $"+String(ticket[total_i]);
 } 
+
+const saveBtn = document.getElementById('saveLabel')
+saveBtn.onclick = function (){
+    ticket[adds_i] = sCount;
+    ticket_list[[ticket_index]] = ticket;
+    sessionStorage.setItem('m-tick-list', JSON.stringify(ticket_list))
+    window.location.href = "b2.2_modify_tickets_options.html";
+}
 
 setText()
 // For future reference:

@@ -241,3 +241,7 @@ img {
 .confirm, .confirm-disabled {
     visibility: hidden;
 }
+
+.services-header {
+    text-align: center;
+}

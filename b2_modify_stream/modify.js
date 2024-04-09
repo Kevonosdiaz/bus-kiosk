@@ -30,7 +30,7 @@ radios.forEach(radio => {
     
     for (var i = 0; i < tickets.length; i++) {
       if (String(radio.value) == tickets[i][tnum_i])  {
-        sessionStorage.setItem('ticket_to_mod', JSON.stringify(tickets[i]))
+        sessionStorage.setItem('ticket_to_mod', JSON.stringify(i))
       }
     }
   }
@@ -43,8 +43,8 @@ const total_i = 2 // Total ticket cost index (ticket + additional)
 const tcost_i = 3 // Ticket cost  index
 const adds_i = 4 // Additional Services index
 const bag_i = 0 // Extra Bags index
-const bic_i = 1  // Bicycle Storage index
-const ani_i = 2 // Animal Transport index
+const ani_i = 1  // Animal Storage index
+const bic_i = 2 // Bicycle Transport index
 const ski_i = 3 // Ski/Snowboard index
 
 const add_costs  = [10.00, 15.00, 15.00, 10.00]
@@ -54,8 +54,15 @@ var ticket1 = ["1", "Gus Ryder", 0.0, 29.99, [0.0, 0.0, 1.0, 0.0]]
 var ticket2 = ["2", "Mo Torbus", 0.0, 29.99, [1.0, 1.0, 0.0, 0.0]]
 var ticket3 = ["3", "Carrie Awning", 0.0, 29.99, [1.0, 0.0, 0.0, 1.0]]
 
-sessionStorage.setItem('m-tick-list', JSON.stringify([ticket1, ticket2, ticket3]))
-var tickets = JSON.parse(sessionStorage.getItem('m-tick-list'))
+if (JSON.parse(sessionStorage.getItem('m-tick-list')) != null) {
+  var tickets = JSON.parse(sessionStorage.getItem('m-tick-list'))
+} else {
+  sessionStorage.setItem('m-tick-list', JSON.stringify([ticket1, ticket2, ticket3]))
+  var tickets = [ticket1, ticket2, ticket3]
+  calcTotal()
+  old_total = total
+  sessionStorage.setItem('m-old-total', JSON.stringify(old_total))
+}
 
 function calcTotal() {
   total = 0.0
@@ -179,10 +186,9 @@ modifyTicketbtn.onclick = function (){
 
 toggleButtons()
 calcTotal()
-old_total = total
-document.getElementById('old_total').innerText = String(old_total);
 updateTotal()
 updateTickets()
+document.getElementById('old_total').innerText = JSON.parse(sessionStorage.getItem('m-old-total'));
 sessionStorage.setItem("m-ticket1", JSON.stringify(ticket1))
 sessionStorage.setItem("m-ticket2", JSON.stringify(ticket1))
 sessionStorage.setItem("m-ticket3", JSON.stringify(ticket1))
