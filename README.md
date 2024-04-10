@@ -94,7 +94,7 @@ You can either modify individual tickets on your booking, change your seating ar
 ## Edit Tickets
 Base Screen          | Expanded Ticket Details           | Selected Ticket
 :-------------------------:|:-------------------------:|:-------------------------:
-![](./Images/edit_tickets_base.png?=x500) | ![](./Images/edit_tickets_details.png?=x50) | ![](./Images/edit_details_select.png?=x50)
+![](./Images/edit_tickets_base.png?=x500) | ![](./Images/edit_tickets_details.png?=x50) | ![](./Images/edit_tickets_selected.png?=x50)
 
 You can select and either cancel or modify tickets on this screen.
 
