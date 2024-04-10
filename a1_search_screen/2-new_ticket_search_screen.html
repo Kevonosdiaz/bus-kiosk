@@ -54,7 +54,7 @@
         <div class="origin_field">
           <label for="origin_input" class="label">
             <img class="origin_arrow_img" src="../Images/Icons/Screens/origin arrow black.png" alt="Origin arrow" />
-            Origin
+            Origin<span class="origin-tag" id="origin-tag" style="color: red">*</span>
           </label>
           <div class="originInputMenu">
             <input oninput="handleInput('origin', this.value)" type="text" onkeyup="filterOrigin()"
@@ -71,7 +71,6 @@
             </div>
 
           </div>
-          <span class="origin-tag" id="origin-tag"><i style="color: red">*</i></span>
         </div>
 
 
@@ -79,7 +78,7 @@
           <label for="destination_input" class="label">
             <img class="dest_arrow_img" src="../Images/Icons/Screens/destinaton arrow black.png"
               alt="Destination arrow" />
-            Destination
+            Destination<span class="destination-tag" id="destination-tag" style="color: red">*</span>
           </label>
           <div class="destInputMenu">
             <input type="text" oninput="handleInput('destination', this.value)" onkeyup="filterDest()"
@@ -95,17 +94,15 @@
               <a href="#">Seven Persons, AB</a>
             </div>
           </div>
-          <span class="destination-tag" id="destination-tag"><i style="color: red">*</i></span>
         </div>
 
 
         <div class="field">
           <label for="calendar_input" class="label">
             <img class="calendar_img" src="../Images/Icons/Screens/calendar black.png" alt="Schedule Calendar" />
-            Depart Date
+            Depart Date<span class="departDate-tag" id="departDate-tag" style="color: red">*</span>
           </label>
           <input oninput="handleInput('departDate', this.value)" required placeholder="dd/mm/yyyy" id="depart-input" />
-          <span class="departDate-tag" id="departDate-tag"><i style="color: red">*</i></span>
         </div>
 
         <div class="slider-btn">
@@ -120,13 +117,12 @@
         <div class="field-hidden" id="returnDate-div">
           <label for="calendar_input" class="label">
             <img class="calendar_img" src="../Images/Icons/Screens/calendar black.png" alt="Schedule Calendar" />
-            Return Date
+            Return Date<span class="returnDate-tag" id="returnDate-tag" style="color: red">*</span>
           </label>
           <input oninput="handleInput('returnDate', this.value)" required placeholder="dd/mm/yyyy" id="return-input" />
-          <span class="returnDate-tag" id="returnDate-tag"><i style="color: red">*</i></span>
         </div>
 
-        <div class="passenger field">
+        <div class="field">
           <label for="passenger_count_input" class="label">
             <img class="passenger_img" src="../Images/Icons/Slides/group_icon.png" alt="Passenger Count" />
             Passenger Count
@@ -143,7 +139,6 @@
             class="plus_button">
             +
           </button>
-          <span>&nbsp;&nbsp;&nbsp;</span>
         </div>
       </div>
     </div>
