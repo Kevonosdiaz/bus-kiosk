@@ -71,7 +71,7 @@ class Header extends HTMLElement {
                     <p2>Someone will be with you shortly.</p2>
                     <div class="helpDialogueButtons">
                         <button class="helpOk" button id="helpOk">
-                        <img src="../Images/Icons/Screens/confirm red.png" />
+                        <img src="../Images/Icons/Screens/confirm black.png" />
                             Ok
                         </button>
                     </div>
