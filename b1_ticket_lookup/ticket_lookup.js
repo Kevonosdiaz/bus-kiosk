@@ -109,29 +109,29 @@ function verifyInfo() {
 }
 
 nextBtn.onclick = function () {
-    if (verifyCode()) {
-        sessionStorage.setItem('seatsSelected', JSON.stringify([0,0,0,0,0,0,0,0,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]))
-        location.href = "../b2_modify_stream/b2.1_modify_booking_options.html";
-    } else {
-        var div = document.getElementById('vbox');
-        var message = document.getElementById('message_box');
-        var msgtext = document.getElementById('msg');
+    if (checkFormatCode())
+        if (verifyCode()) {
+            sessionStorage.setItem('seatsSelected', JSON.stringify([0,0,0,0,0,0,0,0,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]))
+            location.href = "../b2_modify_stream/b2.1_modify_booking_options.html";
+        } else {
+            var div = document.getElementById('vbox');
+            var message = document.getElementById('message_box');
+            var msgtext = document.getElementById('msg');
 
-        var code_input = document.getElementById('code-input');
-        code_input.value = "";
+            var code_input = document.getElementById('code-input');
+            code_input.value = "";
 
-        sessionStorage.setItem('m-vcode', "");
+            sessionStorage.setItem('m-vcode', "");
 
-        verifyLabel.style.display = 'flex';
-        div.style.display = "none";
-        message.style.display = "flex";
-        msgtext.innerText = "Verification code was incorrect. Please submit again to receive a new code.";
+            verifyLabel.style.display = 'flex';
+            div.style.display = "none";
+            message.style.display = "flex";
+            msgtext.innerText = "Verification code was incorrect. Please submit again to receive a new code.";
 
-        nextBtn.style.cursor = 'not-allowed';
-        nextBtn.style.backgroundColor = "#C6C6C6";
-        nextBtn.style.color = "#5D5D5D";
-    }
-    
+            nextBtn.style.cursor = 'not-allowed';
+            nextBtn.style.backgroundColor = "#C6C6C6";
+            nextBtn.style.color = "#5D5D5D";
+        }
 };
 
 document.getElementById('back').onclick = function () {
