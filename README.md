@@ -80,28 +80,25 @@ We have created a preset booking that can be modifed. Please use the following d
 
 ### 2. Enter Verification Code
 ![](./Images/ticket_lookup_verify.png?=x500)
-
 Verification codes are 6 digits long. Please use the following code to proceed:
    - Code: 737373
 
 ### 3. Choose a Booking Option
+:-------------------------:|:-------------------------:
 ![](./Images/booking_options.png?=x500) | ![](./Images/booking_options_popup.png?=x50)
-
-You can either modify individual tickets on your booking, change your seating arrangement, or cancel the entire booking. Cancelling a booking will redirect you to a landing screen indicating that you will receive a refund.
+You can either modify individual tickets on your booking, change your seating arrangement, or cancel the entire booking. Cancelling a booking will redirect you to an ending screen indicating that you will receive a refund.
 
 ## Edit Tickets
+:-------------------------:|:-------------------------:|:-------------------------:
 ![](./Images/edit_tickets_base.png?=x500) | ![](./Images/edit_tickets_details.png?=x50) | ![](./Images/edit_details_select.png?=x50)
-
 You can select and either cancel or modify tickets on this screen.
 
 ## Cancel Tickets
 Confirmation Popup           |  Updated List and Total
 :-------------------------:|:-------------------------:
 ![](./Images/edit_tickets_cancel.png?=x500) | ![](./Images/edit_tickets_cancel2.png?=x50)
-
 A popup opens when you try to cancel a ticket. If you accept, the ticket is removed from the list and the new total is adjusted.
 
 ## Modify Tickets
 ![](./Images/tickets_modify.png?=x500)
-
 When you modify a ticket, you can add or remove additional services, which will be reflected in the previous screen if you click the save button.
