@@ -32,26 +32,26 @@ class PassengerInfoContainer extends HTMLElement {
                     <div class="field">
                     <label for="name-input" class="label">
                         <img src="../Images/Icons/Screens/personal info black.png" alt="ID card icon" />
-                        Name
+                        Name<span class="tag" id="name-tag"><i style="color: red">*</i></span>
                     </label>
                     <input oninput="handleInput()" required placeholder="firstname lastname" id="name-input" />
-                    <span class="tag" id="name-tag"><i style="color: red">*</i></span>
+                    
                 </div>
                 <div class="field">
                     <label for="email-input" class="label">
                         <img src="../Images/Icons/Screens/email black.png" alt="Email icon" />
-                        Email
+                        Email<span class="tag" id="email-tag"><i style="color: red">*</i></span>
                     </label>
                     <input required placeholder="ex. myEmail@mail.com" id="email-input" oninput="handleInput()" />
-                    <span class="tag" id="email-tag"><i style="color: red">*</i></span>
+                    
                 </div>
                 <div class="field">
                     <label for="phone-input" class="label">
                         <img src="../Images/Icons/Screens/phone black.png" alt="Phone icon" />
-                        Phone
+                        Phone<span class="tag" id="phone-tag"><i style="color: red">*</i></span>
                     </label>
                     <input type="text" required placeholder="ex. 1112223333" id="phone-input" oninput="handleInput()"/>
-                    <span class="tag" id="phone-tag"><i style="color: red">*</i></span>
+                    
                 </div>
             </div>
             <div id="popup">
