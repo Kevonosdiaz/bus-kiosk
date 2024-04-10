@@ -117,11 +117,11 @@ body {
     height:6%;
     align-items: center;
     justify-content: right;
-    line-height:200%;
+    line-height:275%;
 }
 
 .total_text {
-    font-size: 24px;
+    font-size: 35px;
     margin:0px;
     padding-right:25px;
     font-weight: 600;
