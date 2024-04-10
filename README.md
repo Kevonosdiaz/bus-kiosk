@@ -84,9 +84,11 @@ Verification codes are 6 digits long. Please use the following code to proceed:
    - Code: 737373
 
 ### 3. Choose a Booking Option
+Empty Fields            |  Filled in Fields
 :-------------------------:|:-------------------------:
 ![](./Images/booking_options.png?=x500) | ![](./Images/booking_options_popup.png?=x50)
-You can either modify individual tickets on your booking, change your seating arrangement, or cancel the entire booking. Cancelling a booking will redirect you to an ending screen indicating that you will receive a refund.
+You can either modify individual tickets on your booking, change your seating arrangement, or cancel the entire booking. | Cancelling a booking will redirect you to an ending screen indicating that you will receive a refund.
+
 
 ## Edit Tickets
 :-------------------------:|:-------------------------:|:-------------------------:
