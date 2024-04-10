@@ -54,7 +54,7 @@
         <div class="origin_field">
           <label for="origin_input" class="label">
             <img class="origin_arrow_img" src="../Images/Icons/Screens/origin arrow black.png" alt="Origin arrow" />
-            Origin<span style="color: red">*</span>
+            Origin<span class="origin-tag" id="origin-tag" style="color: red">*</span>
           </label>
           <div class="originInputMenu">
             <input oninput="handleInput('origin', this.value)" type="text" onkeyup="filterOrigin()"
@@ -78,7 +78,7 @@
           <label for="destination_input" class="label">
             <img class="dest_arrow_img" src="../Images/Icons/Screens/destinaton arrow black.png"
               alt="Destination arrow" />
-            Destination<span style="color: red">*</span>
+            Destination<span class="destination-tag" id="destination-tag" style="color: red">*</span>
           </label>
           <div class="destInputMenu">
             <input type="text" oninput="handleInput('destination', this.value)" onkeyup="filterDest()"
@@ -100,7 +100,7 @@
         <div class="field">
           <label for="calendar_input" class="label">
             <img class="calendar_img" src="../Images/Icons/Screens/calendar black.png" alt="Schedule Calendar" />
-            Depart Date<span style="color: red">*</span>
+            Depart Date<span class="departDate-tag" id="departDate-tag" style="color: red">*</span>
           </label>
           <input oninput="handleInput('departDate', this.value)" required placeholder="dd/mm/yyyy" id="depart-input" />
         </div>
@@ -117,7 +117,7 @@
         <div class="field-hidden" id="returnDate-div">
           <label for="calendar_input" class="label">
             <img class="calendar_img" src="../Images/Icons/Screens/calendar black.png" alt="Schedule Calendar" />
-            Return Date<span style="color: red">*</span>
+            Return Date<span class="returnDate-tag" id="returnDate-tag" style="color: red">*</span>
           </label>
           <input oninput="handleInput('returnDate', this.value)" required placeholder="dd/mm/yyyy" id="return-input" />
         </div>
