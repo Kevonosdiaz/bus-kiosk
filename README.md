@@ -1,7 +1,7 @@
 # CPSC481W24 Project - Bus Ticketing Kiosk
 The Bus Ticketing Kiosk Supports Two Main Workflows:  
-1. [Booking a New Ticket](#new-ticket-booking-process)  
-2. [Modifying an Existing Ticket](#modify-booking-process)  
+1. [New Ticket Booking Process](#new-ticket-booking-process)  
+2. [Modify Booking Process](#modify-booking-process)  
   
 ### Group T02-5
 
