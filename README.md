@@ -98,12 +98,30 @@ Base Screen          | Expanded Ticket Details           | Selected Ticket
 
 You can select and either cancel or modify tickets on this screen.
 
-## Cancel Tickets
+### Cancel Tickets
 Confirmation Popup           |  Updated List and Total
 :-------------------------:|:-------------------------:
 ![](./Images/edit_tickets_cancel.png?=x500) | ![](./Images/edit_tickets_cancel2.png?=x50)
 A popup opens when you try to cancel a ticket. | If you accept, the ticket is removed from the list and the new total is adjusted.
 
-## Modify Tickets
+### Modify Tickets
 ![](./Images/tickets_modify.png?=x500)
+
 When you modify a ticket, you can add or remove additional services, which will be reflected in the previous screen if you click the save button.
+
+### Save Changes and Finish
+![](./Images/tickets_save_changes.png?=x500)
+
+Once you are done making changes, you can hit save and finish. Depending on your new total, you will either be given a refund or be required to pay the difference. This will conclude the process and take you back to the welcome screen.
+
+## Change Seats
+Original Seats         |  New Seats
+:-------------------------:|:-------------------------:
+![](./Images/change_seats1.png?=x500) | ![](./Images/change_seats2.png?=x50)
+
+On this screen, you can modify your seating arrangement. Once you have repicked your seats, the Next button will light up.
+
+### Save Changes
+![](./Images/change_seats_confirrm.png?=x500)
+
+After you hit next, you will be asked to save your changes. You will then be taken back to the Modify Booking Options screen.
