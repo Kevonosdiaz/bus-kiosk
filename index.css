@@ -63,7 +63,7 @@ img {
     margin-bottom: 2px;
     border: 2px solid black;
     display: flex;
-    padding-left: 4px;
+    padding-left: 10px;
     gap: 10px;
     align-items: center;
     height: 120px;
