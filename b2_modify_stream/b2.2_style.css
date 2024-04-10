@@ -332,4 +332,5 @@ input[type="radio"] {
 
 .disabled:hover {
     border:2px solid transparent;
+    cursor:not-allowed;
 }
