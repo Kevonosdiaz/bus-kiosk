@@ -31,7 +31,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 5px;
+    gap: 20px;
     padding-top: 10px; 
 }
 
@@ -64,7 +64,7 @@ img {
     border: 2px solid black;
     display: flex;
     padding-left: 4px;
-    gap: 5px;
+    gap: 10px;
     align-items: center;
     height: 120px;
     width: 400px;
@@ -78,6 +78,10 @@ img {
     font-weight: 400;
 
     border-radius: 30px;
+}
+
+.new_ticket_label {
+    background-color: #7197ff;
 }
 
 .new_ticket_label:hover,
