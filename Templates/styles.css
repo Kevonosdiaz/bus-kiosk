@@ -108,11 +108,11 @@
     border: 2px solid gray;
 }
 
-.restartConfirm,
-.helpOk{
+.restartConfirm{
     color: red;
 }
-.restartDecling{
+.restartDecling,
+.helpOk{
     color: black;
 }
 
