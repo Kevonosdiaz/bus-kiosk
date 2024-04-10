@@ -42,7 +42,7 @@
 }
 
 .bottom-half {
-    height: 59%;
+    height: 56%;
     display:flex;
     flex-direction: column;
     justify-content: center;
