@@ -62,6 +62,23 @@ class Header extends HTMLElement {
                 </div>
             </div>
 
+            <div id="helpDialogue" class="helpDialogue">
+                <div class="helpDialogueContent">
+                    <div class="assistance">
+                        <img class ="assistance" style="margin-top:10px" src="../Images/Icons/Screens/assistance.png"/>
+                    </div>
+                    <p style="margin-top: 0px;">Help is on the way!</p>
+                    <p2>Someone will be with you shortly.</p2>
+                    <div class="helpDialogueButtons">
+                        <button class="helpOk" button id="helpOk">
+                        <img src="../Images/Icons/Screens/confirm red.png" />
+                            Ok
+                        </button>
+                    </div>
+                </div>
+            
+            </div>
+
             <div class="header">
                 <button class="back" button id="back">
                     <img class="offset-img" src="../Images/Icons/Screens/back black.png" alt="Back arrow" />
@@ -522,7 +539,14 @@ function restartDeclineButtonFunc() {
 function callforhelp(){
     const helpButton = document.getElementById("help");
     helpButton.addEventListener("click", function (){
-        window.location.href = "../Templates/help.html";
+        document.getElementById("helpDialogue").style.display = "block";
+    });
+}
+
+function helpOk(){
+    const okButton = document.getElementById("helpOk");
+    okButton.addEventListener("click", function(){
+        document.getElementById("helpDialogue").style.display = "none";
     });
 }
 
@@ -639,6 +663,7 @@ document.addEventListener("DOMContentLoaded", function () {
     restartDeclineButtonFunc();
     restartButtonClick();
     callforhelp();
+    helpOk();
 });
 
 // list of the seat numbers in the order its read in the seat selector

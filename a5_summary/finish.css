@@ -72,6 +72,6 @@ body {
     overflow:auto;
 }
 
-.back, .confirm, .reset, .help {
+.back, .confirm, .reset {
     display: none;
 }

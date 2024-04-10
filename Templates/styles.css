@@ -73,7 +73,8 @@
 .restartDecline,
 .cancelDecline,
 .cancelAccept,
-.help {
+.help,
+.helpOk {
     font-family: "Poppins", sans-serif;
     font-size: 24px;
     max-width: 20rem; /* Have a width scaling with 12 times the base font size */
@@ -102,24 +103,28 @@
 .restartDecline:hover,
 .cancelAccept:hover,
 .cancelDecline:hover,
-.help:hover {
+.help:hover,
+.helpOk:hover {
     border: 2px solid gray;
 }
 
-.restartConfirm{
+.restartConfirm,
+.helpOk{
     color: red;
 }
 .restartDecling{
     color: black;
 }
 
-.restartDialogueContent img {
+.restartDialogueContent img,
+.helpDialogueContent img {
     width: 130px;
     height: 130px;
 }
 
 .restartConfirm img,
-.restartDecline img{
+.restartDecline img,
+.helpOk img{
     height: 30px;
     width: 30px;
 }
@@ -154,9 +159,20 @@
     border-radius: 8px;
 }
 
+.helpDialogue{
+    display: none;
+    position: fixed;
+    z-index: 1;
+    background-color: rgba(0,0,0,0.4);
+    width: 600px;
+    height: 802px;
+    border-radius: 8px;
+}
 
 
-.restartDialogueContent{
+
+.restartDialogueContent,
+.helpDialogueContent{
     margin: auto;
     text-align:center;
 
@@ -178,7 +194,8 @@
     font-weight: 500;
 }
 
-.startOverDialogueButtons{
+.startOverDialogueButtons,
+.helpDialogueButtons{
     padding-top:20px;
     display: flex;
     justify-content: center;
