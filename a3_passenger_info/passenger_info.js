@@ -34,7 +34,7 @@ class PassengerInfoContainer extends HTMLElement {
                         <img src="../Images/Icons/Screens/personal info black.png" alt="ID card icon" />
                         Name<span class="tag" id="name-tag" style="color: red">*</span>
                     </label>
-                    <input oninput="handleInput()" required placeholder="firstname lastname" id="name-input" />
+                    <input oninput="handleInput()" required placeholder="ex. FirstName LastName" id="name-input" />
                     
                 </div>
                 <div class="field">
