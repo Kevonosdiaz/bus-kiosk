@@ -64,3 +64,10 @@ Progression through the payment screen is automatic, and meant to simulate a suc
 ![](./Images/final.png?=x500)  
 
 This is the final landing page for the application, progression from here back to the starting landing page is also automatic and will happen after 5 seconds.  
+
+## Modify Booking Process
+### 1. Enter Passenger and Booking Information
+Empty Fields            |  Filled in Fields
+:-------------------------:|:-------------------------:
+![](./Images/ticket_lookup_empty.png?=x500) | ![](./Images/trip_lookup_filled.png?=x50)  
+Click to Verify is greyed out | Turns blue once information of correct format is entered 
