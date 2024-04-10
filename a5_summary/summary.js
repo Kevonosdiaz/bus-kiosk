@@ -195,7 +195,7 @@ class SummaryInfo extends HTMLElement {
             costBreakdown.querySelector('.main_list2').appendChild(tempCost)
         }
 
-        var total = Number(selectedTrip.cost) + (extraBags*10) + (bikeStorage*15) + (animalTransport*15) + (skiSnow*10)
+        var total = (Number(selectedTrip.cost)*passengers) + (extraBags*10) + (bikeStorage*15) + (animalTransport*15) + (skiSnow*10)
 
         let tempText = document.createElement('p')
         tempText.className = "grid_item1"

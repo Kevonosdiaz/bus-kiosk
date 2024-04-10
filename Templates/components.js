@@ -138,6 +138,10 @@ class Footer4 extends HTMLElement {
     connectedCallback() {
         this.innerHTML = `
             <div class="footer">
+                <button class="help" id="help">
+                    <img class="offset-img" src="../Images/Icons/Screens/help.png" alt="Call icon" />
+                    Help
+                </button>
             </div>
         `;
     }
@@ -515,6 +519,13 @@ function restartDeclineButtonFunc() {
     });
 }
 
+function callforhelp(){
+    const helpButton = document.getElementById("help");
+    helpButton.addEventListener("click", function (){
+        window.location.href = "../Templates/help.html";
+    });
+}
+
 // Sets the url of the previous page to the 'previousPage variable'
 var previousPage;
 function setPreviousPage(page) {
@@ -627,6 +638,7 @@ document.addEventListener("DOMContentLoaded", function () {
     restartConfirmButtonFunc();
     restartDeclineButtonFunc();
     restartButtonClick();
+    callforhelp();
 });
 
 // list of the seat numbers in the order its read in the seat selector

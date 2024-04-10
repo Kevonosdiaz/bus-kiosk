@@ -72,7 +72,8 @@
 .restartConfirm,
 .restartDecline,
 .cancelDecline,
-.cancelAccept {
+.cancelAccept,
+.help {
     font-family: "Poppins", sans-serif;
     font-size: 24px;
     max-width: 20rem; /* Have a width scaling with 12 times the base font size */
@@ -100,7 +101,8 @@
 .restartConfirm:hover,
 .restartDecline:hover,
 .cancelAccept:hover,
-.cancelDecline:hover {
+.cancelDecline:hover,
+.help:hover {
     border: 2px solid gray;
 }
 
@@ -186,3 +188,7 @@
 /*
 border radius and drop shadow
  */
+
+ .help {
+    margin-left: 20px;
+ }
