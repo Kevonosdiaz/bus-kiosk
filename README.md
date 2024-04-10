@@ -42,10 +42,11 @@ One Way Trip             |  Round Trip
 Empty fields with greyed-out 'Next' button | Completed fields with green 'Next' button  
 
 In order to proceed to the next page, you must enter the passenger information in the following format:  
-Name: firstName lastName  
-Email: email@example.com  
-Phone: 0123456789  
+   - Name: firstName lastName
+   - Email: email@example.com
+   - Phone: 0123456789
 
+    
 ### 5. Seat Selection
 ![](./Images/seat_selection.png?=x500)  
 
