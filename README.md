@@ -69,5 +69,5 @@ This is the final landing page for the application, progression from here back t
 ### 1. Enter Passenger and Booking Information
 Empty Fields            |  Filled in Fields
 :-------------------------:|:-------------------------:
-![](./Images/ticket_lookup_empty.png?=x500) | ![](./Images/trip_lookup_filled.png?=x50)  
+![](./Images/ticket_lookup_empty.png?=x500) | ![](./Images/ticket_lookup_filled.png?=x500)  
 Click to Verify is greyed out | Turns blue once information of correct format is entered 
