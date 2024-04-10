@@ -105,7 +105,7 @@ Confirmation Popup           |  Updated List and Total
 A popup opens when you try to cancel a ticket. | If you accept, the ticket is removed from the list and the new total is adjusted.
 
 ### Modify Tickets
-![](./Images/tickets_modify.png?=x500)
+![](./Images/ticket_modify.png?=x500)
 
 When you modify a ticket, you can add or remove additional services, which will be reflected in the previous screen if you click the save button.
 
@@ -122,6 +122,6 @@ Original Seats         |  New Seats
 On this screen, you can modify your seating arrangement. Once you have repicked your seats, the Next button will light up.
 
 ### Save Changes
-![](./Images/change_seats_confirrm.png?=x500)
+![](./Images/change_seats_confirm.png?=x500)
 
 After you hit next, you will be asked to save your changes. You will then be taken back to the Modify Booking Options screen.
