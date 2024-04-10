@@ -79,7 +79,8 @@ We have created a preset booking that can be modifed. Please use the following d
    - Booking ID: BUS123
 
 ### 2. Enter Verification Code
-![](./Images/ticket_lookup_verify.png?=x500)
+![](./Images/ticket_lookup_verify.png?=x50)
+
 Verification codes are 6 digits long. Please use the following code to proceed:
    - Code: 737373
 
@@ -101,7 +102,7 @@ You can select and either cancel or modify tickets on this screen.
 Confirmation Popup           |  Updated List and Total
 :-------------------------:|:-------------------------:
 ![](./Images/edit_tickets_cancel.png?=x500) | ![](./Images/edit_tickets_cancel2.png?=x50)
-A popup opens when you try to cancel a ticket. If you accept, the ticket is removed from the list and the new total is adjusted.
+A popup opens when you try to cancel a ticket. | If you accept, the ticket is removed from the list and the new total is adjusted.
 
 ## Modify Tickets
 ![](./Images/tickets_modify.png?=x500)
