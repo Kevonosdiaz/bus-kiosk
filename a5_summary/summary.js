@@ -195,7 +195,7 @@ class SummaryInfo extends HTMLElement {
             costBreakdown.querySelector('.main_list2').appendChild(tempCost)
         }
 
-        var total = Number(selectedTrip.cost) + (extraBags*10) + (bikeStorage*15) + (animalTransport*15) + (skiSnow*10)
+        var total = (Number(selectedTrip.cost)*passengers) + (extraBags*10) + (bikeStorage*15) + (animalTransport*15) + (skiSnow*10)
 
         let tempText = document.createElement('p')
         tempText.className = "grid_item1"
@@ -207,15 +207,7 @@ class SummaryInfo extends HTMLElement {
         costBreakdown.querySelector('.main_list2').appendChild(tempCost)
 
         wrapper.appendChild(costBreakdown)
-        
-        const totalCost = document.createElement('div')
-        totalCost.innerHTML = `
-        </div>
-            <div class="cost_box">
-                <p class="total_text">Total: ${currencyFormatter.format(total)}</p>
-            </div>
-        </div>
-        `
+        document.getElementById('total_text').innerText = "Total: $" + String(total.toFixed(2))
         document.getElementById('summary-outer-box').appendChild(wrapper)
         document.getElementById('summary-outer-div').appendChild(totalCost)
     }

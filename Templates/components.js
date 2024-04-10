@@ -339,6 +339,9 @@ class AdditionalTripInfo extends HTMLElement {
         var departureTime = this.getAttribute("departureTime");
         var arrivalDate = this.getAttribute("arrivalDate");
         var arrivalTime = this.getAttribute("arrivalTime");
+        var departStation = this.getAttribute("departStation");
+        var returnStation = this.getAttribute("returnStation");
+
         Dateify(departureDate);
         this.innerHTML = `
         <div class='add-details-hidden' id='details-${optionNum}'>
@@ -346,13 +349,13 @@ class AdditionalTripInfo extends HTMLElement {
             <div class="trip-summary">
                 <div class='add-details-depart'>
                     <p style="font-weight: 500;">Departure</p>
-                    <p>Calgary City Center Station</p>
+                    <p>${departStation}</p>
                     <p>${departureTime}, ${Dateify(departureDate)}</p>
                 </div>
                 <hr></hr>
                 <div class='add-details-arrive'>
                     <p style="font-weight: 500;">Arrival</p>
-                    <p>Edmonton International Airport</p>
+                    <p>${returnStation}</p>
                     <p>${arrivalTime}, ${Dateify(arrivalDate)}</p>
                 </div>
             </div>
@@ -378,6 +381,10 @@ class AdditionalRoundTripInfo extends HTMLElement {
         var returnDepartureTime = this.getAttribute("returnDepartureTime");
         var returnArrivalDate = this.getAttribute("returnArrivalDate");
         var returnArrivalTime = this.getAttribute("returnArrivalTime");
+        var departStation = this.getAttribute("departStation");
+        var returnStation = this.getAttribute("returnStation");
+        var returnDepartStation = this.getAttribute("returnDepartStation");
+        var returnReturnStation = this.getAttribute("returnReturnStation");
 
         this.innerHTML = `
         <div class='add-details-hidden' id='details-${optionNum}'>
@@ -385,13 +392,13 @@ class AdditionalRoundTripInfo extends HTMLElement {
             <div class="trip-summary">
                 <div class='add-details-depart'>
                     <p style="font-weight: 500;">Departure</p>
-                    <p>Calgary City Center Station</p>
+                    <p>${departStation}</p>
                     <p>${departureTime}, ${Dateify(departureDate)}</p>
                 </div>
                 <hr></hr>
                 <div class='add-details-arrive'>
                     <p style="font-weight: 500;">Arrival</p>
-                    <p>Edmonton International Airport</p>
+                    <p>${returnStation}</p>
                     <p>${arrivalTime}, ${Dateify(arrivalDate)}</p>
                 </div>
             </div>
@@ -399,13 +406,13 @@ class AdditionalRoundTripInfo extends HTMLElement {
             <div class="trip-summary">
                 <div class='add-details-depart'>
                     <p style="font-weight: 500;">Departure</p>
-                    <p>Calgary City Center Station</p>
+                    <p>${returnDepartStation}</p>
                     <p>${returnDepartureTime}, ${Dateify(returnDepartureDate)}</p>
                 </div>
                 <hr></hr>
                 <div class='add-details-arrive'>
                     <p style="font-weight: 500;">Arrival</p>
-                    <p>Edmonton International Airport</p>
+                    <p>${returnReturnStation}</p>
                     <p>${returnArrivalTime}, ${Dateify(returnArrivalDate)}</p>
                 </div>
             </div>
@@ -444,6 +451,8 @@ class TripItemContainer extends HTMLElement {
                             departureTime="${trip.departureInfo.departTime}"
                             arrivalDate="${trip.departureInfo.arriveDate}"
                             arrivalTime="${trip.departureInfo.arriveTime}"
+                            departStation="${trip.departureInfo.pickUpLocation}"
+                            returnStation="${trip.departureInfo.dropOffLocation}"
                         ></trip-additional>
                     `;
             } else {
@@ -459,6 +468,10 @@ class TripItemContainer extends HTMLElement {
                             returnDepartureTime="${trip.returnInfo.departTime}"
                             returnArrivalDate="${trip.returnInfo.arriveDate}"
                             returnArrivalTime="${trip.returnInfo.arriveTime}"
+                            departStation="${trip.departureInfo.pickUpLocation}"
+                            returnStation="${trip.departureInfo.dropOffLocation}"
+                            returnDepartStation="${trip.returnInfo.pickUpLocation}"
+                            returnReturnStation="${trip.returnInfo.dropOffLocation}"
                         ></round-trip-additional>
                     `;
             }

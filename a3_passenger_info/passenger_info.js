@@ -40,7 +40,7 @@ class PassengerInfoContainer extends HTMLElement {
                 <div class="field">
                     <label for="email-input" class="label">
                         <img src="../Images/Icons/Screens/email black.png" alt="Email icon" />
-                        Email<span class="tag" id="name-tag" style="color: red">*</span>
+                        Email<span class="tag" id="email-tag" style="color: red">*</span>
                     </label>
                     <input required placeholder="ex. myEmail@mail.com" id="email-input" oninput="handleInput()" />
                     
@@ -48,7 +48,7 @@ class PassengerInfoContainer extends HTMLElement {
                 <div class="field">
                     <label for="phone-input" class="label">
                         <img src="../Images/Icons/Screens/phone black.png" alt="Phone icon" />
-                        Phone<span class="tag" id="name-tag" style="color: red">*</span>
+                        Phone<span class="tag" id="phone-tag" style="color: red">*</span>
                     </label>
                     <input type="text" required placeholder="ex. 1112223333" id="phone-input" oninput="handleInput()"/>
                     
