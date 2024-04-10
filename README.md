@@ -27,7 +27,8 @@ To search for a trip, enter the following information:
    - (Optionally) Return Date: 2/12/2024
 
   
-If the optional return date is entered, a list of round trips will be displayed on the next page. The red asterix will also remain visible until correctly formatted text is entered as shown above.
+If the user wants to book a round trip, first click the toggle button then enter the return date, after clicking 'Next' a list of round trips will be displayed on the next page.
+The red asterix will also remain visible until correctly formatted text is entered as shown above.
 When all fields are filled in correctly, the 'Next' button will turn green and become clickable.  
 
 ### 3. Detailed Search Page
